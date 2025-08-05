@@ -292,7 +292,7 @@ PvZLaus
 	结束 方法
 
 	方法 anim_Zombie(速度 : 单精度小数=0.6f) : Zombie
-		state="walk"
+		sstate("walk")
 		setHPM(270)
 		cv()
 		anim=Anim.创建动画("Zombie",管理器)
@@ -521,11 +521,15 @@ PvZLaus
 			变量 indexw=anim.frame
 			变量 hb=indexw%1
 			变量 index=(indexw-hb).到整数()
-			如果 index>=anim.maxframe 则
+			
+			如果 anim.强制演化帧==-1 则
+				如果 index>=anim.maxframe 则
 				index=anim.startframe
 				anim.frame=anim.startframe
 				pos()
 			结束 如果
+			结束 如果
+			
 			变量 ft=poslist[anim.startframe].x
 			变量 ht=poslist[index].x
 			变量 indexs=index+1
@@ -606,13 +610,17 @@ PvZLaus
 					空手到吃(真)
 					变量 fr : 整数=anim.frame : 整数
 					anim.播放动画(行走动画)
-					anim.过渡从(fr,4)
+					如果 fr!=anim.startframe 则
+						anim.过渡从(fr,4)
+					结束 如果
 					cstate(行走状态)
+					
 				结束 如果
 			结束 如果
 
 			如果 type==8||(type==9&&state!="pre") 则
 				如果 state=="moonwalk" 则
+					enableMatrix=true
 					如果 诞生x-x()>=3*管理器.格子宽() 则
 						pos()
 						enableMatrix=假
@@ -649,7 +657,7 @@ PvZLaus
 								//变量 sbx : 四边形=四边形.新建(dancer.y)
 								dancer.y=dancer.y+100
 								dancer.无视=真
-								dancer.限制矩形=四边形.新建(dancer.x()-20,dancer.y-20,dancer.x()+80,dancer.y+120)
+								dancer.限制矩形=四边形.新建(-200,dancer.y-120,400,155,1,0)
 								dancer.enableBroken=true
 								//dancer.限制矩形
 								管理器.zombieList.添加成员(dancer)
@@ -910,7 +918,7 @@ PvZLaus
 		变量 tracle : Tracle=Tracle.create(管理器,-1,x(),y)
 		tracle.anim=anim.copy1f().强制显示(显示,0,真)
 		//日志("<<<"+整数集到文本(tracle.anim.mandaf.到数组()).替换("\n"," "))
-		tracle.xv=随机单精度小数(-0.1f,0.1f)
+		tracle.xv=随机单精度小数(-0.05f,0.05f)
 		tracle.yv=1.8f
 		tracle.maxy=y+高度
 		//tracle.ya=0.015f
@@ -993,11 +1001,14 @@ PvZLaus
 		stsl.add("dtime",dtime.到文本())
 		stsl.add("prex",预制位置x.到文本())
 		stsl.add("ddt",舞王动画进度.到文本())
-		stsl.add("anim.name",anim.名称)
+		stsl.add("anim.name",anim.名称+"<"+anim.animname+">")
 		stsl.add("anim.frame",anim.frame.到文本())
 		stsl.add("anim.startframe",anim.startframe.到文本())
 		stsl.add("anim.maxframe",anim.maxframe.到文本())
 		stsl.add("anim.speed",anim.speed.到文本())
+		stsl.add("anim.mustframe",anim.强制演化帧.到文本())
+		stsl.add("anim.musttime",anim.强制演化时间.到文本())
+		stsl.add("anim.mustprocess",anim.强制演化进度.到文本())
 		stsl.add("anim.return",anim.动画回归)
 		stsl.add("anim.stop",anim.暂停.到文本())
 		stsl.add("anim.update",anim.update.到文本())

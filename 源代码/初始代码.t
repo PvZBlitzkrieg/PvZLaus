@@ -48,7 +48,7 @@ PvZLaus
 //8.3实现主界面
 //8.4实现舞王僵尸
 //@外部依赖库("../jar/classes-4.jar")
-@附加资源("../assets")
+//@附加资源("../assets")
 //@外部动态库("../../lib")
 @输出名("上帝")
 @外部依赖库("../libgdx/jar")
@@ -61,7 +61,7 @@ PvZLaus
 	@布局配置([[根布局=真,宽度=-1,高度=-1]])
 	变量 线性布局1 : 线性布局
 	@布局配置([[父布局=线性布局1,宽度=-1,高度=-1]])
-	变量 Editor1 : Editor
+	变量 Editor1 : 编辑框
 
 	变量 view : 控件=空
 
@@ -693,8 +693,9 @@ android:hardwareAccelerated = "false">]])
 			atime=数组创建(整数,(max(width,height)-min(width,height)*4/3)/2)
 			俘获所有异常()
 			结束俘获异常()
+			提交到新线程运行()
 			管理器.初始化(width,height)
-			弹出提示("true")
+			结束提交到新线程()
 			管理器.绘制更新速率=帧长
 			管理器.speed=12f/(1000/帧长)*2
 			//提交到主线程运行(本对象)
@@ -794,7 +795,7 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 	方法 繪製()
 		//code #<操作类.日志>(#canvas.isHardwareAccelerated()+"");
 		//code #canvas.drawColor(0xff000000);
-		如果 初始化完成 则
+		如果 初始化完成&&管理器.初始化完成 则
 			变量 h : 长整数=取当前时间戳()
 			//test(100,100,位图对象.从文件路径创建位图("/storage/emulated/0/EhViewer/download/00_1248_sgw_123.jpg"))
 			//日志(index.到文本())
@@ -806,7 +807,7 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 			管理器.screen=scr
 			管理器.fbo=fbo1
 			如果 管理器.rgbShader==空 则
-				管理器.rgbShader.setPedantic(假)
+				ShaderProgram.setPedantic(假)
 				管理器.rgbShader=ShaderProgram.新建(rgb_vert,rgb_frag)
 			结束 如果
 			tr=管理器.绘图(绘制消耗帧,帧长)
@@ -963,7 +964,9 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 				变量 nt=取当前时间戳()
 				//日志(zombieList.长度.到文本())
 				//开始俘获异常()
-				管理器.Update()
+				如果 管理器.初始化完成 则
+					管理器.Update()
+				结束 如果
 				/*
 				俘获所有异常()
 			变量 ex=取俘获异常()
@@ -1387,6 +1390,9 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 
 	//2025.8.4  冒险模式闪光用的，标记变化时的时间
 	变量 bool : 整数
+	//2025.8.5
+	变量 初始化完成 : 逻辑型=假
+	变量 rectw : Texture=空
 
 
 	方法 sin_angle(angle : 单精度小数) : 单精度小数
@@ -1419,7 +1425,7 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 		可释放图.路径="/storage/emulated/0/.pvz/pvz/reanim/SodRollCap.png"
 		image.可释放图.添加项目("SodRollCap",可释放图)
 		initLawnString()
-
+        初始化完成=真
 		//screen=位图对象.创建位图2(width/dscale,height/dscale,位图配置.ARGB_8888)
 		//canvas=Canvas.从BitMap创建(screen)
 	结束 方法
@@ -1457,6 +1463,12 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 				trs[i]=TextureRegion.从Texture新建(texture)
 			结束 循环
 			字体1=BitmapFont.新建_trs(FileHandle.新建(fontName+".fnt"),trs2tra(trs))
+		结束 如果
+		如果 rectw==空 则
+			变量 pixmap : Pixmap=Pixmap.新建(1,1)
+			code #pixmap.setColor(0x000000ff);
+			code #pixmap.fill();
+			rectw=Texture.从PixMap新建(pixmap)
 		结束 如果
 		帧信息=""
 		ultna=nullait/1000000
@@ -1700,7 +1712,7 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 								//code #canvas.restore();
 								//code #canvas.save();
 								//canvas.clipRect(((x+zombie.x()-100)*scale).到整数(),(h*100*scale).到整数(),((x+zombie.x())*scale+150).到整数(),((h*100+200)*scale).到整数())
-
+                                //这里是绘制僵尸的地方
 								shadow(zombie.x()+zombie.cv.x-27,zombie.y+zombie.cv.y+zombie.cv.h-20,"plantshadow",matrix)
 
 								ds.anim=zombie.anim
@@ -1717,13 +1729,21 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 									ds.matrix=空
 								结束 如果
 								如果 zombie.enableBroken 则
-									
+									变量 hx=(x+zombie.x()*zombie.限制矩形.x乘数+zombie.限制矩形.x)*scale
+									变量 hy=(y+zombie.y*zombie.限制矩形.y乘数+zombie.限制矩形.y)*scale
+									变量 hw=zombie.限制矩形.width*scale
+									变量 hh=zombie.限制矩形.height*scale
+									//绘制矩形2(screen,(x+zombie.x+zombie.限制矩形.x)*scale,(y+zombie.y+zombie.限制矩形.y)*scale,zombie.限制矩形.width*scale,zombie.限制矩形.height*scale,假)
+									rgbShader.setUniformf4("u_clipRegion",hx,ytl2bl(hy,height,hh),hw,hh)
+								否则
+									rgbShader.setUniformf4("u_clipRegion",0,0,width,height)
 								结束 如果
 								绘制(screen,ds,hex)
 								zombie.immUpdate()
 							结束 如果
 						结束 循环
 					结束 循环
+					rgbShader.setUniformf4("u_clipRegion",0,0,width,height)
 					//code #canvas.restore();
 					ntt=取当前时间戳()
 					帧信息=帧信息+"\n"+"zombie:"+(ntt-nt).到文本()+"ms "+zombieList.长度+"n"
@@ -2459,10 +2479,18 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 		返回 rlt
 	结束 方法
 
-
+    方法 绘制矩形2(scr : SpriteBatch,xw : 单精度小数,yw : 单精度小数,ww : 单精度小数,hw : 单精度小数,fill : 逻辑型)
+    	如果 fill 则
+		否则
+			
+			scr.draw_txywh(rectw,xw*scale,ytl2bl(yw,height,ww),ww,hw)
+			//rgbShader.setUniformf1("u_opacity",0.4f)
+    	结束 如果
+    结束 方法
 
 	方法 绘制矩形(screenw : SpriteBatch,矩形w : 矩形x,颜色 : 整数)
-		变量 paint : Paint=Paint.创建Paint().设置颜色(颜色).设置样式(Paint_Style.STROKE).setStrokeWidth(2)
+		//变量 paint : Paint=Paint.创建Paint().设置颜色(颜色).设置样式(Paint_Style.STROKE).setStrokeWidth(2)
+		
 		//////////canvasw.drawRect(矩形w.x,矩形w.y,(矩形w.x+矩形w.w),(矩形w.y+矩形w.h),paint)
 	结束 方法
 
@@ -3213,7 +3241,7 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 					//这里可以在测试使创建几个僵尸看一看(2025.8.2)
 					循环(i, 0, 1)
 						//日志("addzombie:"+i.到文本())
-						//zombieList.添加成员(Zombie.create(本对象,取随机数(8,8),取随机数(0,取行数()-1)))
+						zombieList.添加成员(Zombie.create(本对象,取随机数(8,8),取随机数(0,取行数()-1)))
 					结束 循环
 					循环(i, 0, 5)
 						//日志("addzombie:"+i.到文本())
