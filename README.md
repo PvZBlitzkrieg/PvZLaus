@@ -3,9 +3,9 @@
 # 怎么运行  
 结绳是一个很小众的软件(或许吧)  
 1.找到最新版的结绳(v4.6),下载安装  
-2.将完整的工程文件夹(PvZ_Laus)复制到**/sdcard/TieCode/Project/**目录  
+2.将完整的工程文件夹(PvZ_Laus)复制到 **/sdcard/TieCode/Project/** 目录  
 3.编译运行  
-4.直接编译是不会把其他资源打包进去的,要把**初始代码.t**中的**@附加资源(../assets)**这一行取消注释  
+4.直接编译是不会把其他资源打包进去的,要把 **初始代码.t** 中的 **@附加资源(../assets)** 这一行取消注释  
 不想编译的话直接下编译好的版本就可以了➡[t.me/xborks](https://t.me/xborks)  
 # 其他  
 本人的b站是[@㔔㪳](https://space.bilibili.com/9944455),YouTube[@Xborks](https://www.youtube.com/@xborks)  
