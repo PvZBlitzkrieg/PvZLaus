@@ -1046,6 +1046,7 @@ PvZLaus
 		frame=fr
 		强制演化时间=时间
 		强制演化进度=0
+		
 	结束 方法
 
 	方法 过滤(名称w : 文本[]) : 文本[]
@@ -3474,14 +3475,18 @@ texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
 	变量 y : 单精度小数
 	变量 width : 单精度小数
 	变量 height : 单精度小数
+	变量 x乘数 : 单精度小数=1f
+	变量 y乘数 : 单精度小数=1f
 	
 	@静态
-	方法 新建(x : 单精度小数,y : 单精度小数,w : 单精度小数,h : 单精度小数) : 四边形
+	方法 新建(x : 单精度小数,y : 单精度小数,w : 单精度小数,h : 单精度小数,xc : 单精度小数=1f,yc : 单精度小数=1f) : 四边形
 		变量 sbx : 四边形
 		sbx.x=x
 		sbx.y=y
 		sbx.width=w
 		sbx.height=h
+		sbx.x乘数=xc
+		sbx.y乘数=yc
 		返回 sbx
 	结束 方法
 结束 类
