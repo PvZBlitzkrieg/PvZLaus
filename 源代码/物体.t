@@ -399,7 +399,7 @@ PvZLaus
 	结束 方法
 
 	方法 gety() : 单精度小数
-		变量 realy=管理器.gety(row,x()+50)
+		变量 realy=管理器.gety(row,x()+50)-5
 		变量 offy=-130
 		如果 anim.名称=="Zombie" 则
 			offy=-130
@@ -521,15 +521,15 @@ PvZLaus
 			变量 indexw=anim.frame
 			变量 hb=indexw%1
 			变量 index=(indexw-hb).到整数()
-			
+
 			如果 anim.强制演化帧==-1 则
 				如果 index>=anim.maxframe 则
-				index=anim.startframe
-				anim.frame=anim.startframe
-				pos()
+					index=anim.startframe
+					anim.frame=anim.startframe
+					pos()
+				结束 如果
 			结束 如果
-			结束 如果
-			
+
 			变量 ft=poslist[anim.startframe].x
 			变量 ht=poslist[index].x
 			变量 indexs=index+1
@@ -614,10 +614,12 @@ PvZLaus
 						anim.过渡从(fr,4)
 					结束 如果
 					cstate(行走状态)
-					
+
 				结束 如果
 			结束 如果
 
+		结束 如果
+		如果 后摇==假 则
 			如果 type==8||(type==9&&state!="pre") 则
 				如果 state=="moonwalk" 则
 					enableMatrix=true
@@ -657,10 +659,12 @@ PvZLaus
 								//变量 sbx : 四边形=四边形.新建(dancer.y)
 								dancer.y=dancer.y+100
 								dancer.无视=真
-								dancer.限制矩形=四边形.新建(-200,dancer.y-120,400,155,1,0)
+								dancer.限制矩形=四边形.新建(-200,dancer.y-120,400,145,1,0)
 								dancer.enableBroken=true
 								//dancer.限制矩形
 								管理器.zombieList.添加成员(dancer)
+								变量 part=Particle.新建("DancerRise",dancer.x()+10,dancer.y-15)
+								管理器.particleList.添加成员(part)
 								僵尸[i]=dancer
 							结束 如果
 						结束 循环
@@ -689,17 +693,22 @@ PvZLaus
 						如果 舞王动画进度<40 则
 							anim.startframe=fr
 							anim.maxframe=fr+12
+							如果 anim.frame>fr+舞王动画进度%10 则
+								pos()
+							结束 如果
 							anim.frame=fr+舞王动画进度%10
 							enableMatrix=整数到逻辑型(((舞王动画进度.到整数()-舞王动画进度.到整数()%10)/10+1)%2)
 						否则 舞王动画进度<80
 							anim.startframe=cr
 							anim.maxframe=cr+22
+							如果 anim.frame>cr+(舞王动画进度-40)%20 则
+								pos()
+							结束 如果
 							anim.frame=cr+(舞王动画进度-40)%20
 							enableMatrix=假
 						否则
-							pos()
 							舞王动画进度=0
-                            如果 舞王需要更新() 则
+							如果 舞王需要更新() 则
 								state="point"
 								anim.播放动画("anim_point")
 								dtime=0
@@ -749,6 +758,7 @@ PvZLaus
 					dtime=dtime+1
 					//y=y+1
 					如果 dtime==100 则
+						enableBroken=假
 						anim.暂停=真
 						sstate("dance")
 						dtime=0
@@ -894,7 +904,7 @@ PvZLaus
 		glow(,1.5f,10)
 		如果 hasLostArm==假&&HP<HPM*2f/3f 则
 			hasLostArm=真
-			变量 ordz : 整数[]={0,1,2,4,6,10}
+			变量 ordz : 整数[]={0,1,2,4,5,6,7,8,9,10}
 			如果 整数属于整数集(ordz,type) 则
 				断({"Zombie_outerarm_lower","Zombie_outerarm_hand"})
 				anim.代理图片("Zombie_outerarm_upper","IMAGE_REANIM_"+"Zombie_outerarm_upper2".到大写())
@@ -1672,7 +1682,7 @@ PvZLaus
 			变量 dt=100
 			prt.dtime=0
 			prt.dtimemax=dt
-			变量 count=14
+			变量 count=10
 
 			//PowieBigClouds
 			循环(i, 0, count)
@@ -1729,6 +1739,50 @@ PvZLaus
 			lz.pic="ExplosionPowie"
 			lz.setdtime(70)
 			prt.parts.添加成员(lz)
+		否则 type=="DancerRise"
+			变量 dt=200
+			prt.dtime=0
+			prt.dtimemax=dt
+			//DancerDirtClumps
+			
+			循环(i, 0, 14)
+				变量 lzb : 粒子=粒子.新建(,,,,,)
+				lzb.pic="dirtbig"
+				lzb.setdtime(dt)
+				lzb.alpha="0-1 100-1"
+				//日志("zzzzz   "+lzb.scale.到文本())
+				变量 scale=随机单精度小数(0.7f,0.9f)
+				lzb.scale="0-0 10-"+scale+" 100-"+scale
+				lzb.x=随机单精度小数(-30f,30f)
+				lzb.y=随机单精度小数(-5f,5f)
+				lzb.shake=2.5f
+				lzb.cutn=4
+				lzb.row=2
+				lzb.cutp=取随机数(0,7)
+				prt.parts.添加成员(lzb)
+			结束 循环
+			变量 count=40
+			//DancerDirtSplash
+			循环(i, 0, count)
+				变量 lzb : 粒子=粒子.新建(,,,,,)
+				lzb.pic="dirtsmall"
+				lzb.setdtime(dt)
+				变量 开始时间 : 单精度小数=(i*1f/count)*0.6f*100+2
+				变量 结束时间=开始时间+40
+				lzb.alpha="0-0 "+(开始时间-1).到文本()+"-0 "+开始时间+"-1 "+结束时间+"-1 "+(结束时间+1).到文本()+"-0"+" 100-0"
+				lzb.starte=开始时间*dt/100
+				lzb.ende=结束时间*dt/100
+				lzb.x=随机单精度小数(-5f,5f)
+				lzb.xv=随机单精度小数(-0.5f,0.5f)
+				lzb.yv=-1.5f
+				lzb.ya=0.03f
+				lzb.shake=0.1f
+				lzb.scale=粒子.全值(0.65f)
+				lzb.cutn=8
+				lzb.row=2
+				lzb.cutp=取随机数(0,15)
+				prt.parts.添加成员(lzb)
+			结束 循环
 		结束 如果
 		返回 prt
 	结束 方法
@@ -1781,6 +1835,7 @@ PvZLaus
 	变量 blue : 文本="0-1 100-1"
 	变量 rotate : 单精度小数=0
 	变量 spinspeed : 单精度小数=0
+	变量 shake : 单精度小数=0
 
 
 
@@ -1795,9 +1850,14 @@ PvZLaus
 	变量 cutn : 整数=1
 	//要播第几张切割片段
 	变量 cutp : 整数
+	//切割行数
+	变量 row : 整数=1
 	变量 gm : 窗口管理器
 	变量 轮播 : 逻辑型=假
 	变量 循环播放 : 逻辑型=假
+
+	变量 starte : 单精度小数=0
+	变量 ende : 单精度小数=-1
 
 
 	@静态
@@ -1822,27 +1882,29 @@ PvZLaus
 		如果 dtime>=dtimemax 则
 			返回 真
 		结束 如果
-		xv=xv+xa
-		yv=yv+ya
-		x=x+xv
-		y=y+yv
-		变量 xfn=取值(xf)
-		如果 xv>xfn 则
-			xv=xv-xfn*绝对值_f(xv)/3
-		否则 xv<-1*xfn
-			xv=xv+xfn*绝对值_f(xv)/3
-		否则
-			xv=0
+		如果 starte<=dtime&&((ende==-1)||dtime<=ende) 则
+			xv=xv+xa
+			yv=yv+ya
+			x=x+xv
+			y=y+yv
+			变量 xfn=取值(xf)
+			如果 xv>xfn 则
+				xv=xv-xfn*绝对值_f(xv)/3
+			否则 xv<-1*xfn
+				xv=xv+xfn*绝对值_f(xv)/3
+			否则
+				xv=0
+			结束 如果
+			变量 yfn=取值(yf)
+			如果 yv>yfn 则
+				yv=yv-yfn*绝对值_f(yv)/3
+			否则 yv<-1*yfn
+				yv=yv+yfn*绝对值_f(yv)/3
+			否则
+				yv=0
+			结束 如果
+			rotate=rotate+spinspeed
 		结束 如果
-		变量 yfn=取值(yf)
-		如果 yv>yfn 则
-			yv=yv-yfn*绝对值_f(yv)/3
-		否则 yv<-1*yfn
-			yv=yv+yfn*绝对值_f(yv)/3
-		否则
-			yv=0
-		结束 如果
-		rotate=rotate+spinspeed
 		如果 轮播 则
 			变量 durt : 整数=dtimemax/cutn
 			cutp=(dtime-(dtime%durt)-1)/durt

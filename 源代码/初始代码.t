@@ -489,6 +489,7 @@ android:hardwareAccelerated = "false">]])
 		管理器.主线程=本对象
 		width=系统操作.取屏幕宽度(本对象)
 		height=系统操作.取屏幕高度(本对象)
+		/*
 		事件 view:绘图(canvas : Canvas)
 			/*
 			//code #<操作类.日志>(#canvas.isHardwareAccelerated()+"");
@@ -624,13 +625,13 @@ android:hardwareAccelerated = "false">]])
 			弹出提示(取俘获异常().取异常信息())
 			返回
 			结束俘获异常()
-			*/
+			*//*
 		结束 事件
 		事件 view:点击事件(点击事件 : 触摸事件) : 逻辑型
 			管理器.handleTouch(点击事件)
 			返回 真
 		结束 事件
-
+*/
 
 		如果 禁止初始化==假 则
 			//提交到新线程运行()
@@ -801,7 +802,7 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 			//日志(index.到文本())
 			变量 tr : TextureRegion=空
 			变量 fbo1 : FrameBuffer=空
-			开始俘获异常()
+			//开始俘获异常()
 			变量 scr : SpriteBatch
 			fbo1=FrameBuffer.新建(宽(),高())
 			管理器.screen=scr
@@ -811,7 +812,7 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 				管理器.rgbShader=ShaderProgram.新建(rgb_vert,rgb_frag)
 			结束 如果
 			tr=管理器.绘图(绘制消耗帧,帧长)
-			
+			/*
 			俘获所有异常()
 			变量 ex=取俘获异常()
 			变量 b : 文本
@@ -1812,21 +1813,11 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 						循环(u, 0, particle.parts.长度)
 							变量 lz=(particle.parts)[u]
 							变量 bit : Pixmap=空
-
-							bit=image.可释放图.取项目(lz.pic).加载().取Pixmap()
-							变量 matrix_part=Matrix.从Matrix新建(matrix).postRotate_3(lz.rotate,bit.height()/2,bit.height()/2).postScale_4(lz.取值(lz.scale),lz.取值(lz.scale),bit.width()/2,bit.height()/2).postTranslate((x+particle.x+(particle.parts)[u].x)*scale,(y+particle.y+(particle.parts)[u].y)*scale)
-							如果 lz.cutn!=1 则
-								变量 stx=lz.cutp*bit.width()/lz.cutn
-								变量 wih=bit.width()/lz.cutn
-								变量 het=bit.height()
-								开始俘获异常()
-								bit=裁剪Pixmap(bit,stx,0,wih,het)
-								//code #bit=android.graphics.Bitmap.createBitmap(#bit,#stx,0,#wih,#het);
-								俘获所有异常()
-								//日志(lz.cutn+"   "+lz.cutp)
-								结束俘获异常()
-								//日志(lz.scale+"   /\\  "+lz.cutp)
-							结束 如果
+                            bit=image.可释放图.取项目(lz.pic).加载().取Pixmap(lz.cutn,lz.row,lz.cutp)
+							变量 matrix_part=Matrix.从Matrix新建(matrix).postRotate_3(lz.rotate,bit.height()/2,
+							bit.height()/2).postScale_4(lz.取值(lz.scale),lz.取值(lz.scale),bit.width()/2,
+							bit.height()/2).postTranslate((随机单精度小数(0,lz.shake*2)-lz.shake+x+particle.x+(particle.parts)[u].x)*scale,
+							(随机单精度小数(0,lz.shake*2)-lz.shake+y+particle.y+(particle.parts)[u].y)*scale)
 							//变量 paint : Paint=Paint.创建Paint().设置透明度((255*(particle.parts)[u].alpha).到整数())
 							变量 color : 单精度小数[]={lz.取值(lz.red),lz.取值(lz.green),lz.取值(lz.blue),lz.取值(lz.alpha)}
 							screen.draw_pm3c(bit,matrix_part,color,height,本对象)
@@ -3241,7 +3232,7 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 					//这里可以在测试使创建几个僵尸看一看(2025.8.2)
 					循环(i, 0, 1)
 						//日志("addzombie:"+i.到文本())
-						zombieList.添加成员(Zombie.create(本对象,取随机数(8,8),取随机数(0,取行数()-1)))
+						//zombieList.添加成员(Zombie.create(本对象,取随机数(8,8),取随机数(1,取行数()-2)))
 					结束 循环
 					循环(i, 0, 5)
 						//日志("addzombie:"+i.到文本())
