@@ -21,7 +21,7 @@ PvZLaus
 @附加权限(安卓权限.管理外部文件权限)
 类 字节输入流
 	code FileInputStream fin=null;
-	
+
 	@运算符重载
 	方法 =(路径 : 文本)
 		开始俘获异常()
@@ -31,17 +31,17 @@ PvZLaus
 		俘获所有异常()
 		结束俘获异常()
 	结束 方法
-	
+
 	//read a byte
 	方法 读取() : 整数
 		开始俘获异常()
 		code return fin.read();
-		
+
 		俘获所有异常()
 		结束俘获异常()
 		返回 -1
 	结束 方法
-	
+
 	方法 读(b : 字节[]) : 整数
 		开始俘获异常()
 		code return fin.read(#b);
@@ -50,7 +50,7 @@ PvZLaus
 		结束俘获异常()
 		返回 -1
 	结束 方法
-	
+
 	方法 读到(byte : 字节[],偏移 : 整数,长度 : 整数) : 整数
 		开始俘获异常()
 		code return fin.read(#byte,#偏移,#长度);
@@ -58,14 +58,14 @@ PvZLaus
 		结束俘获异常()
 		返回 -1
 	结束 方法
-	
+
 	方法 有效() : 整数
 		容错处理()
 		code return fin.available();
 		结束容错()
 		返回 -1
 	结束 方法
-	
+
 	方法 关闭()
 		开始俘获异常()
 		code fin.close();
@@ -80,7 +80,7 @@ PvZLaus
 @附加权限(安卓权限.管理外部文件权限)
 类 字节输出流
 	code FileOutputStream fin=null;
-	
+
 	@运算符重载
 	方法 =(路径 : 文本)
 		开始俘获异常()
@@ -90,7 +90,7 @@ PvZLaus
 		俘获所有异常()
 		结束俘获异常()
 	结束 方法
-	
+
 	//read a byte
 	方法 写出(内容 : 整数)
 		开始俘获异常()
@@ -98,7 +98,7 @@ PvZLaus
 		俘获所有异常()
 		结束俘获异常()
 	结束 方法
-	
+
 	方法 写(b : 字节[])
 		开始俘获异常()
 		code fin.write(#b);
@@ -106,18 +106,18 @@ PvZLaus
 		//启动窗口.日志("55")
 		结束俘获异常()
 	结束 方法
-	
+
 	方法 写入(byte : 字节[],偏移 : 整数,长度 : 整数)
 		开始俘获异常()
 		code fin.read(#byte,#偏移,#长度);
 		俘获所有异常()
 		结束俘获异常()
 	结束 方法
-	
+
 	方法 有效()
 		code return fin.available();
 	结束 方法
-	
+
 	方法 关闭()
 		开始俘获异常()
 		code fin.close();
@@ -128,12 +128,12 @@ PvZLaus
 
 类 逻辑型集
 	变量 bools : 逻辑型集合
-	
+
 	@运算符重载
 	方法 [](索引 : 整数) : 逻辑型
 		返回 bools[索引]
 	结束 方法
-	
+
 	@运算符重载
 	方法 []=(索引 : 整数,值 : 逻辑型)
 		bools[索引]=值
@@ -141,9 +141,9 @@ PvZLaus
 结束 类
 
 类 逻辑型集合 : 对象
-	
+
 	变量 bool : 逻辑型[]
-	
+
 	@静态
 	方法 空集合() : 逻辑型集合
 		变量 b : 逻辑型[]
@@ -151,23 +151,23 @@ PvZLaus
 		变量 r : 逻辑型集合=b
 		返回 r
 	结束 方法
-	
+
 	@运算符重载
 	方法 =(集合1 : 逻辑型[])
 		bool=集合1
 	结束 方法
-	
+
 	@运算符重载
 	方法 [](索引 : 整数) : 逻辑型
 		返回 bool[索引]
 	结束 方法
-	
+
 	@运算符重载
 	方法 []=(索引 : 整数,值 : 逻辑型)
 		bool[索引]=值
 	结束 方法
-	
-    方法 添加成员(成员 : 逻辑型)
+
+	方法 添加成员(成员 : 逻辑型)
 		@code
 		boolean[] b=new boolean[#取长度()+1];
 		/*
@@ -188,8 +188,8 @@ PvZLaus
 		结束 循环
 		b1[取长度()]=成员
 		bool = b1
-    结束 方法
-	
+	结束 方法
+
 	方法 添加(集合2 : 逻辑型[])
 		@code
 		boolean[] b=new boolean[#bool.length+#集合2.length];
@@ -214,7 +214,7 @@ PvZLaus
 		结束 循环
 		bool = b1
 	结束 方法
-	
+
 	方法 插入成员(索引 : 整数,成员 : 逻辑型)
 		@code
 		boolean[] b=new boolean[#取长度()+1];
@@ -247,15 +247,15 @@ PvZLaus
 		bool = b1
 	结束 方法
 
-    方法 取成员(索引 : 整数) : 逻辑型
-        返回 bool[索引]
-    结束 方法
-	
+	方法 取成员(索引 : 整数) : 逻辑型
+		返回 bool[索引]
+	结束 方法
+
 	//清空集合
 	方法 清空()
 		code #bool=new boolean[0];
 	结束 方法
-	
+
 	//删除指定索引处成员
 	方法 删除成员(索引 : 整数)
 		@code
@@ -288,18 +288,18 @@ PvZLaus
 		结束 循环
 		bool = b1
 	结束 方法
-	
+
 	方法 取长度() : 整数
 		返回 取数组长度(bool)
 	结束 方法
-	
+
 	/*
 	将集合转为数组
 	*/
 	方法 到数组() : 逻辑型[]
 		返回 bool
 	结束 方法
-	
+
 	属性读 长度() : 整数
 		返回 取数组长度(bool)
 	结束 属性
@@ -309,7 +309,7 @@ PvZLaus
 @全局类
 @静态
 类 基本类型操作
-	
+
 	@code
 	public static byte[] intToByte4(int i) {
 		byte[] targets = new byte[4];
@@ -351,27 +351,27 @@ PvZLaus
 
 
 	@end
-	
+
 	@静态
 	常量 hex : 文本集合={"00","01","02","03","04","05","06","07","08","09","0a","0b","0c","0d","0e","0f","10","11","12","13","14","15","16","17","18","19","1a","1b","1c","1d","1e","1f","20","21","22","23","24","25","26","27","28","29","2a","2b","2c","2d","2e","2f","30","31","32","33","34","35","36","37","38","39","3a","3b","3c","3d","3e","3f","40","41","42","43","44","45","46","47","48","49","4a","4b","4c","4d","4e","4f","50","51","52","53","54","55","56","57","58","59","5a","5b","5c","5d","5e","5f","60","61","62","63","64","65","66","67","68","69","6a","6b","6c","6d","6e","6f","70","71","72","73","74","75","76","77","78","79","7a","7b","7c","7d","7e","7f","80",
 	"81","82","83","84","85","86","87","88","89","8a","8b","8c","8d","8e","8f","90","91","92","93","94","95","96","97","98","99","9a","9b","9c","9d","9e","9f","a0","a1","a2","a3","a4","a5","a6","a7","a8","a9","aa","ab","ac","ad","ae","af","b0","b1","b2","b3","b4","b5","b6","b7","b8","b9","ba","bb","bc","bd","be","bf","c0","c1","c2","c3","c4","c5","c6","c7","c8","c9","ca","cb","cc","cd","ce","cf","d0","d1","d2","d3","d4","d5","d6","d7","d8","d9","da","db","dc","dd","de","df","e0","e1","e2","e3","e4","e5","e6","e7","e8","e9","ea","eb","ec","ed","ee","ef","f0","f1","f2","f3","f4","f5","f6","f7","f8","f9","fa","fb","fc","fd","fe","ff"}
-	
+
 	@静态
 	方法 add(a : 整数,b : 整数) : 整数
 		返回 a+b
 	结束 方法
-	
+
 	@静态
 	方法 位清零(数 : 整数,index : 整数) : 整数
 		code #数 &=~(#index);
 		返回 数
 	结束 方法
-	
+
 	@静态
 	方法 添加int(集合1 : 字节[],值 : 整数) : 字节[]
 		code return #字节集追加字节集(#集合1,intToByte4(#值));
 	结束 方法
-	
+
 	@静态
 	方法 min(a : 整数,b : 整数) : 整数
 		如果 a<b 则
@@ -380,7 +380,7 @@ PvZLaus
 			返回 b
 		结束 如果
 	结束 方法
-	
+
 	@静态
 	方法 max(a : 整数,b : 整数) : 整数
 		如果 a>b 则
@@ -389,18 +389,18 @@ PvZLaus
 			返回 b
 		结束 如果
 	结束 方法
-	
+
 	@静态
 	方法 double2float(d : 小数) : 单精度小数
 		code return new Double(#d).floatValue();
 	结束 方法
-	
+
 	@静态
 	方法 添加byte3(集合1 : 字节[],值 : 整数) : 字节[]
 		变量 b : 字节[]=整数转字节(值)
 		返回 字节集追加字节集(集合1,{b[1],b[2],b[3]})
 	结束 方法
-	
+
 	@静态
 	方法 赋值byte3(集合1 : 字节[],值 : 整数,偏移 : 整数) : 字节[]
 		变量 b : 字节[]=整数转字节(值)
@@ -409,7 +409,7 @@ PvZLaus
 		集合1[偏移+2]=b[3]
 		返回 集合1
 	结束 方法
-	
+
 	@静态
 	方法 赋值int(集合1 : 字节[],值 : 整数,偏移 : 整数) : 字节[]
 		code byte[] b=intToByte4(#值);
@@ -418,12 +418,12 @@ PvZLaus
 		结束 循环
 		返回 集合1
 	结束 方法
-	
+
 	@静态
 	方法 向下取整(num : 单精度小数) : 整数
 		返回 num%1
 	结束 方法
-	
+
 	方法 比较大小(a : 单精度小数,b : 单精度小数) : 整数
 		如果 a>b 则
 			返回 1
@@ -433,22 +433,22 @@ PvZLaus
 			返回 -1
 		结束 如果
 	结束 方法
-	
+
 	@静态
 	方法 添加long(集合1 : 字节[],值 : 长整数) : 字节[]
 		code return #字节集追加字节集(#集合1,longToByte8(#值));
 	结束 方法
-	
+
 	@静态
 	方法 添加short(集合1 : 字节[],值 : 整数) : 字节[]
 		code return #字节集追加字节集(#集合1,unsignedShortToByte2(#值));
 	结束 方法
-	
+
 	@静态
 	方法 转整数(集合1 : 字节[],偏移 : 整数) : 整数
 		code return byte4ToInt(#集合1,#偏移);
 	结束 方法
-	
+
 	@静态
 	方法 字节集追加字节集(a : 字节[],b : 字节[]) : 字节[]
 		变量 s=取数组长度(a)
@@ -473,7 +473,7 @@ PvZLaus
 		结束 循环
 		返回 z;
 	结束 方法
-	
+
 	@静态
 	方法 文本数组到文本_文件名(list : 文本[],分隔符 : 文本) : 文本
 		变量 rs : 文本
@@ -485,7 +485,7 @@ PvZLaus
 		结束 循环
 		返回 rs
 	结束 方法
-	
+
 	@静态
 	方法 文本数组到文本(list : 文本[],分隔符 : 文本) : 文本
 		变量 rs : 文本
@@ -497,12 +497,12 @@ PvZLaus
 		结束 循环
 		返回 rs
 	结束 方法
-	
+
 	@静态
 	方法 字节集到文本(b : 字节[]) : 文本
 		code return new String(#b);
 	结束 方法
-	
+
 	@静态
 	方法 字节转文本(b : 字节) : 文本
 		变量 a : 整数=(b : 整数)
@@ -511,7 +511,7 @@ PvZLaus
 		结束 如果
 		返回 hex[a]
 	结束 方法
-	
+
 	@静态
 	方法 字节集转文本(b : 字节[]) : 文本
 		变量 r : 文本
@@ -519,7 +519,7 @@ PvZLaus
 			r=r+字节转文本(b[i])
 			如果 i!=取数组长度(b)-1则
 				如果 i%16==15 则
-				r=r+"\n"
+					r=r+"\n"
 				否则 i%8==7
 					r=r+"  "
 				否则
@@ -529,7 +529,7 @@ PvZLaus
 		结束 循环
 		返回 r
 	结束 方法
-	
+
 	@静态
 	方法 addbyte(a : 字节[],b : 字节) : 字节[]
 		变量 x=取数组长度(a)+1
@@ -586,13 +586,13 @@ PvZLaus
 		结束 循环
 		返回 z;
 	结束 方法
-	
+
 	@静态
 	方法 整数数组排序(数组 : 整数[]) : 整数[]
 		code java.util.Arrays.sort(#数组);
 		返回 数组
 	结束 方法
-	
+
 	@静态
 	方法 文本到长整数(内容 : 文本) : 长整数
 		如果 内容.开头为("0x") 则
@@ -601,7 +601,7 @@ PvZLaus
 			返回 内容.到长整数()
 		结束 如果
 	结束 方法
-	
+
 	@静态
 	方法 文本到整数(内容 : 文本) : 整数
 		如果 内容.开头为("0x") 则
@@ -610,12 +610,12 @@ PvZLaus
 			返回 内容.到整数()
 		结束 如果
 	结束 方法
-	
+
 	@静态
 	方法 sub(a : 字节,b : 字节) : 字节
 		返回 (a.到整数()-b.到整数()).到字节()
 	结束 方法
-	
+
 	@静态
 	方法 文本到字节2(内容 : 文本) : 字节
 		如果 内容.开头为("0x") 则
@@ -624,12 +624,12 @@ PvZLaus
 			返回 (内容.到整数()%256).到字节()
 		结束 如果
 	结束 方法
-	
+
 	@静态
 	方法 长整数到字节集(内容 : 长整数) : 字节[]
 		code return longToByte8(#内容);
 	结束 方法
-	
+
 	@静态
 	方法 长整数到精简字节集(内容 : 长整数) : 字节[]
 		变量 b1 : 字节[]
@@ -640,7 +640,7 @@ PvZLaus
 		结束 循环
 		返回 b2
 	结束 方法
-	
+
 	@静态
 	方法 长整数精简字节长度(内容 : 长整数) : 整数
 		如果 内容<0L 则
@@ -663,7 +663,7 @@ PvZLaus
 			返回 8
 		结束 如果
 	结束 方法
-	
+
 	@静态
 	方法 整数到精简字节集(内容 : 整数) : 字节[]
 		变量 b1 : 字节[]
@@ -674,7 +674,7 @@ PvZLaus
 		结束 循环
 		返回 b2
 	结束 方法
-	
+
 	@静态
 	方法 整数精简字节长度(内容 : 整数) : 整数
 		如果 内容<0 则
@@ -689,7 +689,7 @@ PvZLaus
 			返回 4
 		结束 如果
 	结束 方法
-	
+
 
 	@静态
 	方法 字节集转布尔集(b : 字节[]) : 逻辑型[]
@@ -713,7 +713,7 @@ PvZLaus
 		结束 循环
 		返回 lj
 	结束 方法
-	
+
 	@静态
 	方法 布尔集转字节集(b : 逻辑型[]) : 字节[]
 		变量 lj : 字节[]
@@ -729,7 +729,7 @@ PvZLaus
 		结束 循环
 		返回 lj
 	结束 方法
-	
+
 	//2025.8.4
 	@静态
 	方法 布尔到字节(bool : 逻辑型) : 字节
@@ -741,7 +741,7 @@ PvZLaus
 			返回 false1
 		结束 如果
 	结束 方法
-	
+
 	//2025.8.4
 	@静态
 	方法 字节到布尔(byte : 字节) : 逻辑型
@@ -751,7 +751,7 @@ PvZLaus
 			返回 true
 		结束 如果
 	结束 方法
-	
+
 	//2024
 	@静态
 	方法 整数转布尔(z : 整数) : 逻辑型
@@ -761,7 +761,7 @@ PvZLaus
 			返回 假
 		结束 如果
 	结束 方法
-	
+
 	@静态
 	方法 布尔转整数(z : 逻辑型) : 整数
 		如果 z 则
@@ -770,12 +770,12 @@ PvZLaus
 			返回 0
 		结束 如果
 	结束 方法
-	
+
 	@静态
 	方法 整数转字节(值 为 整数) 为 字节[]
 		code return intToByte4(#值);
 	结束 方法
-	
+
 	@静态
 	方法 整数转倒字节(值 为 整数) 为 字节[]
 		变量 字节a : 字节[]
@@ -786,7 +786,7 @@ PvZLaus
 		结束 循环
 		返回 字节b
 	结束 方法
-	
+
 	@静态
 	方法 整数转字节整数集(值 为 整数) 为 整数[]
 		变量 b : 字节[]
@@ -797,7 +797,7 @@ PvZLaus
 		结束 循环
 		返回 r
 	结束 方法
-	
+
 	@静态
 	方法 整数转固定布尔(值 为 整数,长度 : 整数) 为 逻辑型[]
 		变量 b : 逻辑型集合=逻辑型集合.空集合()
@@ -811,7 +811,7 @@ PvZLaus
 		结束 循环
 		返回 b.到数组()
 	结束 方法
-	
+
 	@静态
 	方法 整数转固定字节(值 为 整数,长度 : 整数) 为 字节[]
 		变量 b : 字节[]=创建字节数组(长度)
@@ -825,7 +825,7 @@ PvZLaus
 		结束 循环
 		返回 b
 	结束 方法
-	
+
 	@静态
 	方法 长整数转固定布尔(值 为 长整数,长度 : 整数) 为 逻辑型[]
 		变量 b : 逻辑型集合=逻辑型集合.空集合()
@@ -839,7 +839,7 @@ PvZLaus
 		结束 循环
 		返回 b.到数组()
 	结束 方法
-	
+
 	@静态
 	方法 长整数转固定字节(值 为 整数,长度 : 整数) 为 字节[]
 		变量 b : 字节[]=创建字节数组(长度)
@@ -853,7 +853,7 @@ PvZLaus
 		结束 循环
 		返回 b
 	结束 方法
-	
+
 	@静态
 	方法 文本集集到文本集(nr : 文本[][]) : 文本[]
 		变量 len : 整数
@@ -875,7 +875,7 @@ PvZLaus
 		//日志(文本集合到文本(wbs,"\n"))
 		返回 rlt
 	结束 方法
-	
+
 	@静态
 	方法 整数乘方(数字1 : 整数,数字2 : 整数) : 整数
 		如果 数字2<=0 则
@@ -890,7 +890,7 @@ PvZLaus
 			返回 res
 		结束 如果
 	结束 方法
-	
+
 	@静态
 	方法 整数集到文本(int : 整数[]) : 文本
 		变量 str : 文本=取数组长度(int)+"\n"
@@ -899,17 +899,17 @@ PvZLaus
 		结束 循环
 		返回 str
 	结束 方法
-	
+
 	@静态
 	方法 创建字节数组(长度 : 整数) : 字节[]
 		code return new byte[#长度];
 	结束 方法
-	
+
 	@静态
 	方法 创建整数数组(长度 : 整数) : 整数[]
 		code return new int[#长度];
 	结束 方法
-	
+
 	@静态
 	方法 乘方(a : 整数,b : 整数) : 整数
 		变量 r : 整数=1
@@ -918,8 +918,8 @@ PvZLaus
 		结束 循环
 		返回 r
 	结束 方法
-	
-	 @静态
+
+	@静态
 	方法 乘方小数(a : 小数,b : 整数) : 小数
 		变量 r : 小数=1
 		循环(i, 0, b)
@@ -927,7 +927,7 @@ PvZLaus
 		结束 循环
 		返回 r
 	结束 方法
-	
+
 	@静态
 	方法 文本属于文本集(tl : 文本[],t : 文本) : 逻辑型
 		循环(i, 0, 取数组长度(tl))
@@ -937,7 +937,7 @@ PvZLaus
 		结束 循环
 		返回 假
 	结束 方法
-	
+
 	@静态
 	方法 整数属于整数集(tl : 整数[],t : 整数) : 逻辑型
 		循环(i, 0, 取数组长度(tl))
@@ -950,9 +950,9 @@ PvZLaus
 结束 类
 
 类 整数集
-	
+
 	变量 ints : 整数[]
-	
+
 	@静态
 	方法 空集合() : 整数集
 		变量 b : 整数[]
@@ -960,23 +960,23 @@ PvZLaus
 		变量 r : 整数集=b
 		返回 r
 	结束 方法
-	
+
 	@运算符重载
 	方法 =(集合1 : 整数[])
 		ints=集合1
 	结束 方法
-	
+
 	@运算符重载
 	方法 [](索引 : 整数) : 整数
 		返回 ints[索引]
 	结束 方法
-	
+
 	@运算符重载
 	方法 []=(索引 : 整数,值 : 整数)
 		ints[索引]=值
 	结束 方法
-	
-    方法 添加成员(成员 : 整数)
+
+	方法 添加成员(成员 : 整数)
 		@code
 		int[] b=new int[#取长度()+1];
 		/*
@@ -997,8 +997,8 @@ PvZLaus
 		结束 循环
 		b1[取长度()]=成员
 		ints = b1
-    结束 方法
-	
+	结束 方法
+
 	方法 添加(集合2 : 整数[])
 		@code
 		int[] b=new int[#ints.length+#集合2.length];
@@ -1023,7 +1023,7 @@ PvZLaus
 		结束 循环
 		ints = b1
 	结束 方法
-	
+
 	方法 插入成员(索引 : 整数,成员 : 整数)
 		@code
 		int[] b=new int[#取长度()+1];
@@ -1056,15 +1056,15 @@ PvZLaus
 		ints = b1
 	结束 方法
 
-    方法 取成员(索引 : 整数) : 整数
-        返回 ints[索引]
-    结束 方法
-	
+	方法 取成员(索引 : 整数) : 整数
+		返回 ints[索引]
+	结束 方法
+
 	//清空集合
 	方法 清空()
 		code #ints=new int[0];
 	结束 方法
-	
+
 	//删除指定索引处成员
 	方法 删除成员(索引 : 整数)
 		@code
@@ -1097,18 +1097,18 @@ PvZLaus
 		结束 循环
 		ints = b1
 	结束 方法
-	
+
 	方法 取长度() : 整数
 		返回 取数组长度(ints)
 	结束 方法
-	
+
 	/*
 	将集合转为数组
 	*/
 	方法 到数组() : 整数[]
 		返回 ints
 	结束 方法
-	
+
 	属性读 长度() : 整数
 		返回 取数组长度(ints)
 	结束 属性
@@ -1137,9 +1137,9 @@ PvZLaus
 		*/
 		#数组=b;
 		@end
-		
+
 	结束 方法
-	
+
 	@静态
 	@嵌入式代码
 	方法 数组扩展(数组 : 变体型,长度 : 整数,类型 : 变体型) : 对象[]
@@ -1160,21 +1160,21 @@ PvZLaus
 		*/
 		#数组=b;
 		@end
-		
+
 	结束 方法
-	
+
 	@静态
 	@嵌入式代码
 	方法 数组创建(成员类型 : 变体型,长度 : 整数) : 对象[]
 		code new #成员类型[#长度]
 	结束 方法
-	
+
 	@静态
 	@嵌入式代码
 	方法 数组数组创建(成员类型 : 变体型,长度 : 整数) : 对象[][]
 		code new #成员类型[#长度][0]
 	结束 方法
-	
+
 	@静态
 	@嵌入式代码
 	方法 数组截取(数组 : 变体型,left : 整数,right : 整数,类型 : 变体型) : 对象[]
@@ -1185,7 +1185,7 @@ PvZLaus
 		}
 		#数组=btempxck;
 		@end
-		
+
 	结束 方法
 结束 类
 
@@ -1200,71 +1200,71 @@ PvZLaus
 		code #this.putExtra(#键名, #数据);
 	结束 方法
 	*/
-	
-	
+
+
 	@静态
 	常量 BUFFER_FLAG_CODEC_CONFIG=0x00000002
 	@静态
 	常量 BUFFER_FLAG_KEY_FRAME=0x00000001
 	@静态
 	常量 CONFIGURE_FLAG_ENCODE=0x00000001
-	
+
 	@后缀代码(" throws Exception")
 	@静态
 	方法 createEncoderByType(type : 文本) : MediaCodec
 		code return android.media.MediaCodec.createEncoderByType(#type);
 	结束 方法
-	
+
 	方法 configure(format : MediaFormat,surface : Surface,crypto : MediaCrypto,flags : 整数)
 		code #this.configure(#format,#surface,#crypto,#flags);
 	结束 方法
-	
+
 	方法 createInputSurface() : Surface
 		code return #this.createInputSurface();
 	结束 方法
-	
+
 	方法 dequeueOutputBuffer(info : BufferInfo,timeoutUs : 长整数) : 整数
 		code return #this.dequeueOutputBuffer(#info,#timeoutUs);
 	结束 方法
-	
+
 	方法 dequeueInputBuffer(timeoutUs : 长整数) : 整数
 		code return #this.dequeueInputBuffer(#timeoutUs);
 	结束 方法
-	
+
 	方法 getOutputBuffer(index : 整数) : ByteBuffer
 		code return #this.getOutputBuffer(#index);
 	结束 方法
-	
+
 	方法 queueInputBuffer(index : 整数,offset : 整数,size : 整数,presentationTimeUs : 长整数,flags : 整数)
 		code #this.queueInputBuffer(#index,#offset,#size,#presentationTimeUs,#flags);
 	结束 方法
-	
+
 	方法 releaseOutputBuffer(index : 整数,render : 逻辑型)
 		code #this.releaseOutputBuffer(#index,#render);
 	结束 方法
-	
+
 	方法 start()
 		code #this.start();
 	结束 方法
-	
+
 	方法 stop()
 		code #this.stop();
 	结束 方法
-	
+
 	方法 release()
 		code #this.release();
 	结束 方法
-	
-	
-	
+
+
+
 结束 类
 
 @强制输出
 @指代类("android.media.MediaFormat")
 类 MediaFormat
-	
-	
-/*
+
+
+	/*
 Creates a minimal audio format.
 
 Parameters
@@ -1286,7 +1286,7 @@ This value cannot be null.
 	方法 createSubtitleFormat(mime : 文本, language : 文本) : MediaFormat
 		code return android.media.MediaFormat.createSubtitleFormat(#mime,#language);
 	结束 方法
-/*
+	/*
 Creates a minimal video format.
 
 Parameters
@@ -1304,7 +1304,7 @@ This value cannot be null.
 	方法 createVideoFormat(mime : 文本, width : 整数, height : 整数) : MediaFormat
 		code return android.media.MediaFormat.createVideoFormat(#mime,#width,#height);
 	结束 方法
-	
+
 	@静态
 	常量 COLOR_RANGE_FULL : 整数=0x00000001
 	@静态
@@ -1552,28 +1552,28 @@ This value cannot be null.
 	常量 MIMETYPE_VIDEO_VP8 : 文本="video/x-vnd.on2.vp8"
 	@静态
 	常量 MIMETYPE_VIDEO_VP9 : 文本="video/x-vnd.on2.vp9"
-	
-	
+
+
 	方法 setByteBuffer(name : 文本,bytes : ByteBuffer)
 		code #this.setByteBuffer(#name,#bytes);
 	结束 方法
-	
+
 	方法 setFloat(name : 文本,value : 整数)
 		code #this.setFloat(#name,#value);
 	结束 方法
-	
+
 	方法 setInteger(name : 文本,value : 整数)
 		code #this.setInteger(#name,#value);
 	结束 方法
-	
+
 	方法 setLong(name : 文本,value : 长整数)
 		code #this.setLong(#name,#value);
 	结束 方法
-	
+
 	方法 setString(name : 文本,value : 文本)
 		code #this.setString(#name,#value);
 	结束 方法
-	
+
 结束 类
 
 @强制输出
@@ -1584,27 +1584,27 @@ This value cannot be null.
 	方法 MediaMuxer(path : 文本,format : 整数) : MediaMuxer
 		code return new android.media.MediaMuxer(#path,#format);
 	结束 方法
-	
+
 	方法 addTrack(format : MediaFormat) : 整数
 		code return #this.addTrack(#format);
 	结束 方法
-	
+
 	方法 release()
 		code #this.release();
 	结束 方法
-	
+
 	方法 start()
 		code #this.start();
 	结束 方法
-	
+
 	方法 stop()
 		code #this.stop();
 	结束 方法
-	
+
 	方法 writeSampleData(trackIndex : 整数,byteBuf : ByteBuffer,bufferInfo : BufferInfo)
 		code #this.writeSampleData(#trackIndex,#byteBuf,#bufferInfo);
 	结束 方法
-	
+
 结束 类
 
 @指代类("android.media.MediaMuxer.OutputFormat")
@@ -1619,7 +1619,7 @@ This value cannot be null.
 	常量 MUXER_OUTPUT_OGG : 整数=4
 	@静态
 	常量 MUXER_OUTPUT_WEBM : 整数=1
-	
+
 结束 类
 
 @指代类("android.media.MediaCodecInfo.CodecCapabilities")
@@ -1632,16 +1632,16 @@ This value cannot be null.
 
 @指代类("android.media.MediaCrypto")
 类 MediaCrypto
-	
+
 结束 类
 
 @指代类("android.view.Surface")
 类 Surface
-	
+
 	方法 lockCanvas(rect : 矩形=空) : Canvas
 		code return #this.lockCanvas(#rect);
 	结束 方法
-	
+
 	方法 unlockCanvasAndPost(canvas :  Canvas)
 		code #this.unlockCanvasAndPost(#canvas);
 	结束 方法
@@ -1655,7 +1655,7 @@ This value cannot be null.
 	常量 STROKE : Paint_Style?
 	@静态
 	常量 FILL_STROKE : Paint_Style?
-	
+
 	@code
 	static {
 		#FILL=android.graphics.Paint.Style.FILL;
@@ -1663,19 +1663,19 @@ This value cannot be null.
 		#FILL_STROKE=android.graphics.Paint.Style.FILL_AND_STROKE;
 	}
 	@end
-	
+
 结束 类
 
 
 
 @指代类("android.graphics.Paint")
 类 Paint
-	
+
 	@静态
 	方法 创建Paint() : Paint
 		code return new android.graphics.Paint();
 	结束 方法
-	
+
 	方法 取颜色() : 整数
 		code return #this.getColor();
 	结束 方法
@@ -1689,7 +1689,7 @@ This value cannot be null.
 		code #this.setTextSize(#size);
 		code return #this;
 	结束 方法
-	
+
 	方法 取文字大小() : 单精度小数
 		code return #this.getTextSize();
 	结束 方法
@@ -1698,61 +1698,61 @@ This value cannot be null.
 		code #this.setColor(#color);
 		code return #this;
 	结束 方法
-	
+
 	方法 设置文字对齐方式() : Paint
 		//code #this.setTextAlign
 		code return #this;
 	结束 方法
-	
+
 	方法 测量文字(内容 : 文本) : 单精度小数
 		code return #this.measureText(#内容);
 	结束 方法
-	
+
 	方法 设置样式(样式 : Paint_Style) : Paint
 		code #this.setStyle(#样式);
 		code return #this;
 	结束 方法
-	
+
 	方法 设置文本对齐方式(对齐方式 : Align) : Paint
 		code #this.setTextAlign(#对齐方式);
 		code return #this;
 	结束 方法
-	
+
 	方法 设置透明度(透明度 : 整数) : Paint
 		code #this.setAlpha(#透明度);
 		code return #this;
 	结束 方法
-	
+
 	方法 setAntiAlias(value : 逻辑型) : Paint
 		code #this.setAntiAlias(#value);
 		code return #this;
 	结束 方法
-	
+
 	方法 setBlendMode(mode : BlendMode) : Paint
 		code #this.setBlendMode(#mode);
 		code return #this;
 	结束 方法
-	
+
 	方法 setStrokeWidth(stroke : 整数) : Paint
 		code #this.setStrokeWidth(#stroke);
 		code return #this;
 	结束 方法
-	
+
 	方法 setTextSize(textSize: 单精度小数) : Paint
 		code #this.setTextSize(textSize);
 		code return #this;
 	结束 方法
-	
+
 	方法 setTextSkewX(skewX : 单精度小数) : Paint
 		code #this.setTextSkewX(#skewX);
 		code return #this;
 	结束 方法
-	
+
 	方法 setUnderlineText(underlineText: 逻辑型) : Paint
 		code #this.setUnderlineText(#underlineText);
 		code return #this;
 	结束 方法
-	
+
 	方法 setXfermode(xfermode : Xfermode) : Paint
 		code #this.setXfermode(#xfermode);
 		code return #this;
@@ -1761,7 +1761,7 @@ This value cannot be null.
 
 @指代类("android.graphics.Paint.Align")
 类 Align
-	
+
 结束 类
 
 类 文本对齐方式
@@ -1779,11 +1779,11 @@ This value cannot be null.
 	方法 从BitMap创建(bitmap : 位图对象) : Canvas
 		code return new android.graphics.Canvas(#bitmap);
 	结束 方法
-	
+
 	方法 clipRect(left : 整数,top : 整数,right : 整数,bottom : 整数) : 逻辑型
 		code return #this.clipRect(#left,#top,#right,#bottom);
 	结束 方法
-	
+
 	//2025.2.6 8:39pm
 	方法 画颜色数组(colors : 整数[], offset : 整数, stride : 整数,  x : 单精度小数, y : 单精度小数, width : 整数, height : 整数, hasAlpha : 逻辑型, paint : Paint) : Canvas
 		code #this.drawBitmap(#colors, # offset, # stride, # x, # y, # width, # height, # hasAlpha, # paint)
@@ -1792,20 +1792,20 @@ This value cannot be null.
 	方法 画文字(内容 : 文本,x : 整数,y : 整数,paint : Paint)
 		code #this.drawText(#内容,#x,#y,#paint);
 	结束 方法
-	
+
 	方法 drawPoint(x : 单精度小数,y : 单精度小数,paint : Paint)
 		code #this.drawPoint(#x,#y,#paint);
 	结束 方法
-	
+
 	方法 drawCircle(cx : 单精度小数,cy : 单精度小数,radius : 单精度小数,paint : Paint)
 		code #this.drawCircle(#cx,#cy,#radius,#paint);
 	结束 方法
-	
+
 	方法 drawLine(startX : 单精度小数,startY : 单精度小数,stopX : 单精度小数,stopY : 单精度小数,paint : Paint)
 		code #this.drawLine(#startX,#startY,#stopX,#stopY,#paint);
 	结束 方法
-	
-	
+
+
 	方法 绘制文字(内容 : 文本,x : 整数,y : 整数,paint : Paint,纵间距 : 整数,宽度 : 整数=-1)
 		变量 tx : 文本[]=内容.分割文本("\n")
 		变量 color : 整数=paint.取颜色()
@@ -1831,20 +1831,20 @@ This value cannot be null.
 	方法 drawRect(x : 单精度小数,y : 单精度小数,w : 单精度小数,h : 单精度小数,paint : Paint)
 		code #this.drawRect(#x, #y, #w, #h, #paint);
 	结束 方法
-	
+
 	方法 getWidth() : 整数
 		code return #this.getWidth();
 	结束 方法
-	
+
 	方法 drawBitmap(bitmap : 位图对象,left : 单精度小数,top : 单精度小数,paint : Paint)
 		code #this.drawBitmap(#bitmap,#left,#top,#paint);
 	结束 方法
-	
+
 	方法 drawBitmap_3(bitmap : 位图对象,matrix : Matrix,paint : Paint)
 		code #this.drawBitmap(#bitmap,#matrix,#paint);
 	结束 方法
-	
-	
+
+
 结束 类
 
 @指代类("android.media.MediaCodec.BufferInfo")
@@ -1853,39 +1853,39 @@ This value cannot be null.
 	方法 BufferInfo() : BufferInfo
 		code return new android.media.MediaCodec.BufferInfo();
 	结束 方法
-	
+
 	属性读 size() : 整数
 		code return #this.size;
 	结束 属性
-	
+
 	属性读 presentationTimeUs() : 长整数
 		code return #this.presentationTimeUs;
 	结束 属性
-	
+
 	属性读 flags() : 整数
 		code return #this.flags;
 	结束 属性
-	
+
 	属性读 offset() : 整数
 		code return #this.offset;
 	结束 属性
-	
+
 	属性写 size(size : 整数) 
 		code #this.size=#size;
 	结束 属性
-	
+
 	属性写 presentationTimeUs(presentationTimeUs : 长整数) 
 		code #this.presentationTimeUs=#presentationTimeUs;
 	结束 属性
-	
+
 	属性写 flags(flags : 整数) 
 		code #this.flags=#flags;
 	结束 属性
-	
+
 	属性写 offset(offset : 整数) 
 		code #this.offset=#offset;
 	结束 属性
-	
+
 结束 类
 
 @指代类("java.nio.ByteBuffer")
@@ -1893,7 +1893,7 @@ This value cannot be null.
 	方法 get(byte : 字节[]) : ByteBuffer
 		code return #this.get(#byte);
 	结束 方法
-	
+
 	@静态
 	方法 wrap(array : 字节[]) : ByteBuffer
 		code return java.nio.ByteBuffer.wrap(#array);
@@ -1902,7 +1902,7 @@ This value cannot be null.
 
 @指代类("")
 类 ByteArray
-	
+
 结束 类
 
 @指代类("android.graphics.Typeface")
@@ -1911,7 +1911,7 @@ This value cannot be null.
 	方法 从资源创建(管理器 : 附加资源管理器,路径 : 文本) : 字体
 		code return android.graphics.Typeface.createFromAsset(#管理器,#路径);
 	结束 方法
-	
+
 	@静态
 	方法 从文件创建(路径 : 文本)  : 字体
 		code return android.graphics.Typeface.createFromFile(#路径);
@@ -1952,21 +1952,21 @@ This value cannot be null.
 		savePic(takeScreenShot(#环境), #保存路径);
 		@end
 	结束 方法
-	
+
 	@静态
 	方法 保存(图 : 位图对象, 保存路径 : 文本)
 		@code
 		savePic(#图,#保存路径);
 		@end
 	结束 方法
-	
+
 	@静态
 	方法 截取(控件 : 可视化组件, 保存路径 : 文本)
 		@code
 		savePic(takeViewShot(#控件.getView()), #保存路径);
 		@end
 	结束 方法
-	
+
 	@静态
 	方法 截取位图(控件 : 可视化组件) : 位图对象
 		变量 a : 位图对象=空
@@ -1979,13 +1979,13 @@ This value cannot be null.
 		结束俘获异常()
 		返回 a
 	结束 方法
-	
+
 	@静态
 	方法 保存位图(bt : 位图对象,路径 : 文本)
 		文件操作.创建文件(路径)
 		code savePic(#bt,#路径);
 	结束 方法
-	
+
 	@code
 	private static String clipText;
    private static Bitmap takeScreenShot(Activity activity) {
@@ -2067,12 +2067,12 @@ This value cannot be null.
 @导入Java("android.widget.LinearLayout")
 @后缀代码(" extends android.view.View implements View.OnClickListener")
 类 控件
-	
+
 	@静态
 	方法 创建控件(环境 : 安卓环境) : 控件
 		code return new #<控件>(#环境);
 	结束 方法
-	
+
 	@code
 	
 	Context mContext = null;
@@ -2106,19 +2106,19 @@ This value cannot be null.
 	
 	
 	@end
-	
+
 	方法 重绘()
 		code invalidate();
 	结束 方法
-	
+
 	方法 getWidth() : 整数
 		code return this.getWidth();
 	结束 方法
-	
+
 	方法 getHeight() : 整数
 		code return this.getHeight();
 	结束 方法
-	
+
 	方法 setWidth(width : 整数)
 		@code
 		LinearLayout.LayoutParams params_1= (LinearLayout.LayoutParams) this.getLayoutParams();
@@ -2126,7 +2126,7 @@ This value cannot be null.
 		this.setLayoutParams(params_1);
 		@end
 	结束 方法
-	
+
 	方法 setHeight(height : 整数)
 		@code
 		LinearLayout.LayoutParams params_1= (LinearLayout.LayoutParams) this.getLayoutParams();
@@ -2134,23 +2134,23 @@ This value cannot be null.
 		this.setLayoutParams(params_1);
 		@end
 	结束 方法
-	
+
 	方法 添加到(布局 : 布局组件)
 		code #布局.getView().addView(this);
 	结束 方法
-	
+
 	方法 dispatchTouchEvent(点击事件 : 触摸事件) : 逻辑型
 		code return dispatchTouchEvent(#点击事件);
 	结束 方法
-	
+
 	定义事件 初始化()
-	
+
 	定义事件 绘图(canvas : Canvas)
-	
+
 	定义事件 onKeyDown()
-	
+
 	定义事件 点击事件(点击事件 : 触摸事件) : 逻辑型
-	
+
 结束 类
 
 @导入Java("com.badlogic.gdx.graphics.Pixmap")
@@ -2158,20 +2158,20 @@ This value cannot be null.
 @导入Java("android.graphics.*")
 @全局类
 类 操作类
-	
+
 	@静态
 	常量 logpath : 文本="/storage/emulated/0/.pvz/pvz/properties/log.cat"
-	
+
 	@静态
 	方法 随机单精度小数(s : 单精度小数,e : 单精度小数) :单精度小数
 		返回 double2float(数学运算.取随机小数(s,e-1f))
 	结束 方法
-	
+
 	@静态
 	方法 平方(num : 整数) : 整数
 		返回 num*num
 	结束 方法
-	
+
 	@静态
 	方法 整数集转字节集(ints  : 整数[]) : 字节[]
 		变量 bytes : 字节[]=数组创建(字节,取数组长度(ints)*4)
@@ -2185,12 +2185,12 @@ This value cannot be null.
 		结束 循环
 		返回 bytes
 	结束 方法
-	
+
 	@静态
 	方法 平方float(num : 单精度小数) : 单精度小数
 		返回 num*num
 	结束 方法
-	
+
 	@静态
 	方法 绝对值(num : 整数) : 整数
 		如果 num<0 则
@@ -2199,8 +2199,8 @@ This value cannot be null.
 			返回 num
 		结束 如果
 	结束 方法
-	
-		@静态
+
+	@静态
 	方法 绝对值_f(num : 单精度小数) : 单精度小数
 		如果 num<0 则
 			返回 -1*num
@@ -2208,7 +2208,7 @@ This value cannot be null.
 			返回 num
 		结束 如果
 	结束 方法
-	
+
 	@静态
 	方法 绝对值float(num : 单精度小数) : 单精度小数
 		如果 num<0 则
@@ -2217,46 +2217,46 @@ This value cannot be null.
 			返回 num
 		结束 如果
 	结束 方法
-	
+
 	@静态
 	方法 三角形面积( a : Point,  b : Point,  c : Point) : 小数
-        返回 数学运算.取绝对值((a.x * (b.y - c.y) + b.x * (c.y - a.y) + c.x * (a.y - b.y)) / 2.0);
+		返回 数学运算.取绝对值((a.x * (b.y - c.y) + b.x * (c.y - a.y) + c.x * (a.y - b.y)) / 2.0);
 	结束 方法
-	
-    @静态
+
+	@静态
 	方法 整数到逻辑型(int : 整数) : 逻辑型
 		如果 int>0 则
 			返回 真
 		结束 如果
 		返回 假
 	结束 方法
-	
+
 	@静态
 	方法 color_to_argb(color : 整数) : 整数[]
 		code int[] colors={android.graphics.Color.alpha(#color),android.graphics.Color.red(#color),android.graphics.Color.green(#color),android.graphics.Color.blue(#color)};
 		code return colors;
 	结束 方法
-	
+
 	@静态
 	方法 color_from_argb(color : 整数[]) : 整数
 		code return android.graphics.Color.argb(#color[0],#color[1],#color[2],#color[3]);
 	结束 方法
-	
+
 	@静态
 	方法 color_from_rgb(color : 整数[],alpha : 整数=0xff) : 整数
 		code return android.graphics.Color.argb(#alpha,#color[0],#color[1],#color[2]);
 	结束 方法
-	
+
 	@静态
 	方法 Bitmap_getPixels(bitmap : 位图对象,Pixels : 整数[],offset : 整数,stride : 整数,x : 整数,y : 整数,width : 整数,height : 整数)
 		code #bitmap.getPixels(#Pixels,#offset,#stride,#x,#y,#width,#height);
 	结束 方法
-	
+
 	@静态
 	方法 裁剪位图(source : 位图对象, x : 整数,  y : 整数, width : 整数, height :整数) : 位图对象
-        code return android.graphics.Bitmap.createBitmap(#source, #x, #y, #width, #height, null, false);
-    结束 方法
-	
+		code return android.graphics.Bitmap.createBitmap(#source, #x, #y, #width, #height, null, false);
+	结束 方法
+
 	@静态
 	方法 裁剪Pixmap(px : Pixmap, x : 整数,  y : 整数, width : 整数, height :整数) : Pixmap
 		@code
@@ -2272,17 +2272,17 @@ croppedPixmap.drawPixmap(originalPixmap, 0, 0, cropX, cropY, cropWidth, cropHeig
 return croppedPixmap;
 		@end
 	结束 方法
-	
+
 	@静态
 	方法 裁剪Pixmap2(source : Pixmap, left : 整数,  top : 整数, right : 整数, bottom :整数) : Pixmap
-        返回 裁剪Pixmap(source,left,top,right-left,bottom-top)
-    结束 方法
-	
+		返回 裁剪Pixmap(source,left,top,right-left,bottom-top)
+	结束 方法
+
 	@静态
 	方法 裁剪位图2(source : 位图对象, left : 整数,  top : 整数, right : 整数, bottom :整数) : 位图对象
-        code return android.graphics.Bitmap.createBitmap(#source, #left, #top, #right-#left, #bottom-#top, null, false);
-    结束 方法
-	
+		code return android.graphics.Bitmap.createBitmap(#source, #left, #top, #right-#left, #bottom-#top, null, false);
+	结束 方法
+
 	@静态
 	方法 矩阵转置_m3(m3 : 单精度小数[]) : 单精度小数[]
 		变量 newf : 单精度小数[]=数组创建(单精度小数,取数组长度(m3))
@@ -2297,7 +2297,7 @@ return croppedPixmap;
 		newf[8]=m3[8]
 		返回 newf
 	结束 方法
-	
+
 	@静态
 	方法 ctl2bl2(originalMatrix :Matrix,height : 单精度小数) : Matrix
 		@code
@@ -2314,7 +2314,7 @@ return croppedPixmap;
     return result;
 	@end
 	结束 方法
-	
+
 	//左上角座标系转左下角坐标系
 	@静态
 	方法 ctl2bl(originalMatrix : Matrix,height : 整数,bth : 整数) : Matrix
@@ -2339,27 +2339,27 @@ matrix.postConcat(result);
 	return matrix;
 	@end
 	*/
-	originalMatrix.preTranslate(0,bth)
-	originalMatrix.preScale(1,-1)
-	originalMatrix.postScale(1,-1)
-	originalMatrix.postTranslate(0,height)
-	返回 originalMatrix
-结束 方法
+		originalMatrix.preTranslate(0,bth)
+		originalMatrix.preScale(1,-1)
+		originalMatrix.postScale(1,-1)
+		originalMatrix.postTranslate(0,height)
+		返回 originalMatrix
+	结束 方法
 
 
-@静态
-方法 ytl2bl(y : 单精度小数,height : 单精度小数,bth : 单精度小数) : 单精度小数
-	返回 height-y-bth
-结束 方法
+	@静态
+	方法 ytl2bl(y : 单精度小数,height : 单精度小数,bth : 单精度小数) : 单精度小数
+		返回 height-y-bth
+	结束 方法
 
-@静态
-    方法 trs2tra(trs : TextureRegion[]) : Array
-    	@code
+	@静态
+	方法 trs2tra(trs : TextureRegion[]) : Array
+		@code
 		com.badlogic.gdx.utils.Array<com.badlogic.gdx.graphics.g2d.TextureRegion> arr=new com.badlogic.gdx.utils.Array(#trs);
 		return arr;
 		@end
-    结束 方法
-	
+	结束 方法
+
 	@静态
 	方法 argb2rgba(color : 整数) : 整数
 		变量 t1 : 整数[]=color_to_argb(color)
@@ -2371,28 +2371,28 @@ matrix.postConcat(result);
 		返回 color_from_argb(t2)
 	结束 方法
 
-	
+
 	@静态
 	方法 clear(obj : 对象)
 		obj=空
 		优化内存()
 	结束 方法
-	
+
 	@静态
 	方法 日志(log : 文本)
 		文件操作.追加文件内容(logpath,log+"\n")
 	结束 方法
-	
+
 	@静态
 	方法 Bitmap_setPixels(bitmap : 位图对象,Pixels : 整数[],offset : 整数,stride : 整数,x : 整数,y : 整数,width : 整数,height : 整数)
 		code #bitmap.setPixels(#Pixels,#offset,#stride,#x,#y,#width,#height);
 	结束 方法
-	
+
 	@静态
 	方法 rgbToHsv_float(rgb : 整数[]) : 单精度小数[]
 		code return rgbToHsv(#rgb);
 	结束 方法
-	
+
 	@静态
 	方法 rgbToHsv_int(rgb : 整数[]) : 整数[]
 		变量 ds : 单精度小数[]=rgbToHsv_float(rgb)
@@ -2417,7 +2417,7 @@ matrix.postConcat(result);
 		变量 is : 整数[]={h,s,v}
 		返回 is
 	结束 方法
-	
+
 	@静态
 	方法 hsvToRgb_float(hsv : 单精度小数[]) : 整数[]
 		变量 h=hsv[0]
@@ -2425,14 +2425,14 @@ matrix.postConcat(result);
 		变量 v=hsv[2]
 		code return hsvToRgb(#h,#s,#v);
 	结束 方法
-	
+
 	@静态
 	方法 hsvToRgb_int(hsv : 整数[]) : 整数[]
 		变量 hsvf : 单精度小数[]={hsv[0]/256f*360,hsv[1]/256f,hsv[2]/256f}
 		变量 is : 整数[]=hsvToRgb_float(hsvf)
 		返回 is
 	结束 方法
-	
+
 	@code
 	
 	// RGB to HSV  
@@ -2532,7 +2532,7 @@ matrix.postConcat(result);
                         | android.view.View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
 	@end
 	结束 方法
-	
+
 	@静态
 	方法 取余(数 : 整数,模 : 整数) : 整数
 		如果 数<0 则
@@ -2540,7 +2540,7 @@ matrix.postConcat(result);
 		结束 如果
 		返回 数%模
 	结束 方法
-	
+
 	@静态
 	方法 取余float_int(数 : 单精度小数,模 : 整数) : 单精度小数
 		如果 数<0 则
@@ -2548,17 +2548,17 @@ matrix.postConcat(result);
 		结束 如果
 		返回 数%模
 	结束 方法
-	
+
 	@静态
 	方法 整数除整数(a : 整数,b : 整数) : 整数
 		返回 a/b
 	结束 方法
-	
+
 	@静态
 	方法 整数除单精度小数(a : 整数,b : 单精度小数) : 单精度小数
 		返回 a/b
 	结束 方法
-	
+
 	@静态
 	方法 补齐(内容 : 文本,长度 : 整数,符号 : 文本) : 文本
 		循环(i, 0, 长度)
@@ -2570,7 +2570,7 @@ matrix.postConcat(result);
 		结束 循环
 		返回 内容
 	结束 方法
-	
+
 	@静态
 	方法 取上级目录(路径 : 文本) : 文本
 		变量 结果 : 文本
@@ -2589,7 +2589,7 @@ matrix.postConcat(result);
 		结束 循环
 		返回 结果+"/"
 	结束 方法
-	
+
 	@静态
 	方法 补斜杠(路径 : 文本) : 文本
 		如果 路径.结尾为("/")==假 则
@@ -2597,7 +2597,7 @@ matrix.postConcat(result);
 		结束 如果
 		返回 路径
 	结束 方法
-	
+
 	@静态
 	方法 去斜杠(路径 : 文本) : 文本
 		如果 路径.结尾为("/") 则
@@ -2605,7 +2605,7 @@ matrix.postConcat(result);
 		结束 如果
 		返回 路径
 	结束 方法
-	
+
 	@静态
 	方法 文本集合到文本(文本集 : 文本集合,分隔符 : 文本) : 文本
 		变量 结果 : 文本
@@ -2618,7 +2618,7 @@ matrix.postConcat(result);
 		结束 循环
 		返回 结果
 	结束 方法
-	
+
 	@静态
 	方法 颜色取反(color : 整数,alpha : 整数) : 整数
 		//变量 alpha1=位清零(color,0x00ffffff)
@@ -2628,7 +2628,7 @@ matrix.postConcat(result);
 		code #alpha=#alpha<<24;
 		返回 0xff000000+rgb
 	结束 方法
-	
+
 	@静态
 	方法 gm2om(gm : Matrix) : 单精度小数[]
 		@code
@@ -2675,49 +2675,49 @@ matrix.postConcat(result);
     return glMatrix;
 		@end
 	结束 方法
-	
+
 	@静态
 	@嵌入式代码
 	方法 清屏颜色(R:单精度小数, G:单精度小数, B:单精度小数, A:单精度小数)
-      code com.badlogic.gdx.Gdx.gl.glClearColor(#R,#G,#B,#A);
+		code com.badlogic.gdx.Gdx.gl.glClearColor(#R,#G,#B,#A);
 	结束 方法
-	
+
 	@静态
 	@嵌入式代码
 	方法 清屏()
 		code com.badlogic.gdx.Gdx.gl.glClear(com.badlogic.gdx.graphics.GL20.GL_COLOR_BUFFER_BIT | com.badlogic.gdx.graphics.GL20.GL_DEPTH_BUFFER_BIT);
 	结束 方法
-	
+
 	@静态
 	@嵌入式代码
 	方法 setContinuousRendering(bool : 逻辑型)
 		code com.badlogic.gdx.Gdx.graphics.setContinuousRendering(#bool);
 	结束 方法
-	
+
 	@静态
 	@嵌入式代码
 	方法 setInputProcessor(ip : MIP)
 		code com.badlogic.gdx.Gdx.input.setInputProcessor(#ip);
 	结束 方法
-	
+
 	@静态
 	方法 新建触摸事件(按下时间 : 长整数,动作 : 整数,x : 单精度小数,y : 单精度小数) : 触摸事件
 		code return android.view.MotionEvent.obtain(#按下时间,#按下时间+100,#动作,#x,#y,0);
 	结束 方法
-	
+
 	@静态
 	@嵌入式代码
 	方法 宽() : 整数
 		code com.badlogic.gdx.Gdx.graphics.getWidth()
 	结束 方法
-	
+
 	@静态
 	@嵌入式代码
 	方法 高() : 整数
 		code com.badlogic.gdx.Gdx.graphics.getHeight()
 	结束 方法
-	
-	
+
+
 结束 类
 
 @指代类("android.view.ViewGroup")
@@ -2736,31 +2736,31 @@ matrix.postConcat(result);
 @附加权限(安卓权限.文件权限_读取)
 类 文件打开方式
 
-   @静态
-   方法 获取MIME(路径或扩展名 : 文本) : 文本
-	  @code
+	@静态
+	方法 获取MIME(路径或扩展名 : 文本) : 文本
+		@code
 	  String FileType = #路径或扩展名.substring(#路径或扩展名.lastIndexOf('.')+1,#路径或扩展名.length()).toLowerCase();
 	  int n = MIME表.length;
       for(int i=0; i<n; i++)
       if(MIME表[i][0].equals(FileType)) return MIME表[i][1];
       return "*/*";
 	  @end
-   结束 方法
+	结束 方法
 
-   @静态
-   方法 获取扩展名(MIME类型 : 文本) : 文本
-	   @code
+	@静态
+	方法 获取扩展名(MIME类型 : 文本) : 文本
+		@code
 	  String 值 = #MIME类型.toLowerCase();
 	  int n = MIME表.length;
       for(int i=0; i<n; i++)
          if(MIME表[i][1].equals(值)) return MIME表[i][0];
       return "application/octet-stream";
 	  @end
-   结束 方法
+	结束 方法
 
-   @静态 
-   方法 打开文件(上下文 : 安卓环境, 路径 : 文本) : 逻辑型
-      @code
+	@静态 
+	方法 打开文件(上下文 : 安卓环境, 路径 : 文本) : 逻辑型
+		@code
       if(#上下文 == null || #路径 == null)return false;
       android.content.Intent intent = new android.content.Intent();
       //设置intent的Action属性
@@ -2799,9 +2799,9 @@ matrix.postConcat(result);
       }
       return false;
       @end
-   结束 方法
+	结束 方法
 
-   @code
+	@code
    private static final String[][] MIME表 = {
       //{扩展名,           MIME类型}
       {"ez",                "application/andrew-inset"},
@@ -3902,7 +3902,7 @@ matrix.postConcat(result);
 
 	变量 wid : 整数
 	变量 hei : 整数
-	
+
 	变量 bitmap : 位图对象=空
 	变量 pixmap : Pixmap=空
 	变量 texture : Texture=空
@@ -3915,7 +3915,7 @@ matrix.postConcat(result);
 		rt.设置(w,h)
 		返回 rt
 	结束 方法
-	
+
 	@静态
 	方法 从BitMap新建(bt : 位图对象) : ColorSet
 		变量 rt : ColorSet
@@ -3923,7 +3923,7 @@ matrix.postConcat(result);
 		Bitmap_getPixels(bt,rt.b,0,bt.宽度,0,0,bt.宽度,bt.高度)
 		返回 rt
 	结束 方法
-	
+
 	方法 从BitMap更改(bt : 位图对象) : ColorSet
 		设置(bt.宽度,bt.高度)
 		Bitmap_getPixels(bt,b,0,bt.宽度,0,0,bt.宽度,bt.高度)
@@ -3944,7 +3944,7 @@ matrix.postConcat(result);
 		b[y*wid+x]=v
 		bitmap=空
 	结束 方法
-	
+
 	方法 geti(x : 整数,y : 整数) : 整数
 		如果 0<=x&&x<wid&&0<=y&&y<hei 则
 			返回 b[y*wid+x]
@@ -3952,7 +3952,7 @@ matrix.postConcat(result);
 			返回 0
 		结束 如果
 	结束 方法
-	
+
 	方法 seti(x : 整数,y : 整数,v : 整数)
 		如果 0<=x&&x<wid&&0<=y&&y<hei 则
 			/*
@@ -3981,10 +3981,10 @@ matrix.postConcat(result);
 				code #b2=#v2<<24;
 				code #b2=#b2>>24;
 				*/
-				b[y*wid+x]=v
-				//0xff000000+((255-a)*r2+a*r1)*0x10000/255+((255-a)*g2+a*g1)*0x100/255+((255-a)*b2+a*b1)*0x1/255
+			b[y*wid+x]=v
+			//0xff000000+((255-a)*r2+a*r1)*0x10000/255+((255-a)*g2+a*g1)*0x100/255+((255-a)*b2+a*b1)*0x1/255
 			//结束 如果
-			
+
 		结束 如果
 	结束 方法
 
@@ -3997,18 +3997,59 @@ matrix.postConcat(result);
 			返回 bitmap
 		结束 如果
 	结束 方法
-	
-	方法 取Pixmap() : Pixmap
-		如果 pixmap!=空 则
-			返回 pixmap
+
+	//2025.8.7
+	变量 切割图 : Pixmap[]
+
+	方法 取Pixmap(横切数 : 整数=1,纵切数 : 整数=1,计数 : 整数=0) : Pixmap
+		如果 横切数==1&&纵切数==1&&计数==0 则
+			如果 pixmap!=空 则
+				返回 pixmap
+			否则
+				变量 wt : 位图配置=位图配置.ARGB_8888
+				pixmap=Pixmap.从ColorSet创建(本对象)
+				//android.graphics.Bitmap.createBitmap(#b,0,#wid,#wid,#hei,#wt);
+				返回 pixmap
+			结束 如果
 		否则
-			变量 wt : 位图配置=位图配置.ARGB_8888
-			pixmap=Pixmap.从ColorSet创建(本对象)
-			//android.graphics.Bitmap.createBitmap(#b,0,#wid,#wid,#hei,#wt);
-			返回 pixmap
+			如果 取数组长度(切割图)>计数&&切割图[计数]!=空 则
+				返回 切割图[计数]
+			否则
+				切割图=数组创建(Pixmap,横切数*纵切数)
+				变量 bit=取Pixmap()
+				变量 cutp=计数
+				变量 acutp=计数%横切数
+				变量 bcutp=(计数-(计数%横切数))/横切数
+				如果 横切数!=1 则
+					变量 stx=bcutp*bit.width()/横切数
+					变量 wih=bit.width()/横切数
+					变量 het=bit.height()
+					开始俘获异常()
+					bit=裁剪Pixmap(bit,stx,0,wih,het)
+					//code #bit=android.graphics.Bitmap.createBitmap(#bit,#stx,0,#wih,#het);
+					俘获所有异常()
+					//日志(lz.cutn+"   "+lz.cutp)
+					结束俘获异常()
+					//日志(lz.scale+"   /\\  "+lz.cutp)
+				结束 如果
+				如果 纵切数!=1 则
+					变量 sty=acutp*bit.height()/纵切数
+					变量 wih=bit.width()
+					变量 het=bit.height()/纵切数
+					开始俘获异常()
+					bit=裁剪Pixmap(bit,0,sty,wih,het)
+					//code #bit=android.graphics.Bitmap.createBitmap(#bit,#stx,0,#wih,#het);
+					俘获所有异常()
+					//日志(lz.cutn+"   "+lz.cutp)
+					结束俘获异常()
+					//日志(lz.scale+"   /\\  "+lz.cutp)
+				结束 如果
+				切割图[计数]=bit
+				返回 bit
+			结束 如果
 		结束 如果
 	结束 方法
-	
+
 	方法 取Texture() : Texture
 		如果 texture!=空 则
 			返回 texture
@@ -4017,7 +4058,7 @@ matrix.postConcat(result);
 			返回 texture
 		结束 如果
 	结束 方法
-	
+
 	方法 绘制(cs : ColorSet,x : 整数,y : 整数)
 		循环(i, 0, cs.wid)
 			循环(u, 0, cs.hei)
@@ -4025,7 +4066,7 @@ matrix.postConcat(result);
 			结束 循环
 		结束 循环
 	结束 方法
-	
+
 	方法 绘制图形(cs : ColorSet,x : 单精度小数,y : 单精度小数,sx : 单精度小数,sy : 单精度小数,kx : 单精度小数,ky : 单精度小数,f : 整数) : 对象
 		////标准解决
 		ky=ky
@@ -4053,13 +4094,13 @@ matrix.postConcat(result);
 				否则
 					el=transform(x,y,x+i/2f,y+u/2f,reak)
 				结束 如果
-				
+
 				drawi(el[0].到整数(),el[1].到整数(),cs.geti((i/2f/sx).到整数(),(u/2f/sy).到整数()))
 			结束 循环
 		结束 循环
 		返回 空
 	结束 方法
-	
+
 	方法 drawi(x : 整数,y : 整数,v : 整数)
 		变量 color=color_to_argb(v)
 		如果 color[0]==0
@@ -4076,10 +4117,10 @@ matrix.postConcat(result);
 			seti(x,y,color_from_argb(rlt))
 		结束 如果
 	结束 方法
-	
+
 	@静态
 	方法 transform(x0 : 单精度小数,y0 : 单精度小数,x1 : 单精度小数,y1 : 单精度小数,k : 单精度小数) : 单精度小数[]
-		
+
 		/*
 		变量 px : 单精度小数=left+wid/2
 		变量 py : 单精度小数=top+hei/2
@@ -4094,7 +4135,7 @@ matrix.postConcat(result);
 		return result;
 		@end
 	结束 方法
-	
+
 	方法 截取(x : 整数,y : 整数,w : 整数,h : 整数) : ColorSet
 		变量 b2 : ColorSet=ColorSet.新建(w,h)
 		循环(i, 0, w)
@@ -4104,7 +4145,7 @@ matrix.postConcat(result);
 		结束 循环
 		返回 b2
 	结束 方法
-	
+
 	方法 截取bitmap(x : 整数,y : 整数,w : 整数,h : 整数) : 位图对象
 		变量 b2 : ColorSet=ColorSet.新建(w,h)
 		循环(i, 0, w)
@@ -4114,7 +4155,7 @@ matrix.postConcat(result);
 		结束 循环
 		返回 b2.取bitmap()
 	结束 方法
-	
+
 	方法 绘制矩形(x : 整数,y : 整数,w : 整数,h : 整数,c : 整数)
 		循环(i, x, x+w)
 			循环(u, y, y+h)
@@ -4122,7 +4163,7 @@ matrix.postConcat(result);
 			结束 循环
 		结束 循环
 	结束 方法
-	
+
 	方法 绘制文本(x : 整数,y : 整数,t : 文本,p : Paint)
 		变量 w : 整数=p.测量文字(t).到整数()
 		变量 h : 整数=p.取文字大小().到整数()
@@ -4132,7 +4173,7 @@ matrix.postConcat(result);
 		canvas.画文字(t,0,h,p)
 		绘制(ColorSet.从BitMap新建(bt),x,y)
 	结束 方法
-	
+
 	方法 设置颜色(颜色 : 整数)
 		循环(i, 0, 取数组长度(b))
 			b[i]=颜色
@@ -4149,27 +4190,27 @@ matrix.postConcat(result);
 
 类 Bits
 	变量 bl : 逻辑型集合
-	
+
 	方法 添加字节(byte : 字节)
 		添加字节组({byte})
 	结束 方法
-	
+
 	方法 添加字节组(bytes : 字节[])
 		添加布尔组(字节集转布尔集(bytes))
 	结束 方法
-	
+
 	方法 添加布尔(bool : 逻辑型)
 		bl.添加成员(bool)
 	结束 方法
-	
+
 	方法 添加布尔组(bools : 逻辑型[])
 		bl.添加(bools)
 	结束 方法
-	
+
 	方法 长度() : 整数
 		返回 bl.长度
 	结束 方法
-	
+
 结束 类
 
 @强制输出
@@ -4207,7 +4248,7 @@ matrix.postConcat(result);
 	//	变量 wt : 位图配置=位图配置.ARGB_8888
 	//	code return android.graphics.Bitmap.createBitmap(#b,0,#wid,#wid,#hei,#wt);
 	//结束 方法
-	
+
 	方法 设置值(颜色 : 逻辑型)
 		循环(i, 0, 取数组长度(b))
 			b[i]=颜色
