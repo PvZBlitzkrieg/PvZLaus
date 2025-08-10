@@ -376,6 +376,7 @@ PvZLaus
 			rean.xmlred.添加成员(rea)
 			rean.rean.add(创建 Reanimed)
 			如果 文本属于文本集({"Zombie","SelectorScreen","CrazyDave"},文件操作.取文件前缀名(文件操作.取文件名(paths[i]))) 则
+				//文本属于文本集({"Zombie","SelectorScreen","CrazyDave"},文件操作.取文件前缀名(文件操作.取文件名(paths[i])))
 				rean.finize(i)
 			结束 如果
 			//变量 nt=取当前时间戳()
@@ -1144,8 +1145,8 @@ PvZLaus
 		变量 indexw=frame
 		变量 hb=indexw%1
 		变量 index=(indexw-hb).到整数()
-		变量 ft=poslist[startframe].x
-		变量 ht=poslist[index].x
+		//变量 ft=poslist[startframe].x
+		//变量 ht=poslist[index].x
 		变量 indexs=index+1
 
 		如果 indexs>=maxframe 则
@@ -1343,6 +1344,7 @@ PvZLaus
 	结束 方法
 
 	方法 init_path(进度 : Stringk,paths : 文本[],srcidx : 整数,path : 文本,imagename : STSL)
+		path=path
 		循环(i, 0, 取数组长度(paths))
 			如果 paths[i].结尾为(".png")||paths[i].结尾为(".jpg") 则
 				变量 hsm : 文本=文件操作.取文件前缀名(文件操作.取文件名(paths[i]))
@@ -1474,6 +1476,9 @@ PvZLaus
 结束 类
 
 类 矩形集合 : 集合模板类<矩形x>
+结束 类
+
+类 drawStyles : 集合模板类<drawStyle>
 结束 类
 
 类 drawStyle
@@ -1966,7 +1971,7 @@ PvZLaus
 	定义事件 绘图(canvas : Canvas)
 	定义事件 点击事件(点击事件 : 触摸事件) : 逻辑型
 结束 类
-
+/*
 @外部Java文件("../java/canvasgl/CanvasGL.java")
 @外部Java文件("../java/canvasgl/ICanvasGL.java")
 @外部Java文件("../java/canvasgl/MultiTexOffScreenCanvas.java")
@@ -2218,7 +2223,7 @@ PvZLaus
 	@end
 结束 类
 */
-
+/*
 @强制输出
 @导入Java("com.chillingvan.canvasgl.ICanvasGL.BitmapMatrix")
 @指代类("com.chillingvan.canvasgl.ICanvasGL.BitmapMatrix")
@@ -2300,7 +2305,7 @@ PvZLaus
 		code #this.getDrawingBitmap(#rect,#gdcc);
 	结束 方法
 结束 类
-
+*/
 @指代类("com.badlogic.gdx.ApplicationAdapter")
 类 ApplicationAdapter
 
@@ -2657,7 +2662,7 @@ PvZLaus
 		code end();
 	结束 方法
 
-	方法 置视图矩阵(矩阵:Matrix4)
+	方法 置视图矩阵(矩阵:Matrix_4)
 		code setProjectionMatrix(#矩阵);
 	结束 方法
 
@@ -2921,9 +2926,9 @@ PvZLaus
 		结束 如果*/
 		变量 rgbShader : ShaderProgram=getShader()
 		//	rgbShader.setUniformf1("u_opacity",cm[3])
-		rgbShader.setUniformf1("u_opacity",cm[3])
 		//code#this.setColor(0,0,0,1f);
 		thisw.draw_trwha2(tr,texture.getWidth(),texture.getHeight(),aff)
+		rgbShader.setUniformf1("u_opacity",cm[3])
 		rgbShader.setUniformf3("u_rgbFactors",cm[0],cm[1],cm[2])
 
 		//code#this.setColor(1,1,1,1);
@@ -3047,9 +3052,9 @@ texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
 
 	@静态
 	方法 从ColorSet创建(cs : ColorSet) : Pixmap
-		变量 b=cs.b
-		变量 wid=cs.wid
-		变量 hei=cs.hei
+		//变量 b=cs.b
+		//变量 wid=cs.wid
+		//变量 hei=cs.hei
 		@code
 		int[] pixels=#<cs.b>;
 		int width=#<cs.wid>;

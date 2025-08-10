@@ -663,7 +663,7 @@ PvZLaus
 								dancer.enableBroken=true
 								//dancer.限制矩形
 								管理器.zombieList.添加成员(dancer)
-								变量 part=Particle.新建("DancerRise",dancer.x()+10,dancer.y-15)
+								变量 part=Particle.新建("DancerRise",dancer.x()+10,dancer.y-15,row,管理器)
 								管理器.particleList.添加成员(part)
 								僵尸[i]=dancer
 							结束 如果
@@ -928,11 +928,12 @@ PvZLaus
 		变量 tracle : Tracle=Tracle.create(管理器,-1,x(),y)
 		tracle.anim=anim.copy1f().强制显示(显示,0,真)
 		//日志("<<<"+整数集到文本(tracle.anim.mandaf.到数组()).替换("\n"," "))
-		tracle.xv=随机单精度小数(-0.05f,0.05f)
+		tracle.rv=随机单精度小数(0.1f,0.7f)
+		tracle.xv=tracle.rv
 		tracle.yv=1.8f
 		tracle.maxy=y+高度
 		//tracle.ya=0.015f
-		tracle.rv=double2float(取随机小数(0.1f,0.3f))
+
 		tracle.setdt(30+(高度/tracle.yv).到整数())
 		管理器.tracleList.添加成员(tracle)
 	结束 方法
@@ -1055,7 +1056,98 @@ PvZLaus
 类 ParticleList : 集合模板类<Particle>
 结束 类
 
+//2025.8.9
+类 推车集
+	变量 mowerList : MowerList
+	//x=强制x+强制索引乘数*index
+	变量 强制x : 单精度小数=0
+	变量 强制索引乘数 : 单精度小数=0
+	变量 显示 : 逻辑型=假
+	变量 gm : 窗口管理器=空
 
+	方法 初始化(数量 : 整数,类型 : 整数[],x : 单精度小数,gm : 窗口管理器)
+		mowerList.清空()
+		本对象.gm=gm
+		如果 数量==0 则
+		否则
+			循环(i, 0, 数量)
+				如果 类型[i]!=-1 则
+					变量 mower : Mower=Mower.create(类型[i],i,gm)
+					mower.x=x
+					mowerList.添加成员(mower)
+				结束 如果
+			结束 循环
+		结束 如果
+	结束 方法
+
+	方法 Update()
+		循环(i, 0, mowerList.长度)
+			变量 mower=mowerList[mowerList.长度-i-1]
+			如果 mower.启动==假 则
+				//mower.x=强制x+强制索引乘数*row
+			结束 如果
+			如果 mower.Update() 则
+				//注意这里mower并没有被移除
+				//你的推车无了
+				//丢车是好事
+				//战术丢车
+				//丢车也是实力的一部分
+				mower.销毁=真
+			结束 如果
+		结束 循环
+	结束 方法
+结束 类
+
+类 MowerList : 集合模板类<Mower>
+
+结束 类
+
+类 Mower
+	变量 x: 单精度小数=0f
+	变量 启动 : 逻辑型=假
+	变量 xv : 单精度小数=0f
+	变量 type : 整数=0
+	变量 row : 整数=0
+	变量 anim : Anim
+	变量 gm : 窗口管理器=空
+	变量 销毁: 逻辑型=假
+	变量 scale : 单精度小数=0.9f
+
+	@静态
+	方法 create(type : 整数=0,row : 整数=0,gm : 窗口管理器) : Mower
+		变量 mower : Mower
+		mower.type=type
+		mower.row=row
+		mower.gm=gm
+		如果 mower.type==0 则
+			mower.anim=Anim.创建动画("LawnMower",gm)
+			mower.anim.播放动画("anim_normal")
+			mower.anim.暂停=真
+		否则 mower.type==1
+			mower.anim=Anim.创建动画("PoolCleaner",gm)
+			mower.anim.播放动画("anim_landsuck")
+			mower.anim.暂停=真
+		否则 mower.type==2
+			mower.anim=Anim.创建动画("RoofCleaner",gm)
+			mower.anim.暂停=真
+		结束 如果
+		返回 mower
+	结束 方法
+
+	方法 y() : 单精度小数
+		返回 gm.gety(row,x)-gm.取行高()+35
+	结束 方法
+
+	方法 Update() : 逻辑型
+		如果 启动 则
+			x=x+xv
+		结束 如果
+		如果 x>1400 则
+			返回 真
+		结束 如果
+		返回 假
+	结束 方法
+结束 类
 
 类 Plant
 	变量 HP : 整数
@@ -1224,7 +1316,7 @@ PvZLaus
 			结束 如果
 		否则 type==2
 			如果 anim[0].暂停 则
-				管理器.particleList.添加成员(Particle.新建("Powie",x(),y()))
+				管理器.particleList.添加成员(Particle.新建("Powie",x(),y(),row,管理器))
 				变量 ux=x+cv.x
 				变量 uy=y+cv.y
 				循环(i, 0, 管理器.zombieList.长度)
@@ -1386,7 +1478,7 @@ PvZLaus
 						zombie.damage(damage,2)
 					否则
 						zombie.damage(damage,0)
-						管理器.particleList.添加成员(Particle.新建("PeaSplat",x,y))
+						管理器.particleList.添加成员(Particle.新建("PeaSplat",x,y,row,管理器))
 					结束 如果
 					返回 真
 				结束 如果
@@ -1418,6 +1510,7 @@ PvZLaus
 	变量 状态 : 整数=0
 	变量 sx : 单精度小数=1f
 	变量 sy : 单精度小数=1f
+	变量 初始y : 单精度小数=0f
 
 	@静态
 	方法 create(manager : 窗口管理器,type : 整数,横坐标 : 单精度小数,纵坐标 : 单精度小数) : Coin
@@ -1437,6 +1530,10 @@ PvZLaus
 			coin.sx=0.75f
 			coin.sy=coin.sx
 			coin.动画移位(-30,0)
+		否则 type==plantcard
+			coin.初始y=纵坐标
+			coin.yv=-3f
+			coin.ya=0.05f
 		结束 如果
 		coin.x=横坐标
 		coin.y=纵坐标
@@ -1489,6 +1586,7 @@ PvZLaus
 		如果 type==sun 则
 			如果 (cv.move||cv.click)&&状态==0 则
 				管理器.suncount=管理器.suncount+25
+				管理器.收集阳光(本对象)
 				状态=1
 			否则 状态==1
 				状态倒计时=状态倒计时+1
@@ -1502,7 +1600,23 @@ PvZLaus
 				结束 如果
 				//日志(x().到文本())
 			结束 如果
+		否则 type==plantcard
+			如果 y>初始y 则
+				y=初始y
+				yv=0
+				ya=0
+			结束 如果
+			如果 (cv.move||cv.click)&&状态==0 则
+				管理器.过关(本对象)
+				状态=1
+			否则 状态==1
+				状态倒计时=状态倒计时+1
+				如果 状态倒计时>500 则
+					返回 真
+				结束 如果
 
+				//日志(x().到文本())
+			结束 如果
 		结束 如果
 		返回 假
 	结束 方法
@@ -1525,6 +1639,8 @@ PvZLaus
 	常量 lawnmower : 整数=21
 	@静态
 	常量 dustcatcher : 整数=22
+	@静态
+	常量 plantcard : 整数=23
 	@静态
 	常量 zombie_charred : 整数=0
 	@静态
@@ -1640,13 +1756,17 @@ PvZLaus
 	变量 dtimemax : 整数
 	变量 type : 文本
 	变量 循环播放 : 逻辑型=假
+	变量 row : 整数
+	变量 管理器 : 窗口管理器=空
 
 	@静态
-	方法 新建(type : 文本,x : 单精度小数,y : 单精度小数) : Particle
+	方法 新建(type : 文本,x : 单精度小数,y : 单精度小数,row : 整数=-1,gm : 窗口管理器) : Particle
 		变量 prt : Particle
+		prt.row=row
 		prt.x=x
 		prt.y=y
 		prt.type=type
+		prt.管理器=gm
 		如果 type=="PeaSplat" 则
 			变量 dt=20
 			prt.dtime=0
@@ -1744,7 +1864,7 @@ PvZLaus
 			prt.dtime=0
 			prt.dtimemax=dt
 			//DancerDirtClumps
-			
+
 			循环(i, 0, 14)
 				变量 lzb : 粒子=粒子.新建(,,,,,)
 				lzb.pic="dirtbig"
@@ -1783,12 +1903,40 @@ PvZLaus
 				lzb.cutp=取随机数(0,15)
 				prt.parts.添加成员(lzb)
 			结束 循环
+		否则 type=="SodRoll"
+			日志("ok")
+			prt.dtime=0
+			prt.dtimemax=200
+			变量 dt=50
+			循环(i, 0, 100)
+                变量 lzb : 粒子=粒子.新建(,,,,,)
+				lzb.pic="dirtsmall"
+				lzb.setdtime(dt)
+				lzb.存活倒计时=dt
+				lzb.激活倒计时=(i*1.5f).到整数()
+				lzb.alpha="0-1 80-1 100-0"
+				lzb.x=0
+				lzb.y=随机单精度小数(0,50f)
+				lzb.xv=随机单精度小数(-1f,0)
+				lzb.yv=-1.5f
+				lzb.ya=0.03f
+				lzb.shake=0.1f
+				lzb.scale=粒子.全值(1f)
+				lzb.cutn=8
+				lzb.row=2
+				lzb.cutp=取随机数(0,15)
+				prt.parts.添加成员(lzb)
+			结束 循环
 		结束 如果
 		返回 prt
 	结束 方法
 
 
 	方法 Update() : 逻辑型
+		如果 type=="SodRoll" 则
+			日志("in")
+			x=220+管理器.动画进度
+		结束 如果
 		如果 dtime>=dtimemax 则
 			返回 真
 		结束 如果
@@ -1796,9 +1944,7 @@ PvZLaus
 
 			//开始俘获异常()
 			变量 hu : 整数=parts.长度-i-1
-			如果 type=="PeaSplat" 则
-
-			结束 如果
+			
 			如果 parts[hu].Update()==真 则
 				clear(parts[hu])
 				parts.删除成员(hu)
@@ -1849,7 +1995,7 @@ PvZLaus
 	//如果图片要切割，这里是切割片段总数
 	变量 cutn : 整数=1
 	//要播第几张切割片段
-	变量 cutp : 整数
+	变量 cutp : 整数=0
 	//切割行数
 	变量 row : 整数=1
 	变量 gm : 窗口管理器
@@ -1858,6 +2004,8 @@ PvZLaus
 
 	变量 starte : 单精度小数=0
 	变量 ende : 单精度小数=-1
+	变量 存活倒计时 : 整数=-1
+	变量 激活倒计时 : 整数=0
 
 
 	@静态
@@ -1879,37 +2027,47 @@ PvZLaus
 	结束 方法
 
 	方法 Update() : 逻辑型
-		如果 dtime>=dtimemax 则
-			返回 真
-		结束 如果
-		如果 starte<=dtime&&((ende==-1)||dtime<=ende) 则
-			xv=xv+xa
-			yv=yv+ya
-			x=x+xv
-			y=y+yv
-			变量 xfn=取值(xf)
-			如果 xv>xfn 则
-				xv=xv-xfn*绝对值_f(xv)/3
-			否则 xv<-1*xfn
-				xv=xv+xfn*绝对值_f(xv)/3
-			否则
-				xv=0
+		如果 激活倒计时<=0 则
+			如果 存活倒计时!=-1 则
+				存活倒计时=存活倒计时-1
+				如果 存活倒计时<=0 则
+					返回 真
+				结束 如果
 			结束 如果
-			变量 yfn=取值(yf)
-			如果 yv>yfn 则
-				yv=yv-yfn*绝对值_f(yv)/3
-			否则 yv<-1*yfn
-				yv=yv+yfn*绝对值_f(yv)/3
-			否则
-				yv=0
+			如果 dtime>=dtimemax 则
+				返回 真
 			结束 如果
-			rotate=rotate+spinspeed
+			如果 starte<=dtime&&((ende==-1)||dtime<=ende) 则
+				xv=xv+xa
+				yv=yv+ya
+				x=x+xv
+				y=y+yv
+				变量 xfn=取值(xf)
+				如果 xv>xfn 则
+					xv=xv-xfn*绝对值_f(xv)/3
+				否则 xv<-1*xfn
+					xv=xv+xfn*绝对值_f(xv)/3
+				否则
+					xv=0
+				结束 如果
+				变量 yfn=取值(yf)
+				如果 yv>yfn 则
+					yv=yv-yfn*绝对值_f(yv)/3
+				否则 yv<-1*yfn
+					yv=yv+yfn*绝对值_f(yv)/3
+				否则
+					yv=0
+				结束 如果
+				rotate=rotate+spinspeed
+			结束 如果
+			如果 轮播 则
+				变量 durt : 整数=dtimemax/cutn
+				cutp=(dtime-(dtime%durt)-1)/durt
+			结束 如果
+			dtime=dtime+1
+		否则
+			激活倒计时=激活倒计时-1
 		结束 如果
-		如果 轮播 则
-			变量 durt : 整数=dtimemax/cutn
-			cutp=(dtime-(dtime%durt)-1)/durt
-		结束 如果
-		dtime=dtime+1
 		返回 假
 	结束 方法
 

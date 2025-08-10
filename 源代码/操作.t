@@ -2166,6 +2166,26 @@ This value cannot be null.
 	方法 随机单精度小数(s : 单精度小数,e : 单精度小数) :单精度小数
 		返回 double2float(数学运算.取随机小数(s,e-1f))
 	结束 方法
+	
+	@静态
+	方法 平滑取值(起 : 单精度小数,终 : 单精度小数,取值总数 : 单精度小数,当前 : 整数) : 单精度小数
+		变量 差值 : 单精度小数=终-起
+		//变量 中间值 : 单精度小数=(起+终)/2
+		//变量 高 : 单精度小数=差值/2
+		变量 半总 : 单精度小数=取值总数/2
+		变量 递增值 : 单精度小数=差值/(半总*(半总+1))
+		//变量 前值 : 单精度小数=(当前-起)/(差值/2)*(取值总数/2)
+		如果 当前<0 则
+			返回 0
+		否则 当前<取值总数/2
+			返回 (当前+1)*递增值
+		否则 当前<取值总数
+			返回 (取值总数-当前)*递增值
+		否则
+			返回 0
+		结束 如果
+		
+	结束 方法
 
 	@静态
 	方法 平方(num : 整数) : 整数
@@ -4006,7 +4026,7 @@ matrix.postConcat(result);
 			如果 pixmap!=空 则
 				返回 pixmap
 			否则
-				变量 wt : 位图配置=位图配置.ARGB_8888
+				//变量 wt : 位图配置=位图配置.ARGB_8888
 				pixmap=Pixmap.从ColorSet创建(本对象)
 				//android.graphics.Bitmap.createBitmap(#b,0,#wid,#wid,#hei,#wt);
 				返回 pixmap
@@ -4018,10 +4038,11 @@ matrix.postConcat(result);
 				切割图=数组创建(Pixmap,横切数*纵切数)
 				变量 bit=取Pixmap()
 				变量 cutp=计数
-				变量 acutp=计数%横切数
-				变量 bcutp=(计数-(计数%横切数))/横切数
+				变量 acutp=cutp%横切数
+				变量 bcutp=(cutp-(cutp%横切数))/纵切数
+				//日志("诀"+横切数+"  "+纵切数+"   "+计数+"   "+acutp+"   "+bcutp)
 				如果 横切数!=1 则
-					变量 stx=bcutp*bit.width()/横切数
+					变量 stx=acutp*bit.width()/横切数
 					变量 wih=bit.width()/横切数
 					变量 het=bit.height()
 					开始俘获异常()
@@ -4033,7 +4054,7 @@ matrix.postConcat(result);
 					//日志(lz.scale+"   /\\  "+lz.cutp)
 				结束 如果
 				如果 纵切数!=1 则
-					变量 sty=acutp*bit.height()/纵切数
+					变量 sty=bcutp*bit.height()/纵切数
 					变量 wih=bit.width()
 					变量 het=bit.height()/纵切数
 					开始俘获异常()
