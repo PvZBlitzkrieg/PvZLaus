@@ -53,6 +53,8 @@ PvZLaus
 	变量 冰冻 : 整数=0
 
 	变量 spcsta : 文本="none"
+	//2025.8.12
+	变量 进了家 : 逻辑型=假
 
 
 	//这个值每个固定帧会改变，可以完成一些2帧一次的操作
@@ -119,6 +121,7 @@ PvZLaus
 	变量 诞生x : 单精度小数=0f
 
 	变量 僵尸 : Zombie[]
+	变量 被推 : 逻辑型=假
 
 	方法 设置寒冷(时间 : 整数)
 		寒冷=时间
@@ -351,6 +354,11 @@ PvZLaus
 		结束 如果
 		返回 本对象
 	结束 方法
+	
+	//2025.8.11
+	方法 推()
+		被推=真
+	结束 方法
 
 	@静态
 	方法 setY(row : 整数) : 整数
@@ -410,6 +418,20 @@ PvZLaus
 	结束 方法
 
 	方法 Update() : 逻辑型
+		//小推车——僵尸的终极克星
+		如果 被推 则
+			变量 tracle : Tracle=Tracle.create(管理器,zombie_mowered,x(),y)
+			anim.暂停=真
+			变量 posw : POS
+			posw.置值()
+			变量 animv : Anim=Anim.创建动画("LawnMoweredZombie",管理器).代理("locator",anim,posw,真)
+			animv.播完暂停=真
+			tracle.anim=animv
+			
+			管理器.tracleList.添加成员(tracle)
+			返回 真
+		结束 如果
+		
 		如果 anim.animname=="anim_idle" 则
 		否则
 			变量 realy=gety()
@@ -1112,6 +1134,7 @@ PvZLaus
 	变量 gm : 窗口管理器=空
 	变量 销毁: 逻辑型=假
 	变量 scale : 单精度小数=0.9f
+	变量 击杀数 : 整数=0
 
 	@静态
 	方法 create(type : 整数=0,row : 整数=0,gm : 窗口管理器) : Mower
@@ -1143,6 +1166,28 @@ PvZLaus
 			x=x+xv
 		结束 如果
 		如果 x>1400 则
+			返回 真
+		结束 如果
+		循环(i, 0, gm.zombieList.长度)
+			变量 zombie : Zombie=gm.zombieList.取成员(i)
+			如果 zombie.row==row&&碰上(zombie) 则
+				zombie.推()
+				击杀数=击杀数+1
+				如果 启动==假 则
+					anim.暂停=假
+					启动=真
+					xv=3
+					(gm.禁出行)[row]=3000
+				否则 击杀数>5
+					xv=2
+				结束 如果
+			结束 如果
+		结束 循环
+		返回 假
+	结束 方法
+	
+	方法 碰上(zombie : Zombie) : 逻辑型
+		如果 x<zombie.x&&zombie.x<x+50 则
 			返回 真
 		结束 如果
 		返回 假
@@ -1225,7 +1270,7 @@ PvZLaus
 		否则 type==3
 			变量 animw=Anim.创建动画("Wallnut",manager).播放动画("anim_idle")
 			plant.anim={animw}
-			plant.HP=3000
+			plant.HP=4000
 			animw.speed=0.5f
 		否则 type==4
 
@@ -1532,7 +1577,7 @@ PvZLaus
 			coin.动画移位(-30,0)
 		否则 type==plantcard
 			coin.初始y=纵坐标
-			coin.yv=-3f
+			coin.yv=-2.5f
 			coin.ya=0.05f
 		结束 如果
 		coin.x=横坐标
@@ -1642,6 +1687,8 @@ PvZLaus
 	@静态
 	常量 plantcard : 整数=23
 	@静态
+	常量 zombie_mowered : 整数=24
+	@静态
 	常量 zombie_charred : 整数=0
 	@静态
 	常量 zombie_arm : 整数=1
@@ -1687,7 +1734,8 @@ PvZLaus
 		否则 type==zombie_head
 
 		否则 type==zombie_arm
-
+        
+		
 		结束 如果
 		tracle.x=横坐标
 		tracle.y=纵坐标
@@ -1722,6 +1770,10 @@ PvZLaus
 				否则
 					dtime=dtime-1
 				结束 如果
+			结束 如果
+		否则 type==zombie_mowered
+			如果 anim.暂停==真 则
+				返回 真
 			结束 如果
 		结束 如果
 		返回 假
@@ -2099,6 +2151,10 @@ PvZLaus
 	变量 账户数量=0
 	变量 当前账户 : 整数=-1
 	变量 账户 : userdataed
+	
+	方法 当前账户() : userdata
+		返回 账户[当前账户]
+	结束 方法
 结束 类
 
 类 userdata
@@ -2110,6 +2166,8 @@ PvZLaus
 	变量 解锁小游戏 : 逻辑型=假
 	变量 解锁益智 : 逻辑型=假
 	变量 解锁无尽 : 逻辑型=假
+	变量 卡槽数量 : 整数=6
+	变量 紫卡解锁 : 逻辑型[]=数组创建(逻辑型,8)
 结束 类
 
 类 userdataed : 集合模板类<userdata>

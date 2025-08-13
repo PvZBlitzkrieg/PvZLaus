@@ -978,6 +978,19 @@ PvZLaus
 		结束 循环
 		返回 本对象
 	结束 方法
+	
+	方法 obtainPOS(namer : 文本) : POS
+		返回 getPOS(frame,取reanim索引(namer)).pos2
+	结束 方法
+	
+	方法 取reanim索引(rid : 文本) : 整数
+		循环(i, 0, rean.长度)
+			如果 rean[i].name==rid 则
+				返回 i
+			结束 如果
+		结束 循环
+		返回 -1
+	结束 方法
 
 	方法 getPOS(indexw : 单精度小数,动画索引 : 整数) : POS_int
 		变量 hb=indexw%1
@@ -1150,7 +1163,7 @@ PvZLaus
 		变量 indexs=index+1
 
 		如果 indexs>=maxframe 则
-			返回 poslist[startframe]
+			返回 poslist[maxframe]
 		否则
 			返回 poslist[indexs]
 

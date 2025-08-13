@@ -47,6 +47,9 @@ PvZLaus
 //8.2修复了shaderProgram的奇怪问题，增加樱桃炸弹爆炸特效
 //8.3实现主界面
 //8.4实现舞王僵尸
+//8.5修舞王
+//8.6同上
+//8.7同上
 //8.8见下
 //8.9见下
 //8.10还原1-1
@@ -421,7 +424,7 @@ android:hardwareAccelerated = "false">]])
 	//@布局配置([[根布局=真,宽度=-1,高度=-1]])
 	//变量 线性布局1 : 线性布局
 	//@布局配置([[父布局=线性布局1,宽度=-1,高度=-1]])
-	变量 Editor1 : 编辑框
+	变量 Editor1 : 编辑框h
 
 	变量 view : 控件=空
 
@@ -449,7 +452,7 @@ android:hardwareAccelerated = "false">]])
 	变量 初始化次数 : 整数=0
 	变量 禁止初始化 : 逻辑型=假
 	变量 反色显示 : 逻辑型=假
-	变量 version="0.35.810.1 alpha dev(vb35.250810.460000)"
+	变量 version="0.38.810.1 alpha dev(vb38.250810.468228)"
 
 	变量 ldt : 长整数=0L
 
@@ -484,9 +487,9 @@ android:hardwareAccelerated = "false">]])
 	结束 事件
 */
 	事件 非启动窗口:创建完毕()
-
+		异化之炁(本对象)
+		//"w".到整数()
 		游戏初始化(aa,aac)
-
 		view=控件.创建控件(本对象)
 		//glview=绘图控件.创建控件(本对象)
 		code #view.setLayerType(android.view.View.LAYER_TYPE_HARDWARE, null);
@@ -1272,6 +1275,9 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 @导入Java("android.graphics.Bitmap.Config")
 类 窗口管理器
 
+	//2025.8.12切换版本/制作改版使用
+	变量 edition : 文本="Laus"
+
 	//0 标题界面
 	//1选择器界面
 	//2游戏界面
@@ -1438,6 +1444,15 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 	变量 字幕倒计时 : 整数=0
 	变量 能落阳光 : 逻辑型=真
 	变量 foreds : drawStyles
+
+	//2025.8.13实现卡片选择
+	变量 选择对象 : 整数=-1
+	变量 卡片演化 : 整数=0
+	变量 卡片演化时间=25
+	变量 演化方向 : 逻辑型
+
+
+	//变量 进了家 : 逻辑型=假
 
 	方法 sin_angle(angle : 单精度小数) : 单精度小数
 		返回 sinlist[angle.到整数()%360]
@@ -1665,81 +1680,9 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 					matrix_sd.postTranslate(10*scale,y*scale)
 					screen.draw_pm3a(seedbank,matrix_sd,,height-(卡槽偏移y*scale).到整数())
 
-					变量 matrixc : Matrix
-					matrixc.postScale(scale,scale)
-					如果 t1==空 则
-						变量 rect : Pixmap=Pixmap.新建(1,1)
-						code #rect.setColor(0x33333355);
-						code #rect.fill();
-						t1=Texture.从PixMap新建(rect)
+					如果 游戏开始() 则
+						绘制卡槽()
 					结束 如果
-					如果 t2==空 则
-						变量 rect2 : Pixmap=Pixmap.新建(1,1)
-						code #rect2.setColor(0x00000088);
-						code #rect2.fill();
-						t2=Texture.从PixMap新建(rect2)
-					结束 如果
-					如果 t3==空 则
-						变量 rect3 : Pixmap=Pixmap.新建(1,1)
-						code #rect3.setColor(0x33333366);
-						code #rect3.fill();
-						t3=Texture.从PixMap新建(rect3)
-					结束 如果
-					循环(i, 0, 取数组长度(cards))
-
-						变量 hx=95+i*(mmx+10)
-						变量 matrixd : Matrix=Matrix.从Matrix新建(matrixc)
-						matrixd.preTranslate(hx,8)
-						变量 pm : Pixmap=Pixmap.从Bitmap创建(getcardcs(cards[i]))
-						screen.draw_pm3a(pm,matrixd,,height-(卡槽偏移y*scale).到整数())
-						code #pm.dispose();
-
-						如果 游戏开始() 则
-							//描边画字(screen,关卡名(),600,600-24,0xffae924c,0xff000000,20,-1)
-							变量 coll : 矩形x=触判矩形.取("card_"+i,hx*scale,8*scale,50*scale,70*scale,窗口类型)
-							如果 coll.move&&card_cool[i]<=0&&(getvalue(cards[i])<=suncount||不耗阳光) 则
-								选择(cards[i])
-								predidx=i
-								如果 state=="cp" 则
-									state="op"
-									字幕("ADVICE_CLICK_ON_GRASS",-1)
-								否则 state=="bp"
-									字幕倒计时=0
-									state="sp"
-								结束 如果
-							结束 如果
-							如果 card_cool[i]<=0&&getvalue(cards[i])<=suncount 则
-								如果 (state=="cp")&&i==0 则
-									变量 闪烁时长=80
-									//变量 sx=动画进度%闪烁时长
-									变量 颜色 : 整数=取透明度(动画进度,闪烁时长)
-
-									绘制矩形3(screen,hx,8,50,70,真,color_from_argb({颜色,00,00,00}))
-									变量 arrow=image.可释放图.取项目("DownArrow").加载().取Texture()
-									变量 matrix_arr=Matrix.从Matrix新建(matrix)
-									matrix_arr.postScale(1,-1).postTranslate((hx+(50-arrow.getWidth())/2)*scale,(arrow.getHeight()+8+70+取透明度(动画进度,闪烁时长-20)/18f)*scale)
-									screen.dt_tmc(arrow,matrix_arr,{1f,0.9f,0.4f,1f},height,本对象)
-								结束 如果
-							结束 如果
-							如果 card_cool[i]>0 则
-								变量 maxct=getct(i)
-								变量 wid=(0+50)*scale
-								变量 hei=(0+70)*scale
-								//日志(ytl2bl(hx*scale,height,wid).到文本())
-								screen.draw_txywh(t1,hx*scale,ytl2bl(8*scale,height,hei),wid,hei)
-								hei=(0+70*(card_cool[i]*1f/maxct))*scale
-								screen.draw_txywh(t3,hx*scale,ytl2bl(8*scale,height,hei),wid,hei)
-								/////////canvas.drawRect(hx*scale,8*scale,(hx+50)*scale,(8+70)*scale,Paint.创建Paint().设置颜色(0x55333333))
-								////////:canvas.drawRect(hx*scale,8*scale,(hx+50)*scale,(8+70*(card_cool[i]*1f/maxct))*scale,Paint.创建Paint().设置颜色(0x66333333))
-							结束 如果
-							如果 suncount<getvalue(cards[i]) 则
-								变量 wid=(0+50)*scale
-								变量 hei=(0+70)*scale
-								screen.draw_txywh(t2,hx*scale,ytl2bl(8*scale,height,hei),wid,hei)
-								//////////canvas.drawRect(hx*scale,8*scale,(hx+50)*scale,(8+70)*scale,Paint.创建Paint().设置颜色(0x88000000))
-							结束 如果
-						结束 如果
-					结束 循环
 					//变量 paint : Paint=Paint.创建Paint().设置字体(文字字体).设置文字大小((文字大小*scale/25).到整数()).设置颜色(0xff000000)
 					字体1.getData().setScale(文字大小*scale/25)
 					字体1.setColor(Color.新建_rgba(argb2rgba(0xff000000)))
@@ -1827,6 +1770,8 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 					帧信息=帧信息+"\n"+"plant:"+"0"+"ms "+plantList.长度+"n"
 					帧信息=帧信息+"\n"+"proj:"+"0"+"ms "+projList.长度+"n"
 					帧信息=帧信息+"\n"+"particle:"+"0"+"ms "+particleList.长度+"n"
+					帧信息=帧信息+"\n"+"coin:"+"0"+"ms "+coinList.长度+"n"
+					帧信息=帧信息+"\n"+"tracle:"+"0"+"ms "+tracleList.长度+"n"
 					循环(i, 0, mowerList.mowerList.长度)
 						画Mower(mowerList.mowerList.取成员(i),hex)
 					结束 循环
@@ -1947,7 +1892,41 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 							位移=800
 						结束 如果
 						描边画字(screen,关卡名(),位移,600-24,0xffae924c,0xff000000,20,-1)
-						
+
+					结束 如果
+					
+					如果 游戏开始()==假 则
+						变量 scd : Texture=image.可释放图.取项目("SeedChooser_Background").加载().取Texture()
+						缩放绘制_左下免scale(screen,scd,0,选卡界面y-scd.getHeight(),0,0)
+						变量 stdx : 单精度小数=25
+						变量 stdy : 单精度小数=选卡界面y-36
+						变量 当前行=0
+						变量 当前列=0
+						变量 sil : Texture=image.可释放图.取项目("SeedPacketSilhouette").加载().取Texture()
+						循环(i, 0, 48)
+							变量 reax=stdx+当前行*(50+3)
+							变量 reay=stdy-(当前列+1)*70
+							缩放绘制_左下免scale(screen,sil,reax,reay,0,0)
+							如果 植物是否已获取(i) 则
+								变量 pl : Texture=Texture.从PixMap新建(Pixmap.从Bitmap创建(getcardcs(i)))
+								缩放绘制_左下免scale(screen,pl,reax,reay,0,0)
+								变量 coll : 矩形x=触判矩形.取("precard_"+i,-1,-1,50*scale,70*scale,窗口类型)
+								coll.x=reax*scale
+								coll.y=ytl2bl(reay,600,70)*scale
+								如果 coll.click 则
+									coll.click=假
+									select(i)
+								结束 如果
+							结束 如果
+							如果 当前行==7 则
+								当前列=当前列+1
+								当前行=0
+							否则
+								当前行=当前行+1
+							结束 如果
+						结束 循环
+						绘制卡槽()
+						//screen.draw_txywh(image.可释放图.取项目("SeedChooser_Background").加载().取Texture(),0,选卡界面y*scale)
 					结束 如果
 				否则 窗口类型==7
 					/*
@@ -2242,20 +2221,8 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 					帧信息=帧信息+"\n"+"background:"+(ntt-nt).到文本()+"ms"
 					nt=ntt*/
 				否则 窗口类型==1
-					如果 animess.长度==1&&animess[0].暂停 则
-						如果 animess[0].animname=="anim_open" 则
-							如果 state=="none" 则
-								state="pre"
-								如果 USER.账户数量==0 则
-									创建账户(真)
-								否则
-									登记()
-								结束 如果
-							结束 如果
-						结束 如果
-					否则 state=="sign"
-
-					否则 state=="advent"
+					//日志(animess[0].animname+"  "+animess[0].暂停)
+					如果 state=="advent" 则
 						如果 bool>3500 则
 							更新场景(2)
 						否则
@@ -2282,15 +2249,34 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 							结束 如果
 							动画进度= 动画进度+绘制消耗帧
 						结束 如果
-
+					否则 animess.长度>=1&&animess[0].暂停
+						//日志(animess[0].animname)
+						如果 animess[0].animname=="anim_open" 则
+							如果 state=="none" 则
+								state="pre"
+								如果 USER.账户数量==0 则
+									创建账户(真)
+								否则
+									登记(真)
+								结束 如果
+							结束 如果
+						结束 如果
 					结束 如果
+					//变量 uy=animess[0].getPOS(animess[0].frame,animess[0].取reanim索引("woodsign1")).pos2.y
 					如果 animess.长度>0&&USER.账户数量!=0 则
-						变量 paintw : Paint=Paint.创建Paint().设置字体(文字字体).设置文字大小((文字大小*scale*2*16/20).到整数()).设置颜色(0xff000000)
-						字体1.getData().setScale(文字大小*scale/20)
-						字体1.setColor(Color.新建_rgba(argb2rgba(0xffffffff)))
-						//这里绘制了用户名
-						变量 content=USER.账户.取成员(USER.当前账户).你的名字是ĉĵ+"!"
-						字体1.draw_bsxy(screen,content,(173*scale-paintw.测量文字(content)/2).到整数(),height-(18*scale).到整数()-animess[0].获取当前POS("woodsign2").y)
+						如果 state!="none" 则
+							//变量 paintw : Paint=Paint.创建Paint().设置字体(文字字体).设置文字大小((文字大小*scale*2*16/20).到整数()).设置颜色(0xff000000)
+							//字体1.getData().setScale(文字大小*scale/20)
+							//字体1.setColor(Color.新建_rgba(argb2rgba(0xffffffff)))
+							//这里绘制了用户名
+							变量 content=USER.账户.取成员(USER.当前账户).你的名字是ĉĵ+"!"
+							画字(screen,content,173,(95+animess[0].obtainPOS("woodsign1").y).到整数(),0xffffffff,23,-0.5f)
+							//帧信息=帧信息+"draw uu\n"
+							//字体1.draw_bsxy(screen,content,(173*scale-paintw.测量文字(content)/2).到整数(),height-(18*scale+animess[0].获取当前POS("woodsign1").y*scale).到整数())
+						结束 如果
+						如果 USER.当前账户().冒险关数>0 则
+							绘制关卡(screen)
+						结束 如果
 					结束 如果
 				结束 如果
 				//canvas.drawBitmap(bit.取bitmap(),100,100,空)
@@ -2302,7 +2288,8 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 			变量 nt=ntt
 
 			循环(i, 0, 触判矩形.长度)
-				//变量 coll : 矩形x=(触判矩形.rects)[i]
+				变量 coll : 矩形x=(触判矩形.rects)[i]
+				绘制矩形3(screen,coll.x/scale,coll.y/scale,coll.w/scale,coll.h/scale,假,0xff0000ff)
 				////////////绘制矩形(canvas,coll,0xff0000ff)
 			结束 循环
 			如果 渐变色值>=360f 则
@@ -2375,7 +2362,7 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 
 		如果 字幕倒计时!=0 则
 			绘制矩形3(screen,0,400,width/scale,110,真,0xaa000000)
-			
+
 			//screen.draw_txywh(t3,0,90*scale,width,110*scale)
 			描边画字(screen,字幕,(width/2f/scale).到整数(),440,0xfff7f2ab,,30,-0.5f)
 		结束 如果
@@ -2406,6 +2393,140 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 		返回 result
 	结束 方法
 
+	方法 绘制卡槽()
+		变量 matrixc : Matrix
+		matrixc.postScale(scale,scale)
+		如果 t1==空 则
+			变量 rect : Pixmap=Pixmap.新建(1,1)
+			code #rect.setColor(0x33333355);
+			code #rect.fill();
+			t1=Texture.从PixMap新建(rect)
+		结束 如果
+		如果 t2==空 则
+			变量 rect2 : Pixmap=Pixmap.新建(1,1)
+			code #rect2.setColor(0x00000088);
+			code #rect2.fill();
+			t2=Texture.从PixMap新建(rect2)
+		结束 如果
+		如果 t3==空 则
+			变量 rect3 : Pixmap=Pixmap.新建(1,1)
+			code #rect3.setColor(0x33333366);
+			code #rect3.fill();
+			t3=Texture.从PixMap新建(rect3)
+		结束 如果
+		循环(i, 0, 卡槽数量())
+			变量 hx=95+i*(mmx+10)
+			变量 sil : Texture=image.可释放图.取项目("SeedPacketSilhouette").加载().取Texture()
+			缩放绘制_左下免scale(screen,sil,hx,600-8-70-卡槽偏移y,0,0)
+			如果 i>=取数组长度(cards)||cards[i]==-1 则
+
+			否则
+				变量 transx : 单精度小数=0
+				变量 transy : 单精度小数=0
+				如果 (选择对象!=-1)&&选择对象==cards[i] 则
+					变量 proc=卡片演化*1f/卡片演化时间
+					如果 演化方向==假 则
+						proc=1-proc
+					结束 如果
+					变量 p_j=触判矩形.get("precard_"+cards[i])
+					transx=(p_j.x/scale-hx)*proc
+					transy=(p_j.y/scale-8)*proc
+				结束 如果
+				变量 matrixd : Matrix=Matrix.从Matrix新建(matrixc)
+				matrixd.preTranslate(hx+transx,8+transy)
+				变量 pm : Pixmap=Pixmap.从Bitmap创建(getcardcs(cards[i]))
+				screen.draw_pm3a(pm,matrixd,,height-(卡槽偏移y*scale).到整数())
+				code #pm.dispose();
+
+				如果 游戏开始() 则
+					//描边画字(screen,关卡名(),600,600-24,0xffae924c,0xff000000,20,-1)
+					变量 coll : 矩形x=触判矩形.取("card_"+i,hx*scale,8*scale,50*scale,70*scale,窗口类型)
+					如果 coll.move&&card_cool[i]<=0&&(getvalue(cards[i])<=suncount||不耗阳光) 则
+						选择(cards[i])
+						predidx=i
+						如果 state=="cp" 则
+							state="op"
+							字幕("ADVICE_CLICK_ON_GRASS",-1)
+						否则 state=="bp"
+							字幕倒计时=0
+							state="sp"
+						结束 如果
+					结束 如果
+					如果 card_cool[i]<=0&&getvalue(cards[i])<=suncount 则
+						如果 (state=="cp")&&i==0 则
+							变量 闪烁时长=80
+							//变量 sx=动画进度%闪烁时长
+							变量 颜色 : 整数=取透明度(动画进度,闪烁时长)
+
+							绘制矩形3(screen,hx,8,50,70,真,color_from_argb({颜色,00,00,00}))
+							变量 arrow=image.可释放图.取项目("DownArrow").加载().取Texture()
+							变量 matrix_arr=Matrix.从Matrix新建(matrix)
+							matrix_arr.postScale(1,-1).postTranslate((hx+(50-arrow.getWidth())/2)*scale,(arrow.getHeight()+8+70+取透明度(动画进度,闪烁时长-20)/18f)*scale)
+							screen.dt_tmc(arrow,matrix_arr,{1f,0.9f,0.4f,1f},height,本对象)
+						结束 如果
+					结束 如果
+					如果 card_cool[i]>0 则
+						变量 maxct=getct(i)
+						变量 wid=(0+50)*scale
+						变量 hei=(0+70)*scale
+						//日志(ytl2bl(hx*scale,height,wid).到文本())
+						screen.draw_txywh(t1,hx*scale,ytl2bl(8*scale,height,hei),wid,hei)
+						hei=(0+70*(card_cool[i]*1f/maxct))*scale
+						screen.draw_txywh(t3,hx*scale,ytl2bl(8*scale,height,hei),wid,hei)
+						/////////canvas.drawRect(hx*scale,8*scale,(hx+50)*scale,(8+70)*scale,Paint.创建Paint().设置颜色(0x55333333))
+						////////:canvas.drawRect(hx*scale,8*scale,(hx+50)*scale,(8+70*(card_cool[i]*1f/maxct))*scale,Paint.创建Paint().设置颜色(0x66333333))
+					结束 如果
+					如果 suncount<getvalue(cards[i]) 则
+						变量 wid=(0+50)*scale
+						变量 hei=(0+70)*scale
+						screen.draw_txywh(t2,hx*scale,ytl2bl(8*scale,height,hei),wid,hei)
+						//////////canvas.drawRect(hx*scale,8*scale,(hx+50)*scale,(8+70)*scale,Paint.创建Paint().设置颜色(0x88000000))
+					结束 如果
+				结束 如果
+			结束 如果
+
+		结束 循环
+	结束 方法
+
+	方法 缩放绘制_左下免scale(scr : SpriteBatch,tex : Texture,x : 单精度小数,y : 单精度小数,w乘数 : 单精度小数=0,h乘数 : 单精度小数=0)
+		scr.draw_txywh(tex,(x+tex.getWidth()*w乘数)*scale,(y+tex.getHeight()*h乘数)*scale,tex.getWidth()*scale,tex.getHeight()*scale)
+	结束 方法
+
+	方法 绘制关卡(scr : SpriteBatch)
+		//画字(scr,取大关().到文本(),570,170,0xffffffff,20,-1)
+		//画字(scr,取小关().到文本(),576,171,0xffffffff,20,0)
+		变量 dg=取大关(USER.当前账户().冒险关数).到文本()
+		//取大关().到文本()
+		变量 xg=取小关(USER.当前账户().冒险关数).到文本()
+		//取小关().到文本()
+		变量 xt=557
+
+		循环(i, 0, dg.长度)
+			变量 udg=dg.取文本中间(dg.长度-i-1,dg.长度-i-1).到整数()
+			变量 大关 : Pixmap=image.可释放图.取项目("SelectorScreen_LevelNumbers").加载().取Pixmap(10,1,udg)
+			//日志(大关.width()+"  "+大关.height())
+			//日志("秦玦:"+xt*scale+"    "+ytl2bl(字斜变(xt)*scale,height,大关.height()*scale))
+			scr.draw_txywh(Texture.从PixMap新建(大关),xt*scale,ytl2bl(字斜变(xt)*scale,height,大关.height()*scale),大关.width()*scale,大关.height()*scale)
+			xt=xt-(大关.width()*0.8f).到整数()
+		结束 循环
+		xt=575
+		循环(i, 0, xg.长度)
+			变量 uxg=xg.取文本中间(i,i).到整数()
+			变量 小关 : Pixmap=image.可释放图.取项目("SelectorScreen_LevelNumbers").取Pixmap(10,1,uxg)
+			scr.draw_txywh(Texture.从PixMap新建(小关),xt*scale,ytl2bl(字斜变(xt)*scale,height,小关.height()*scale),小关.width()*scale,小关.height()*scale)
+			xt=xt+(小关.width()*0.8f).到整数()
+		结束 循环
+		//变量 大关 : Pixmap=image.可释放图.取项目("SelectorScreen_LevelNumbers").取Pixmap(10,1,)
+		//变量 小关 : Pixmap=image.可释放图.取项目("SelectorScreen_LevelNumbers").取Pixmap(10,1,取小关())
+		//screen.draw_txy(Texture.从PixMap新建(大关),560*scale,ytl2bl(170,height,大关.height()))
+		//screen.draw_txy(Texture.从PixMap新建(小关),570*scale,ytl2bl(176,height,小关.height()))
+	结束 方法
+
+	方法 字斜变(xt : 整数) : 整数
+		//日志((11/80*xt+90+135).到文本())
+		返回 (11.25f/80*xt+50+animess[0].obtainPOS("SelectorScreen_BG_Right").y).到整数()
+	结束 方法
+
 	方法 shadow(xi : 单精度小数,yi : 单精度小数,type : 文本,matrixs : Matrix)
 		/////变量 azt=取当前纳秒时间戳()
 		变量 matrix_shadow=Matrix.从Matrix新建(matrixs).postTranslate((x+xi)*scale,(y+yi)*scale)
@@ -2428,8 +2549,21 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 		结束 如果
 	结束 方法
 
-	方法 登记()
-		state="sign"
+	方法 select(PID : 整数,演化方向w : 逻辑型=真)
+		循环(i, 0, 取数组长度(cards))
+			如果 cards[i]==-1 则
+				选择对象=PID
+				卡片演化=卡片演化时间
+				演化方向=演化方向w
+				cards[i]=PID
+				退出循环
+			结束 如果
+		结束 循环
+
+	结束 方法
+
+	方法 登记(播放 : 逻辑型=真)
+		//日志(播放.到文本())
 		如果 (USER.账户)[USER.当前账户].冒险关数>=0 则
 			animess[0].强制显示({"SelectorScreen_Adventure_button","SelectorScreen_Adventure_shadow"},0)
 			animess[0].强制显示({"SelectorScreen_StartAdventure_button","SelectorScreen_StartAdventure_shadow"},-1)
@@ -2443,8 +2577,11 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 		如果 (USER.账户)[USER.当前账户].解锁无尽==假 则
 			animess[0].真值渲染("SelectorScreen_ZenGarden_button",{0.5f,0.5f,0.5f,1f})
 		结束 如果
-		animess[0].播放动画("anim_sign")
-		animess[0].播完暂停=真
+		如果 播放 则
+			state="sign"
+			animess[0].播放动画("anim_sign")
+			animess[0].播完暂停=真
+		结束 如果
 		变量 leaves={"leaf1","leaf2","leaf3","leaf4","leaf5","leaf_SelectorScreen_Leaves"}
 		animess[0].强制显示(leaves,-1)
 		animess.添加成员(Anim.创建动画("SelectorScreen",本对象).播放动画("anim_grass"))
@@ -2570,6 +2707,24 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 		返回 假
 	结束 方法
 
+	方法 植物是否已获取(ID : 整数) : 逻辑型
+		如果 ID>=40 则
+			//紫卡植物是否已获得
+
+		否则
+			如果 USER.当前账户().冒险周目==0 则
+				如果 ID<USER.当前账户().冒险关数 则
+					返回 真
+				否则
+					返回 假
+				结束 如果
+			否则
+				返回 真
+			结束 如果
+		结束 如果
+		返回 假
+	结束 方法
+
 	方法 弹出窗口(内容 : 文本)
 		内容=内容
 	结束 方法
@@ -2593,6 +2748,10 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 			rgbShader.setUniformf4("u_clipRegion",0,0,width,height)
 			绘制(screen,ds,hex)
 		结束 循环
+	结束 方法
+
+	方法 卡槽数量() : 整数
+		返回 USER.当前账户().卡槽数量
 	结束 方法
 
 	方法 绘制僵尸(zombie : Zombie,hex : 单精度小数,matrix : Matrix)
@@ -2747,9 +2906,9 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 		结束 循环
 		返回 res
 	结束 方法
-	
+
 	方法 添加按钮(name : 文本)
-		
+
 	结束 方法
 
 	方法 读取文本(hex : 字节[],位置 : 整数) : 文本
@@ -2870,7 +3029,7 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 	方法 zombieidle(类型 : 整数) : Zombie
 		变量 zombie=Zombie.create(本对象,类型,-1)
 		zombie.anim.播放动画("anim_idle")
-		zombie.x=取随机数(1000,1200)
+		zombie.x=取随机数(1050,1200)
 		zombie.y=取随机数(0,500)
 		zombie.anim.speed=0.5f*Zombie.tool_getrandom()
 		返回 zombie
@@ -2961,10 +3120,28 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 			code #rectn.setColor(#colorw);
 			code #rectn.fill();
 			变量 recth : Texture=Texture.从PixMap新建(rectn)
-        
+
 			scr.draw_txywh(recth,xw*scale,ytl2bl(yw*scale,height,hw*scale),ww*scale,hw*scale)
 			rgbShader.setUniformf1("u_opacity",1)
-		rgbShader.setUniformf3("u_rgbFactors",1,1,1)
+			rgbShader.setUniformf3("u_rgbFactors",1,1,1)
+		否则
+			变量 rectn : Pixmap=Pixmap.新建(1,1)
+			变量 colorw=argb2rgba(color)
+			code #rectn.setColor(#colorw);
+			code #rectn.fill();
+			变量 recth : Texture=Texture.从PixMap新建(rectn)
+
+			变量 rx=xw*scale
+			变量 ry=ytl2bl(yw*scale,height,hw*scale)
+			变量 rw=ww*scale
+			变量 rh=hw*scale
+			变量 str=2
+			scr.draw_txywh(recth,rx,ry,rw+str,str)
+			rgbShader.setUniformf1("u_opacity",1)
+			rgbShader.setUniformf3("u_rgbFactors",1,1,1)
+			scr.draw_txywh(recth,rx,ry,str,rh)
+			scr.draw_txywh(recth,rx+rw,ry,str,rh)
+			scr.draw_txywh(recth,rx,ry+rh,rw,str)
 		结束 如果
 	结束 方法
 
@@ -3080,6 +3257,7 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 
 				结束 如果
 				如果 rdx!=空 则
+
 					如果 cv.判定(tx,ty) 则
 						rdx.move=move
 						rdx.click=click
@@ -3133,9 +3311,23 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 
 	结束 方法
 
+	方法 取大关(关 : 整数) : 整数
+		变量 小关=取小关(关)
+		变量 大关=(关-小关)/10+1
+		返回 大关
+	结束 方法
+
+	方法 取小关(关 : 整数) : 整数
+		变量 小关=关%10
+		如果 小关==0 则
+			小关=10
+		结束 如果
+		返回 小关
+	结束 方法
+
 	方法 关卡名() : 文本
-		变量 小关=level%10
-		变量 大关=(level-小关)/10+1
+		变量 小关=取小关(level)
+		变量 大关=取大关(level)
 		返回 游戏文本.取项目("LEVEL")+大关+"-"+小关
 	结束 方法
 
@@ -3250,6 +3442,7 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 				如果 anim.frame+1+anim.speed*绘制时间*speed>=anim.maxframe 则
 					如果 anim.播完暂停 则
 						anim.暂停=真
+						anim.frame=anim.maxframe-1
 					结束 如果
 				结束 如果
 				如果 anim.frame+1+anim.speed*anim.speedslow*绘制时间*speed>=anim.maxframe 则
@@ -3655,6 +3848,11 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 				生存模式.划过(point,"up")
 				//点击了益智模式 解谜模式 第三个选项
 			结束 事件
+			如果 USER.账户数量==0 则
+
+			否则
+				登记(假)
+			结束 如果
 		否则 序号==2
 			卡槽偏移y=-87
 			变量 lv=(USER.账户)[USER.当前账户].冒险关数
@@ -3787,11 +3985,23 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 				结束 如果
 			否则 进程==2
 				//&&动画进度>=100
-				如果 动画进度>=100&&选卡结束 则
+				如果 选卡结束&&动画进度>=100 则
 					进程=3
 					动画进度=0
-				否则
-					选卡界面y=选卡界面y+1f
+				否则 state=="none"
+					选卡界面y=选卡界面y+17.5f
+					如果 卡槽偏移y<0 则
+						卡槽偏移y=卡槽偏移y+3f
+					结束 如果
+					如果 卡槽偏移y>=0 则
+						卡槽偏移y=0
+					结束 如果
+					如果 选卡界面y>=513f 则
+						选卡界面y=513f
+						state="choose"
+					结束 如果
+				否则 state=="choose"
+
 				结束 如果
 			否则 进程==3
 				x=x+平滑取值(0,(600-217)+1,150,动画进度)
@@ -3813,7 +4023,6 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 						dsw.matrix=空
 						foreds.添加成员(dsw)
 						particleList.添加成员(Particle.新建("SodRoll",220,280,,本对象))
-						日志(particleList.长度.到文本())
 						进程=9
 					否则 level==2||level==3
 						进程=10
@@ -3888,13 +4097,15 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 				如果 动画进度>=150 则
 					zombieList.清空()
 					//这里可以在测试使创建几个僵尸看一看(2025.8.2)
-					循环(i, 0, 4)
+					循环(i, 0, 100)
 						//日志("addzombie:"+i.到文本())
 						//zombieList.添加成员(Zombie.create(本对象,取随机数(8,8),取出怪行()))
 					结束 循环
 					循环(i, 0, 5)
+						//变量 z=Zombie.create(本对象,取随机数(3,3),取出怪行())
+						//z.x=300
 						//日志("addzombie:"+i.到文本())
-						//zombieList.添加成员(Zombie.create(本对象,取随机数(3,3),取随机数(0,4)))
+						//zombieList.添加成员(z)
 					结束 循环
 					循环(u,0,3)
 						循环(i, 0, 5)
@@ -4005,6 +4216,13 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 			//俘获所有异常()
 			//结束俘获异常()
 		结束 循环
+		mowerList.Update()
+		如果 选择对象!=-1 则
+			卡片演化=卡片演化-1
+			如果 卡片演化<=0 则
+				选择对象=-1
+			结束 如果
+		结束 如果
 	结束 方法
 
 	方法 收集阳光(coin : Coin)
@@ -4025,6 +4243,11 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 				cards[i]=i
 			结束 循环
 			选卡结束=真
+		否则
+			cards=数组创建(整数,USER.当前账户().卡槽数量)
+			循环(i,0,取数组长度(cards))
+				cards[i]=-1
+			结束 循环
 		结束 如果
 	结束 方法
 
@@ -4153,4 +4376,7 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 		结束 如果
 		返回 假
 	结束 方法
+结束 类
+
+类 编辑框h : 编辑框
 结束 类

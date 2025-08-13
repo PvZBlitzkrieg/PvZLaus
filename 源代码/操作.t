@@ -2153,6 +2153,31 @@ This value cannot be null.
 
 结束 类
 
+@输出名("CrashWindow")
+类 CrashWindow : 窗口
+
+	@布局配置([[根布局=真,宽度=-1,高度=-1]])
+	变量 自适应布局1 : 自适应布局
+	@布局配置([[父布局=自适应布局1,@横坐标比例=-9.0E-4,@纵坐标比例=-5.0E-4,宽度=-1,高度=-1]])
+	变量 Editor1 : 编辑框h
+	
+	//变量 cla : Java类=空
+
+	/*
+	窗口创建完毕时触发该事件
+	*/
+	事件 CrashWindow:创建完毕()
+		订阅事件
+		开始俘获异常()
+		变量 sf : 启动信息=本对象.取启动信息()
+		Editor1.内容 = sf.取序列化对象("error").到文本()
+		俘获所有异常()
+		弹出提示(取俘获异常().取异常信息())
+		结束俘获异常()
+	结束 事件
+
+结束 类
+
 @导入Java("com.badlogic.gdx.graphics.Pixmap")
 @导入Java("android.view.WindowManager")
 @导入Java("android.graphics.*")
@@ -2185,6 +2210,65 @@ This value cannot be null.
 			返回 0
 		结束 如果
 		
+	结束 方法
+	
+	@静态
+	方法 异化之炁(ann : 安卓窗口)
+		开始俘获异常()
+		@code
+		
+		Thread.setDefaultUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler() {
+			public void uncaughtException(Thread thread, Throwable ex) {
+				//handleMainThread(ex);
+				//Thread.sleep(5000);
+				@end
+				ann.弹出提示("error")
+				//ann.切换窗口(启动窗口)
+				变量 alpha=""
+				code #alpha=ex.getLocalizedMessage();
+				变量 异常信息 : 异常=空
+				code #异常信息=ex;
+				变量 ad : 文本
+				变量 is : 整数
+				变量 aas : 文本
+				变量 error : 文本
+				error=error+(异常信息.取异常信息()+"\n"+异常信息.取造成原因()+"\n"+alpha)
+				变量 qd : 启动信息
+				@code
+				StackTraceElement[] ste=thread.currentThread().getStackTrace();
+				for (int i=0;i<ste.length;i++) {
+					#ad=ste[i].getClassName();
+					#is=i;
+					#aas=android.util.Log.getStackTraceString(ex);
+					@end
+					error=error+(is.到文本()+" "+ad+"\n")
+					
+					@code
+				}
+				@end
+				error=(aas)
+				qd.置入("error",error)
+				qd.置入("a",ann.取类信息())
+				ann.切换窗口(CrashWindow,qd)
+				@code
+				//调试输出("abc")
+				//ann.弹出提示("yyy")
+				
+				//ann.切换窗口(启动窗口)
+				
+			//TODO
+				System.out.println(ex.getLocalizedMessage());
+			    //#ann.finish();
+				
+			}
+		});
+		
+		@end
+		//ann.弹出提示(ann.取类信息().完整类名+" set successfully")
+		//wbk.内容 = ann.取类信息().完整类名+" set successfully"
+		俘获所有异常()
+		文件操作.写出文本文件("/sdcard/bk/logcat.4","异常:"+取俘获异常().取异常信息())
+		结束俘获异常()
 	结束 方法
 
 	@静态
