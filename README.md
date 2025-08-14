@@ -48,7 +48,7 @@ start()方法中的新线程具有每10ms更新游戏的功能,游戏停摆19%�
 僵尸类.创建之后要手动添加到ZombieList中    
 *成员变量*  
 x:僵尸不实时的x坐标(应用x()方法获取) y:y坐标  
-enableMatrix:是否对僵尸进行 [矩阵变换](README.md#androidgraphicsmatrix)
+enableMatrix:是否对僵尸进行 [矩阵变换](?tab=readme-ov-file#androidgraphicsmatrix)
 HP:代表僵尸血量  HPM:代表僵尸初始血量  
 HHP:代表僵尸头盔血量  HHPM:代表僵尸初始头盔血量  
 SHP:代表僵尸盾牌血量  SHPM:代表僵尸初始盾牌血量  
