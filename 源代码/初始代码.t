@@ -869,6 +869,7 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 			"proc:"+管理器.进程+"  dptime:"+管理器.动画进度+"\n"+
 			"wave:"+管理器.wave+"  wavemax:"+管理器.wavemax+"\n"+
 			"Manger state:"+管理器.state+"  CTAS:"+管理器.sunapp+"  CCTAS:"+管理器.能落阳光+"\n"+
+			"card_move:"+管理器.卡片演化+"   CBY:"+管理器.选卡界面y+"\n"+
 			version+"\n---------------"
 			//日志(textw)
 			//变量 paintw=Paint.创建Paint().设置文字大小(30)
@@ -1450,6 +1451,7 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 	变量 卡片演化 : 整数=0
 	变量 卡片演化时间=25
 	变量 演化方向 : 逻辑型
+	变量 撤回id : 整数=-1
 
 
 	//变量 进了家 : 逻辑型=假
@@ -1894,10 +1896,26 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 						描边画字(screen,关卡名(),位移,600-24,0xffae924c,0xff000000,20,-1)
 
 					结束 如果
-					
+
 					如果 游戏开始()==假 则
 						变量 scd : Texture=image.可释放图.取项目("SeedChooser_Background").加载().取Texture()
 						缩放绘制_左下免scale(screen,scd,0,选卡界面y-scd.getHeight(),0,0)
+						变量 but : Texture=image.可释放图.取项目("SeedChooser_Button").加载().取Texture()
+						变量 按钮y=选卡界面y-scd.getHeight()+34
+						缩放绘制_左下免scale(screen,but,scd.getWidth()/2,按钮y,-0.5f,-0.5f)
+						变量 coll : 矩形x=触判矩形.取("start",-1,-1,but.getWidth()*scale,but.getHeight()*scale,窗口类型)
+						coll.x=((scd.getWidth()-but.getWidth())/2)*scale
+						coll.y=ytl2bl(按钮y-but.getHeight()/2,600,but.getHeight())*scale
+						如果 coll.click&&选好植物() 则
+							coll.click=假
+							state="start"
+							选卡结束=真
+						结束 如果
+						变量 文本颜色=0xff400000
+						如果 选好植物() 则
+							文本颜色=0xffd59f2b
+						结束 如果
+						描边画字(screen,游戏文本.取项目("LETS_ROCK_BUTTON"),scd.getWidth()/2,(600-按钮y).到整数(),文本颜色,0xff000000,24,-0.5f,-0.5f,-1,-1)
 						变量 stdx : 单精度小数=25
 						变量 stdy : 单精度小数=选卡界面y-36
 						变量 当前行=0
@@ -1910,14 +1928,19 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 							如果 植物是否已获取(i) 则
 								变量 pl : Texture=Texture.从PixMap新建(Pixmap.从Bitmap创建(getcardcs(i)))
 								缩放绘制_左下免scale(screen,pl,reax,reay,0,0)
-								变量 coll : 矩形x=触判矩形.取("precard_"+i,-1,-1,50*scale,70*scale,窗口类型)
-								coll.x=reax*scale
-								coll.y=ytl2bl(reay,600,70)*scale
-								如果 coll.click 则
-									coll.click=假
-									select(i)
+								如果 植物已选(i) 则
+									绘制矩形3(screen,reax,ytl2bl(reay,600,70),50,70,真,0x80000000)
+								否则
+									变量 coll : 矩形x=触判矩形.取("precard_"+i,-1,-1,50*scale,70*scale,窗口类型)
+									coll.x=reax*scale
+									coll.y=ytl2bl(reay,600,70)*scale
+									如果 coll.click 则
+										coll.click=假
+										select(i)
+									结束 如果
 								结束 如果
 							结束 如果
+
 							如果 当前行==7 则
 								当前列=当前列+1
 								当前行=0
@@ -2288,8 +2311,9 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 			变量 nt=ntt
 
 			循环(i, 0, 触判矩形.长度)
+				//这里绘制了触判矩形
 				变量 coll : 矩形x=(触判矩形.rects)[i]
-				绘制矩形3(screen,coll.x/scale,coll.y/scale,coll.w/scale,coll.h/scale,假,0xff0000ff)
+				//绘制矩形3(screen,coll.x/scale,coll.y/scale,coll.w/scale,coll.h/scale,假,0xff0000ff)
 				////////////绘制矩形(canvas,coll,0xff0000ff)
 			结束 循环
 			如果 渐变色值>=360f 则
@@ -2421,6 +2445,7 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 			如果 i>=取数组长度(cards)||cards[i]==-1 则
 
 			否则
+				变量 coll : 矩形x=触判矩形.取("card_"+i,hx*scale,8*scale,50*scale,70*scale,窗口类型)
 				变量 transx : 单精度小数=0
 				变量 transy : 单精度小数=0
 				如果 (选择对象!=-1)&&选择对象==cards[i] 则
@@ -2432,6 +2457,10 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 					transx=(p_j.x/scale-hx)*proc
 					transy=(p_j.y/scale-8)*proc
 				结束 如果
+				如果 (选择对象!=-1)&&演化方向==假&&i>=撤回id 则
+					变量 proc=卡片演化*1f/卡片演化时间
+					transx=(50+10)*proc
+				结束 如果
 				变量 matrixd : Matrix=Matrix.从Matrix新建(matrixc)
 				matrixd.preTranslate(hx+transx,8+transy)
 				变量 pm : Pixmap=Pixmap.从Bitmap创建(getcardcs(cards[i]))
@@ -2440,7 +2469,7 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 
 				如果 游戏开始() 则
 					//描边画字(screen,关卡名(),600,600-24,0xffae924c,0xff000000,20,-1)
-					变量 coll : 矩形x=触判矩形.取("card_"+i,hx*scale,8*scale,50*scale,70*scale,窗口类型)
+
 					如果 coll.move&&card_cool[i]<=0&&(getvalue(cards[i])<=suncount||不耗阳光) 则
 						选择(cards[i])
 						predidx=i
@@ -2483,9 +2512,45 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 						//////////canvas.drawRect(hx*scale,8*scale,(hx+50)*scale,(8+70)*scale,Paint.创建Paint().设置颜色(0x88000000))
 					结束 如果
 				结束 如果
+
+				如果 coll.click 则
+					coll.click=假
+					如果 游戏开始()&&card_cool[i]<=0&&getvalue(cards[i])<=suncount 则
+						选择(cards[cards[i]])
+						predidx=cards[i]
+					否则
+						select(cards[i],假)
+					结束 如果
+				结束 如果
 			结束 如果
 
 		结束 循环
+		如果 (选择对象!=-1)&&演化方向==假 则
+			变量 hx=95+撤回id*(mmx+10)
+			//变量 coll : 矩形x=触判矩形.取("card_"+i,hx*scale,8*scale,50*scale,70*scale,窗口类型)
+			变量 transx : 单精度小数=0
+			变量 transy : 单精度小数=0
+			//如果 (选择对象!=-1)&&选择对象==cards[i] 则
+			变量 proc=1-卡片演化*1f/卡片演化时间
+			变量 p_j=触判矩形.get("precard_"+选择对象)
+			transx=(p_j.x/scale-hx)*proc
+			transy=(p_j.y/scale-8)*proc
+			变量 matrixd : Matrix=Matrix.从Matrix新建(matrixc)
+			matrixd.preTranslate(hx+transx,8+transy)
+			变量 pm : Pixmap=Pixmap.从Bitmap创建(getcardcs(选择对象))
+			screen.draw_pm3a(pm,matrixd,,height-(卡槽偏移y*scale).到整数())
+			code #pm.dispose();
+		结束 如果
+
+	结束 方法
+
+	方法 植物已选(ID : 整数) : 逻辑型
+		循环(i, 0, 取数组长度(cards))
+			如果 cards[i]==ID 则
+				返回 真
+			结束 如果
+		结束 循环
+		返回 假
 	结束 方法
 
 	方法 缩放绘制_左下免scale(scr : SpriteBatch,tex : Texture,x : 单精度小数,y : 单精度小数,w乘数 : 单精度小数=0,h乘数 : 单精度小数=0)
@@ -2550,15 +2615,37 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 	结束 方法
 
 	方法 select(PID : 整数,演化方向w : 逻辑型=真)
-		循环(i, 0, 取数组长度(cards))
-			如果 cards[i]==-1 则
-				选择对象=PID
-				卡片演化=卡片演化时间
-				演化方向=演化方向w
-				cards[i]=PID
-				退出循环
-			结束 如果
-		结束 循环
+		如果 演化方向w==假 则
+			变量 typew="search"
+			循环(i, 0, 取数组长度(cards))
+				如果 typew=="search" 则
+					如果 cards[i]==PID 则
+						撤回id=i
+						typew="move"
+					结束 如果
+				结束 如果
+				如果 typew=="move" 则
+					如果 i==取数组长度(cards)-1 则
+						cards[i]=-1
+					否则
+						cards[i]=cards[i+1]
+					结束 如果
+				结束 如果
+			结束 循环
+			选择对象=PID
+			卡片演化=卡片演化时间
+			演化方向=演化方向w
+		否则
+			循环(i, 0, 取数组长度(cards))
+				如果 cards[i]==-1 则
+					选择对象=PID
+					卡片演化=卡片演化时间
+					演化方向=演化方向w
+					cards[i]=PID
+					退出循环
+				结束 如果
+			结束 循环
+		结束 如果
 
 	结束 方法
 
@@ -2588,6 +2675,16 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 
 	结束 方法
 
+	方法 是否获得紫卡() : 逻辑型
+		变量 bo=USER.当前账户().紫卡解锁
+		循环(i,0,取数组长度(bo))
+			如果 bo[i]==true 则
+				返回 真
+			结束 如果
+		结束 循环
+		返回 假
+	结束 方法
+
 	方法 取通关植物() : 整数
 
 		变量 小关=level%10
@@ -2599,6 +2696,13 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 			num=num
 		结束 如果
 		返回 大关*8+num
+	结束 方法
+
+	方法 选好植物() : 逻辑型
+		如果 取数组长度(cards)!=0&&cards[取数组长度(cards)-1]!=-1 则
+			返回 真
+		结束 如果
+		返回 假
 	结束 方法
 
 	方法 drawzb()
@@ -3331,20 +3435,20 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 		返回 游戏文本.取项目("LEVEL")+大关+"-"+小关
 	结束 方法
 
-	方法 画字(scr : SpriteBatch,text : 文本,x : 整数,y : 整数,color : 整数,size : 单精度小数,长度乘数 : 单精度小数)
+	方法 画字(scr : SpriteBatch,text : 文本,x : 整数,y : 整数,color : 整数,size : 单精度小数,长度乘数 : 单精度小数,宽度乘数 : 单精度小数=0f)
 		变量 paint : Paint=Paint.创建Paint().设置字体(文字字体).设置文字大小((size*scale).到整数()).设置颜色(0xff000000)
 		字体1.getData().setScale(size*scale/32)
 		字体1.setColor(Color.新建_rgba(argb2rgba(color)))
 		//这里绘制了阳光总数
-		字体1.draw_bsxy(scr,text,(x*scale+paint.测量文字(text)*长度乘数).到整数(),(height-y*scale).到整数())
+		字体1.draw_bsxy(scr,text,(x*scale+paint.测量文字(text)*长度乘数).到整数(),(height-(y*scale+宽度乘数*size)).到整数())
 		rgbShader.setUniformf1("u_opacity",1)
 		rgbShader.setUniformf3("u_rgbFactors",1,1,1)
 		//日志("做"+(x*scale+paint.测量文字(text)*长度乘数).到整数().到文本()+"  "+(height-(y*scale)).到整数().到文本())
 	结束 方法
 
-	方法 描边画字(scr : SpriteBatch,text : 文本,x : 整数,y : 整数,color1 : 整数=0xffc9baa5,color2 : 整数=0xff000000,size : 单精度小数,长度乘数 : 单精度小数)
-		画字(scr,text,x+2,y+2,color2,size,长度乘数)
-		画字(scr,text,x,y,color1,size,长度乘数)
+	方法 描边画字(scr : SpriteBatch,text : 文本,x : 整数,y : 整数,color1 : 整数=0xffc9baa5,color2 : 整数=0xff000000,size : 单精度小数,长度乘数 : 单精度小数,宽度乘数 : 单精度小数=0f,xp : 整数=2,yp : 整数=2)
+		画字(scr,text,x+xp,y+yp,color2,size,长度乘数,宽度乘数)
+		画字(scr,text,x,y,color1,size,长度乘数,宽度乘数)
 
 	结束 方法
 
@@ -3986,8 +4090,11 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 			否则 进程==2
 				//&&动画进度>=100
 				如果 选卡结束&&动画进度>=100 则
-					进程=3
-					动画进度=0
+					选卡界面y=选卡界面y-17.5f
+					如果 选卡界面y<=-513f 则
+						动画进度=0
+						进程=3
+					结束 如果
 				否则 state=="none"
 					选卡界面y=选卡界面y+17.5f
 					如果 卡槽偏移y<0 则
@@ -4002,6 +4109,8 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 					结束 如果
 				否则 state=="choose"
 
+				否则 state=="start"
+					
 				结束 如果
 			否则 进程==3
 				x=x+平滑取值(0,(600-217)+1,150,动画进度)
@@ -4026,6 +4135,9 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 						进程=9
 					否则 level==2||level==3
 						进程=10
+					否则 state=="start"
+						准备推车()
+						进程=12
 					否则
 						进程=8
 					结束 如果
