@@ -1301,16 +1301,142 @@ PvZLaus
 			变量 animw=Anim.创建动画("PeaShooter",manager).播放动画("anim_idle")
 			plant.anim={animw}
 		否则 type==8
-			变量 animw=Anim.创建动画("PuffShroom",manager).播放动画("anim_idle")
+			变量 animw=Anim.创建动画("Puffshroom",manager).播放动画("anim_idle")
 			plant.anim={animw}
 		否则 type==9
 			变量 animw=Anim.创建动画("SunShroom",manager).播放动画("anim_idle")
 			plant.anim={animw}
 		否则 type==10
-			变量 animw=Anim.创建动画("Fumeshroon",manager).播放动画("anim_idle")
+			变量 animw=Anim.创建动画("Fumeshroom",manager).播放动画("anim_idle")
 			plant.anim={animw}
 		否则 type==11
 			变量 animw=Anim.创建动画("Gravebuster",manager).播放动画("anim_idle")
+			plant.anim={animw}
+		否则 type==12
+			变量 animw=Anim.创建动画("Hypnoshroom",manager).播放动画("anim_idle")
+			plant.anim={animw}
+		否则 type==13
+			变量 animw=Anim.创建动画("ScaredyShroom",manager).播放动画("anim_idle")
+			plant.anim={animw}
+		否则 type==14
+			变量 animw=Anim.创建动画("Iceshroom",manager).播放动画("anim_idle")
+			plant.anim={animw}
+		否则 type==15
+			变量 animw=Anim.创建动画("DoomShroom",manager).播放动画("anim_idle")
+			plant.anim={animw}
+		否则 type==16
+			变量 animw=Anim.创建动画("Lilypad",manager).播放动画("anim_idle")
+			plant.anim={animw}
+		否则 type==17
+			变量 animw=Anim.创建动画("Squash",manager).播放动画("anim_idle")
+			plant.anim={animw}
+		否则 type==18
+			变量 animw=Anim.创建动画("ThreePeater",manager).播放动画("anim_idle")
+			plant.anim={animw}
+		否则 type==19
+			变量 animw=Anim.创建动画("Tanglekelp",manager).播放动画("anim_idle")
+			plant.anim={animw}
+		否则 type==20
+			变量 animw=Anim.创建动画("Jalapeno",manager).播放动画("anim_idle")
+			plant.anim={animw}
+		否则 type==21
+			变量 animw=Anim.创建动画("Caltrop",manager).播放动画("anim_idle")
+			plant.anim={animw}
+		否则 type==22
+			变量 animw=Anim.创建动画("Torchwood",manager).播放动画("anim_idle")
+			plant.anim={animw}
+		否则 type==23
+			变量 animw=Anim.创建动画("Tallnut",manager).播放动画("anim_idle")
+			plant.anim={animw}
+		否则 type==24
+			变量 animw=Anim.创建动画("SeaShroom",manager).播放动画("anim_idle")
+			plant.anim={animw}
+		否则 type==25
+			变量 animw=Anim.创建动画("Plantern",manager).播放动画("anim_idle")
+			plant.anim={animw}
+		否则 type==26
+			变量 animw=Anim.创建动画("Cactus",manager).播放动画("anim_idle")
+			plant.anim={animw}
+		否则 type==27
+			变量 animw=Anim.创建动画("Blover",manager).播放动画("anim_idle")
+			plant.anim={animw}
+		否则 type==28
+			变量 animw=Anim.创建动画("SplitPea",manager).播放动画("anim_idle")
+			plant.anim={animw}
+		否则 type==29
+			变量 animw=Anim.创建动画("Starfruit",manager).播放动画("anim_idle")
+			plant.anim={animw}
+		否则 type==30
+			变量 animw=Anim.创建动画("Pumpkin",manager).播放动画("anim_idle")
+			plant.HP=4000
+			animw.speed=0.5f
+			plant.anim={animw}
+			
+		否则 type==31
+			变量 animw=Anim.创建动画("Magnetshroom",manager).播放动画("anim_idle")
+			plant.anim={animw}
+		否则 type==32
+			变量 animw=Anim.创建动画("Cabbagepult",manager).播放动画("anim_idle")
+			plant.anim={animw}
+		否则 type==33
+			变量 animw=Anim.创建动画("Pot",manager).播放动画("anim_idle")
+			plant.anim={animw}
+		否则 type==34
+			变量 animw=Anim.创建动画("Cornpult",manager).播放动画("anim_idle")
+			plant.anim={animw}
+		否则 type==35
+			变量 animw=Anim.创建动画("Coffeebean",manager).播放动画("anim_idle")
+			plant.anim={animw}
+		否则 type==36
+			变量 animw=Anim.创建动画("Garlic",manager).播放动画("anim_idle")
+			plant.anim={animw}
+		否则 type==37
+			变量 animw=Anim.创建动画("Umbrellaleaf",manager).播放动画("anim_idle")
+			plant.anim={animw}
+		否则 type==38
+			变量 animw=Anim.创建动画("Marigold",manager).播放动画("anim_idle")
+			plant.anim={animw}
+		否则 type==39
+			变量 animw=Anim.创建动画("Melonpult",manager).播放动画("anim_idle")
+			plant.anim={animw}
+		否则 type==40
+			变量 animw=Anim.创建动画("GatlingPea",manager).播放动画("anim_idle")
+			plant.anim={animw}
+		否则 type==41
+			变量 animw=Anim.创建动画("TwinSunflower",manager).播放动画("anim_idle")
+			plant.anim={animw}
+		否则 type==42
+			变量 animw=Anim.创建动画("GloomShroom",manager).播放动画("anim_idle")
+			plant.anim={animw}
+		否则 type==43
+			变量 animw=Anim.创建动画("Cattail",manager).播放动画("anim_idle")
+			plant.anim={animw}
+		否则 type==44
+			变量 animw=Anim.创建动画("WinterMelon",manager).播放动画("anim_idle")
+			plant.anim={animw}
+		否则 type==45
+			变量 animw=Anim.创建动画("GoldMagnet",manager).播放动画("anim_idle")
+			plant.anim={animw}
+		否则 type==46
+			变量 animw=Anim.创建动画("SpikeRock",manager).播放动画("anim_idle")
+			plant.anim={animw}
+		否则 type==47
+			变量 animw=Anim.创建动画("TangleKelp",manager).播放动画("anim_idle")
+			plant.anim={animw}
+		否则 type==48
+			变量 animw=Anim.创建动画("Imitater",manager).播放动画("anim_idle")
+			plant.anim={animw}
+		否则 type==49
+			变量 animw=Anim.创建动画("TangleKelp",manager).播放动画("anim_idle")
+			plant.anim={animw}
+		否则 type==50
+			变量 animw=Anim.创建动画("TangleKelp",manager).播放动画("anim_idle")
+			plant.anim={animw}
+		否则 type==51
+			变量 animw=Anim.创建动画("TangleKelp",manager).播放动画("anim_idle")
+			plant.anim={animw}
+		否则 type==52
+			变量 animw=Anim.创建动画("TangleKelp",manager).播放动画("anim_idle")
 			plant.anim={animw}
 		结束 如果
 		plant.HPM=plant.HP
@@ -1416,6 +1542,16 @@ PvZLaus
 				结束 如果
 			结束 如果
 			dtime=dtime-1
+		否则 type==30
+			如果 HP<HPM*1/4 则
+				anim[0].代理图片("Pumpkin_front","IMAGE_REANIM_"+"Pumpkin_damage3".到大写())
+			否则 HP<HPM*2/4
+				anim[0].代理图片("Pumpkin_front","IMAGE_REANIM_"+"Pumpkin_damage2".到大写())
+			否则 HP<HPM*3/4
+				anim[0].代理图片("Pumpkin_front","IMAGE_REANIM_"+"Pumpkin_damage1".到大写())
+			否则
+				anim[0].代理图片("Pumpkin_front","IMAGE_REANIM_"+"Pumpkin_front".到大写())
+			结束 如果
 		结束 如果
 		返回 假
 	结束 方法

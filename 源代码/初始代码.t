@@ -15,6 +15,9 @@ PvZLaus
     You should have received a copy of the GNU Affero General Public License
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 ****/
+
+
+
 //2025.2.3开始编写
 //2025.2.3实现动画播放
 //2025.2.5完成加载界面
@@ -53,6 +56,8 @@ PvZLaus
 //8.8见下
 //8.9见下
 //8.10还原1-1
+//8.13见下
+//8.14实现选卡，实现大多数植物的动画
 //@外部依赖库("../jar/classes-4.jar")
 //@附加资源("../assets")
 //@外部动态库("../../lib")
@@ -452,7 +457,7 @@ android:hardwareAccelerated = "false">]])
 	变量 初始化次数 : 整数=0
 	变量 禁止初始化 : 逻辑型=假
 	变量 反色显示 : 逻辑型=假
-	变量 version="0.38.810.1 alpha dev(vb38.250810.468228)"
+	变量 version="0.43.810.1 alpha dev(vb43.250810.481322)"
 
 	变量 ldt : 长整数=0L
 
@@ -1915,7 +1920,7 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 						如果 选好植物() 则
 							文本颜色=0xffd59f2b
 						结束 如果
-						描边画字(screen,游戏文本.取项目("LETS_ROCK_BUTTON"),scd.getWidth()/2,(600-按钮y).到整数(),文本颜色,0xff000000,24,-0.5f,-0.5f,-1,-1)
+						描边画字(screen,游戏文本.取项目("LETS_ROCK_BUTTON"),scd.getWidth()/2,(600-按钮y).到整数(),文本颜色,0xff000000,20,-0.5f,-0.5f,-1,-1)
 						变量 stdx : 单精度小数=25
 						变量 stdy : 单精度小数=选卡界面y-36
 						变量 当前行=0
@@ -2422,7 +2427,7 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 		matrixc.postScale(scale,scale)
 		如果 t1==空 则
 			变量 rect : Pixmap=Pixmap.新建(1,1)
-			code #rect.setColor(0x33333355);
+			code #rect.setColor(0x00000055);
 			code #rect.fill();
 			t1=Texture.从PixMap新建(rect)
 		结束 如果
@@ -2434,7 +2439,7 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 		结束 如果
 		如果 t3==空 则
 			变量 rect3 : Pixmap=Pixmap.新建(1,1)
-			code #rect3.setColor(0x33333366);
+			code #rect3.setColor(0x00000040);
 			code #rect3.fill();
 			t3=Texture.从PixMap新建(rect3)
 		结束 如果
@@ -2494,6 +2499,7 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 							screen.dt_tmc(arrow,matrix_arr,{1f,0.9f,0.4f,1f},height,本对象)
 						结束 如果
 					结束 如果
+
 					如果 card_cool[i]>0 则
 						变量 maxct=getct(i)
 						变量 wid=(0+50)*scale
@@ -2515,9 +2521,12 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 
 				如果 coll.click 则
 					coll.click=假
-					如果 游戏开始()&&card_cool[i]<=0&&getvalue(cards[i])<=suncount 则
-						选择(cards[cards[i]])
-						predidx=cards[i]
+					如果 游戏开始() 则
+						如果 card_cool[i]<=0&&getvalue(cards[i])<=suncount 则
+							选择(cards[cards[i]])
+							predidx=cards[i]
+						结束 如果
+
 					否则
 						select(cards[i],假)
 					结束 如果
@@ -3097,25 +3106,27 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 		如果 level==1 则
 			suncount=150
 		结束 如果
-		如果 level==1 则
-			循环(i, 0, 5)
-				zombieList.添加成员(zombieidle(0))
-			结束 循环
-		否则 level==2
-			循环(i, 0, 10)
-				zombieList.添加成员(zombieidle(0))
-			结束 循环
-		否则
-			循环(i, 0, 取数组长度(zombietype))
-				zombieList.添加成员(zombieidle(zombietype[i]))
-			结束 循环
-			变量 hst=取随机数(2,5)
-			如果 取数组长度(zombietype)<5则
-				hst=取数组长度(zombietype)
+		如果 level!=50 则
+			如果 level==1 则
+				循环(i, 0, 5)
+					zombieList.添加成员(zombieidle(0))
+				结束 循环
+			否则 level==2
+				循环(i, 0, 10)
+					zombieList.添加成员(zombieidle(0))
+				结束 循环
+			否则
+				循环(i, 0, 取数组长度(zombietype))
+					zombieList.添加成员(zombieidle(zombietype[i]))
+				结束 循环
+				变量 hst=取随机数(2,5)
+				如果 取数组长度(zombietype)<5则
+					hst=取数组长度(zombietype)
+				结束 如果
+				循环(i, 0, hst)
+					zombieList.添加成员(zombieidle(zombietype[取随机数(0,取数组长度(zombietype)-1)]))
+				结束 循环
 			结束 如果
-			循环(i, 0, hst)
-				zombieList.添加成员(zombieidle(zombietype[取随机数(0,取数组长度(zombietype)-1)]))
-			结束 循环
 		结束 如果
 		循环(i, 0, 5)
 			//coinList.添加成员(Coin.create(本对象,lawnmower,200,100+i*100))
@@ -4110,7 +4121,7 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 				否则 state=="choose"
 
 				否则 state=="start"
-					
+
 				结束 如果
 			否则 进程==3
 				x=x+平滑取值(0,(600-217)+1,150,动画进度)
