@@ -354,7 +354,7 @@ PvZLaus
 		结束 如果
 		返回 本对象
 	结束 方法
-	
+
 	//2025.8.11
 	方法 推()
 		被推=真
@@ -427,11 +427,11 @@ PvZLaus
 			变量 animv : Anim=Anim.创建动画("LawnMoweredZombie",管理器).代理("locator",anim,posw,真)
 			animv.播完暂停=真
 			tracle.anim=animv
-			
+
 			管理器.tracleList.添加成员(tracle)
 			返回 真
 		结束 如果
-		
+
 		如果 anim.animname=="anim_idle" 则
 		否则
 			变量 realy=gety()
@@ -1185,7 +1185,7 @@ PvZLaus
 		结束 循环
 		返回 假
 	结束 方法
-	
+
 	方法 碰上(zombie : Zombie) : 逻辑型
 		如果 x<zombie.x&&zombie.x<x+50 则
 			返回 真
@@ -1215,6 +1215,8 @@ PvZLaus
 	变量 无敌 : 逻辑型
 	变量 无视 : 逻辑型
 	变量 state : 文本
+	//2025.8.15
+	变量 遇到僵尸 : 逻辑型=假
 
 	变量 管理器 : 窗口管理器
 
@@ -1235,7 +1237,7 @@ PvZLaus
 			posw.x=-38
 			posw.y=-48
 			变量 anim_head : Anim=Anim.创建动画("PeaShooterSingle",manager).播放动画("anim_head_idle")
-			anim_head.speed=1f
+			anim_head.speed=0.5f
 			变量 anim=Anim.创建动画("PeaShooterSingle",manager).播放动画("anim_idle").代理("anim_stem",anim_head,posw)
 			//日志(anim.startframe+"   "+anim.maxframe)
 			anim.speed=Zombie.tool_getrandom()*0.5f
@@ -1286,7 +1288,7 @@ PvZLaus
 			posw.x=-38
 			posw.y=-48
 			变量 anim_head : Anim=Anim.创建动画("SnowPea",manager).播放动画("anim_head_idle")
-			anim_head.speed=1f
+			anim_head.speed=0.5f
 			变量 anim=Anim.创建动画("SnowPea",manager).播放动画("anim_idle").代理("anim_stem",anim_head,posw)
 			//日志(anim.startframe+"   "+anim.maxframe)
 			anim.speed=Zombie.tool_getrandom()*0.5f
@@ -1296,15 +1298,21 @@ PvZLaus
 			plant.发射延迟=30
 		否则 type==6
 			变量 animw=Anim.创建动画("Chomper",manager).播放动画("anim_idle")
+			animw.speed=Zombie.tool_getrandom()*0.5f
 			plant.anim={animw}
 		否则 type==7
 			变量 animw=Anim.创建动画("PeaShooter",manager).播放动画("anim_idle")
+			//变量 animw=Anim.创建动画("Chomper",manager).播放动画("anim_idle")
+			animw.speed=Zombie.tool_getrandom()*0.5f
 			plant.anim={animw}
 		否则 type==8
 			变量 animw=Anim.创建动画("Puffshroom",manager).播放动画("anim_idle")
+			//变量 animw=Anim.创建动画("Chomper",manager).播放动画("anim_idle")
+			animw.speed=Zombie.tool_getrandom()*0.5f
 			plant.anim={animw}
 		否则 type==9
 			变量 animw=Anim.创建动画("SunShroom",manager).播放动画("anim_idle")
+			animw.speed=Zombie.tool_getrandom()*0.5f
 			plant.anim={animw}
 		否则 type==10
 			变量 animw=Anim.创建动画("Fumeshroom",manager).播放动画("anim_idle")
@@ -1371,7 +1379,7 @@ PvZLaus
 			plant.HP=4000
 			animw.speed=0.5f
 			plant.anim={animw}
-			
+
 		否则 type==31
 			变量 animw=Anim.创建动画("Magnetshroom",manager).播放动画("anim_idle")
 			plant.anim={animw}
@@ -1448,7 +1456,10 @@ PvZLaus
 		如果 HP<=0 则
 			返回 真
 		结束 如果
-		如果 type==0||type==5 则
+
+		如果 type==0||type==5||type==8 则
+
+			/*
 			如果 (可发射&&dtime==dtimemax-发射延迟) 则
 				可发射=假
 				变量 tp="ProjectilePea"
@@ -1471,6 +1482,29 @@ PvZLaus
 				结束 循环
 			结束 如果
 			dtime=dtime-1
+			*/
+			变量 pd=判定僵尸()
+			//如果 pd!=空 则
+			如果 type==0||type==5 则
+				变量 anim_head=anim[0].panims.名称("anim_stem")
+				如果 dtime==30&&pd!=空 则
+					anim_head.speed=1f
+					anim_head.播放动画("anim_shooting",真)
+					可发射=真
+				否则 dtime==0&&可发射
+					shoot()
+					可发射=假
+				结束 如果
+				如果 anim_head.animname!="anim_shooting" 则
+					anim_head.speed=0.5f
+				结束 如果
+			结束 如果
+			如果 可发射||pd!=空 则
+				dtime=dtime-1
+				如果 dtime<0 则
+					dtime=dtimemax
+				结束 如果
+			结束 如果
 		否则 type==1
 			如果 dtime<=0 则
 				变量 sunt : Coin=Coin.create(管理器,sun,x()+50,y)
@@ -1556,6 +1590,33 @@ PvZLaus
 		返回 假
 	结束 方法
 
+	方法 shoot()
+		变量 tp="ProjectilePea"
+		如果 type==5 则
+			tp="ProjectileSnowPea"
+		否则 type==8
+			tp="PuffShroom_puff1"
+		结束 如果
+		管理器.projList.添加成员(Proj.create(管理器,tp,row,x()+50,y+18+取随机数(0,5)-5))
+	结束 方法
+
+	方法 判定僵尸() : Zombie
+		变量 rlt : Zombie=空
+		循环(i, 0, 管理器.zombieList.长度)
+			变量 zombie=(管理器.zombieList)[i]
+			如果 zombie.无形==假&&zombie.row==row&&zombie.x()>x()&&(rlt==空||zombie.x()<rlt.x()) 则
+				rlt=zombie
+			结束 如果
+		结束 循环
+		如果 type==6&&rlt.x()>x()+100 则
+			返回 空
+		结束 如果
+		如果 type==8&&rlt.x()>x()+300 则
+			返回 空
+		结束 如果
+		返回 rlt
+	结束 方法
+
 	方法 动画移位(xn : 单精度小数,yn : 单精度小数)
 		x=x+xn
 		y=y+yn
@@ -1615,6 +1676,7 @@ PvZLaus
 	变量 damage : 整数
 	变量 splash : 单精度小数=0f
 	变量 effect : 整数=0
+	变量 scale : 单精度小数=1f
 
 	@静态
 	方法 create(manager : 窗口管理器,type : 文本,row : 整数,横坐标 : 单精度小数,纵坐标 : 单精度小数) : Proj
@@ -1639,6 +1701,9 @@ PvZLaus
 			tps="image"
 			damage=20
 			effect=500
+		否则 type=="PuffShroom_puff1"
+			tps="image"
+			scale=0f
 		结束 如果
 		返回 本对象
 	结束 方法
@@ -1646,6 +1711,11 @@ PvZLaus
 	方法 Update() : 逻辑型
 		如果 x<0||x>1400||y<0||y>600 则
 			返回 真
+		结束 如果
+		如果 type=="PuffShroom_puff1"&&scale<1f 则
+			scale=scale+0.002f
+		否则
+			scale=1
 		结束 如果
 		x=x+xv
 		y=y+yv
@@ -1870,8 +1940,8 @@ PvZLaus
 		否则 type==zombie_head
 
 		否则 type==zombie_arm
-        
-		
+
+
 		结束 如果
 		tracle.x=横坐标
 		tracle.y=纵坐标
@@ -2097,7 +2167,7 @@ PvZLaus
 			prt.dtimemax=200
 			变量 dt=50
 			循环(i, 0, 100)
-                变量 lzb : 粒子=粒子.新建(,,,,,)
+				变量 lzb : 粒子=粒子.新建(,,,,,)
 				lzb.pic="dirtsmall"
 				lzb.setdtime(dt)
 				lzb.存活倒计时=dt
@@ -2132,7 +2202,7 @@ PvZLaus
 
 			//开始俘获异常()
 			变量 hu : 整数=parts.长度-i-1
-			
+
 			如果 parts[hu].Update()==真 则
 				clear(parts[hu])
 				parts.删除成员(hu)
@@ -2287,7 +2357,7 @@ PvZLaus
 	变量 账户数量=0
 	变量 当前账户 : 整数=-1
 	变量 账户 : userdataed
-	
+
 	方法 当前账户() : userdata
 		返回 账户[当前账户]
 	结束 方法

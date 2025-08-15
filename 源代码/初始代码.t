@@ -46,7 +46,7 @@ PvZLaus
 //7.29见下
 //7.30见下
 //7.31见下
-//8.1这三天将渲染引擎转为libgdx,原来是原生的canvas&drawbitmap
+//8.1这三天将渲染引擎转为libgdx,原来是原生的canvas&view
 //8.2修复了shaderProgram的奇怪问题，增加樱桃炸弹爆炸特效
 //8.3实现主界面
 //8.4实现舞王僵尸
@@ -1417,8 +1417,9 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 
 	变量 字体1 : BitmapFont=空
 
-	变量 无冷却 : 逻辑型=假
-	变量 不耗阳光 : 逻辑型=假
+	//作弊 cheat
+	变量 无冷却 : 逻辑型=真
+	变量 不耗阳光 : 逻辑型=真
 
 	变量 animess : Animed
 
@@ -1496,13 +1497,26 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 		//canvas=Canvas.从BitMap创建(screen)
 	结束 方法
 
+	变量 card_tx : Texture[]=数组创建(Texture,256)
+	方法 getcardtx(type : 整数) : Texture
+        如果 card_tx[type]==空 则
+        	返回 Texture.从PixMap新建(Pixmap.从Bitmap创建(getcardcs(type)))
+		否则
+			返回 card_tx[type]
+        结束 如果
+	结束 方法
+	变量 card_cs : 位图对象[]=数组创建(位图对象,256)
 	方法 getcardcs(type : 整数) : 位图对象
-		变量 col : 整数=type%8
-		变量 line : 整数=(type-col)/8
-		变量 xs=col*(mmx+mux)
-		变量 ys=line*(mmy+muy)
-		变量 csr : 位图对象=裁剪位图(plant_cards,xs,ys,50,70)
-		返回 csr
+		如果 card_cs[type]==空 则
+			变量 col : 整数=type%8
+			变量 line : 整数=(type-col)/8
+			变量 xs=col*(mmx+mux)
+			变量 ys=line*(mmy+muy)
+			变量 csr : 位图对象=裁剪位图(plant_cards,xs,ys,50,70)
+			返回 csr
+		否则
+			返回 card_cs[type]
+		结束 如果
 	结束 方法
 
 	方法 getres(id :文本) : 未加载图
@@ -1742,15 +1756,16 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 						循环(i, 0, projList.长度)
 							如果 projList[i].row==h 则
 								变量 proj=projList[i]
-								变量 bit : Pixmap=空
+								变量 bit : Texture=空
 								变量 matrix_proj=Matrix.从Matrix新建(matrix).postTranslate((x+proj.x)*scale,(y+proj.y)*scale)
 								如果 proj.tps=="image" 则
-									bit=image.可释放图.取项目(proj.type).加载().取Pixmap()
-									screen.draw_pm3a(bit,matrix_proj,,height)
+									bit=image.可释放图.取项目(proj.type).加载().取Texture()
 									//变量 ix=(x+proj.x)*scale
 									//变量 iy=(y+proj.y)*scale
 									//////////canvas.drawRect(ix,iy,ix+10,iy+10,Paint.创建Paint().设置颜色(0xffff0000))
 								结束 如果
+								matrix_proj.preScale_4(proj.scale,proj.scale,bit.getWidth()/2,bit.getHeight()/2)
+								screen.dt_tma(bit,matrix_proj,,height)
 							结束 如果
 						结束 循环
 
@@ -1796,7 +1811,8 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 						//变量 ds : drawStyle
 						如果 coin.type==plantcard 则
 							//日志("预计"+取通关植物())
-							变量 tex=Texture.从PixMap新建(Pixmap.从Bitmap创建(getcardcs(取通关植物())))
+							变量 tex=getcardtx(取通关植物())
+							//Texture.从PixMap新建(Pixmap.从Bitmap创建(getcardcs(取通关植物())))
 							变量 matrix_cards=Matrix.从Matrix新建(matrix).postTranslate(coin.x,coin.y)
 							screen.dt_tma(tex,matrix_cards,1,height,本对象)
 						否则
@@ -1931,7 +1947,8 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 							变量 reay=stdy-(当前列+1)*70
 							缩放绘制_左下免scale(screen,sil,reax,reay,0,0)
 							如果 植物是否已获取(i) 则
-								变量 pl : Texture=Texture.从PixMap新建(Pixmap.从Bitmap创建(getcardcs(i)))
+								变量 pl : Texture=getcardtx(i)
+								//Texture.从PixMap新建(Pixmap.从Bitmap创建(getcardcs(i)))
 								缩放绘制_左下免scale(screen,pl,reax,reay,0,0)
 								如果 植物已选(i) 则
 									绘制矩形3(screen,reax,ytl2bl(reay,600,70),50,70,真,0x80000000)
@@ -2467,11 +2484,14 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 					transx=(50+10)*proc
 				结束 如果
 				变量 matrixd : Matrix=Matrix.从Matrix新建(matrixc)
-				matrixd.preTranslate(hx+transx,8+transy)
+				//matrixd.preTranslate(hx+transx,8+transy)
+				/*
 				变量 pm : Pixmap=Pixmap.从Bitmap创建(getcardcs(cards[i]))
 				screen.draw_pm3a(pm,matrixd,,height-(卡槽偏移y*scale).到整数())
 				code #pm.dispose();
-
+*/
+                变量 pm : Texture=getcardtx(cards[i])
+				缩放绘制_左下免scale(screen,pm,hx+transx,ytl2bl(8+transy,600,pm.getHeight()))
 				如果 游戏开始() 则
 					//描边画字(screen,关卡名(),600,600-24,0xffae924c,0xff000000,20,-1)
 
@@ -2501,7 +2521,7 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 					结束 如果
 
 					如果 card_cool[i]>0 则
-						变量 maxct=getct(i)
+						变量 maxct=getct(cards[i])
 						变量 wid=(0+50)*scale
 						变量 hei=(0+70)*scale
 						//日志(ytl2bl(hx*scale,height,wid).到文本())
@@ -2523,7 +2543,7 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 					coll.click=假
 					如果 游戏开始() 则
 						如果 card_cool[i]<=0&&getvalue(cards[i])<=suncount 则
-							选择(cards[cards[i]])
+							选择(cards[i])
 							predidx=cards[i]
 						结束 如果
 
