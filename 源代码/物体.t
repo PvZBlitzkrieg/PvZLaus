@@ -55,6 +55,8 @@ PvZLaus
 	变量 spcsta : 文本="none"
 	//2025.8.12
 	变量 进了家 : 逻辑型=假
+	//2025.8.18
+	变量 die : 逻辑型=假
 
 
 	//这个值每个固定帧会改变，可以完成一些2帧一次的操作
@@ -418,6 +420,9 @@ PvZLaus
 	结束 方法
 
 	方法 Update() : 逻辑型
+		如果 die 则
+			返回 真
+		结束 如果
 		//小推车——僵尸的终极克星
 		如果 被推 则
 			变量 tracle : Tracle=Tracle.create(管理器,zombie_mowered,x(),y)
@@ -1301,15 +1306,24 @@ PvZLaus
 			animw.speed=Zombie.tool_getrandom()*0.5f
 			plant.anim={animw}
 		否则 type==7
-			变量 animw=Anim.创建动画("PeaShooter",manager).播放动画("anim_idle")
+			变量 posw : POS
+			posw.置值()
+			posw.x=-38
+			posw.y=-48
+			变量 anim_head : Anim=Anim.创建动画("PeaShooter",manager).播放动画("anim_head_idle")
+			变量 animw=Anim.创建动画("PeaShooter",manager).播放动画("anim_idle").代理("anim_stem",anim_head,posw)
 			//变量 animw=Anim.创建动画("Chomper",manager).播放动画("anim_idle")
 			animw.speed=Zombie.tool_getrandom()*0.5f
 			plant.anim={animw}
+			plant.dtimemax=150
+			plant.dtime=取随机数(0,plant.dtimemax)
 		否则 type==8
 			变量 animw=Anim.创建动画("Puffshroom",manager).播放动画("anim_idle")
 			//变量 animw=Anim.创建动画("Chomper",manager).播放动画("anim_idle")
 			animw.speed=Zombie.tool_getrandom()*0.5f
 			plant.anim={animw}
+			plant.dtimemax=150
+			plant.dtime=取随机数(0,plant.dtimemax)
 		否则 type==9
 			变量 animw=Anim.创建动画("SunShroom",manager).播放动画("anim_idle")
 			animw.speed=Zombie.tool_getrandom()*0.5f
@@ -1457,7 +1471,7 @@ PvZLaus
 			返回 真
 		结束 如果
 
-		如果 type==0||type==5||type==8 则
+		如果 type==0||type==5||type==7||type==8 则
 
 			/*
 			如果 (可发射&&dtime==dtimemax-发射延迟) 则
@@ -1485,15 +1499,23 @@ PvZLaus
 			*/
 			变量 pd=判定僵尸()
 			//如果 pd!=空 则
-			如果 type==0||type==5 则
-				变量 anim_head=anim[0].panims.名称("anim_stem")
-				如果 dtime==30&&pd!=空 则
+			如果 type==0||type==5||type==7||type==8 则
+				变量 anim_head : Anim
+				如果 (dtime==30||(dtime==0&&type==7))&&pd!=空 则
+					
+					如果 type==0||type==5||type==7 则
+						anim_head=anim[0].panims.名称("anim_stem")
+					否则 type==8
+						anim_head=anim[0]
+					结束 如果
 					anim_head.speed=1f
 					anim_head.播放动画("anim_shooting",真)
 					可发射=真
-				否则 dtime==0&&可发射
+				否则 （dtime==15||(dtime==145&&type==7))&&可发射
 					shoot()
-					可发射=假
+					如果 (type==7&&dtime==10)==假 则
+						可发射=假
+					结束 如果
 				结束 如果
 				如果 anim_head.animname!="anim_shooting" 则
 					anim_head.speed=0.5f
@@ -1557,6 +1579,7 @@ PvZLaus
 						zombie.damage(1800,3)
 					结束 如果
 				结束 循环
+				无视=真
 				anim[0].播放动画("anim_mashed").暂停=真
 				anim[0].禁止演化=真
 				state="dying"
@@ -1576,6 +1599,49 @@ PvZLaus
 				结束 如果
 			结束 如果
 			dtime=dtime-1
+		否则 type==6
+			变量 pd=判定僵尸()
+			//如果 (dtime<=0) 则
+			如果 pd!=空&&(dtime<=0)&&anim[0].animname=="anim_idle" 则
+				anim[0].speed=anim[0].speed*2
+				state="bite"
+				anim[0].播放动画("anim_bite")
+				anim[0].播完暂停=真
+				
+			否则 anim[0].animname=="anim_bite"&&anim[0].frame>=42&&state=="bite"
+				state="chew"
+				
+				如果 pd==空 则
+					
+				否则
+					
+					dtime=4340
+					pd.die=真
+				结束 如果
+			否则 anim[0].animname=="anim_bite"&&anim[0].暂停
+				anim[0].speed=0.5f
+				anim[0].播完暂停=假
+				如果 dtime==0 则
+					变量 fr=anim[0].frame
+					anim[0].播放动画("anim_idle")
+					anim[0].speed=anim[0].speed/2
+					anim[0].过渡从(fr.到整数(),4)
+				否则
+					anim[0].播放动画("anim_chew")
+				结束 如果
+			否则 dtime<=0&&anim[0].animname=="anim_chew"
+				state="swall"
+				anim[0].播放动画("anim_swallow")
+				anim[0].动画回归="anim_idle"
+				anim[0].speed=anim[0].speed/2
+			结束 如果
+			如果 dtime>0 则
+				dtime=dtime-1
+			否则
+				dtime=0
+			结束 如果
+			//否则
+			//结束 如果
 		否则 type==30
 			如果 HP<HPM*1/4 则
 				anim[0].代理图片("Pumpkin_front","IMAGE_REANIM_"+"Pumpkin_damage3".到大写())
@@ -1591,13 +1657,17 @@ PvZLaus
 	结束 方法
 
 	方法 shoot()
+		变量 ox=50
+		变量 oy=18+取随机数(0,5)-5
 		变量 tp="ProjectilePea"
 		如果 type==5 则
 			tp="ProjectileSnowPea"
 		否则 type==8
 			tp="PuffShroom_puff1"
+			oy=45
+			管理器.particleList.添加成员(Particle.新建("PuffShroomMuzzle",x()+50,y()+45,row,管理器))
 		结束 如果
-		管理器.projList.添加成员(Proj.create(管理器,tp,row,x()+50,y+18+取随机数(0,5)-5))
+		管理器.projList.添加成员(Proj.create(管理器,tp,row,x()+ox,y+oy))
 	结束 方法
 
 	方法 判定僵尸() : Zombie
@@ -1608,10 +1678,10 @@ PvZLaus
 				rlt=zombie
 			结束 如果
 		结束 循环
-		如果 type==6&&rlt.x()>x()+100 则
+		如果 type==6&&rlt!=空&&rlt.x()>x()+100 则
 			返回 空
 		结束 如果
-		如果 type==8&&rlt.x()>x()+300 则
+		如果 type==8&&rlt!=空&&rlt.x()>x()+300 则
 			返回 空
 		结束 如果
 		返回 rlt
@@ -1702,6 +1772,7 @@ PvZLaus
 			damage=20
 			effect=500
 		否则 type=="PuffShroom_puff1"
+			damage=20
 			tps="image"
 			scale=0f
 		结束 如果
@@ -1713,7 +1784,7 @@ PvZLaus
 			返回 真
 		结束 如果
 		如果 type=="PuffShroom_puff1"&&scale<1f 则
-			scale=scale+0.002f
+			scale=scale+0.05f
 		否则
 			scale=1
 		结束 如果
@@ -2162,7 +2233,6 @@ PvZLaus
 				prt.parts.添加成员(lzb)
 			结束 循环
 		否则 type=="SodRoll"
-			日志("ok")
 			prt.dtime=0
 			prt.dtimemax=200
 			变量 dt=50
@@ -2185,6 +2255,29 @@ PvZLaus
 				lzb.cutp=取随机数(0,15)
 				prt.parts.添加成员(lzb)
 			结束 循环
+		否则 type=="PuffShroomMuzzle"
+			prt.dtime=0
+			prt.dtimemax=20
+			变量 dt=20
+			循环(i, 0, 取随机数(6,8))
+				变量 lzb : 粒子=粒子.新建(,,,,,)
+				lzb.pic="PuffShroom_puff2"
+				lzb.setdtime(dt)
+				变量 alpha=随机单精度小数(0.3f,0.8f)
+				lzb.alpha="0-"+alpha+" 80-"+alpha+" 100-0"
+				lzb.x=随机单精度小数(2,4)
+				lzb.y=随机单精度小数(-3,2)
+				lzb.xv=随机单精度小数(1f,0)
+				lzb.yv=随机单精度小数(-1f,1f)
+				lzb.ya=0.03f
+				变量 s1=随机单精度小数(0.2f,0.3f)
+				变量 s2=随机单精度小数(0.6f,0.8f)
+				lzb.scale="0-"+s1+" 70-"+s2+" 100-0"
+				prt.parts.添加成员(lzb)
+			结束 循环
+			//PuffShroom_puff2
+		否则 type=="PuffShroomTrail"
+
 		结束 如果
 		返回 prt
 	结束 方法
@@ -2192,7 +2285,6 @@ PvZLaus
 
 	方法 Update() : 逻辑型
 		如果 type=="SodRoll" 则
-			日志("in")
 			x=220+管理器.动画进度
 		结束 如果
 		如果 dtime>=dtimemax 则

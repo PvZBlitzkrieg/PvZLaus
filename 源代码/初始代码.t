@@ -58,6 +58,8 @@ PvZLaus
 //8.10还原1-1
 //8.13见下
 //8.14实现选卡，实现大多数植物的动画
+//8.17小喷菇
+//8.18大嘴花
 //@外部依赖库("../jar/classes-4.jar")
 //@附加资源("../assets")
 //@外部动态库("../../lib")
@@ -875,6 +877,7 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 			"wave:"+管理器.wave+"  wavemax:"+管理器.wavemax+"\n"+
 			"Manger state:"+管理器.state+"  CTAS:"+管理器.sunapp+"  CCTAS:"+管理器.能落阳光+"\n"+
 			"card_move:"+管理器.卡片演化+"   CBY:"+管理器.选卡界面y+"\n"+
+			"This version is produced by Xborks,\nTG channel:t.me/xborks,\nGithub:github.com/urepoch/PvZLaus\n"+
 			version+"\n---------------"
 			//日志(textw)
 			//变量 paintw=Paint.创建Paint().设置文字大小(30)
@@ -1500,11 +1503,14 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 	变量 card_tx : Texture[]=数组创建(Texture,256)
 	方法 getcardtx(type : 整数) : Texture
         如果 card_tx[type]==空 则
-        	返回 Texture.从PixMap新建(Pixmap.从Bitmap创建(getcardcs(type)))
+			变量 txr=Texture.从PixMap新建(Pixmap.从Bitmap创建(getcardcs(type)))
+			card_tx[type]=txr
+			返回 txr
 		否则
 			返回 card_tx[type]
         结束 如果
 	结束 方法
+	
 	变量 card_cs : 位图对象[]=数组创建(位图对象,256)
 	方法 getcardcs(type : 整数) : 位图对象
 		如果 card_cs[type]==空 则
@@ -1513,6 +1519,7 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 			变量 xs=col*(mmx+mux)
 			变量 ys=line*(mmy+muy)
 			变量 csr : 位图对象=裁剪位图(plant_cards,xs,ys,50,70)
+			card_cs[type]=csr
 			返回 csr
 		否则
 			返回 card_cs[type]
@@ -1611,17 +1618,17 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 
 				变量 conf : XMLR=(config)["image"]["title"]
 				变量 ImageRelativePath=conf.refeindex("ImageRelativePath")
-				变量 dirt=image.可释放图.取项目(conf.refeindex("dirt")).加载().取Pixmap()
+				变量 dirt=image.可释放图.取项目(conf.refeindex("dirt")).加载().取Texture()
 				变量 dirt_bottom=conf.refeindex("dirt_bottom").到单精度小数()*scale
 				变量 grass : Pixmap=image.可释放图.取项目(conf.refeindex("grass")).加载().取Pixmap()
 				变量 grass_bottom=conf.refeindex("grass_bottom").到单精度小数()*scale
-				变量 titlescreen=image.可释放图.取项目(ImageRelativePath).加载().取Pixmap()
+				变量 titlescreen=image.可释放图.取项目(ImageRelativePath).加载().取Texture()
 				变量 logo_top=conf.refeindex("logo_top").到单精度小数()*scale
 				变量 matrix : Matrix=Matrix.新建().postScale(scale,scale)
-				screen.draw_pm3a(titlescreen,matrix,,height)
+				screen.dt_tma(titlescreen,matrix,,height)
 				变量 matrix_dirt=Matrix.从Matrix新建(matrix)
-				matrix_dirt.postTranslate(居中(dirt.width()*scale)+7*scale,height-dirt_bottom)
-				screen.draw_pm3a(dirt,matrix_dirt,,height)
+				matrix_dirt.postTranslate(居中(dirt.getWidth()*scale)+7*scale,height-dirt_bottom)
+				screen.dt_tma(dirt,matrix_dirt,,height)
 				变量 matrix_grass=Matrix.从Matrix新建(matrix)
 				变量 grass_x=居中(grass.width()*scale)
 				变量 grass_y=height-grass_bottom
@@ -1632,20 +1639,20 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 					grass=裁剪Pixmap(grass,0,0,grass_width,grass.height())
 					screen.draw_pm3a(grass,matrix_grass,,height)
 				结束 如果
-				变量 roll=image.可释放图.取项目("SodRollCap").加载().取Pixmap()
+				变量 roll=image.可释放图.取项目("SodRollCap").加载().取Texture()
 				变量 matrix_roll=Matrix.从Matrix新建(matrix)
 				变量 roll_scale=1f-进度*0.65f
-				变量 roll_x=grass_width*scale+grass_x-roll.width()*scale/2
-				变量 roll_y=height-grass_bottom-roll.height()*scale+grass.height()*scale
-				matrix_roll.postRotate_3(进度*720f,roll.width()*scale/2,roll.height()*scale/2)
-				matrix_roll.postScale_4(roll_scale,roll_scale,roll.width()*scale/2,roll.height()*scale)
+				变量 roll_x=grass_width*scale+grass_x-roll.getWidth()*scale/2
+				变量 roll_y=height-grass_bottom-roll.getHeight()*scale+grass.height()*scale
+				matrix_roll.postRotate_3(进度*720f,roll.getWidth()*scale/2,roll.getHeight()*scale/2)
+				matrix_roll.postScale_4(roll_scale,roll_scale,roll.getWidth()*scale/2,roll.getHeight()*scale)
 				matrix_roll.postTranslate(roll_x,roll_y)
 				如果 进度!=1.0f 则
-					screen.draw_pm3a(roll,matrix_roll,,height)
+					screen.dt_tma(roll,matrix_roll,,height)
 				结束 如果
 				变量 info : 文本
 				变量 color : 整数=0xff000000
-				变量 coll : 矩形x=触判矩形.取("start_botton",grass_x,height-dirt_bottom,dirt.width()*scale,dirt.height()*scale,窗口类型)
+				变量 coll : 矩形x=触判矩形.取("start_botton",grass_x,height-dirt_bottom,dirt.getWidth()*scale,dirt.getHeight()*scale,窗口类型)
 				绘制矩形(screen,coll,0xff0000ff)
 				变量 logo=image.可释放图.取项目("PvZ_Logo").加载().取Pixmap()
 				变量 matrix_logo=Matrix.从Matrix新建(matrix)
@@ -1661,7 +1668,7 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 					info=游戏文本.取项目("CLICK_TO_START")
 				结束 如果
 				变量 info_x=居中(paint.测量文字(info))
-				变量 info_y=dirt_bottom-dirt.height()*scale/2+文字大小*scale*0.5f
+				变量 info_y=dirt_bottom-dirt.getHeight()*scale/2+文字大小*scale*0.5f
 				字体1.getData().setScale(文字大小*scale/30)
 				字体1.setColor(Color.新建_rgba(argb2rgba(color)))
 				字体1.draw_bsxy(screen,info,info_x,info_y)
@@ -1693,13 +1700,13 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 					变量 matrix_bk : Matrix=Matrix.从Matrix新建(matrix)
 					matrix_bk.postTranslate(x*scale,y*scale)
 					//canvas.drawBitmap_3(bk,matrix_bk,空)
-					变量 seedbank=image.可释放图.取项目("SeedBank").加载().取Pixmap()
+					变量 seedbank=image.可释放图.取项目("SeedBank").加载().取Texture()
 					screen.dt_tma(bk,matrix_bk,,height)
 					//canvas.绘制文字(plant.HP.到文本(),((plant.x()+x)*scale).到整数(),((plant.y+y)*scale).到整数(),Paint.创建Paint().设置文字大小(30).设置颜色(color_from_argb({255,hsv[0],hsv[1],hsv[2]})),30,-1)
 					//日志(((20)*scale).到整数().到文本()+" res "+(60*scale).到整数())
 					变量 matrix_sd : Matrix=Matrix.从Matrix新建(matrix)
 					matrix_sd.postTranslate(10*scale,y*scale)
-					screen.draw_pm3a(seedbank,matrix_sd,,height-(卡槽偏移y*scale).到整数())
+					screen.dt_tma(seedbank,matrix_sd,,height-(卡槽偏移y*scale).到整数())
 
 					如果 游戏开始() 则
 						绘制卡槽()
@@ -1775,14 +1782,14 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 								循环(u, 0, particle.parts.长度)
 									变量 lz=(particle.parts)[u]
 									如果 lz.激活倒计时<=0 则
-										变量 bit : Pixmap=image.可释放图.取项目(lz.pic).加载().取Pixmap(lz.cutn,lz.row,lz.cutp)
-										变量 matrix_part=Matrix.从Matrix新建(matrix).postRotate_3(lz.rotate,bit.height()/2,
-										bit.height()/2).postScale_4(lz.取值(lz.scale),lz.取值(lz.scale),bit.width()/2,
-										bit.height()/2).postTranslate((随机单精度小数(0,lz.shake*2)-lz.shake+x+particle.x+(particle.parts)[u].x)*scale,
+										变量 bit : Texture=image.可释放图.取项目(lz.pic).加载().取Texture(lz.cutn,lz.row,lz.cutp)
+										变量 matrix_part=Matrix.从Matrix新建(matrix).postRotate_3(lz.rotate,bit.getHeight()/2,
+										bit.getHeight()/2).postScale_4(lz.取值(lz.scale),lz.取值(lz.scale),bit.getWidth()/2,
+										bit.getHeight()/2).postTranslate((随机单精度小数(0,lz.shake*2)-lz.shake+x+particle.x+(particle.parts)[u].x)*scale,
 										(随机单精度小数(0,lz.shake*2)-lz.shake+y+particle.y+(particle.parts)[u].y)*scale)
 										//变量 paint : Paint=Paint.创建Paint().设置透明度((255*(particle.parts)[u].alpha).到整数())
 										变量 color : 单精度小数[]={lz.取值(lz.red),lz.取值(lz.green),lz.取值(lz.blue),lz.取值(lz.alpha)}
-										screen.draw_pm3c(bit,matrix_part,color,height,本对象)
+										screen.dt_tmc(bit,matrix_part,color,height,本对象)
 									结束 如果
 								结束 循环
 							结束 如果
@@ -4240,9 +4247,9 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 				如果 动画进度>=150 则
 					zombieList.清空()
 					//这里可以在测试使创建几个僵尸看一看(2025.8.2)
-					循环(i, 0, 100)
+					循环(i, 0, 5)
 						//日志("addzombie:"+i.到文本())
-						//zombieList.添加成员(Zombie.create(本对象,取随机数(8,8),取出怪行()))
+						zombieList.添加成员(Zombie.create(本对象,取随机数(7,7),取出怪行()))
 					结束 循环
 					循环(i, 0, 5)
 						//变量 z=Zombie.create(本对象,取随机数(3,3),取出怪行())
@@ -4424,12 +4431,12 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 	方法 gety(row : 整数,x : 单精度小数) : 单精度小数
 		变量 hl=取行高()
 		如果 场景==2||场景==3 则
-			返回 70+hl+row*hl
+			返回 80+hl+row*hl
 		否则 场景==4||场景==5
 			如果 x>670 则
-				返回 75+hl+row*hl
+				返回 80+hl+row*hl
 			否则
-				返回 75+hl+(670-x)/4f+row*hl
+				返回 80+hl+(670-x)/4f+row*hl
 			结束 如果
 		否则
 			返回 80+hl+row*hl

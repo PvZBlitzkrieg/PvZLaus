@@ -2160,7 +2160,7 @@ This value cannot be null.
 	变量 自适应布局1 : 自适应布局
 	@布局配置([[父布局=自适应布局1,@横坐标比例=-9.0E-4,@纵坐标比例=-5.0E-4,宽度=-1,高度=-1]])
 	变量 Editor1 : 编辑框h
-	
+
 	//变量 cla : Java类=空
 
 	/*
@@ -2191,7 +2191,7 @@ This value cannot be null.
 	方法 随机单精度小数(s : 单精度小数,e : 单精度小数) :单精度小数
 		返回 double2float(数学运算.取随机小数(s,e-1f))
 	结束 方法
-	
+
 	@静态
 	方法 平滑取值(起 : 单精度小数,终 : 单精度小数,取值总数 : 单精度小数,当前 : 整数) : 单精度小数
 		变量 差值 : 单精度小数=终-起
@@ -2209,9 +2209,9 @@ This value cannot be null.
 		否则
 			返回 0
 		结束 如果
-		
+
 	结束 方法
-	
+
 	@静态
 	方法 异化之炁(ann : 安卓窗口)
 		开始俘获异常()
@@ -2222,35 +2222,35 @@ This value cannot be null.
 				//handleMainThread(ex);
 				//Thread.sleep(5000);
 				@end
-				ann.弹出提示("error")
-				//ann.切换窗口(启动窗口)
-				变量 alpha=""
-				code #alpha=ex.getLocalizedMessage();
-				变量 异常信息 : 异常=空
-				code #异常信息=ex;
-				变量 ad : 文本
-				变量 is : 整数
-				变量 aas : 文本
-				变量 error : 文本
-				error=error+(异常信息.取异常信息()+"\n"+异常信息.取造成原因()+"\n"+alpha)
-				变量 qd : 启动信息
-				@code
+		ann.弹出提示("error")
+		//ann.切换窗口(启动窗口)
+		变量 alpha=""
+		code #alpha=ex.getLocalizedMessage();
+		变量 异常信息 : 异常=空
+		code #异常信息=ex;
+		变量 ad : 文本
+		变量 is : 整数
+		变量 aas : 文本
+		变量 error : 文本
+		error=error+(异常信息.取异常信息()+"\n"+异常信息.取造成原因()+"\n"+alpha)
+		变量 qd : 启动信息
+		@code
 				StackTraceElement[] ste=thread.currentThread().getStackTrace();
 				for (int i=0;i<ste.length;i++) {
 					#ad=ste[i].getClassName();
 					#is=i;
 					#aas=android.util.Log.getStackTraceString(ex);
 					@end
-					error=error+(is.到文本()+" "+ad+"\n")
-					
-					@code
+		error=error+(is.到文本()+" "+ad+"\n")
+
+		@code
 				}
 				@end
-				error=(aas)
-				qd.置入("error",error)
-				qd.置入("a",ann.取类信息())
-				ann.切换窗口(CrashWindow,qd)
-				@code
+		error=(aas)
+		qd.置入("error",error)
+		qd.置入("a",ann.取类信息())
+		ann.切换窗口(CrashWindow,qd)
+		@code
 				//调试输出("abc")
 				//ann.弹出提示("yyy")
 				
@@ -4104,6 +4104,7 @@ matrix.postConcat(result);
 
 	//2025.8.7
 	变量 切割图 : Pixmap[]
+	变量 切割纹理 : Texture[]
 
 	方法 取Pixmap(横切数 : 整数=1,纵切数 : 整数=1,计数 : 整数=0) : Pixmap
 		如果 横切数==1&&纵切数==1&&计数==0 则
@@ -4116,10 +4117,13 @@ matrix.postConcat(result);
 				返回 pixmap
 			结束 如果
 		否则
-			如果 取数组长度(切割图)>计数&&切割图[计数]!=空 则
-				返回 切割图[计数]
+			如果 取数组长度(切割图)>计数 则
 			否则
 				切割图=数组创建(Pixmap,横切数*纵切数)
+			结束 如果
+			如果 切割图[计数]!=空 则
+				返回 切割图[计数]
+			否则
 				变量 bit=取Pixmap()
 				变量 cutp=计数
 				变量 acutp=cutp%横切数
@@ -4155,12 +4159,30 @@ matrix.postConcat(result);
 		结束 如果
 	结束 方法
 
-	方法 取Texture() : Texture
-		如果 texture!=空 则
-			返回 texture
+	方法 取Texture(横切数 : 整数=1,纵切数 : 整数=1,计数 : 整数=0) : Texture
+		如果 横切数==1&&纵切数==1&&计数==0 则
+			如果 texture!=空 则
+				返回 texture
+			否则
+				texture=Texture.从PixMap新建(取Pixmap())
+				返回 texture
+			结束 如果
 		否则
-			texture=Texture.从PixMap新建(取Pixmap())
-			返回 texture
+
+			如果 取数组长度(切割纹理)>计数 则
+			否则
+				切割纹理=数组创建(Texture,横切数*纵切数)
+			结束 如果
+			如果 切割纹理[计数]!=空 则
+				返回 切割纹理[计数]
+			否则
+				变量 纹理=Texture.从PixMap新建(取Pixmap(横切数,纵切数,计数))
+				切割纹理[计数]=纹理
+				返回 纹理
+			结束 如果
+
+
+
 		结束 如果
 	结束 方法
 
