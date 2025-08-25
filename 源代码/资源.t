@@ -2907,7 +2907,7 @@ PvZLaus
 		code #this.draw(#texture,#x,#y,#width,#height);
 	结束 方法
 
-	方法 dt_tmc(texture : Texture,matrix : Matrix,cm : 单精度小数[],height : 整数,gm : 窗口管理器)
+	方法 dt_tmc(texture : Texture,matrix : Matrix,cm : 单精度小数[],height : 整数,gm : 窗口管理器,test : 逻辑型=假)
 		变量 vsp :单精度小数[]=ctl2bl(matrix,height,texture.getHeight()).getValues()
 
 		vsp=矩阵转置_m3(vsp)
@@ -2943,7 +2943,9 @@ PvZLaus
 		thisw.draw_trwha2(tr,texture.getWidth(),texture.getHeight(),aff)
 		rgbShader.setUniformf1("u_opacity",cm[3])
 		rgbShader.setUniformf3("u_rgbFactors",cm[0],cm[1],cm[2])
-
+        如果 test 则
+        	日志("ˇ   "+cm[1])
+        结束 如果
 		//code#this.setColor(1,1,1,1);
 		变量 azt=取当前纳秒时间戳()
 		如果 gm!=空 则

@@ -1249,7 +1249,7 @@ PvZLaus
 			plant.anim={anim}
 
 			plant.dtimemax=150
-			plant.dtime=取随机数(0,plant.dtimemax)
+			plant.dtime=取随机数(80,120)
 			plant.发射延迟=30
 			/*
 			如果 取随机数(0,100)<50 则
@@ -1299,7 +1299,7 @@ PvZLaus
 			anim.speed=Zombie.tool_getrandom()*0.5f
 			plant.anim={anim}
 			plant.dtimemax=150
-			plant.dtime=取随机数(0,plant.dtimemax)
+			plant.dtime=取随机数(80,120)
 			plant.发射延迟=30
 		否则 type==6
 			变量 animw=Anim.创建动画("Chomper",manager).播放动画("anim_idle")
@@ -1316,7 +1316,7 @@ PvZLaus
 			animw.speed=Zombie.tool_getrandom()*0.5f
 			plant.anim={animw}
 			plant.dtimemax=150
-			plant.dtime=取随机数(0,plant.dtimemax)
+			plant.dtime=取随机数(80,120)
 		否则 type==8
 			变量 animw=Anim.创建动画("Puffshroom",manager).播放动画("anim_idle")
 			//变量 animw=Anim.创建动画("Chomper",manager).播放动画("anim_idle")
@@ -1500,20 +1500,28 @@ PvZLaus
 			变量 pd=判定僵尸()
 			//如果 pd!=空 则
 			如果 type==0||type==5||type==7||type==8 则
-				变量 anim_head : Anim
+				变量 anim_head : Anim=空
+				如果 type==0||type==5||type==7 则
+					anim_head=anim[0].panims.名称("anim_stem")
+				否则 type==8
+					anim_head=anim[0]
+				结束 如果
 				如果 (dtime==30||(dtime==0&&type==7))&&pd!=空 则
-					
-					如果 type==0||type==5||type==7 则
-						anim_head=anim[0].panims.名称("anim_stem")
-					否则 type==8
-						anim_head=anim[0]
-					结束 如果
+
 					anim_head.speed=1f
+					如果 type==7 则
+						anim_head.speed=1.8f
+					结束 如果
+					变量 fr=anim_head.animname
+					如果 anim_head.动画回归!="" 则
+						fr=anim_head.动画回归
+					结束 如果
 					anim_head.播放动画("anim_shooting",真)
+					anim_head.动画回归=fr
 					可发射=真
-				否则 （dtime==15||(dtime==145&&type==7))&&可发射
+				否则 （dtime==1||(dtime==130&&type==7))&&可发射
 					shoot()
-					如果 (type==7&&dtime==10)==假 则
+					如果 (type==7&&dtime==15)==假 则
 						可发射=假
 					结束 如果
 				结束 如果
@@ -1607,14 +1615,14 @@ PvZLaus
 				state="bite"
 				anim[0].播放动画("anim_bite")
 				anim[0].播完暂停=真
-				
+
 			否则 anim[0].animname=="anim_bite"&&anim[0].frame>=42&&state=="bite"
 				state="chew"
-				
+
 				如果 pd==空 则
-					
+
 				否则
-					
+
 					dtime=4340
 					pd.die=真
 				结束 如果
@@ -1624,7 +1632,7 @@ PvZLaus
 				如果 dtime==0 则
 					变量 fr=anim[0].frame
 					anim[0].播放动画("anim_idle")
-					anim[0].speed=anim[0].speed/2
+					//anim[0].speed=anim[0].speed/2
 					anim[0].过渡从(fr.到整数(),4)
 				否则
 					anim[0].播放动画("anim_chew")
@@ -1633,7 +1641,7 @@ PvZLaus
 				state="swall"
 				anim[0].播放动画("anim_swallow")
 				anim[0].动画回归="anim_idle"
-				anim[0].speed=anim[0].speed/2
+				//anim[0].speed=anim[0].speed*2
 			结束 如果
 			如果 dtime>0 则
 				dtime=dtime-1
@@ -1658,7 +1666,7 @@ PvZLaus
 
 	方法 shoot()
 		变量 ox=50
-		变量 oy=18+取随机数(0,5)-5
+		变量 oy=16+取随机数(0,5)-5
 		变量 tp="ProjectilePea"
 		如果 type==5 则
 			tp="ProjectileSnowPea"
@@ -1674,11 +1682,11 @@ PvZLaus
 		变量 rlt : Zombie=空
 		循环(i, 0, 管理器.zombieList.长度)
 			变量 zombie=(管理器.zombieList)[i]
-			如果 zombie.无形==假&&zombie.row==row&&zombie.x()>x()&&(rlt==空||zombie.x()<rlt.x()) 则
+			如果 zombie.无形==假&&zombie.row==row&&zombie.x()>x()-50&&(rlt==空||zombie.x()<rlt.x()) 则
 				rlt=zombie
 			结束 如果
 		结束 循环
-		如果 type==6&&rlt!=空&&rlt.x()>x()+100 则
+		如果 type==6&&rlt!=空&&rlt.x()>x()+120 则
 			返回 空
 		结束 如果
 		如果 type==8&&rlt!=空&&rlt.x()>x()+300 则
@@ -1714,8 +1722,8 @@ PvZLaus
 		stsl.add("HP",HP.到文本())
 		stsl.add("type",type.到文本())
 		stsl.add("anim.name",anim[0].名称)
-		//stsl.add("anim.frame",anim.frame.到文本())
-		//stsl.add("anim.speed",anim.speed.到文本())
+		stsl.add("anim.frame",anim[0].frame.到文本())
+		stsl.add("anim.speed",anim[0].speed.到文本())
 		stsl.add("anim.return",anim[0].动画回归)
 		stsl.add("x",x().到文本())
 		stsl.add("y",y.到文本())
@@ -2087,6 +2095,7 @@ PvZLaus
 	变量 循环播放 : 逻辑型=假
 	变量 row : 整数
 	变量 管理器 : 窗口管理器=空
+	变量 颜色渲染保护 : 逻辑型=假
 
 	@静态
 	方法 新建(type : 文本,x : 单精度小数,y : 单精度小数,row : 整数=-1,gm : 窗口管理器) : Particle
@@ -2129,6 +2138,7 @@ PvZLaus
 			结束 循环
 		否则 type=="Powie"
 			变量 dt=100
+			prt.颜色渲染保护=真
 			prt.dtime=0
 			prt.dtimemax=dt
 			变量 count=10
@@ -2161,6 +2171,7 @@ PvZLaus
 			count=14
 			//PowieSmallClouds
 			循环(i, 0, count)
+
 				变量 lzb : 粒子=粒子.新建(,,,,,)
 				lzb.pic="ExplosionCloud"
 				lzb.setdtime(dt)

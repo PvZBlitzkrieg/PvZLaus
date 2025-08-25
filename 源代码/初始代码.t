@@ -877,6 +877,7 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 			"wave:"+管理器.wave+"  wavemax:"+管理器.wavemax+"\n"+
 			"Manger state:"+管理器.state+"  CTAS:"+管理器.sunapp+"  CCTAS:"+管理器.能落阳光+"\n"+
 			"card_move:"+管理器.卡片演化+"   CBY:"+管理器.选卡界面y+"\n"+
+			管理器.uinfo+"\n"+
 			"This version is produced by Xborks,\nTG channel:t.me/xborks,\nGithub:github.com/urepoch/PvZLaus\n"+
 			version+"\n---------------"
 			//日志(textw)
@@ -1461,6 +1462,10 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 	变量 卡片演化时间=25
 	变量 演化方向 : 逻辑型
 	变量 撤回id : 整数=-1
+	
+	变量 极速 : 逻辑型=假
+	//2025.8.24
+	变量 uinfo : 文本
 
 
 	//变量 进了家 : 逻辑型=假
@@ -1502,15 +1507,15 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 
 	变量 card_tx : Texture[]=数组创建(Texture,256)
 	方法 getcardtx(type : 整数) : Texture
-        如果 card_tx[type]==空 则
+		如果 card_tx[type]==空 则
 			变量 txr=Texture.从PixMap新建(Pixmap.从Bitmap创建(getcardcs(type)))
 			card_tx[type]=txr
 			返回 txr
 		否则
 			返回 card_tx[type]
-        结束 如果
+		结束 如果
 	结束 方法
-	
+
 	变量 card_cs : 位图对象[]=数组创建(位图对象,256)
 	方法 getcardcs(type : 整数) : 位图对象
 		如果 card_cs[type]==空 则
@@ -1775,14 +1780,19 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 								screen.dt_tma(bit,matrix_proj,,height)
 							结束 如果
 						结束 循环
-
 						循环(i, 0, particleList.长度)
 							变量 particle=particleList[i]
 							如果 particle.row==h 则
 								循环(u, 0, particle.parts.长度)
 									变量 lz=(particle.parts)[u]
 									如果 lz.激活倒计时<=0 则
-										变量 bit : Texture=image.可释放图.取项目(lz.pic).加载().取Texture(lz.cutn,lz.row,lz.cutp)
+										变量 bit : Texture=空
+										如果 particle.颜色渲染保护==假 则
+											bit=image.可释放图.取项目(lz.pic).加载().取Texture(lz.cutn,lz.row,lz.cutp)
+										否则
+											bit=Texture.从PixMap新建(image.可释放图.取项目(lz.pic).加载().取Pixmap(lz.cutn,lz.row,lz.cutp))
+										结束 如果
+										
 										变量 matrix_part=Matrix.从Matrix新建(matrix).postRotate_3(lz.rotate,bit.getHeight()/2,
 										bit.getHeight()/2).postScale_4(lz.取值(lz.scale),lz.取值(lz.scale),bit.getWidth()/2,
 										bit.getHeight()/2).postTranslate((随机单精度小数(0,lz.shake*2)-lz.shake+x+particle.x+(particle.parts)[u].x)*scale,
@@ -1794,6 +1804,7 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 								结束 循环
 							结束 如果
 						结束 循环
+
 					结束 循环
 					帧信息=帧信息+"\n"+"zombie:"+"0"+"ms "+zombieList.长度+"n"
 					帧信息=帧信息+"\n"+"plant:"+"0"+"ms "+plantList.长度+"n"
@@ -2445,6 +2456,13 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 		//日志(result.getRegionWidth()+"    and  "+result.getRegionHeight())
 		返回 result
 	结束 方法
+	
+	方法 极速模式(content : 文本) : 逻辑型
+		如果 极速==假&&content=="particle" 则
+			返回 真
+		结束 如果
+		返回 假
+	结束 方法
 
 	方法 绘制卡槽()
 		变量 matrixc : Matrix
@@ -2497,8 +2515,19 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 				screen.draw_pm3a(pm,matrixd,,height-(卡槽偏移y*scale).到整数())
 				code #pm.dispose();
 */
-                变量 pm : Texture=getcardtx(cards[i])
-				缩放绘制_左下免scale(screen,pm,hx+transx,ytl2bl(8+transy,600,pm.getHeight()))
+				变量 pm : Texture=getcardtx(cards[i])
+				缩放绘制_左下免scale(screen,pm,hx+transx,ytl2bl(8+transy+卡槽偏移y,600,pm.getHeight()))
+				如果 进程==3||进程==12 则
+					变量 wid=(0+50)*scale
+					变量 hei=(0+70)*scale
+					变量 alpha=1f
+					如果 进程==3 则
+						alpha=动画进度*1f/150
+					结束 如果
+					变量 a2=(alpha*0x40).到整数()
+					绘制矩形3(screen,hx,8+卡槽偏移y,50,70,真,color_from_argb({a2,0,0,0}))
+					//screen.draw_txywh(t3,hx*scale,ytl2bl(8*scale,height,hei),wid,hei)
+				结束 如果
 				如果 游戏开始() 则
 					//描边画字(screen,关卡名(),600,600-24,0xffae924c,0xff000000,20,-1)
 
@@ -2526,6 +2555,7 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 							screen.dt_tmc(arrow,matrix_arr,{1f,0.9f,0.4f,1f},height,本对象)
 						结束 如果
 					结束 如果
+
 
 					如果 card_cool[i]>0 则
 						变量 maxct=getct(cards[i])
@@ -2891,6 +2921,9 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 	结束 方法
 
 	方法 卡槽数量() : 整数
+		如果 level<6 则
+			返回 level
+		结束 如果
 		返回 USER.当前账户().卡槽数量
 	结束 方法
 
@@ -3929,7 +3962,7 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 				结束 如果
 			结束 事件
 			事件 冒险模式:点击(point : Point)
-				如果 state!="advent" 则
+				如果 state!="advent"&&state!="none" 则
 					冒险模式.划过(point,"up")
 					//2025.8.4
 					//铛铛铛铛！呵呵哈哈哈哈哈
@@ -4071,6 +4104,7 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 	结束 方法
 
 	方法 Update()
+		变量 info=""
 		如果 字幕倒计时>0 则
 			字幕倒计时=字幕倒计时-1
 		结束 如果
@@ -4127,6 +4161,7 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 				结束 如果
 			否则 进程==2
 				//&&动画进度>=100
+
 				如果 选卡结束&&动画进度>=100 则
 					选卡界面y=选卡界面y-17.5f
 					如果 选卡界面y<=-513f 则
@@ -4134,17 +4169,25 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 						进程=3
 					结束 如果
 				否则 state=="none"
-					选卡界面y=选卡界面y+17.5f
-					如果 卡槽偏移y<0 则
-						卡槽偏移y=卡槽偏移y+3f
+					如果 选卡结束 则
+						如果 动画进度>=100 则
+							state="skipc"
+						    进程=8
+						结束 如果
+					否则
+						选卡界面y=选卡界面y+17.5f
+						如果 卡槽偏移y<0 则
+							卡槽偏移y=卡槽偏移y+3f
+						结束 如果
+						如果 卡槽偏移y>=0 则
+							卡槽偏移y=0
+						结束 如果
+						如果 选卡界面y>=513f 则
+							选卡界面y=513f
+							state="choose"
+						结束 如果
 					结束 如果
-					如果 卡槽偏移y>=0 则
-						卡槽偏移y=0
-					结束 如果
-					如果 选卡界面y>=513f 则
-						选卡界面y=513f
-						state="choose"
-					结束 如果
+
 				否则 state=="choose"
 
 				否则 state=="start"
@@ -4153,7 +4196,7 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 			否则 进程==3
 				x=x+平滑取值(0,(600-217)+1,150,动画进度)
 				如果 x>=-217f 则
-					动画进度=0
+
 					如果 level==1 则
 						变量 animw=Anim.创建动画("SodRoll",本对象)
 						animw.播完暂停=真
@@ -4179,6 +4222,7 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 					否则
 						进程=8
 					结束 如果
+					动画进度=0
 				结束 如果
 			否则 进程==4
 				如果 动画进度>=200 则
@@ -4291,7 +4335,8 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 				card_cool[i]=card_cool[i]-1
 			结束 如果
 		结束 循环
-
+        变量 rt=取当前时间戳()
+		变量 rts=0L
 		循环(i, 0, zombieList.长度)
 			变量 hu : 整数=zombieList.长度-i-1
 			变量 zombie=zombieList[hu]
@@ -4316,6 +4361,9 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 				结束 如果
 			结束 如果
 		结束 循环
+		rts=取当前时间戳()
+		info=info+"uZombie:"+(rts-rt).到文本()+"\n"
+		rt=取当前时间戳()
 		循环(i, 0, plantList.长度)
 			//开始俘获异常()
 			变量 hu : 整数=plantList.长度-i-1
@@ -4326,6 +4374,9 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 			//俘获所有异常()
 			//结束俘获异常()
 		结束 循环
+		rts=取当前时间戳()
+		info=info+"uPlant:"+(rts-rt).到文本()+"\n"
+		rt=取当前时间戳()
 		循环(i, 0, projList.长度)
 			//开始俘获异常()
 			变量 hu : 整数=projList.长度-i-1
@@ -4336,6 +4387,9 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 			//俘获所有异常()
 			//结束俘获异常()
 		结束 循环
+		rts=取当前时间戳()
+		info=info+"uProj:"+(rts-rt).到文本()+"\n"
+		rt=取当前时间戳()
 		循环(i, 0, coinList.长度)
 			//开始俘获异常()
 			变量 hu : 整数=coinList.长度-i-1
@@ -4346,6 +4400,9 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 			//俘获所有异常()
 			//结束俘获异常()
 		结束 循环
+		rts=取当前时间戳()
+		info=info+"uCoin:"+(rts-rt).到文本()+"\n"
+		rt=取当前时间戳()
 		循环(i, 0, tracleList.长度)
 			//开始俘获异常()
 			变量 hu : 整数=tracleList.长度-i-1
@@ -4356,6 +4413,9 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 			//俘获所有异常()
 			//结束俘获异常()
 		结束 循环
+		rts=取当前时间戳()
+		//info=info+"uTracle:"+(rts-rt).到文本()+"\n"
+		rt=取当前时间戳()
 		循环(i, 0, particleList.长度)
 			//开始俘获异常()
 			变量 hu : 整数=particleList.长度-i-1
@@ -4366,6 +4426,9 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 			//俘获所有异常()
 			//结束俘获异常()
 		结束 循环
+		rts=取当前时间戳()
+		//info=info+"uParticle:"+(rts-rt).到文本()
+		rt=取当前时间戳()
 		mowerList.Update()
 		如果 选择对象!=-1 则
 			卡片演化=卡片演化-1
@@ -4373,6 +4436,7 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 				选择对象=-1
 			结束 如果
 		结束 如果
+		uinfo=info
 	结束 方法
 
 	方法 收集阳光(coin : Coin)
