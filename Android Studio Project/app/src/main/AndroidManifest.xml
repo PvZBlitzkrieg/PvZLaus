@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+	package="bk.pvz">
+
+	<uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE"/>
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+
+
+	<application
+		android:usesCleartextTraffic="true"
+		android:icon="@drawable/icon"
+		android:label="@string/app_name"
+		android:requestLegacyExternalStorage="true"
+		android:supportsRtl="true"
+		android:largeHeap="true"
+		android:resizeableActivity="true">
+		<activity
+			android:name="bk.pvz.AndroidApplication_">
+		</activity>
+		<activity
+			android:label="@string/app_name"
+			android:name="bk.pvz.L"
+			android:exported="true">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+				<category android:name="android.intent.category.LAUNCHER" />
+			</intent-filter>
+		</activity>
+		<activity
+			android:name="bk.pvz.GameStartup">
+		</activity>
+		<activity
+			android:name="bk.pvz.m">
+		</activity>
+		<activity
+			android:name="bk.pvz.Setup">
+		</activity>
+		<activity
+			android:name="bk.pvz.CrashWindow">
+		</activity>
+	</application>
+</manifest>
