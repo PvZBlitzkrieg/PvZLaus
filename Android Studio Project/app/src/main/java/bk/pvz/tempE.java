@@ -1,7 +1,7 @@
 package bk.pvz;
-import rn_4581.rn_4582.rn_4583.rn_5814;
+import bk.pvz.Editor;
 
-public class tempE extends rn_5814 {
+public class tempE extends Editor {
 	public tempE(android.content.Context context) {
 		super(context);
 	}

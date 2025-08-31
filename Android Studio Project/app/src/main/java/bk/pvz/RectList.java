@@ -1,21 +1,21 @@
 package bk.pvz;
-import rn_6840.rn_6841.rn_6842.rn_6928;
 import bk.pvz.Rectx;
+import rn_6672.rn_6673.rn_6674.rn_6760;
 
 public class RectList {
-	public static Rectx rn_3713(java.util.ArrayList<Rectx> r_obj, int rn_3714) {
-		return RectList.rn_3729(r_obj, rn_3714);
+	public static Rectx rn_3545(java.util.ArrayList<Rectx> r_obj, int rn_3546) {
+		return RectList.rn_3561(r_obj, rn_3546);
 	}
 
-	public static void rn_3721(java.util.ArrayList<Rectx> r_obj, Rectx rn_3722) {
-		r_obj.add(rn_3722);
+	public static void rn_3553(java.util.ArrayList<Rectx> r_obj, Rectx rn_3554) {
+		r_obj.add(rn_3554);
 	}
 
-	public static Rectx rn_3729(java.util.ArrayList<Rectx> r_obj, int rn_3730) {
-		return r_obj.get(rn_3730);
+	public static Rectx rn_3561(java.util.ArrayList<Rectx> r_obj, int rn_3562) {
+		return r_obj.get(rn_3562);
 	}
 
-	public static int rn_1225(java.util.ArrayList<Rectx> r_obj) {
+	public static int rn_1021(java.util.ArrayList<Rectx> r_obj) {
 		return r_obj.size();
 	}
 }

@@ -1,15 +1,15 @@
 package bk.pvz;
-import rn_6840.rn_6841.rn_6842.rn_6928;
-import rn_6840.rn_6841.rn_6842.rn_4301;
-import bk.pvz.Userdata;
 import bk.pvz.UserdataList;
+import rn_6672.rn_6673.rn_6674.rn_4133;
+import rn_6672.rn_6673.rn_6674.rn_6760;
+import bk.pvz.Userdata;
 
 public class Userdatas {
-	public int rn_2975 = 0;
-	public int rn_2976 = -1;
-	public java.util.ArrayList<Userdata> rn_2977 = new java.util.ArrayList<Userdata>();
+	public int accountNumber = 0;
+	public int currentAccount = -1;
+	public java.util.ArrayList<Userdata> account = new java.util.ArrayList<Userdata>();
 
-	public final Userdata rn_2978() {
-		return UserdataList.rn_2990(rn_2977, rn_2976);
+	public final Userdata getCurrentAccount() {
+		return UserdataList.rn_2769(account, currentAccount);
 	}
 }

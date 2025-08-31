@@ -6,13 +6,13 @@ import android.view.View;
 import android.graphics.Canvas;
 import android.view.MotionEvent;
 import android.widget.LinearLayout;
-import rn_6840.rn_6841.rn_6842.rn_6925;
-import rn_4581.rn_4582.rn_4583.rn_5541;
-import rn_6840.rn_6841.rn_6842.rn_6928;
 import bk.pvz.Canvas_;
-import rn_6840.rn_6841.rn_6842.rn_4301;
-import rn_4581.rn_4582.rn_4583.rn_8619;
-import rn_4581.rn_4582.rn_4583.rn_8820;
+import rn_4413.rn_4414.rn_4415.rn_8652;
+import rn_6672.rn_6673.rn_6674.rn_4133;
+import rn_6672.rn_6673.rn_6674.rn_6760;
+import rn_6672.rn_6673.rn_6674.rn_6757;
+import rn_4413.rn_4414.rn_4415.rn_5373;
+import rn_4413.rn_4414.rn_4415.rn_8451;
 
 public class SurfaceView  extends android.view.SurfaceView implements SurfaceHolder.Callback, View.OnClickListener {
 	Context mContext = null;
@@ -25,14 +25,14 @@ public class SurfaceView  extends android.view.SurfaceView implements SurfaceHol
         super(context);
         this.mContext = context;
 		getHolder().addCallback(this);
-		rn_3861();
+		rn_3693();
     }
  
     public SurfaceView(Context context, AttributeSet attrs) {
         super(context, attrs);
         this.mContext = context;
 		getHolder().addCallback(this);
-		rn_3861();
+		rn_3693();
     }
 	
 	@Override
@@ -43,7 +43,7 @@ public class SurfaceView  extends android.view.SurfaceView implements SurfaceHol
                 Canvas canvas = holder.lockHardwareCanvas();
                 if (canvas != null) {
                     synchronized (holder) {
-                        rn_3862(canvas);
+                        rn_3694(canvas);
                     }
                     holder.unlockCanvasAndPost(canvas);
                 }
@@ -69,7 +69,7 @@ public class SurfaceView  extends android.view.SurfaceView implements SurfaceHol
 	
     @Override  
     public boolean onTouchEvent(MotionEvent event) {  
-		return rn_3864(event);
+		return rn_3696(event);
 	}
 	
 	@Override
@@ -77,74 +77,74 @@ public class SurfaceView  extends android.view.SurfaceView implements SurfaceHol
         //Toast.makeText(mContext, "\n5\n".split("\n")[], 0).show();
     }
 
-	public static final SurfaceView rn_3849(android.content.Context rn_3850) {
-		return new SurfaceView(rn_3850);
+	public static final SurfaceView rn_3681(android.content.Context rn_3682) {
+		return new SurfaceView(rn_3682);
 	}
 
-	public final int rn_3851() {
+	public final int rn_3683() {
 		return this.getWidth();
 	}
 
-	public final int rn_3852() {
+	public final int rn_3684() {
 		return this.getHeight();
 	}
 
-	public final void rn_3853(int rn_3854) {
+	public final void rn_3685(int rn_3686) {
 		LinearLayout.LayoutParams params_1= (LinearLayout.LayoutParams) this.getLayoutParams();
-		params_1.width=rn_3854;
+		params_1.width=rn_3686;
 		this.setLayoutParams(params_1);
 	}
 
-	public final void rn_3855(int rn_3856) {
+	public final void rn_3687(int rn_3688) {
 		LinearLayout.LayoutParams params_1= (LinearLayout.LayoutParams) this.getLayoutParams();
-		params_1.height=rn_3856;
+		params_1.height=rn_3688;
 		this.setLayoutParams(params_1);
 	}
 
-	public final void rn_3857(rn_8619 rn_3858) {
-		rn_3858.getView().addView(this);
+	public final void rn_3689(rn_8451 rn_3690) {
+		rn_3690.getView().addView(this);
 	}
 
-	public final boolean rn_3859(android.view.MotionEvent rn_3860) {
-		return dispatchTouchEvent(rn_3860);
+	public final boolean rn_3691(android.view.MotionEvent rn_3692) {
+		return dispatchTouchEvent(rn_3692);
 	}
 
-	public interface rn_3861_r {
+	public interface rn_3693_r {
 		void dispatch();
 	}
-	private rn_3861_r rn_3861_v;
-	public final void rn_3861_s(rn_3861_r receiver) {
-		this.rn_3861_v = receiver;
+	private rn_3693_r rn_3693_v;
+	public final void rn_3693_s(rn_3693_r receiver) {
+		this.rn_3693_v = receiver;
 	}
-	public final void rn_3861() {
-		if (this.rn_3861_v != null) {
-			this.rn_3861_v.dispatch();
+	public final void rn_3693() {
+		if (this.rn_3693_v != null) {
+			this.rn_3693_v.dispatch();
 		}
 	}
 
-	public interface rn_3862_r {
-		void dispatch(android.graphics.Canvas rn_3863);
+	public interface rn_3694_r {
+		void dispatch(android.graphics.Canvas rn_3695);
 	}
-	private rn_3862_r rn_3862_v;
-	public final void rn_3862_s(rn_3862_r receiver) {
-		this.rn_3862_v = receiver;
+	private rn_3694_r rn_3694_v;
+	public final void rn_3694_s(rn_3694_r receiver) {
+		this.rn_3694_v = receiver;
 	}
-	public final void rn_3862(android.graphics.Canvas rn_3863) {
-		if (this.rn_3862_v != null) {
-			this.rn_3862_v.dispatch(rn_3863);
+	public final void rn_3694(android.graphics.Canvas rn_3695) {
+		if (this.rn_3694_v != null) {
+			this.rn_3694_v.dispatch(rn_3695);
 		}
 	}
 
-	public interface rn_3864_r {
-		boolean dispatch(android.view.MotionEvent rn_3865);
+	public interface rn_3696_r {
+		boolean dispatch(android.view.MotionEvent rn_3697);
 	}
-	private rn_3864_r rn_3864_v;
-	public final void rn_3864_s(rn_3864_r receiver) {
-		this.rn_3864_v = receiver;
+	private rn_3696_r rn_3696_v;
+	public final void rn_3696_s(rn_3696_r receiver) {
+		this.rn_3696_v = receiver;
 	}
-	public final boolean rn_3864(android.view.MotionEvent rn_3865) {
-		if (this.rn_3864_v != null) {
-			return this.rn_3864_v.dispatch(rn_3865);
+	public final boolean rn_3696(android.view.MotionEvent rn_3697) {
+		if (this.rn_3696_v != null) {
+			return this.rn_3696_v.dispatch(rn_3697);
 		}
 		return false;
 	}

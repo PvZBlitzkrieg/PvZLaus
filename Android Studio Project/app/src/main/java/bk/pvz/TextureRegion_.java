@@ -1,21 +1,21 @@
 package bk.pvz;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import rn_6840.rn_6841.rn_6842.rn_6925;
-import rn_6840.rn_6841.rn_6842.rn_6928;
-import rn_6840.rn_6841.rn_6842.rn_4301;
 import bk.pvz.Texture_;
+import rn_6672.rn_6673.rn_6674.rn_4133;
+import rn_6672.rn_6673.rn_6674.rn_6760;
+import rn_6672.rn_6673.rn_6674.rn_6757;
 
 public class TextureRegion_ {
-	public static com.badlogic.gdx.graphics.g2d.TextureRegion rn_3989(com.badlogic.gdx.graphics.Texture rn_3990) {
-		return new TextureRegion(rn_3990);
+	public static com.badlogic.gdx.graphics.g2d.TextureRegion rn_3821(com.badlogic.gdx.graphics.Texture rn_3822) {
+		return new TextureRegion(rn_3822);
 	}
 
-	public static com.badlogic.gdx.graphics.g2d.TextureRegion rn_3991(com.badlogic.gdx.graphics.Texture rn_3992, int rn_3993, int rn_3994) {
-		return new TextureRegion(rn_3992,rn_3993,rn_3994);
+	public static com.badlogic.gdx.graphics.g2d.TextureRegion rn_3823(com.badlogic.gdx.graphics.Texture rn_3824, int rn_3825, int rn_3826) {
+		return new TextureRegion(rn_3824,rn_3825,rn_3826);
 	}
 
-	public static com.badlogic.gdx.graphics.g2d.TextureRegion rn_3995(com.badlogic.gdx.graphics.g2d.TextureRegion r_obj, boolean rn_3996, boolean rn_3997) {
-		r_obj.flip(rn_3996,rn_3997);
+	public static com.badlogic.gdx.graphics.g2d.TextureRegion rn_3827(com.badlogic.gdx.graphics.g2d.TextureRegion r_obj, boolean rn_3828, boolean rn_3829) {
+		r_obj.flip(rn_3828,rn_3829);
 		return r_obj;
 	}
 }

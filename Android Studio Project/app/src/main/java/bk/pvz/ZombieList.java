@@ -1,29 +1,29 @@
 package bk.pvz;
-import rn_6840.rn_6841.rn_6842.rn_6928;
 import bk.pvz.Zombie;
+import rn_6672.rn_6673.rn_6674.rn_6760;
 
 public class ZombieList {
-	public static Zombie rn_2366(java.util.ArrayList<Zombie> r_obj, int rn_2367) {
-		return ZombieList.rn_2382(r_obj, rn_2367);
+	public static Zombie rn_2149(java.util.ArrayList<Zombie> r_obj, int rn_2150) {
+		return ZombieList.rn_2165(r_obj, rn_2150);
 	}
 
-	public static void rn_2374(java.util.ArrayList<Zombie> r_obj, Zombie rn_2375) {
-		r_obj.add(rn_2375);
+	public static void rn_2157(java.util.ArrayList<Zombie> r_obj, Zombie rn_2158) {
+		r_obj.add(rn_2158);
 	}
 
-	public static Zombie rn_2382(java.util.ArrayList<Zombie> r_obj, int rn_2383) {
-		return r_obj.get(rn_2383);
+	public static Zombie rn_2165(java.util.ArrayList<Zombie> r_obj, int rn_2166) {
+		return r_obj.get(rn_2166);
 	}
 
-	public static void rn_2388(java.util.ArrayList<Zombie> r_obj) {
+	public static void rn_2171(java.util.ArrayList<Zombie> r_obj) {
 		r_obj.clear();
 	}
 
-	public static void rn_2389(java.util.ArrayList<Zombie> r_obj, int rn_2390) {
-		r_obj.remove(rn_2390);
+	public static void rn_2172(java.util.ArrayList<Zombie> r_obj, int rn_2173) {
+		r_obj.remove(rn_2173);
 	}
 
-	public static int rn_1225(java.util.ArrayList<Zombie> r_obj) {
+	public static int rn_1021(java.util.ArrayList<Zombie> r_obj) {
 		return r_obj.size();
 	}
 }

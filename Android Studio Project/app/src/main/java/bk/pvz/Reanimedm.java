@@ -1,13 +1,13 @@
 package bk.pvz;
 import bk.pvz.Reanimed;
-import rn_6840.rn_6841.rn_6842.rn_4301;
+import rn_6672.rn_6673.rn_6674.rn_4133;
 
 public class Reanimedm {
-	public java.util.ArrayList<Reanim> rn_3158 = new java.util.ArrayList<Reanim>();
+	public java.util.ArrayList<Reanim> rn_2937 = new java.util.ArrayList<Reanim>();
 
-	public static final Reanimedm rn_3159(java.util.ArrayList<Reanim> rn_3160) {
-		Reanimedm rn_3161 = new Reanimedm();
-		rn_3161.rn_3158 = rn_3160;
-		return rn_3161;
+	public static final Reanimedm rn_2938(java.util.ArrayList<Reanim> rn_2939) {
+		Reanimedm rn_2940 = new Reanimedm();
+		rn_2940.rn_2937 = rn_2939;
+		return rn_2940;
 	}
 }

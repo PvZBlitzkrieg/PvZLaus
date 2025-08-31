@@ -1,21 +1,21 @@
 package bk.pvz;
-import rn_6840.rn_6841.rn_6842.rn_6928;
 import bk.pvz.Renderinfo;
+import rn_6672.rn_6673.rn_6674.rn_6760;
 
 public class RenderinfoList {
-	public static Renderinfo rn_3453(java.util.ArrayList<Renderinfo> r_obj, int rn_3454) {
-		return RenderinfoList.rn_3469(r_obj, rn_3454);
+	public static Renderinfo rn_3278(java.util.ArrayList<Renderinfo> r_obj, int rn_3279) {
+		return RenderinfoList.rn_3294(r_obj, rn_3279);
 	}
 
-	public static void rn_3461(java.util.ArrayList<Renderinfo> r_obj, Renderinfo rn_3462) {
-		r_obj.add(rn_3462);
+	public static void rn_3286(java.util.ArrayList<Renderinfo> r_obj, Renderinfo rn_3287) {
+		r_obj.add(rn_3287);
 	}
 
-	public static Renderinfo rn_3469(java.util.ArrayList<Renderinfo> r_obj, int rn_3470) {
-		return r_obj.get(rn_3470);
+	public static Renderinfo rn_3294(java.util.ArrayList<Renderinfo> r_obj, int rn_3295) {
+		return r_obj.get(rn_3295);
 	}
 
-	public static int rn_1225(java.util.ArrayList<Renderinfo> r_obj) {
+	public static int rn_1021(java.util.ArrayList<Renderinfo> r_obj) {
 		return r_obj.size();
 	}
 }

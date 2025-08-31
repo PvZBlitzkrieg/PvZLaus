@@ -1,16 +1,16 @@
 package bk.pvz;
-import rn_6840.rn_6841.rn_6842.rn_6928;
 import bk.pvz.Detrect;
-import rn_6840.rn_6841.rn_6842.rn_3289;
 import bk.pvz.RectaList;
+import rn_6672.rn_6673.rn_6674.rn_3081;
+import rn_6672.rn_6673.rn_6674.rn_6760;
 
 public class Recta extends java.util.ArrayList<Detrect> {
-	public String rn_4277 = "";
+	public String rn_4109 = "";
 
-	public final Detrect rn_4278(String rn_4279) {
-		for (int rn_10618 = 0;rn_10618 < RectaList.rn_1225(Recta.this);rn_10618 += 1) {
-			if (rn_3289.rn_6850(rn_4279, RectaList.rn_4248(Recta.this, rn_10618).rn_4183)) {
-				return RectaList.rn_4248(Recta.this, rn_10618);
+	public final Detrect rn_4110(String rn_4111) {
+		for (int rn_10489 = 0;rn_10489 < RectaList.rn_1021(Recta.this);rn_10489 += 1) {
+			if (rn_3081.rn_6682(rn_4111, RectaList.rn_4080(Recta.this, rn_10489).rn_4015)) {
+				return RectaList.rn_4080(Recta.this, rn_10489);
 			}
 		}
 		return null;

@@ -3,31 +3,31 @@ import android.os.*;
 import android.content.*;
 import android.view.KeyEvent;
 import android.os.Bundle;
-import rn_4581.rn_4582.rn_4583.rn_5581;
-import rn_6840.rn_6841.rn_6842.rn_6925;
-import rn_6840.rn_6841.rn_6842.rn_6928;
-import rn_4581.rn_4582.rn_4583.rn_5594;
-import bk.pvz.AAC;
-import rn_4581.rn_4582.rn_4583.rn_5408;
-import rn_6840.rn_6841.rn_6842.rn_3289;
-import rn_4581.rn_4582.rn_4583.rn_5637;
-import bk.pvz.AndroidApplication_;
 import bk.pvz.AA;
+import bk.pvz.AndroidApplication_;
+import rn_4413.rn_4414.rn_4415.rn_5469;
+import bk.pvz.AAC;
+import rn_4413.rn_4414.rn_4415.rn_5413;
+import rn_4413.rn_4414.rn_4415.rn_5426;
+import rn_6672.rn_6673.rn_6674.rn_6760;
+import rn_6672.rn_6673.rn_6674.rn_3081;
+import rn_4413.rn_4414.rn_4415.rn_5240;
+import rn_6672.rn_6673.rn_6674.rn_6757;
 
 public class Setup extends com.badlogic.gdx.backends.android.AndroidApplication {
-	private rn_5637 root;
+	private rn_5469 root;
 	
     @Override
     protected void onCreate(Bundle savedBundleInstance) {
-		rn_3866();
+		rn_3698();
 		super.onCreate(savedBundleInstance);
         onInit();
-        rn_3867();
+        rn_3699();
     }
 
     
 	
-	protected void setLayout(rn_5637 root) {
+	protected void setLayout(rn_5469 root) {
 		this.root = root;
 		setContentView(root.getView());
 	}
@@ -35,51 +35,51 @@ public class Setup extends com.badlogic.gdx.backends.android.AndroidApplication 
 	@Override
 	protected void onStart() {
 		super.onStart();
-		rn_3868();
+		rn_3700();
 	}
 
 	@Override
 	protected void onRestart() {
 		super.onRestart();
-		rn_3869();
+		rn_3701();
 	}
 
 	@Override
 	protected void onStop() {
 		super.onStop();
-		rn_3871();
+		rn_3703();
 	}
 
 	@Override
 	protected void onPause() {
 		super.onPause();
-		rn_3870();
+		rn_3702();
 	}
 
 	@Override
 	protected void onResume() {
 		super.onResume();
-		rn_3872();
+		rn_3704();
 	}
 
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
-		rn_3873();
+		rn_3705();
 	}
 	
 	@Override
 	public boolean onCreateOptionsMenu(android.view.Menu menu) {
-		rn_3874(menu);
+		rn_3706(menu);
 		return super.onCreateOptionsMenu(menu);
 	}
 	
 	@Override
 	public boolean onOptionsItemSelected(android.view.MenuItem item) {
 		if (item.getItemId() == android.R.id.home) {
-			rn_3878();
+			rn_3710();
 		} else {
-			rn_3876(item);
+			rn_3708(item);
 		}
 		return super.onOptionsItemSelected(item);
 	}
@@ -87,71 +87,71 @@ public class Setup extends com.badlogic.gdx.backends.android.AndroidApplication 
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
-		rn_3879(requestCode, resultCode, data);
+		rn_3711(requestCode, resultCode, data);
 	}
 	
 	@Override
 	public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
 		super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-		rn_3883(requestCode, permissions, grantResults);
+		rn_3715(requestCode, permissions, grantResults);
 	}
 	
 	@Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-    	return rn_3887(keyCode) ? true : super.onKeyDown(keyCode, event);
+    	return rn_3719(keyCode) ? true : super.onKeyDown(keyCode, event);
     }
 
 	public void onInit() {
 	}
 
-	public void rn_3866() {
+	public void rn_3698() {
 	}
 
-	public void rn_3867() {
+	public void rn_3699() {
 	}
 
-	public void rn_3868() {
+	public void rn_3700() {
 	}
 
-	public void rn_3869() {
+	public void rn_3701() {
 	}
 
-	public void rn_3870() {
+	public void rn_3702() {
 	}
 
-	public void rn_3871() {
+	public void rn_3703() {
 	}
 
-	public void rn_3872() {
+	public void rn_3704() {
 	}
 
-	public void rn_3873() {
+	public void rn_3705() {
 	}
 
-	public void rn_3874(android.view.Menu rn_3875) {
+	public void rn_3706(android.view.Menu rn_3707) {
 	}
 
-	public void rn_3876(android.view.MenuItem rn_3877) {
+	public void rn_3708(android.view.MenuItem rn_3709) {
 	}
 
-	public void rn_3878() {
+	public void rn_3710() {
 	}
 
-	public void rn_3879(int rn_3880, int rn_3881, android.content.Intent rn_3882) {
+	public void rn_3711(int rn_3712, int rn_3713, android.content.Intent rn_3714) {
 	}
 
-	public void rn_3883(int rn_3884, String[] rn_3885, int[] rn_3886) {
+	public void rn_3715(int rn_3716, String[] rn_3717, int[] rn_3718) {
 	}
 
 	public void onBackPressed() {
 		super.onBackPressed();
 	}
 
-	public boolean rn_3887(int rn_3888) {
+	public boolean rn_3719(int rn_3720) {
 		return false;
 	}
 
-	public final void rn_3894(AA rn_3895, com.badlogic.gdx.backends.android.AndroidApplicationConfiguration rn_3896) {
-		initialize(rn_3895,rn_3896);
+	public final void rn_3726(AA rn_3727, com.badlogic.gdx.backends.android.AndroidApplicationConfiguration rn_3728) {
+		initialize(rn_3727,rn_3728);
 	}
 }

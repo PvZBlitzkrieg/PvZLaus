@@ -1,21 +1,21 @@
 package bk.pvz;
-import rn_6840.rn_6841.rn_6842.rn_6928;
+import rn_6672.rn_6673.rn_6674.rn_6760;
 import bk.pvz.POS;
 
 public class POSLIST {
-	public static POS rn_3129(java.util.ArrayList<POS> r_obj, int rn_3130) {
-		return POSLIST.rn_3145(r_obj, rn_3130);
+	public static POS rn_2908(java.util.ArrayList<POS> r_obj, int rn_2909) {
+		return POSLIST.rn_2924(r_obj, rn_2909);
 	}
 
-	public static void rn_3137(java.util.ArrayList<POS> r_obj, POS rn_3138) {
-		r_obj.add(rn_3138);
+	public static void rn_2916(java.util.ArrayList<POS> r_obj, POS rn_2917) {
+		r_obj.add(rn_2917);
 	}
 
-	public static POS rn_3145(java.util.ArrayList<POS> r_obj, int rn_3146) {
-		return r_obj.get(rn_3146);
+	public static POS rn_2924(java.util.ArrayList<POS> r_obj, int rn_2925) {
+		return r_obj.get(rn_2925);
 	}
 
-	public static int rn_1225(java.util.ArrayList<POS> r_obj) {
+	public static int rn_1021(java.util.ArrayList<POS> r_obj) {
 		return r_obj.size();
 	}
 }

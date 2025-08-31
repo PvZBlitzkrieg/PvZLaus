@@ -1,22 +1,17 @@
 package bk.pvz;
-import rn_6840.rn_6841.rn_6842.rn_6928;
-import rn_6840.rn_6841.rn_6842.rn_3289;
 import bk.pvz.Nlimage;
+import rn_6672.rn_6673.rn_6674.rn_3081;
+import rn_6672.rn_6673.rn_6674.rn_4133;
+import bk.pvz.String_Nlimagesm;
+import bk.pvz.ope;
 
-public class String_Nlimage {
-	public static Nlimage rn_3324(java.util.HashMap<String, Nlimage> r_obj, String rn_3325) {
-		return String_Nlimage.rn_3336(r_obj, rn_3325);
-	}
-
-	public static void rn_3331(java.util.HashMap<String, Nlimage> r_obj, String rn_3332, Nlimage rn_3333) {
-		r_obj.put(rn_3332, rn_3333);
-	}
-
-	public static Nlimage rn_3336(java.util.HashMap<String, Nlimage> r_obj, String rn_3337) {
-		return r_obj.get(rn_3337);
-	}
-
-	public static int rn_1225(java.util.HashMap<String, Nlimage> r_obj) {
-		return r_obj.size();
+public class String_Nlimage extends java.util.HashMap<String, Nlimage> {
+	public final Nlimage rn_3133(String rn_3134) {
+		Nlimage rn_3135 = String_Nlimagesm.rn_3128(String_Nlimage.this, rn_3134);
+		if (rn_3135 == null) {
+			ope.rn_1798("错误的图片id;" + rn_3134);
+			return String_Nlimagesm.rn_3128(String_Nlimage.this, "IMAGE_REANIM_" + rn_3081.rn_6711("Credits_nozombies"));
+		}
+		return rn_3135;
 	}
 }

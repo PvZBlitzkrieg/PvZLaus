@@ -1,23 +1,23 @@
 package bk.pvz;
-import rn_6840.rn_6841.rn_6842.rn_6945;
-import rn_6840.rn_6841.rn_6842.rn_4301;
+import rn_6672.rn_6673.rn_6674.rn_6777;
+import rn_6672.rn_6673.rn_6674.rn_4133;
 
 public class Quad {
-	public float rn_4280 = 0F;
-	public float rn_4281 = 0F;
-	public float rn_4282 = 0F;
-	public float rn_4283 = 0F;
-	public float rn_4284 = 1.0F;
-	public float rn_4285 = 1.0F;
+	public float rn_4112 = 0F;
+	public float rn_4113 = 0F;
+	public float rn_4114 = 0F;
+	public float rn_4115 = 0F;
+	public float rn_4116 = 1.0F;
+	public float rn_4117 = 1.0F;
 
-	public static final Quad rn_4286(float rn_4287, float rn_4288, float rn_4289, float rn_4290, float rn_4291, float rn_4292) {
-		Quad rn_4293 = new Quad();
-		rn_4293.rn_4280 = rn_4287;
-		rn_4293.rn_4281 = rn_4288;
-		rn_4293.rn_4282 = rn_4289;
-		rn_4293.rn_4283 = rn_4290;
-		rn_4293.rn_4284 = rn_4291;
-		rn_4293.rn_4285 = rn_4292;
-		return rn_4293;
+	public static final Quad rn_4118(float rn_4119, float rn_4120, float rn_4121, float rn_4122, float rn_4123, float rn_4124) {
+		Quad rn_4125 = new Quad();
+		rn_4125.rn_4112 = rn_4119;
+		rn_4125.rn_4113 = rn_4120;
+		rn_4125.rn_4114 = rn_4121;
+		rn_4125.rn_4115 = rn_4122;
+		rn_4125.rn_4116 = rn_4123;
+		rn_4125.rn_4117 = rn_4124;
+		return rn_4125;
 	}
 }

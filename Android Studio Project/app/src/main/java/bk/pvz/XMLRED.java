@@ -1,21 +1,21 @@
 package bk.pvz;
-import rn_6840.rn_6841.rn_6842.rn_6928;
 import bk.pvz.XMLR;
+import rn_6672.rn_6673.rn_6674.rn_6760;
 
 public class XMLRED {
-	public static XMLR rn_3211(java.util.ArrayList<XMLR> r_obj, int rn_3212) {
-		return XMLRED.rn_3227(r_obj, rn_3212);
+	public static XMLR rn_2990(java.util.ArrayList<XMLR> r_obj, int rn_2991) {
+		return XMLRED.rn_3006(r_obj, rn_2991);
 	}
 
-	public static void rn_3219(java.util.ArrayList<XMLR> r_obj, XMLR rn_3220) {
-		r_obj.add(rn_3220);
+	public static void rn_2998(java.util.ArrayList<XMLR> r_obj, XMLR rn_2999) {
+		r_obj.add(rn_2999);
 	}
 
-	public static XMLR rn_3227(java.util.ArrayList<XMLR> r_obj, int rn_3228) {
-		return r_obj.get(rn_3228);
+	public static XMLR rn_3006(java.util.ArrayList<XMLR> r_obj, int rn_3007) {
+		return r_obj.get(rn_3007);
 	}
 
-	public static int rn_1225(java.util.ArrayList<XMLR> r_obj) {
+	public static int rn_1021(java.util.ArrayList<XMLR> r_obj) {
 		return r_obj.size();
 	}
 }
