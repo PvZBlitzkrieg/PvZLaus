@@ -1,42 +1,42 @@
 package bk.pvz;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import rn_6840.rn_6841.rn_6842.rn_6928;
-import bk.pvz.Array_;
-import bk.pvz.FileHandle_;
-import rn_6840.rn_6841.rn_6842.rn_6945;
-import rn_6840.rn_6841.rn_6842.rn_4301;
-import rn_6840.rn_6841.rn_6842.rn_3289;
 import bk.pvz.BitmapFontData_;
-import bk.pvz.Batch_;
+import bk.pvz.FileHandle_;
+import bk.pvz.Array_;
 import bk.pvz.Color_;
+import rn_6672.rn_6673.rn_6674.rn_6777;
+import rn_6672.rn_6673.rn_6674.rn_4133;
+import rn_6672.rn_6673.rn_6674.rn_6760;
+import rn_6672.rn_6673.rn_6674.rn_3081;
+import bk.pvz.Batch_;
 
 public class BitmapFont_ {
-	public static com.badlogic.gdx.graphics.g2d.BitmapFont rn_4151(com.badlogic.gdx.files.FileHandle rn_4152, com.badlogic.gdx.files.FileHandle rn_4153) {
-		return new BitmapFont(rn_4152,rn_4153,false);
+	public static com.badlogic.gdx.graphics.g2d.BitmapFont rn_3983(com.badlogic.gdx.files.FileHandle rn_3984, com.badlogic.gdx.files.FileHandle rn_3985) {
+		return new BitmapFont(rn_3984,rn_3985,false);
 	}
 
-	public static com.badlogic.gdx.graphics.g2d.BitmapFont rn_4154(com.badlogic.gdx.files.FileHandle rn_4155, com.badlogic.gdx.utils.Array rn_4156) {
-		return new BitmapFont(new BitmapFont.BitmapFontData(rn_4155,false),rn_4156,false);
+	public static com.badlogic.gdx.graphics.g2d.BitmapFont rn_3986(com.badlogic.gdx.files.FileHandle rn_3987, com.badlogic.gdx.utils.Array rn_3988) {
+		return new BitmapFont(new BitmapFont.BitmapFontData(rn_3987,false),rn_3988,false);
 	}
 
-	public static com.badlogic.gdx.graphics.g2d.BitmapFont.BitmapFontData rn_4157(com.badlogic.gdx.graphics.g2d.BitmapFont r_obj) {
+	public static com.badlogic.gdx.graphics.g2d.BitmapFont.BitmapFontData rn_3989(com.badlogic.gdx.graphics.g2d.BitmapFont r_obj) {
 		return r_obj.getData();
 	}
 
-	public static void rn_4158(com.badlogic.gdx.graphics.g2d.BitmapFont r_obj, com.badlogic.gdx.graphics.Color rn_4159) {
-		r_obj.setColor(rn_4159);
+	public static void rn_3990(com.badlogic.gdx.graphics.g2d.BitmapFont r_obj, com.badlogic.gdx.graphics.Color rn_3991) {
+		r_obj.setColor(rn_3991);
 	}
 
-	public static void rn_4160(com.badlogic.gdx.graphics.g2d.BitmapFont r_obj, com.badlogic.gdx.graphics.g2d.Batch rn_4161, String rn_4162, float rn_4163, float rn_4164) {
-		String[] rn_4165 = rn_3289.rn_6892(rn_4162, "\n");
-		int rn_4166 = 0;
-		for (int rn_10617 = 0;rn_10617 < rn_4165.length;rn_10617 += 1) {
-			BitmapFont_.rn_4167(r_obj, rn_4161, rn_4165 [rn_10617], rn_4163, rn_4164 - rn_4166 * 100);
-			rn_4166 = rn_4166 + 1;
+	public static void rn_3992(com.badlogic.gdx.graphics.g2d.BitmapFont r_obj, com.badlogic.gdx.graphics.g2d.Batch rn_3993, String rn_3994, float rn_3995, float rn_3996) {
+		String[] rn_3997 = rn_3081.rn_6724(rn_3994, "\n");
+		int rn_3998 = 0;
+		for (int rn_10488 = 0;rn_10488 < rn_3997.length;rn_10488 += 1) {
+			BitmapFont_.rn_3999(r_obj, rn_3993, rn_3997 [rn_10488], rn_3995, rn_3996 - rn_3998 * 100);
+			rn_3998 = rn_3998 + 1;
 		}
 	}
 
-	public static void rn_4167(com.badlogic.gdx.graphics.g2d.BitmapFont r_obj, com.badlogic.gdx.graphics.g2d.Batch rn_4168, String rn_4169, float rn_4170, float rn_4171) {
-		r_obj.draw(rn_4168,rn_4169,rn_4170,rn_4171);
+	public static void rn_3999(com.badlogic.gdx.graphics.g2d.BitmapFont r_obj, com.badlogic.gdx.graphics.g2d.Batch rn_4000, String rn_4001, float rn_4002, float rn_4003) {
+		r_obj.draw(rn_4000,rn_4001,rn_4002,rn_4003);
 	}
 }

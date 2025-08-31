@@ -1,24 +1,24 @@
 package bk.pvz;
-import rn_6840.rn_6841.rn_6842.rn_6925;
-import rn_6840.rn_6841.rn_6842.rn_6928;
-import rn_6840.rn_6841.rn_6842.rn_4301;
+import rn_6672.rn_6673.rn_6674.rn_4133;
+import rn_6672.rn_6673.rn_6674.rn_6760;
+import rn_6672.rn_6673.rn_6674.rn_6757;
 
 public class Dint {
-	public int rn_3822 = 0;
-	public int rn_3823 = 0;
-	public boolean rn_3824 = true;
+	public int rn_3654 = 0;
+	public int rn_3655 = 0;
+	public boolean rn_3656 = true;
 
-	public final Dint rn_3825(int rn_3826) {
-		rn_3822 = rn_3826;
-		rn_3823 = rn_3826 - 1;
-		rn_3824 = true;
+	public final Dint rn_3657(int rn_3658) {
+		rn_3654 = rn_3658;
+		rn_3655 = rn_3658 - 1;
+		rn_3656 = true;
 		return Dint.this;
 	}
 
-	public final Dint rn_3829() {
-		Dint rn_3830 = new Dint();
-		rn_3830.rn_3822 = rn_3822;
-		rn_3830.rn_3823 = rn_3823;
-		return rn_3830;
+	public final Dint rn_3661() {
+		Dint rn_3662 = new Dint();
+		rn_3662.rn_3654 = rn_3654;
+		rn_3662.rn_3655 = rn_3655;
+		return rn_3662;
 	}
 }

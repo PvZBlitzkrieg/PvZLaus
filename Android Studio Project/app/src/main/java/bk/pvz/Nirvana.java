@@ -1,1081 +1,1119 @@
 package bk.pvz;
 import android.graphics.*;
 import android.graphics.Bitmap.Config;
-import bk.pvz.Pixmap_;
-import bk.pvz.Grain;
-import rn_6840.rn_6841.rn_6842.rn_3289;
-import bk.pvz.Anim;
-import rn_4581.rn_4582.rn_4583.rn_7317;
-import bk.pvz.ints;
-import bk.pvz.Reanimed;
-import bk.pvz.ParticleList;
-import bk.pvz.Point;
-import bk.pvz.XMLRED;
-import bk.pvz.MowerList;
-import bk.pvz.Userdata;
-import rn_4581.rn_4582.rn_4583.rn_10083;
-import bk.pvz.TextureRegion_;
-import bk.pvz.Nlimage;
-import rn_4581.rn_4582.rn_4583.rn_9721;
-import bk.pvz.ProjList;
-import rn_6840.rn_6841.rn_6842.rn_6845;
-import bk.pvz.DrawStyles;
-import bk.pvz.POS_int;
-import bk.pvz.Recta;
-import bk.pvz.Detrect;
-import bk.pvz.Colorset;
-import bk.pvz.String2RectList;
-import bk.pvz.RenderinfoList;
-import bk.pvz.ShaderProgram_;
-import bk.pvz.Paint_;
-import rn_6840.rn_6841.rn_6842.rn_6925;
-import bk.pvz.Particle;
-import bk.pvz.CoinList;
+import rn_4413.rn_4414.rn_4415.rn_9553;
+import bk.pvz.Zombie;
 import bk.pvz.Plant;
-import bk.pvz.Images;
-import bk.pvz.Stringk;
-import bk.pvz.Matrix_;
-import bk.pvz.Coin;
-import bk.pvz.FrameBuffer_;
-import bk.pvz.BitmapFont_;
+import rn_6672.rn_6673.rn_6674.rn_6677;
+import rn_4413.rn_4414.rn_4415.rn_8645;
+import rn_6672.rn_6673.rn_6674.rn_4133;
+import bk.pvz.Const;
+import bk.pvz.POS;
+import bk.pvz.RenderinfoList;
 import bk.pvz.Rectx;
 import bk.pvz.Texture_;
-import bk.pvz.DrawStyle;
-import rn_6840.rn_6841.rn_6842.rn_6935;
-import bk.pvz.PlantList;
-import rn_4581.rn_4582.rn_4583.rn_8820;
-import bk.pvz.UserdataList;
-import bk.pvz.ProxyAnim;
-import rn_6840.rn_6841.rn_6842.rn_6961;
-import bk.pvz.Matrix4_;
-import bk.pvz.GrainSet;
-import rn_4581.rn_4582.rn_4583.rn_9105;
-import bk.pvz.POS;
-import rn_4294.rn_4295.rn_4296.rn_4366;
-import bk.pvz.Tracle;
-import bk.pvz.Color_;
-import bk.pvz.STSL;
-import rn_6840.rn_6841.rn_6842.rn_6928;
-import bk.pvz.Reanim;
-import bk.pvz.XMLR;
-import bk.pvz.Zombie;
-import bk.pvz.static_;
-import bk.pvz.TracleList;
-import bk.pvz.Boolarray;
-import bk.pvz.reanims;
-import rn_4581.rn_4582.rn_4583.rn_7395;
-import bk.pvz.op;
-import bk.pvz.RectaList;
-import bk.pvz.Userdatas;
-import rn_4294.rn_4295.rn_4296.rn_4434;
-import bk.pvz.Renderinfo;
-import bk.pvz.Proj;
-import bk.pvz.ZombieList;
-import bk.pvz.ope;
-import bk.pvz.Matrix3_;
-import bk.pvz.FileHandle_;
-import rn_6840.rn_6841.rn_6842.rn_6945;
-import bk.pvz.String_Nlimage;
-import bk.pvz.SpriteBatch;
-import bk.pvz.Typeface_;
+import rn_4126.rn_4127.rn_4128.rn_4266;
+import rn_4413.rn_4414.rn_4415.rn_8652;
+import rn_4413.rn_4414.rn_4415.rn_9915;
+import bk.pvz.ProjList;
+import rn_4413.rn_4414.rn_4415.rn_8937;
 import bk.pvz.Mower;
-import rn_4581.rn_4582.rn_4583.rn_9923;
+import bk.pvz.Matrix3_;
+import bk.pvz.Reanimed;
+import bk.pvz.Stringk;
+import bk.pvz.Images;
+import rn_4413.rn_4414.rn_4415.rn_4577;
+import bk.pvz.Paint_;
+import bk.pvz.Userdata;
+import bk.pvz.TracleList;
 import bk.pvz.Animed;
-import bk.pvz.CartSet;
-import rn_6840.rn_6841.rn_6842.rn_4301;
-import rn_4581.rn_4582.rn_4583.rn_8813;
+import bk.pvz.reanims;
+import rn_4413.rn_4414.rn_4415.rn_7149;
+import bk.pvz.ZombieList;
+import bk.pvz.ints;
+import bk.pvz.CoinList;
+import bk.pvz.Recta;
+import bk.pvz.Coin;
+import bk.pvz.XMLR;
+import bk.pvz.FileHandle_;
+import bk.pvz.Pixmap_;
+import bk.pvz.ShaderProgram_;
+import bk.pvz.GrainSet;
+import rn_4126.rn_4127.rn_4128.rn_4132;
+import bk.pvz.ParticleList;
+import bk.pvz.Proj;
+import bk.pvz.String_Nlimage;
+import bk.pvz.Anim;
+import bk.pvz.RectaList;
+import bk.pvz.Renderinfo;
+import bk.pvz.XMLRED;
+import bk.pvz.PlantList;
+import bk.pvz.String_Nlimagesm;
+import bk.pvz.POS_int;
+import rn_6672.rn_6673.rn_6674.rn_6767;
+import bk.pvz.STSL;
 import bk.pvz.BitmapFontData_;
-import bk.pvz.Const;
+import bk.pvz.Nlimage;
+import bk.pvz.MowerList;
+import bk.pvz.TextureRegion_;
+import rn_4126.rn_4127.rn_4128.rn_4198;
+import rn_4126.rn_4127.rn_4128.rn_8150;
+import bk.pvz.BitmapFont_;
+import bk.pvz.Boolarray;
+import bk.pvz.ope;
+import bk.pvz.CartSet;
+import rn_4413.rn_4414.rn_4415.rn_7227;
+import bk.pvz.DrawStyles;
+import rn_6672.rn_6673.rn_6674.rn_6757;
+import rn_4126.rn_4127.rn_4128.rn_8084;
+import bk.pvz.DrawStyle;
+import bk.pvz.UserdataList;
+import bk.pvz.op;
+import bk.pvz.String2RectList;
+import bk.pvz.Detrect;
+import rn_6672.rn_6673.rn_6674.rn_6777;
+import bk.pvz.Point;
+import rn_6672.rn_6673.rn_6674.rn_3081;
+import rn_6672.rn_6673.rn_6674.rn_6760;
+import bk.pvz.Userdatas;
+import bk.pvz.Typeface_;
+import rn_4413.rn_4414.rn_4415.rn_9755;
+import bk.pvz.Tracle;
+import rn_6672.rn_6673.rn_6674.rn_6793;
+import bk.pvz.Color_;
+import bk.pvz.ProxyAnim;
+import bk.pvz.Reanim;
+import bk.pvz.Grain;
+import bk.pvz.static_;
+import bk.pvz.Matrix4_;
+import bk.pvz.Matrix_;
+import bk.pvz.Particle;
+import bk.pvz.SpriteBatch;
+import bk.pvz.FrameBuffer_;
+import bk.pvz.Colorset;
 
-public class Nirvana {	public int rn_445 = 5;
-	public java.util.HashMap<String, Nlimage> rn_446 = new java.util.HashMap<String, Nlimage>();
-	public Stringk rn_447 = Stringk.rn_3085("");
-	public reanims rn_448 = new reanims();
-	public boolean rn_449 = false;
-	public Images rn_450 = new Images();
-	public STSL rn_451 = new STSL();
-	public XMLR rn_452 = new XMLR();
-	public com.badlogic.gdx.graphics.g2d.SpriteBatch rn_453 = null;
-	public com.badlogic.gdx.graphics.glutils.FrameBuffer rn_454 = null;
-	public int rn_455 = 0;
-	public int rn_456 = 0;
-	public android.app.Activity rn_457 = null;
-	public float rn_458 = 0.0F;
-	public float rn_459 = 0.0F;
-	public int rn_460 = 0;
-	public float rn_461 = 1.0F;
-	public java.util.HashMap<String, String> rn_462 = new java.util.HashMap<String, String>();
-	public int rn_463 = 15;
-	public android.graphics.Typeface rn_464 = null;
-	public float rn_465 = -1.0F;
-	public float rn_466 = -1.0F;
-	public float rn_467 = -1.0F;
-	public float rn_468 = -1.0F;
-	public long rn_469 = 0;
-	public android.view.MotionEvent rn_470 = null;
-	public float rn_471 = -1.0F;
-	public Anim rn_472 = new Anim();
-	public float rn_473 = -1.0F;
-	public int rn_474 = 0;
-	public float rn_475 = 1.0F;
-	public String2RectList rn_476 = new String2RectList();
-	public java.util.ArrayList<Zombie> rn_477 = new java.util.ArrayList<Zombie>();
-	public java.util.ArrayList<Plant> rn_478 = new java.util.ArrayList<Plant>();
-	public java.util.ArrayList<Proj> rn_479 = new java.util.ArrayList<Proj>();
-	public java.util.ArrayList<Tracle> rn_480 = new java.util.ArrayList<Tracle>();
-	public java.util.ArrayList<Particle> rn_481 = new java.util.ArrayList<Particle>();
-	public int[] rn_482 = {0, 1, 2, 3, 4, 5};
-	public int[] rn_483 = {0, 0, 0, 0, 0, 0};
-	public int rn_484 = 0;
-	public int rn_485 = 50;
-	public int rn_486 = 70;
-	public int rn_487 = 2;
-	public int rn_488 = 8;
-	public android.graphics.Bitmap rn_489 = null;
-	public int rn_490 = 50;
-	public int rn_491 = 1100;
-	public java.util.ArrayList<Coin> rn_492 = new java.util.ArrayList<Coin>();
-	public int rn_493 = 0;
-	public int rn_494 = 0;
-	public int rn_495 = 0;
-	public int rn_496 = 0;
-	public int rn_497 = 1;
-	public int rn_498 = 0;
-	public int rn_500 = 0;
-	public Anim rn_501 = null;
-	public int rn_502 = 0;
-	public int rn_503 = 0;
-	public float rn_504 = 0.0F;
-	public float rn_505 = 0.0F;
-	public int rn_506 = 0;
-	public boolean rn_507 = false;
-	public int rn_508 = 0;
-	public int rn_509 = 0;
-	public int rn_510 = 0;
-	public XMLR rn_511 = new XMLR();
-	public int rn_512 = 0;
-	public float rn_513 = 0.0F;
-	public String rn_514 = "";
-	public String rn_515 = "";
-	public DrawStyle rn_518 = new DrawStyle();
-	public DrawStyle rn_519 = new DrawStyle();
-	public long rn_521 = 0;
-	public long rn_522 = 0;
-	public int rn_523 = 1;
-	public com.badlogic.gdx.graphics.glutils.ShaderProgram rn_524 = null;
-	public com.badlogic.gdx.graphics.g2d.BitmapFont rn_525 = null;
-	public boolean rn_526 = true;
-	public boolean rn_527 = true;
-	public java.util.ArrayList<Anim> rn_528 = new java.util.ArrayList<Anim>();
-	public Userdatas rn_529 = new Userdatas();
-	public String rn_530 = "none";
-	public Recta rn_531 = new Recta();
-	public int rn_532 = 0;
-	public boolean rn_533 = false;
-	public com.badlogic.gdx.graphics.Texture rn_534 = null;
-	public float rn_535 = 0.0F;
-	public com.badlogic.gdx.graphics.Texture rn_536 = null;
-	public com.badlogic.gdx.graphics.Texture rn_537 = null;
-	public com.badlogic.gdx.graphics.Texture rn_538 = null;
-	public int rn_539 = 0;
-	public boolean rn_540 = false;
-	public float rn_541 = 0.0F;
-	public int[] rn_542 = (int[]) (new int[6]);
-	public CartSet rn_543 = new CartSet();
-	public String rn_545 = "";
-	public int rn_546 = 0;
-	public boolean rn_547 = true;
-	public java.util.ArrayList<DrawStyle> rn_548 = new java.util.ArrayList<DrawStyle>();
-	public int rn_549 = -1;
-	public int rn_550 = 0;
-	public int rn_551 = 25;
-	public boolean rn_552 = false;
-	public int rn_553 = -1;
-	public String rn_555 = "";
-
-	public final void rn_560(int rn_561, int rn_562) {
-		rn_796();
-		rn_489 = rn_9105.rn_9108("/storage/emulated/0/.pvz/plant_cards.png");
-		rn_464 = Typeface_.rn_1776("/storage/emulated/0/.pvz/main/fzse_gbk.ttf");
-		rn_455 = rn_562 * 4 / 3;
-		rn_456 = rn_562;
-		rn_461 = rn_456 / 600.0F / rn_523;
-		rn_473 = (rn_561 - rn_455) / 2 / rn_523;
-		ope.rn_1925("width=" + rn_455);
-		ope.rn_1925("height=" + rn_456);
-		ope.rn_1925("scale=" + rn_461);
-		rn_447 = new Stringk("加载场景");
-		XMLR.rn_3056(rn_452, Stringk.rn_3085(rn_9923.rn_9963("/storage/emulated/0/.pvz/pvz/properties/config.xml", "UTF-8")), 0);
-		XMLR.rn_3056(rn_511, Stringk.rn_3085(rn_9923.rn_9963("/storage/emulated/0/.pvz/pvz/properties/levels.xml", "UTF-8")), 0);
-		rn_450.rn_3644(rn_447, rn_451);
-		Nlimage rn_563 = new Nlimage();
-		rn_563.rn_3632 = "/storage/emulated/0/.pvz/pvz/reanim/SodRollCap.png";
-		String_Nlimage.rn_3331(rn_450.rn_3643, "SodRollCap", rn_563);
-		rn_1052();
-		rn_533 = true;
+public class Nirvana {
+	@Override
+	public String toString(){
+	    return ToJSON();
 	}
-	public com.badlogic.gdx.graphics.Texture[] rn_564 = (com.badlogic.gdx.graphics.Texture[]) (new com.badlogic.gdx.graphics.Texture[256]);
+	public int scrtype = 5;
+	public String_Nlimage resall = new String_Nlimage();
+	public Stringk loadproc = Stringk.rn_2864("");
+	public reanims REANIM = new reanims();
+	public boolean loadfinish = false;
+	public Images image = new Images();
+	public STSL imagename = new STSL();
+	public XMLR config = new XMLR();
+	public com.badlogic.gdx.graphics.g2d.SpriteBatch screen = null;
+	public com.badlogic.gdx.graphics.glutils.FrameBuffer fbo = null;
+	public int width = 0;
+	public int height = 0;
+	public android.app.Activity mainThread = null;
+	public float gcv = 0.0F;
+	public float x = 0.0F;
+	public int y = 0;
+	public float scale = 1.0F;
+	public java.util.HashMap<String, String> gametext = new java.util.HashMap<String, String>();
+	public int textsize = 15;
+	public android.graphics.Typeface textfont = null;
+	public float dx = -1.0F;
+	public float dy = -1.0F;
+	public float tx = -1.0F;
+	public float ty = -1.0F;
+	public long tt = 0;
+	public android.view.MotionEvent touch = null;
+	public float speed = -1.0F;
+	public Anim animh = new Anim();
+	public float realx = -1.0F;
+	public int drawuprate = 0;
+	public float transp = 1.0F;
+	public String2RectList trirect = new String2RectList();
+	public java.util.ArrayList<Zombie> zombieList = new java.util.ArrayList<Zombie>();
+	public java.util.ArrayList<Plant> plantList = new java.util.ArrayList<Plant>();
+	public java.util.ArrayList<Proj> projList = new java.util.ArrayList<Proj>();
+	public java.util.ArrayList<Tracle> tracleList = new java.util.ArrayList<Tracle>();
+	public java.util.ArrayList<Particle> particleList = new java.util.ArrayList<Particle>();
+	public int[] cards = {0, 1, 2, 3, 4, 5};
+	public int[] card_cool = {0, 0, 0, 0, 0, 0};
+	public int animproc = 0;
+	public int mmx = 50;
+	public int mmy = 70;
+	public int mux = 2;
+	public int muy = 8;
+	public android.graphics.Bitmap plant_cards = null;
+	public int sunapp = 50;
+	public int sunappmax = 1100;
+	public java.util.ArrayList<Coin> coinlist = new java.util.ArrayList<Coin>();
+	public int wave = 0;
+	public int wavemax = 0;
+	public int drawtime = 0;
+	public int frametime = 0;
+	public int level = 1;
+	public int leveltype = 0;
+	public int scene = 0;
+	public Anim predanim = null;
+	public int predx = 0;
+	public int predy = 0;
+	public float predxp = 0.0F;
+	public float predyp = 0.0F;
+	public int predtype = 0;
+	public boolean pred = false;
+	public int predidx = 0;
+	public int suncount = 0;
+	public int proc = 0;
+	public XMLR levels = new XMLR();
+	public int zombiecount = 0;
+	public float procf = 0.0F;
+	public String loadinfo = "";
+	public String frameinfo = "";
+	public DrawStyle ds = new DrawStyle();
+	public DrawStyle dst = new DrawStyle();
+	public long ultna = 0;
+	public long ultnb = 0;
+	public int dscale = 1;
+	public com.badlogic.gdx.graphics.glutils.ShaderProgram rgbShader = null;
+	public com.badlogic.gdx.graphics.g2d.BitmapFont font1 = null;
+	public boolean nntw = false;
+	public boolean free = false;
+	public java.util.ArrayList<Anim> animess = new java.util.ArrayList<Anim>();
+	public Userdatas USER = new Userdatas();
+	public String state = "none";
+	public Recta judarea = new Recta();
+	public int bool = 0;
+	public boolean inited = false;
+	public com.badlogic.gdx.graphics.Texture rectw = null;
+	public float sdoffy = 0.0F;
+	public com.badlogic.gdx.graphics.Texture t1 = null;
+	public com.badlogic.gdx.graphics.Texture t2 = null;
+	public com.badlogic.gdx.graphics.Texture t3 = null;
+	public int inapptime = 0;
+	public boolean ccend = false;
+	public float csint = 0.0F;
+	public int[] proline = (int[]) (new int[6]);
+	public CartSet mowerList = new CartSet();
+	public String captions = "";
+	public int captionscd = 0;
+	public boolean canshedsun = true;
+	public java.util.ArrayList<DrawStyle> foreds = new java.util.ArrayList<DrawStyle>();
+	public int sobj = -1;
+	public int cardev = 0;
+	public int cardevtime = 25;
+	public boolean evdir = false;
+	public int recallid = -1;
+	public String uinfo = "";
+	public int savecount = 0;
 
-	public final com.badlogic.gdx.graphics.Texture rn_565(int rn_566) {
-		if (rn_564 [rn_566] == null) {
-			com.badlogic.gdx.graphics.Texture rn_567 = Texture_.rn_4059(Pixmap_.rn_4087(rn_569(rn_566)));
-			rn_564 [rn_566] = rn_567;
-			return rn_567;
+	public final void initi(int rn_446, int rn_447) {
+		int widthw = rn_446;
+		int heightw = rn_447;
+		readSceneArchive();
+		plant_cards = rn_8937.rn_8940("/storage/emulated/0/.pvz/plant_cards.png");
+		textfont = Typeface_.rn_1639("/storage/emulated/0/.pvz/main/fzse_gbk.ttf");
+		width = heightw * 4 / 3;
+		height = heightw;
+		scale = height / 600.0F / dscale;
+		realx = (widthw - width) / 2 / dscale;
+		ope.rn_1798("width=" + width);
+		ope.rn_1798("height=" + height);
+		ope.rn_1798("scale=" + scale);
+		loadproc = new Stringk("加载场景");
+		XMLR.rn_2835(config, Stringk.rn_2864(rn_9755.rn_9795("/storage/emulated/0/.pvz/pvz/properties/config.xml", "UTF-8")), 0);
+		XMLR.rn_2835(levels, Stringk.rn_2864(rn_9755.rn_9795("/storage/emulated/0/.pvz/pvz/properties/levels.xml", "UTF-8")), 0);
+		image.rn_3463(loadproc, imagename);
+		Nlimage rn_448 = new Nlimage();
+		rn_448.rn_3451 = "/storage/emulated/0/.pvz/pvz/reanim/SodRollCap.png";
+		String_Nlimagesm.rn_3123(image.rn_3462, "SodRollCap", rn_448);
+		initLawnString();
+		inited = true;
+	}
+	public com.badlogic.gdx.graphics.Texture[] card_tx = (com.badlogic.gdx.graphics.Texture[]) (new com.badlogic.gdx.graphics.Texture[256]);
+
+	public final com.badlogic.gdx.graphics.Texture getcardtx(int rn_449) {
+		if (card_tx [rn_449] == null) {
+			com.badlogic.gdx.graphics.Texture rn_450 = Texture_.rn_3891(Pixmap_.rn_3919(getcardcs(rn_449)));
+			card_tx [rn_449] = rn_450;
+			return rn_450;
 		} else {
-			return rn_564 [rn_566];
+			return card_tx [rn_449];
 		}
 	}
-	public android.graphics.Bitmap[] rn_568 = (android.graphics.Bitmap[]) (new android.graphics.Bitmap[256]);
+	public android.graphics.Bitmap[] card_cs = (android.graphics.Bitmap[]) (new android.graphics.Bitmap[256]);
 
-	public final android.graphics.Bitmap rn_569(int rn_570) {
-		if (rn_568 [rn_570] == null) {
-			int rn_571 = rn_570 % 8;
-			int rn_572 = (rn_570 - rn_571) / 8;
-			int rn_573 = rn_571 * (rn_485 + rn_487);
-			int rn_574 = rn_572 * (rn_486 + rn_488);
-			android.graphics.Bitmap rn_575 = ope.rn_1879(rn_489, rn_573, rn_574, 50, 70);
-			rn_568 [rn_570] = rn_575;
-			return rn_575;
+	public final android.graphics.Bitmap getcardcs(int rn_451) {
+		if (card_cs [rn_451] == null) {
+			int rn_452 = rn_451 % 8;
+			int rn_453 = (rn_451 - rn_452) / 8;
+			int rn_454 = rn_452 * (mmx + mux);
+			int rn_455 = rn_453 * (mmy + muy);
+			android.graphics.Bitmap rn_456 = ope.rn_1752(plant_cards, rn_454, rn_455, 50, 70);
+			card_cs [rn_451] = rn_456;
+			return rn_456;
 		} else {
-			return rn_568 [rn_570];
+			return card_cs [rn_451];
 		}
 	}
 
-	public final Nlimage rn_576(String rn_577) {
-		return String_Nlimage.rn_3324((rn_450.rn_3643), rn_451.rn_3664(rn_577));
+	public final Nlimage getres(String rn_457) {
+		return String_Nlimagesm.rn_3116((image.rn_3462), imagename.rn_3483(rn_457));
 	}
 
-	public final com.badlogic.gdx.graphics.g2d.TextureRegion 法外狂徒(int rn_579, int rn_580) {
-		if (rn_525 == null) {
-			String rn_581 = "/storage/emulated/0/.pvz/fonts/ziti";
-			int rn_582 = 28;
-			com.badlogic.gdx.graphics.g2d.TextureRegion[] rn_583 = (com.badlogic.gdx.graphics.g2d.TextureRegion[]) (new com.badlogic.gdx.graphics.g2d.TextureRegion[rn_582]);
-			for (int rn_10413 = 0;rn_10413 < rn_583.length;rn_10413 += 1) {
-				com.badlogic.gdx.graphics.Texture rn_584 = Texture_.rn_4061(FileHandle_.rn_4172(rn_581 + rn_6928.rn_6933((rn_10413 + 1)) + ".png"));
-				rn_583 [rn_10413] = TextureRegion_.rn_3989(rn_584);
+	public final com.badlogic.gdx.graphics.g2d.TextureRegion 法外狂徒(int rn_458, int rn_459) {
+		if (font1 == null) {
+			String fontName = "/storage/emulated/0/.pvz/fonts/ziti";
+			int pagecount = 28;
+			com.badlogic.gdx.graphics.g2d.TextureRegion[] trs = (com.badlogic.gdx.graphics.g2d.TextureRegion[]) (new com.badlogic.gdx.graphics.g2d.TextureRegion[pagecount]);
+			for (int rn_10245 = 0;rn_10245 < trs.length;rn_10245 += 1) {
+				com.badlogic.gdx.graphics.Texture rn_460 = Texture_.rn_3893(FileHandle_.rn_4004(fontName + rn_6760.rn_6765((rn_10245 + 1)) + ".png"));
+				trs [rn_10245] = TextureRegion_.rn_3821(rn_460);
 			}
-			rn_525 = BitmapFont_.rn_4154(FileHandle_.rn_4172(rn_581 + ".fnt"), ope.rn_1917(rn_583));
+			font1 = BitmapFont_.rn_3986(FileHandle_.rn_4004(fontName + ".fnt"), ope.rn_1790(trs));
 		}
-		if (rn_534 == null) {
-			com.badlogic.gdx.graphics.Pixmap rn_585 = Pixmap_.rn_4082(1, 1);
-			rn_585.setColor(0x000000ff);
-			rn_585.fill();
-			rn_534 = Texture_.rn_4059(rn_585);
+		if (rectw == null) {
+			com.badlogic.gdx.graphics.Pixmap rn_461 = Pixmap_.rn_3914(1, 1);
+			rn_461.setColor(0x000000ff);
+			rn_461.fill();
+			rectw = Texture_.rn_3891(rn_461);
 		}
-		rn_515 = "";
-		rn_521 = rn_996 / 1000000;
-		rn_522 = rn_997;
-		rn_996 = 0L;
-		rn_997 = 0L;
-		if (rn_453 != null) {
-			rn_453.enableBlending();
-			rn_453.setBlendFunction(0x302, 0x303);
-			rn_453.setShader(rn_524);
-			FrameBuffer_.rn_4098(rn_454);
-			SpriteBatch.rn_4000(rn_453);
-			SpriteBatch.rn_4054(rn_453, Matrix4_.rn_4122(Matrix3_.rn_4120(ope.rn_1903(Matrix_.rn_3579(Matrix_.rn_3576())))));
-			ShaderProgram_.rn_4106(rn_524, "u_rgbFactors", 1, 1, 1);
-			ShaderProgram_.rn_4111(rn_524, "u_clipRegion", 0, 0, rn_455, rn_456);
-			float rn_586 = rn_579 * 1.0F / rn_580;
-			if (rn_10083.rn_10089() - rn_469 > 20 && rn_470 != null) {
+		frameinfo = "";
+		ultna = nullait / 1000000;
+		ultnb = nullnbt;
+		nullait = 0L;
+		nullnbt = 0L;
+		if (screen != null) {
+			screen.enableBlending();
+			screen.setBlendFunction(0x302, 0x303);
+			screen.setShader(rgbShader);
+			FrameBuffer_.rn_3930(fbo);
+			SpriteBatch.rn_3832(screen);
+			SpriteBatch.rn_3886(screen, Matrix4_.rn_3954(Matrix3_.rn_3952(ope.rn_1776(Matrix_.rn_3398(Matrix_.rn_3395())))));
+			ShaderProgram_.rn_3938(rgbShader, "u_rgbFactors", 1, 1, 1);
+			ShaderProgram_.rn_3943(rgbShader, "u_clipRegion", 0, 0, width, height);
+			float rn_462 = rn_458 * 1.0F / rn_459;
+			if (rn_9915.rn_9921() - tt > 20 && touch != null) {
 				Thread thread = new Thread(new Runnable() { public void run() {;
-				rn_928(rn_470, true);
-				rn_470 = null;
+				handleTouch(touch, true);
+				touch = null;
 				}}); thread.start();
 			}
-			for (int rn_10414 = 0;rn_10414 < Animed.rn_1225(rn_528);rn_10414 += 1) {
-				DrawStyle rn_587 = new DrawStyle();
-				rn_587.rn_3773 = Animed.rn_3374(rn_528, rn_10414);
-				rn_587.rn_3774 = 1.0F;
-				rn_587.rn_3775 = 1.0F;
-				rn_587.rn_3776 = 0.0F;
-				rn_587.rn_3777 = 0.0F;
-				rn_587.rn_3780 = -1;
-				rn_587.rn_3781 = 0;
-				rn_587.rn_3782 = 0;
-				rn_985(rn_453, rn_587, rn_586);
+			for (int rn_10246 = 0;rn_10246 < Animed.rn_1021(animess);rn_10246 += 1) {
+				DrawStyle rn_463 = new DrawStyle();
+				rn_463.rn_3605 = Animed.rn_3169(animess, rn_10246);
+				rn_463.rn_3606 = 1.0F;
+				rn_463.rn_3607 = 1.0F;
+				rn_463.rn_3608 = 0.0F;
+				rn_463.rn_3609 = 0.0F;
+				rn_463.rn_3612 = -1;
+				rn_463.rn_3613 = 0;
+				rn_463.rn_3614 = 0;
+				draw(screen, rn_463, rn_462);
 			}
-			if (rn_445 == 5) {
+			if (scrtype == 5) {
 				com.badlogic.gdx.Gdx.gl.glClearColor(0,0,0,1);;
 				com.badlogic.gdx.Gdx.gl.glClear(com.badlogic.gdx.graphics.GL20.GL_COLOR_BUFFER_BIT | com.badlogic.gdx.graphics.GL20.GL_DEPTH_BUFFER_BIT);;
-				XMLR rn_588 = (rn_452).rn_3032("image").rn_3032("logo");
-				String rn_589 = rn_588.rn_3038("ImageRelativePath");
-				float rn_590 = rn_3289.rn_6899(rn_588.rn_3038("scale"));
-				android.graphics.Matrix rn_591 = Matrix_.rn_3576();
-				com.badlogic.gdx.graphics.Texture rn_592 = String_Nlimage.rn_3336(rn_450.rn_3643, rn_589).rn_3634().rn_2068(1, 1, 0);
-				float rn_593 = rn_455 * rn_590 / Texture_.rn_4065(rn_592);
-				Matrix_.rn_3592(rn_591, rn_593, rn_593);
-				Matrix_.rn_3603(rn_591, (rn_455 - Texture_.rn_4065(rn_592) * rn_593) / 2, (rn_456 - Texture_.rn_4066(rn_592) * rn_593) / 2);
-				SpriteBatch.rn_4021(rn_453, rn_592, rn_591, rn_475, rn_456, null);
-				rn_484 = rn_484 + rn_579;
-				ope.rn_1923(rn_591);
-				ope.rn_1923(rn_592);
-			} else if (rn_445 == 0) {
-				XMLR rn_594 = (rn_452).rn_3032("image").rn_3032("title");
-				String rn_595 = rn_594.rn_3038("ImageRelativePath");
-				com.badlogic.gdx.graphics.Texture rn_596 = String_Nlimage.rn_3336(rn_450.rn_3643, rn_594.rn_3038("dirt")).rn_3634().rn_2068(1, 1, 0);
-				float rn_597 = rn_3289.rn_6899(rn_594.rn_3038("dirt_bottom")) * rn_461;
-				com.badlogic.gdx.graphics.Pixmap rn_598 = String_Nlimage.rn_3336(rn_450.rn_3643, rn_594.rn_3038("grass")).rn_3634().rn_2054(1, 1, 0);
-				float rn_599 = rn_3289.rn_6899(rn_594.rn_3038("grass_bottom")) * rn_461;
-				com.badlogic.gdx.graphics.Texture rn_600 = String_Nlimage.rn_3336(rn_450.rn_3643, rn_595).rn_3634().rn_2068(1, 1, 0);
-				float rn_601 = rn_3289.rn_6899(rn_594.rn_3038("logo_top")) * rn_461;
-				android.graphics.Matrix rn_602 = Matrix_.rn_3592(Matrix_.rn_3576(), rn_461, rn_461);
-				SpriteBatch.rn_4021(rn_453, rn_600, rn_602, 1.0F, rn_456, null);
-				android.graphics.Matrix rn_603 = Matrix_.rn_3577(rn_602);
-				Matrix_.rn_3603(rn_603, rn_980(Texture_.rn_4065(rn_596) * rn_461) + 7 * rn_461, rn_456 - rn_597);
-				SpriteBatch.rn_4021(rn_453, rn_596, rn_603, 1.0F, rn_456, null);
-				android.graphics.Matrix rn_604 = Matrix_.rn_3577(rn_602);
-				float rn_605 = rn_980(Pixmap_.rn_4093(rn_598) * rn_461);
-				float rn_606 = rn_456 - rn_599;
-				Matrix_.rn_3603(rn_604, rn_605, rn_606);
-				float rn_607 = rn_978();
-				int rn_608 = (int) (rn_607 * Pixmap_.rn_4093(rn_598));
-				if (rn_608 > 0 && rn_608 <= Pixmap_.rn_4093(rn_598)) {
-					rn_598 = ope.rn_1885(rn_598, 0, 0, rn_608, Pixmap_.rn_4094(rn_598));
-					SpriteBatch.rn_4005(rn_453, rn_598, rn_604, 1.0F, rn_456);
+				XMLR rn_464 = (config).rn_2811("image").rn_2811("logo");
+				String rn_465 = rn_464.rn_2817("ImageRelativePath");
+				float rn_466 = rn_3081.rn_6731(rn_464.rn_2817("scale"));
+				android.graphics.Matrix rn_467 = Matrix_.rn_3395();
+				com.badlogic.gdx.graphics.Texture rn_468 = String_Nlimagesm.rn_3128(image.rn_3462, rn_465).rn_3453().rn_1941(1, 1, 0);
+				float rn_469 = width * rn_466 / Texture_.rn_3897(rn_468);
+				Matrix_.rn_3411(rn_467, rn_469, rn_469);
+				Matrix_.rn_3422(rn_467, (width - Texture_.rn_3897(rn_468) * rn_469) / 2, (height - Texture_.rn_3898(rn_468) * rn_469) / 2);
+				SpriteBatch.rn_3853(screen, rn_468, rn_467, transp, height, null);
+				animproc = animproc + rn_458;
+				ope.rn_1796(rn_467);
+				ope.rn_1796(rn_468);
+			} else if (scrtype == 0) {
+				XMLR rn_470 = (config).rn_2811("image").rn_2811("title");
+				String rn_471 = rn_470.rn_2817("ImageRelativePath");
+				com.badlogic.gdx.graphics.Texture rn_472 = String_Nlimagesm.rn_3128(image.rn_3462, rn_470.rn_2817("dirt")).rn_3453().rn_1941(1, 1, 0);
+				float rn_473 = rn_3081.rn_6731(rn_470.rn_2817("dirt_bottom")) * scale;
+				com.badlogic.gdx.graphics.Pixmap rn_474 = String_Nlimagesm.rn_3128(image.rn_3462, rn_470.rn_2817("grass")).rn_3453().rn_1927(1, 1, 0);
+				float rn_475 = rn_3081.rn_6731(rn_470.rn_2817("grass_bottom")) * scale;
+				com.badlogic.gdx.graphics.Texture rn_476 = String_Nlimagesm.rn_3128(image.rn_3462, rn_471).rn_3453().rn_1941(1, 1, 0);
+				float rn_477 = rn_3081.rn_6731(rn_470.rn_2817("logo_top")) * scale;
+				android.graphics.Matrix rn_478 = Matrix_.rn_3411(Matrix_.rn_3395(), scale, scale);
+				SpriteBatch.rn_3853(screen, rn_476, rn_478, 1.0F, height, null);
+				android.graphics.Matrix rn_479 = Matrix_.rn_3396(rn_478);
+				Matrix_.rn_3422(rn_479, center(Texture_.rn_3897(rn_472) * scale) + 7 * scale, height - rn_473);
+				SpriteBatch.rn_3853(screen, rn_472, rn_479, 1.0F, height, null);
+				android.graphics.Matrix rn_480 = Matrix_.rn_3396(rn_478);
+				float rn_481 = center(Pixmap_.rn_3925(rn_474) * scale);
+				float rn_482 = height - rn_475;
+				Matrix_.rn_3422(rn_480, rn_481, rn_482);
+				float rn_483 = getLoadingProc();
+				int rn_484 = (int) (rn_483 * Pixmap_.rn_3925(rn_474));
+				if (rn_484 > 0 && rn_484 <= Pixmap_.rn_3925(rn_474)) {
+					rn_474 = ope.rn_1758(rn_474, 0, 0, rn_484, Pixmap_.rn_3926(rn_474));
+					SpriteBatch.rn_3837(screen, rn_474, rn_480, 1.0F, height);
 				}
-				com.badlogic.gdx.graphics.Texture rn_609 = String_Nlimage.rn_3336(rn_450.rn_3643, "SodRollCap").rn_3634().rn_2068(1, 1, 0);
-				android.graphics.Matrix rn_610 = Matrix_.rn_3577(rn_602);
-				float rn_611 = 1.0F - rn_607 * 0.65F;
-				float rn_612 = rn_608 * rn_461 + rn_605 - Texture_.rn_4065(rn_609) * rn_461 / 2;
-				float rn_613 = rn_456 - rn_599 - Texture_.rn_4066(rn_609) * rn_461 + Pixmap_.rn_4094(rn_598) * rn_461;
-				Matrix_.rn_3581(rn_610, rn_607 * 720.0F, Texture_.rn_4065(rn_609) * rn_461 / 2, Texture_.rn_4066(rn_609) * rn_461 / 2);
-				Matrix_.rn_3587(rn_610, rn_611, rn_611, Texture_.rn_4065(rn_609) * rn_461 / 2, Texture_.rn_4066(rn_609) * rn_461);
-				Matrix_.rn_3603(rn_610, rn_612, rn_613);
-				if (rn_607 != 1.0F) {
-					SpriteBatch.rn_4021(rn_453, rn_609, rn_610, 1.0F, rn_456, null);
+				com.badlogic.gdx.graphics.Texture rn_485 = String_Nlimagesm.rn_3128(image.rn_3462, "SodRollCap").rn_3453().rn_1941(1, 1, 0);
+				android.graphics.Matrix rn_486 = Matrix_.rn_3396(rn_478);
+				float rn_487 = 1.0F - rn_483 * 0.65F;
+				float rn_488 = rn_484 * scale + rn_481 - Texture_.rn_3897(rn_485) * scale / 2;
+				float rn_489 = height - rn_475 - Texture_.rn_3898(rn_485) * scale + Pixmap_.rn_3926(rn_474) * scale;
+				Matrix_.rn_3400(rn_486, rn_483 * 720.0F, Texture_.rn_3897(rn_485) * scale / 2, Texture_.rn_3898(rn_485) * scale / 2);
+				Matrix_.rn_3406(rn_486, rn_487, rn_487, Texture_.rn_3897(rn_485) * scale / 2, Texture_.rn_3898(rn_485) * scale);
+				Matrix_.rn_3422(rn_486, rn_488, rn_489);
+				if (rn_483 != 1.0F) {
+					SpriteBatch.rn_3853(screen, rn_485, rn_486, 1.0F, height, null);
 				}
-				String rn_614 = "";
-				int rn_615 = -16777216;
-				Rectx rn_616 = rn_476.rn_3703("start_botton", rn_605, rn_456 - rn_597, Texture_.rn_4065(rn_596) * rn_461, Texture_.rn_4066(rn_596) * rn_461, rn_445);
-				rn_924(rn_453, rn_616, -16776961);
-				com.badlogic.gdx.graphics.Pixmap rn_617 = String_Nlimage.rn_3336(rn_450.rn_3643, "PvZ_Logo").rn_3634().rn_2054(1, 1, 0);
-				android.graphics.Matrix rn_618 = Matrix_.rn_3577(rn_602);
-				Matrix_.rn_3603(rn_618, rn_980(Pixmap_.rn_4093(rn_617) * rn_461), rn_601 * rn_461);
-				SpriteBatch.rn_4005(rn_453, rn_617, rn_618, 1.0F, rn_456);
-				if (rn_616.rn_3671) {
-					rn_615 = -38400;
+				String rn_490 = "";
+				int rn_491 = -16777216;
+				Rectx rn_492 = trirect.rn_3535("start_botton", rn_481, height - rn_473, Texture_.rn_3897(rn_472) * scale, Texture_.rn_3898(rn_472) * scale, scrtype);
+				drawRect(screen, rn_492, -16776961);
+				com.badlogic.gdx.graphics.Pixmap rn_493 = String_Nlimagesm.rn_3128(image.rn_3462, "PvZ_Logo").rn_3453().rn_1927(1, 1, 0);
+				android.graphics.Matrix rn_494 = Matrix_.rn_3396(rn_478);
+				Matrix_.rn_3422(rn_494, center(Pixmap_.rn_3925(rn_493) * scale), rn_477 * scale);
+				SpriteBatch.rn_3837(screen, rn_493, rn_494, 1.0F, height);
+				if (rn_492.rn_3490) {
+					rn_491 = -38400;
 				}
-				android.graphics.Paint rn_619 = Paint_.rn_1670(Paint_.rn_1667(Paint_.rn_1665(Paint_.rn_1663(), rn_464), (int) (rn_463 * rn_461)), rn_615);
-				if (rn_607 < 1.0F) {
-					rn_614 = rn_4434.rn_4447(rn_462, "LOADING");
+				android.graphics.Paint rn_495 = Paint_.rn_1533(Paint_.rn_1530(Paint_.rn_1528(Paint_.rn_1526(), textfont), (int) (textsize * scale)), rn_491);
+				if (rn_483 < 1.0F) {
+					rn_490 = rn_4266.rn_4279(gametext, "LOADING");
 				} else {
-					rn_614 = rn_4434.rn_4447(rn_462, "CLICK_TO_START");
+					rn_490 = rn_4266.rn_4279(gametext, "CLICK_TO_START");
 				}
-				float rn_620 = rn_980(Paint_.rn_1673(rn_619, rn_614));
-				float rn_621 = rn_597 - Texture_.rn_4066(rn_596) * rn_461 / 2 + rn_463 * rn_461 * 0.5F;
-				BitmapFontData_.rn_4174(BitmapFont_.rn_4157(rn_525), rn_463 * rn_461 / 30);
-				BitmapFont_.rn_4158(rn_525, Color_.rn_4068(ope.rn_1919(rn_615)));
-				BitmapFont_.rn_4167(rn_525, rn_453, rn_614, rn_620, rn_621);
-			} else if (rn_449) {
-				if (rn_445 == 2) {
-					com.badlogic.gdx.graphics.Texture rn_622 = null;
-					if (rn_500 == 0) {
-						if (rn_498 == 0 && rn_497 <= 3) {
-							rn_622 = String_Nlimage.rn_3336(rn_450.rn_3643, "background1unsodded").rn_3634().rn_2068(1, 1, 0);
+				float rn_496 = center(Paint_.rn_1536(rn_495, rn_490));
+				float rn_497 = rn_473 - Texture_.rn_3898(rn_472) * scale / 2 + textsize * scale * 0.5F;
+				BitmapFontData_.rn_4006(BitmapFont_.rn_3989(font1), textsize * scale / 30);
+				BitmapFont_.rn_3990(font1, Color_.rn_3900(ope.rn_1792(rn_491)));
+				BitmapFont_.rn_3999(font1, screen, rn_490, rn_496, rn_497);
+			} else if (loadfinish) {
+				if (scrtype == 2) {
+					com.badlogic.gdx.graphics.Texture rn_498 = null;
+					if (scene == 0) {
+						if (leveltype == 0 && level <= 3) {
+							rn_498 = String_Nlimagesm.rn_3128(image.rn_3462, "background1unsodded").rn_3453().rn_1941(1, 1, 0);
 						} else {
-							rn_622 = String_Nlimage.rn_3336(rn_450.rn_3643, "background1").rn_3634().rn_2068(1, 1, 0);
+							rn_498 = String_Nlimagesm.rn_3128(image.rn_3462, "background1").rn_3453().rn_1941(1, 1, 0);
 						}
-					} else if (rn_500 == 1) {
-						rn_622 = String_Nlimage.rn_3336(rn_450.rn_3643, "background2").rn_3634().rn_2068(1, 1, 0);
-					} else if (rn_500 == 2) {
-						rn_622 = String_Nlimage.rn_3336(rn_450.rn_3643, "background3").rn_3634().rn_2068(1, 1, 0);
-					} else if (rn_500 == 3) {
-						rn_622 = String_Nlimage.rn_3336(rn_450.rn_3643, "background4").rn_3634().rn_2068(1, 1, 0);
-					} else if (rn_500 == 4) {
-						rn_622 = String_Nlimage.rn_3336(rn_450.rn_3643, "background5").rn_3634().rn_2068(1, 1, 0);
-					} else if (rn_500 == 5) {
-						rn_622 = String_Nlimage.rn_3336(rn_450.rn_3643, "background6boss").rn_3634().rn_2068(1, 1, 0);
+					} else if (scene == 1) {
+						rn_498 = String_Nlimagesm.rn_3128(image.rn_3462, "background2").rn_3453().rn_1941(1, 1, 0);
+					} else if (scene == 2) {
+						rn_498 = String_Nlimagesm.rn_3128(image.rn_3462, "background3").rn_3453().rn_1941(1, 1, 0);
+					} else if (scene == 3) {
+						rn_498 = String_Nlimagesm.rn_3128(image.rn_3462, "background4").rn_3453().rn_1941(1, 1, 0);
+					} else if (scene == 4) {
+						rn_498 = String_Nlimagesm.rn_3128(image.rn_3462, "background5").rn_3453().rn_1941(1, 1, 0);
+					} else if (scene == 5) {
+						rn_498 = String_Nlimagesm.rn_3128(image.rn_3462, "background6boss").rn_3453().rn_1941(1, 1, 0);
 					}
-					android.graphics.Matrix rn_623 = Matrix_.rn_3592(Matrix_.rn_3576(), rn_461, rn_461);
-					android.graphics.Matrix rn_624 = Matrix_.rn_3577(rn_623);
-					Matrix_.rn_3603(rn_624, rn_459 * rn_461, rn_460 * rn_461);
-					com.badlogic.gdx.graphics.Texture rn_625 = String_Nlimage.rn_3336(rn_450.rn_3643, "SeedBank").rn_3634().rn_2068(1, 1, 0);
-					SpriteBatch.rn_4021(rn_453, rn_622, rn_624, 1.0F, rn_456, null);
-					android.graphics.Matrix rn_626 = Matrix_.rn_3577(rn_623);
-					Matrix_.rn_3603(rn_626, 10 * rn_461, rn_460 * rn_461);
-					SpriteBatch.rn_4021(rn_453, rn_625, rn_626, 1.0F, rn_456 - (int) (rn_535 * rn_461), null);
-					if (rn_1164()) {
-						rn_689();
+					android.graphics.Matrix rn_499 = Matrix_.rn_3411(Matrix_.rn_3395(), scale, scale);
+					android.graphics.Matrix rn_500 = Matrix_.rn_3396(rn_499);
+					Matrix_.rn_3422(rn_500, x * scale, y * scale);
+					com.badlogic.gdx.graphics.Texture rn_501 = String_Nlimagesm.rn_3128(image.rn_3462, "SeedBank").rn_3453().rn_1941(1, 1, 0);
+					SpriteBatch.rn_3853(screen, rn_498, rn_500, 1.0F, height, null);
+					android.graphics.Matrix rn_502 = Matrix_.rn_3396(rn_499);
+					Matrix_.rn_3422(rn_502, 10 * scale, y * scale);
+					SpriteBatch.rn_3853(screen, rn_501, rn_502, 1.0F, height - (int) (sdoffy * scale), null);
+					if (gamestart()) {
+						drawcardslot();
 					}
-					BitmapFontData_.rn_4174(BitmapFont_.rn_4157(rn_525), rn_463 * rn_461 / 25);
-					BitmapFont_.rn_4158(rn_525, Color_.rn_4068(ope.rn_1919(-16777216)));
-					rn_956(rn_453, rn_6928.rn_6933(rn_509), 50, (int) (60 + rn_535), -16777216, 16, -0.5F, 0.0F);
-					if (rn_497 == 1) {
-						int rn_627 = rn_484;
-						if (rn_510 == 9) {
-							com.badlogic.gdx.graphics.Pixmap rn_628 = String_Nlimage.rn_3336(rn_450.rn_3643, "sod1row").rn_3634().rn_2054(1, 1, 0);
-							String_Nlimage.rn_3336(rn_450.rn_3643, "sod1row").rn_3634().rn_2023 = null;
-							SpriteBatch.rn_4028(rn_453, Texture_.rn_4059(ope.rn_1885(rn_628, 0, 0, rn_627, Pixmap_.rn_4094(rn_628))), (rn_459 + 240) * rn_461, rn_456 - (270 + Pixmap_.rn_4094(rn_628)) * rn_461, (int) (rn_627 * rn_461), Pixmap_.rn_4094(rn_628) * rn_461);
-						} else if (rn_1164() || rn_510 == 7 || rn_510 == 8 || rn_510 == 11 || rn_510 == 12) {
-							float rn_629 = 1.0F;
-							if (rn_3289.rn_6850(rn_530, "op") || rn_3289.rn_6850(rn_530, "sp")) {
-								rn_629 = rn_781(rn_484, 80, 1) * 1.0F / 255.0F;
+					BitmapFontData_.rn_4006(BitmapFont_.rn_3989(font1), textsize * scale / 25);
+					BitmapFont_.rn_3990(font1, Color_.rn_3900(ope.rn_1792(-16777216)));
+					write(screen, rn_6760.rn_6765(suncount), 50, (int) (60 + sdoffy), -16777216, 16, -0.5F, 0.0F);
+					if (level == 1) {
+						int rn_503 = animproc;
+						if (proc == 9) {
+							com.badlogic.gdx.graphics.Pixmap rn_504 = String_Nlimagesm.rn_3128(image.rn_3462, "sod1row").rn_3453().rn_1927(1, 1, 0);
+							String_Nlimagesm.rn_3128(image.rn_3462, "sod1row").rn_3453().rn_1896 = null;
+							SpriteBatch.rn_3860(screen, Texture_.rn_3891(ope.rn_1758(rn_504, 0, 0, rn_503, Pixmap_.rn_3926(rn_504))), (x + 240) * scale, height - (270 + Pixmap_.rn_3926(rn_504)) * scale, (int) (rn_503 * scale), Pixmap_.rn_3926(rn_504) * scale);
+						} else if (gamestart() || proc == 7 || proc == 8 || proc == 11 || proc == 12) {
+							float rn_505 = 1.0F;
+							if (rn_3081.rn_6682(state, "op") || rn_3081.rn_6682(state, "sp")) {
+								rn_505 = gettransp(animproc, 80, 1) * 1.0F / 255.0F;
 							}
-							com.badlogic.gdx.graphics.Texture rn_630 = String_Nlimage.rn_3336(rn_450.rn_3643, "sod1row").rn_3634().rn_2068(1, 1, 0);
-							android.graphics.Matrix rn_631 = Matrix_.rn_3603(Matrix_.rn_3577(rn_623), (rn_459 + 240) * rn_461, (270) * rn_461);
-							SpriteBatch.rn_4034(rn_453, rn_630, rn_631, new float[]{rn_629, rn_629, rn_629, 1.0F}, rn_456, Nirvana.this, false);
+							com.badlogic.gdx.graphics.Texture rn_506 = String_Nlimagesm.rn_3128(image.rn_3462, "sod1row").rn_3453().rn_1941(1, 1, 0);
+							android.graphics.Matrix rn_507 = Matrix_.rn_3422(Matrix_.rn_3396(rn_499), (x + 240) * scale, (270) * scale);
+							SpriteBatch.rn_3866(screen, rn_506, rn_507, new float[]{rn_505, rn_505, rn_505, 1.0F}, height, Nirvana.this, false);
 						}
 					}
-					for (int rn_10415 = 0;rn_10415 < DrawStyles.rn_1225(rn_548);rn_10415 += 1) {
-						rn_985(rn_453, DrawStyles.rn_3744(rn_548, rn_10415), rn_586);
+					try {;
+					for (int rn_10247 = 0;rn_10247 < DrawStyles.rn_1021(foreds);rn_10247 += 1) {
+						draw(screen, DrawStyles.rn_3576(foreds, rn_10247), rn_462);
 					}
-					for (int rn_10416 = -2;rn_10416 < 7;rn_10416 += 1) {
-						for (int rn_10417 = 0;rn_10417 < PlantList.rn_1225(rn_478);rn_10417 += 1) {
-							if (PlantList.rn_2398(rn_478, rn_10417).rn_2622 == rn_10416) {
-								rn_807(PlantList.rn_2398(rn_478, rn_10417), rn_586, rn_623);
-							}
-						}
-						for (int rn_10418 = 0;rn_10418 < ZombieList.rn_1225(rn_477);rn_10418 += 1) {
-							if (ZombieList.rn_2366(rn_477, rn_10418).rn_2174 == rn_10416) {
-								rn_812(ZombieList.rn_2366(rn_477, rn_10418), rn_586, rn_623);
+					for (int rn_10248 = -2;rn_10248 < 7;rn_10248 += 1) {
+						for (int rn_10249 = 0;rn_10249 < PlantList.rn_1021(plantList);rn_10249 += 1) {
+							if (PlantList.rn_2181(plantList, rn_10249).rn_2421 == rn_10248) {
+								drawPlant(PlantList.rn_2181(plantList, rn_10249), rn_462, rn_499);
 							}
 						}
-						for (int rn_10419 = 0;rn_10419 < ProjList.rn_1225(rn_479);rn_10419 += 1) {
-							if (ProjList.rn_2429(rn_479, rn_10419).rn_2749 == rn_10416) {
-								Proj rn_632 = ProjList.rn_2429(rn_479, rn_10419);
-								com.badlogic.gdx.graphics.Texture rn_633 = null;
-								android.graphics.Matrix rn_634 = Matrix_.rn_3603(Matrix_.rn_3577(rn_623), (rn_459 + rn_632.rn_2740) * rn_461, (rn_460 + rn_632.rn_2741) * rn_461);
-								if (rn_3289.rn_6850(rn_632.rn_2748, "image")) {
-									rn_633 = String_Nlimage.rn_3336(rn_450.rn_3643, rn_632.rn_2746).rn_3634().rn_2068(1, 1, 0);
+						for (int rn_10250 = 0;rn_10250 < ZombieList.rn_1021(zombieList);rn_10250 += 1) {
+							if (ZombieList.rn_2149(zombieList, rn_10250).row == rn_10248) {
+								drawZombie(ZombieList.rn_2149(zombieList, rn_10250), rn_462, rn_499);
+							}
+						}
+						for (int rn_10251 = 0;rn_10251 < ProjList.rn_1021(projList);rn_10251 += 1) {
+							if (ProjList.rn_2212(projList, rn_10251).rn_2565 == rn_10248) {
+								Proj rn_508 = ProjList.rn_2212(projList, rn_10251);
+								com.badlogic.gdx.graphics.Texture rn_509 = null;
+								android.graphics.Matrix rn_510 = Matrix_.rn_3422(Matrix_.rn_3396(rn_499), (x + rn_508.rn_2556) * scale, (y + rn_508.rn_2557) * scale);
+								if (rn_3081.rn_6682(rn_508.rn_2564, "image")) {
+									rn_509 = String_Nlimagesm.rn_3128(image.rn_3462, rn_508.rn_2562).rn_3453().rn_1941(1, 1, 0);
 								}
-								Matrix_.rn_3612(rn_634, rn_632.rn_2755, rn_632.rn_2755, Texture_.rn_4065(rn_633) / 2, Texture_.rn_4066(rn_633) / 2);
-								SpriteBatch.rn_4021(rn_453, rn_633, rn_634, 1.0F, rn_456, null);
+								Matrix_.rn_3431(rn_510, rn_508.scale, rn_508.scale, Texture_.rn_3897(rn_509) / 2, Texture_.rn_3898(rn_509) / 2);
+								SpriteBatch.rn_3853(screen, rn_509, rn_510, 1.0F, height, null);
 							}
 						}
-						for (int rn_10420 = 0;rn_10420 < ParticleList.rn_1225(rn_481);rn_10420 += 1) {
-							Particle rn_635 = ParticleList.rn_2522(rn_481, rn_10420);
-							if (rn_635.rn_2849 == rn_10416) {
-								for (int rn_10421 = 0;rn_10421 < GrainSet.rn_1225(rn_635.rn_2842);rn_10421 += 1) {
-									Grain rn_636 = GrainSet.rn_2895((rn_635.rn_2842), rn_10421);
-									if (rn_636.rn_2952 <= 0) {
-										com.badlogic.gdx.graphics.Texture rn_637 = null;
-										if (rn_635.rn_2851 == false) {
-											rn_637 = String_Nlimage.rn_3336(rn_450.rn_3643, rn_636.rn_2942).rn_3634().rn_2068(rn_636.rn_2943, rn_636.rn_2945, rn_636.rn_2944);
+						for (int rn_10252 = 0;rn_10252 < ParticleList.rn_1021(particleList);rn_10252 += 1) {
+							if (rn_10252 >= ParticleList.rn_1021(particleList)) {
+								break;
+							}
+							Particle rn_511 = ParticleList.rn_2305(particleList, rn_10252);
+							if (rn_511.rn_2662 == rn_10248) {
+								for (int rn_10253 = 0;rn_10253 < GrainSet.rn_1021(rn_511.rn_2655);rn_10253 += 1) {
+									try {;
+									if (rn_10253 >= GrainSet.rn_1021(rn_511.rn_2655)) {
+										break;
+									}
+									Grain rn_512 = GrainSet.rn_2721((rn_511.rn_2655), rn_10253);
+									if (rn_512.activecd <= 0) {
+										com.badlogic.gdx.graphics.Texture rn_513 = null;
+										if (rn_511.rn_2664 == false) {
+											if (rn_3081.rn_6693(rn_512.pic, "IMAGE_REANIM_", 0)) {
+												rn_513 = resall.rn_3133(rn_512.pic).rn_3453().rn_1941(rn_512.cutn, rn_512.row, rn_512.cutp);
+											} else {
+												rn_513 = image.rn_3462.rn_3133(rn_512.pic).rn_3453().rn_1941(rn_512.cutn, rn_512.row, rn_512.cutp);
+											}
 										} else {
-											rn_637 = Texture_.rn_4059(String_Nlimage.rn_3336(rn_450.rn_3643, rn_636.rn_2942).rn_3634().rn_2054(rn_636.rn_2943, rn_636.rn_2945, rn_636.rn_2944));
+											if (rn_3081.rn_6693(rn_512.pic, "IMAGE_REANIM_", 0)) {
+												rn_513 = Texture_.rn_3891(resall.rn_3133(rn_512.pic).rn_3453().rn_1927(rn_512.cutn, rn_512.row, rn_512.cutp));
+											} else {
+												rn_513 = Texture_.rn_3891(image.rn_3462.rn_3133(rn_512.pic).rn_3453().rn_1927(rn_512.cutn, rn_512.row, rn_512.cutp));
+											}
 										}
-										android.graphics.Matrix rn_638 = Matrix_.rn_3603(Matrix_.rn_3587(Matrix_.rn_3581(Matrix_.rn_3577(rn_623), rn_636.rn_2937, Texture_.rn_4066(rn_637) / 2, Texture_.rn_4066(rn_637) / 2), rn_636.rn_2969(rn_636.rn_2933), rn_636.rn_2969(rn_636.rn_2933), Texture_.rn_4065(rn_637) / 2, Texture_.rn_4066(rn_637) / 2), (ope.rn_1821(0, rn_636.rn_2939 * 2) - rn_636.rn_2939 + rn_459 + rn_635.rn_2843 + GrainSet.rn_2895((rn_635.rn_2842), rn_10421).rn_2924) * rn_461, (ope.rn_1821(0, rn_636.rn_2939 * 2) - rn_636.rn_2939 + rn_460 + rn_635.rn_2844 + GrainSet.rn_2895((rn_635.rn_2842), rn_10421).rn_2925) * rn_461);
-										float[] rn_639 = {rn_636.rn_2969(rn_636.rn_2934), rn_636.rn_2969(rn_636.rn_2935), rn_636.rn_2969(rn_636.rn_2936), rn_636.rn_2969(rn_636.rn_2932)};
-										SpriteBatch.rn_4034(rn_453, rn_637, rn_638, rn_639, rn_456, Nirvana.this, false);
+										android.graphics.Matrix rn_514 = Matrix_.rn_3422(Matrix_.rn_3406(Matrix_.rn_3400(Matrix_.rn_3396(rn_499), rn_512.rotate, Texture_.rn_3898(rn_513) / 2, Texture_.rn_3898(rn_513) / 2), rn_512.getValue(rn_512.scale), rn_512.getValue(rn_512.scale), Texture_.rn_3897(rn_513) / 2, Texture_.rn_3898(rn_513) / 2), (ope.rn_1684(0, rn_512.shake * 2) - rn_512.shake + x + rn_511.rn_2656 + GrainSet.rn_2721((rn_511.rn_2655), rn_10253).x) * scale, (ope.rn_1684(0, rn_512.shake * 2) - rn_512.shake + y + rn_511.rn_2657 + GrainSet.rn_2721((rn_511.rn_2655), rn_10253).y) * scale);
+										float[] rn_515 = {rn_512.getValue(rn_512.red), rn_512.getValue(rn_512.green), rn_512.getValue(rn_512.blue), rn_512.getValue(rn_512.alpha)};
+										SpriteBatch.rn_3866(screen, rn_513, rn_514, rn_515, height, Nirvana.this, false);
 									}
+									} catch (Exception e) {;
+									String rn_516 = "#OutofIndex";
+									if (ParticleList.rn_1021(particleList) > rn_10252 && GrainSet.rn_1021(rn_511.rn_2655) > rn_10253) {
+										rn_516 = ParticleList.rn_2305(particleList, rn_10252).rn_2660 + " ---" + GrainSet.rn_2721((rn_511.rn_2655), rn_10253).pic;
+									}
+									ope.rn_1798("particledraw error:index:" + rn_10252 + ",length:" + ParticleList.rn_1021(particleList) + ",NamE:" + rn_516);
+									};
 								}
 							}
 						}
 					}
-					rn_515 = rn_515 + "\n" + "zombie:" + "0" + "ms " + ZombieList.rn_1225(rn_477) + "n";
-					rn_515 = rn_515 + "\n" + "plant:" + "0" + "ms " + PlantList.rn_1225(rn_478) + "n";
-					rn_515 = rn_515 + "\n" + "proj:" + "0" + "ms " + ProjList.rn_1225(rn_479) + "n";
-					rn_515 = rn_515 + "\n" + "particle:" + "0" + "ms " + ParticleList.rn_1225(rn_481) + "n";
-					rn_515 = rn_515 + "\n" + "coin:" + "0" + "ms " + CoinList.rn_1225(rn_492) + "n";
-					rn_515 = rn_515 + "\n" + "tracle:" + "0" + "ms " + TracleList.rn_1225(rn_480) + "n";
-					for (int rn_10422 = 0;rn_10422 < MowerList.rn_1225(rn_543.rn_2551);rn_10422 += 1) {
-						rn_820(MowerList.rn_2582(rn_543.rn_2551, rn_10422), rn_586);
+					frameinfo = frameinfo + "\n" + "zombie:" + "0" + "ms " + ZombieList.rn_1021(zombieList) + "n";
+					frameinfo = frameinfo + "\n" + "plant:" + "0" + "ms " + PlantList.rn_1021(plantList) + "n";
+					frameinfo = frameinfo + "\n" + "proj:" + "0" + "ms " + ProjList.rn_1021(projList) + "n";
+					frameinfo = frameinfo + "\n" + "particle:" + "0" + "ms " + ParticleList.rn_1021(particleList) + "n";
+					frameinfo = frameinfo + "\n" + "coin:" + "0" + "ms " + CoinList.rn_1021(coinlist) + "n";
+					frameinfo = frameinfo + "\n" + "tracle:" + "0" + "ms " + TracleList.rn_1021(tracleList) + "n";
+					for (int rn_10254 = 0;rn_10254 < MowerList.rn_1021(mowerList.rn_2334);rn_10254 += 1) {
+						drawMower(MowerList.rn_2378(mowerList.rn_2334, rn_10254), rn_462);
 					}
-					for (int rn_10423 = -2;rn_10423 < 7;rn_10423 += 1) {
+					for (int rn_10255 = -2;rn_10255 < 7;rn_10255 += 1) {
 					}
-					for (int rn_10424 = 0;rn_10424 < CoinList.rn_1225(rn_492);rn_10424 += 1) {
-						Coin rn_640 = CoinList.rn_2460(rn_492, rn_10424);
-						if (rn_640.rn_2776 == static_.rn_2808) {
-							com.badlogic.gdx.graphics.Texture rn_641 = rn_565(rn_763());
-							android.graphics.Matrix rn_642 = Matrix_.rn_3603(Matrix_.rn_3577(rn_623), rn_640.rn_2767, rn_640.rn_2769);
-							SpriteBatch.rn_4021(rn_453, rn_641, rn_642, 1, rn_456, Nirvana.this);
+					for (int rn_10256 = 0;rn_10256 < CoinList.rn_1021(coinlist);rn_10256 += 1) {
+						Coin rn_517 = CoinList.rn_2243(coinlist, rn_10256);
+						if (rn_517.rn_2589 == static_.rn_2621) {
+							com.badlogic.gdx.graphics.Texture rn_518 = getcardtx(getwonplant());
+							android.graphics.Matrix rn_519 = Matrix_.rn_3422(Matrix_.rn_3396(rn_499), rn_517.rn_2580, rn_517.rn_2582);
+							SpriteBatch.rn_3853(screen, rn_518, rn_519, 1, height, Nirvana.this);
 						} else {
-							rn_518.rn_3773 = rn_640.rn_2777;
-							rn_518.rn_3774 = rn_640.rn_2785;
-							rn_518.rn_3775 = rn_640.rn_2786;
-							rn_518.rn_3776 = rn_640.rn_2781;
-							rn_518.rn_3777 = rn_640.rn_2781;
-							rn_518.rn_3780 = -1;
-							rn_518.rn_3781 = rn_640.rn_2799();
-							rn_518.rn_3782 = rn_640.rn_2800();
-							rn_518.rn_3783 = null;
-							rn_985(rn_453, rn_518, rn_586);
+							ds.rn_3605 = rn_517.rn_2590;
+							ds.rn_3606 = rn_517.rn_2598;
+							ds.rn_3607 = rn_517.rn_2599;
+							ds.rn_3608 = rn_517.rn_2594;
+							ds.rn_3609 = rn_517.rn_2594;
+							ds.rn_3612 = -1;
+							ds.rn_3613 = rn_517.rn_2612();
+							ds.rn_3614 = rn_517.rn_2613();
+							ds.rn_3615 = null;
+							draw(screen, ds, rn_462);
 						}
 					}
-					for (int rn_10425 = 0;rn_10425 < TracleList.rn_1225(rn_480);rn_10425 += 1) {
-						Tracle rn_643 = TracleList.rn_2491(rn_480, rn_10425);
-						if (rn_643.rn_2827 != null) {
-							rn_518.rn_3773 = rn_643.rn_2827;
-							rn_518.rn_3774 = 1.0F;
-							rn_518.rn_3775 = 1.0F;
-							rn_518.rn_3776 = rn_643.rn_2820;
-							rn_518.rn_3777 = rn_643.rn_2820;
-							rn_518.rn_3778 = 0.0F;
-							rn_518.rn_3779 = 0.0F;
-							rn_518.rn_3780 = -1;
-							rn_518.rn_3781 = rn_643.rn_2814;
-							rn_518.rn_3782 = rn_643.rn_2815;
-							rn_518.rn_3783 = null;
-							rn_985(rn_453, rn_518, rn_586);
+					for (int rn_10257 = 0;rn_10257 < TracleList.rn_1021(tracleList);rn_10257 += 1) {
+						Tracle rn_520 = TracleList.rn_2274(tracleList, rn_10257);
+						if (rn_520.rn_2640 != null) {
+							ds.rn_3605 = rn_520.rn_2640;
+							ds.rn_3606 = 1.0F;
+							ds.rn_3607 = 1.0F;
+							ds.rn_3608 = rn_520.rn_2633;
+							ds.rn_3609 = rn_520.rn_2633;
+							ds.rn_3610 = 0.0F;
+							ds.rn_3611 = 0.0F;
+							ds.rn_3612 = -1;
+							ds.rn_3613 = rn_520.rn_2627;
+							ds.rn_3614 = rn_520.rn_2628;
+							ds.rn_3615 = null;
+							draw(screen, ds, rn_462);
 						}
 					}
-					rn_518.rn_3773 = rn_472;
-					rn_518.rn_3774 = 1.0F;
-					rn_518.rn_3775 = 1.0F;
-					rn_518.rn_3776 = 0.0F;
-					rn_518.rn_3777 = 0.0F;
-					rn_518.rn_3780 = -1;
-					rn_518.rn_3781 = 300;
-					rn_518.rn_3782 = 0;
-					rn_985(rn_453, rn_518, rn_586);
-					if (rn_1164() && rn_510 != 7) {
-						com.badlogic.gdx.graphics.Pixmap rn_644 = String_Nlimage.rn_3336(rn_450.rn_3643, "FlagMeter").rn_3634().rn_2054(1, 1, 0);
-						int rn_645 = Pixmap_.rn_4093(rn_644) - (int) (Pixmap_.rn_4093(rn_644) * rn_493 * 1.0F / (rn_494));
-						int rn_646 = Pixmap_.rn_4093(rn_644) - (int) (Pixmap_.rn_4093(rn_644) * (rn_493 - 1) * 1.0F / rn_494) - rn_645;
-						if (rn_645 <= 0) {
-							rn_645 = 1;
-						} else if (rn_645 >= Pixmap_.rn_4093(rn_644) - 1) {
-							rn_645 = Pixmap_.rn_4093(rn_644) - 2;
+					} catch (Exception e) {;
+					};
+					ds.rn_3605 = animh;
+					ds.rn_3606 = 1.0F;
+					ds.rn_3607 = 1.0F;
+					ds.rn_3608 = 0.0F;
+					ds.rn_3609 = 0.0F;
+					ds.rn_3612 = -1;
+					ds.rn_3613 = 300;
+					ds.rn_3614 = 0;
+					draw(screen, ds, rn_462);
+					if (gamestart() && proc != 7) {
+						com.badlogic.gdx.graphics.Pixmap rn_521 = String_Nlimagesm.rn_3128(image.rn_3462, "FlagMeter").rn_3453().rn_1927(1, 1, 0);
+						int rn_522 = Pixmap_.rn_3925(rn_521) - (int) (Pixmap_.rn_3925(rn_521) * wave * 1.0F / (wavemax));
+						int rn_523 = Pixmap_.rn_3925(rn_521) - (int) (Pixmap_.rn_3925(rn_521) * (wave - 1) * 1.0F / wavemax) - rn_522;
+						if (rn_522 <= 0) {
+							rn_522 = 1;
+						} else if (rn_522 >= Pixmap_.rn_3925(rn_521) - 1) {
+							rn_522 = Pixmap_.rn_3925(rn_521) - 2;
 						}
-						com.badlogic.gdx.graphics.Pixmap rn_647 = null;
-						rn_647 = ope.rn_1885(rn_644, 0, 0, rn_645, Pixmap_.rn_4094(rn_644) / 2);
-						com.badlogic.gdx.graphics.Pixmap rn_648 = null;
-						rn_648 = ope.rn_1891(rn_644, rn_645, Pixmap_.rn_4094(rn_644) / 2, Pixmap_.rn_4093(rn_644), Pixmap_.rn_4094(rn_644) - 1);
-						android.graphics.Matrix rn_649 = new android.graphics.Matrix();
-						Matrix_.rn_3603(rn_649, 600, 600 - Pixmap_.rn_4094(rn_644) / 2);
-						SpriteBatch.rn_4005(rn_453, rn_647, Matrix_.rn_3592(Matrix_.rn_3577(rn_649), rn_461, rn_461), 1.0F, rn_456);
-						android.graphics.Matrix rn_650 = Matrix_.rn_3577(rn_649);
-						Matrix_.rn_3603(rn_649, rn_645, 0);
-						SpriteBatch.rn_4005(rn_453, rn_648, Matrix_.rn_3592(Matrix_.rn_3577(rn_649), rn_461, rn_461), 1.0F, rn_456);
-						com.badlogic.gdx.graphics.Pixmap rn_651 = String_Nlimage.rn_3336(rn_450.rn_3643, "FlagMeterParts").rn_3634().rn_2054(3, 1, 0);
-						com.badlogic.gdx.graphics.Pixmap rn_652 = String_Nlimage.rn_3336(rn_450.rn_3643, "FlagMeterParts").rn_3634().rn_2054(3, 1, 1);
-						com.badlogic.gdx.graphics.Pixmap rn_653 = String_Nlimage.rn_3336(rn_450.rn_3643, "FlagMeterParts").rn_3634().rn_2054(3, 1, 2);
-						java.util.ArrayList<XMLR> rn_654 = rn_874().rn_3025;
-						for (int rn_10426 = 0;rn_10426 < rn_494;rn_10426 += 1) {
-							if (rn_3289.rn_6850(XMLRED.rn_3211(rn_654, rn_10426).rn_3038("flag"), "1")) {
-								android.graphics.Matrix rn_655 = Matrix_.rn_3603(Matrix_.rn_3577(rn_650), Pixmap_.rn_4093(rn_644) * (rn_494 - rn_10426 - 1) * 1.0F / rn_494 * 0.95F, -2);
-								if (rn_10426 <= rn_493) {
-									SpriteBatch.rn_4005(rn_453, rn_652, Matrix_.rn_3592(Matrix_.rn_3577(rn_655), rn_461, rn_461), 1.0F, rn_456);
-									Matrix_.rn_3603(rn_655, 0.0F, -0.5F * Pixmap_.rn_4094(rn_653));
-									SpriteBatch.rn_4005(rn_453, rn_653, Matrix_.rn_3592(Matrix_.rn_3577(rn_655), rn_461, rn_461), 1.0F, rn_456);
+						com.badlogic.gdx.graphics.Pixmap rn_524 = null;
+						rn_524 = ope.rn_1758(rn_521, 0, 0, rn_522, Pixmap_.rn_3926(rn_521) / 2);
+						com.badlogic.gdx.graphics.Pixmap rn_525 = null;
+						rn_525 = ope.rn_1764(rn_521, rn_522, Pixmap_.rn_3926(rn_521) / 2, Pixmap_.rn_3925(rn_521), Pixmap_.rn_3926(rn_521) - 1);
+						android.graphics.Matrix rn_526 = new android.graphics.Matrix();
+						Matrix_.rn_3422(rn_526, 600, 600 - Pixmap_.rn_3926(rn_521) / 2);
+						SpriteBatch.rn_3837(screen, rn_524, Matrix_.rn_3411(Matrix_.rn_3396(rn_526), scale, scale), 1.0F, height);
+						android.graphics.Matrix rn_527 = Matrix_.rn_3396(rn_526);
+						Matrix_.rn_3422(rn_526, rn_522, 0);
+						SpriteBatch.rn_3837(screen, rn_525, Matrix_.rn_3411(Matrix_.rn_3396(rn_526), scale, scale), 1.0F, height);
+						com.badlogic.gdx.graphics.Pixmap rn_528 = String_Nlimagesm.rn_3128(image.rn_3462, "FlagMeterParts").rn_3453().rn_1927(3, 1, 0);
+						com.badlogic.gdx.graphics.Pixmap rn_529 = String_Nlimagesm.rn_3128(image.rn_3462, "FlagMeterParts").rn_3453().rn_1927(3, 1, 1);
+						com.badlogic.gdx.graphics.Pixmap rn_530 = String_Nlimagesm.rn_3128(image.rn_3462, "FlagMeterParts").rn_3453().rn_1927(3, 1, 2);
+						java.util.ArrayList<XMLR> rn_531 = getwaveinfo().rn_2804;
+						for (int rn_10258 = 0;rn_10258 < wavemax;rn_10258 += 1) {
+							if (rn_3081.rn_6682(XMLRED.rn_2990(rn_531, rn_10258).rn_2817("flag"), "1")) {
+								android.graphics.Matrix rn_532 = Matrix_.rn_3422(Matrix_.rn_3396(rn_527), Pixmap_.rn_3925(rn_521) * (wavemax - rn_10258 - 1) * 1.0F / wavemax * 0.95F, -2);
+								if (rn_10258 <= wave) {
+									SpriteBatch.rn_3837(screen, rn_529, Matrix_.rn_3411(Matrix_.rn_3396(rn_532), scale, scale), 1.0F, height);
+									Matrix_.rn_3422(rn_532, 0.0F, -0.5F * Pixmap_.rn_3926(rn_530));
+									SpriteBatch.rn_3837(screen, rn_530, Matrix_.rn_3411(Matrix_.rn_3396(rn_532), scale, scale), 1.0F, height);
 								} else {
-									SpriteBatch.rn_4005(rn_453, rn_653, Matrix_.rn_3592(Matrix_.rn_3577(rn_655), rn_461, rn_461), 1.0F, rn_456);
+									SpriteBatch.rn_3837(screen, rn_530, Matrix_.rn_3411(Matrix_.rn_3396(rn_532), scale, scale), 1.0F, height);
 								}
 							}
 						}
-						Matrix_.rn_3603(rn_649, rn_646 * rn_513 - 1 * Pixmap_.rn_4093(rn_651) / 2 + 5, Pixmap_.rn_4094(rn_644) / 4 - Pixmap_.rn_4094(rn_651) / 2 - 5);
-						SpriteBatch.rn_4005(rn_453, rn_651, Matrix_.rn_3577(Matrix_.rn_3592(rn_649, rn_461, rn_461)), 1.0F, rn_456);
+						Matrix_.rn_3422(rn_526, rn_523 * procf - 1 * Pixmap_.rn_3925(rn_528) / 2 + 5, Pixmap_.rn_3926(rn_521) / 4 - Pixmap_.rn_3926(rn_528) / 2 - 5);
+						SpriteBatch.rn_3837(screen, rn_528, Matrix_.rn_3396(Matrix_.rn_3411(rn_526, scale, scale)), 1.0F, height);
 					}
-					if (rn_1164() || rn_510 == 7) {
-						int rn_656 = 600;
-						if ((rn_1164() && rn_510 != 7) == false) {
-							rn_656 = 800;
+					if (gamestart() || proc == 7) {
+						int rn_533 = 600;
+						if ((gamestart() && proc != 7) == false) {
+							rn_533 = 800;
 						}
-						rn_966(rn_453, rn_953(), rn_656, 600 - 24, -5336500, -16777216, 20, -1, 0.0F, 2, 2);
+						write3stroke(screen, levelname(), rn_533, 600 - 24, -5336500, -16777216, 20, -1, 0.0F, 2, 2);
 					}
-					if (rn_1164() == false) {
-						com.badlogic.gdx.graphics.Texture rn_657 = String_Nlimage.rn_3336(rn_450.rn_3643, "SeedChooser_Background").rn_3634().rn_2068(1, 1, 0);
-						rn_726(rn_453, rn_657, 0, rn_541 - Texture_.rn_4066(rn_657), 0, 0);
-						com.badlogic.gdx.graphics.Texture rn_658 = String_Nlimage.rn_3336(rn_450.rn_3643, "SeedChooser_Button").rn_3634().rn_2068(1, 1, 0);
-						float rn_659 = rn_541 - Texture_.rn_4066(rn_657) + 34;
-						rn_726(rn_453, rn_658, Texture_.rn_4065(rn_657) / 2, rn_659, -0.5F, -0.5F);
-						Rectx rn_660 = rn_476.rn_3703("start", -1, -1, Texture_.rn_4065(rn_658) * rn_461, Texture_.rn_4066(rn_658) * rn_461, rn_445);
-						rn_660.rn_3666 = ((Texture_.rn_4065(rn_657) - Texture_.rn_4065(rn_658)) / 2) * rn_461;
-						rn_660.rn_3667 = ope.rn_1913(rn_659 - Texture_.rn_4066(rn_658) / 2, 600, Texture_.rn_4066(rn_658)) * rn_461;
-						if (rn_660.rn_3672 && rn_767()) {
-							rn_660.rn_3672 = false;
-							rn_530 = "start";
-							rn_540 = true;
+					if (gamestart() == false) {
+						com.badlogic.gdx.graphics.Texture rn_534 = String_Nlimagesm.rn_3128(image.rn_3462, "SeedChooser_Background").rn_3453().rn_1941(1, 1, 0);
+						zoomdraw_lbns(screen, rn_534, 0, csint - Texture_.rn_3898(rn_534), 0, 0);
+						com.badlogic.gdx.graphics.Texture rn_535 = String_Nlimagesm.rn_3128(image.rn_3462, "SeedChooser_Button").rn_3453().rn_1941(1, 1, 0);
+						float rn_536 = csint - Texture_.rn_3898(rn_534) + 34;
+						zoomdraw_lbns(screen, rn_535, Texture_.rn_3897(rn_534) / 2, rn_536, -0.5F, -0.5F);
+						Rectx rn_537 = trirect.rn_3535("start", -1, -1, Texture_.rn_3897(rn_535) * scale, Texture_.rn_3898(rn_535) * scale, scrtype);
+						rn_537.rn_3485 = ((Texture_.rn_3897(rn_534) - Texture_.rn_3897(rn_535)) / 2) * scale;
+						rn_537.rn_3486 = ope.rn_1786(rn_536 - Texture_.rn_3898(rn_535) / 2, 600, Texture_.rn_3898(rn_535)) * scale;
+						if (rn_537.rn_3491 && selectedplant()) {
+							rn_537.rn_3491 = false;
+							state = "start";
+							ccend = true;
 						}
-						int rn_661 = -12582912;
-						if (rn_767()) {
-							rn_661 = -2777301;
+						int rn_538 = -12582912;
+						if (selectedplant()) {
+							rn_538 = -2777301;
 						}
-						rn_966(rn_453, rn_4434.rn_4447(rn_462, "LETS_ROCK_BUTTON"), Texture_.rn_4065(rn_657) / 2, (int) (600 - rn_659), rn_661, -16777216, 20, -0.5F, -0.5F, -1, -1);
-						float rn_662 = 25;
-						float rn_663 = rn_541 - 36;
-						int rn_664 = 0;
-						int rn_665 = 0;
-						com.badlogic.gdx.graphics.Texture rn_666 = String_Nlimage.rn_3336(rn_450.rn_3643, "SeedPacketSilhouette").rn_3634().rn_2068(1, 1, 0);
-						for (int rn_10427 = 0;rn_10427 < 48;rn_10427 += 1) {
-							float rn_667 = rn_662 + rn_664 * (50 + 3);
-							float rn_668 = rn_663 - (rn_665 + 1) * 70;
-							rn_726(rn_453, rn_666, rn_667, rn_668, 0, 0);
-							if (rn_803(rn_10427)) {
-								com.badlogic.gdx.graphics.Texture rn_669 = rn_565(rn_10427);
-								rn_726(rn_453, rn_669, rn_667, rn_668, 0, 0);
-								if (rn_724(rn_10427)) {
-									rn_905(rn_453, rn_667, ope.rn_1913(rn_668, 600, 70), 50, 70, true, -2147483648);
+						write3stroke(screen, rn_4266.rn_4279(gametext, "LETS_ROCK_BUTTON"), Texture_.rn_3897(rn_534) / 2, (int) (600 - rn_536), rn_538, -16777216, 20, -0.5F, -0.5F, -1, -1);
+						float rn_539 = 25;
+						float rn_540 = csint - 36;
+						int rn_541 = 0;
+						int rn_542 = 0;
+						com.badlogic.gdx.graphics.Texture rn_543 = String_Nlimagesm.rn_3128(image.rn_3462, "SeedPacketSilhouette").rn_3453().rn_1941(1, 1, 0);
+						for (int rn_10259 = 0;rn_10259 < 48;rn_10259 += 1) {
+							float rn_544 = rn_539 + rn_541 * (50 + 3);
+							float rn_545 = rn_540 - (rn_542 + 1) * 70;
+							zoomdraw_lbns(screen, rn_543, rn_544, rn_545, 0, 0);
+							if (drawZombie(rn_10259)) {
+								com.badlogic.gdx.graphics.Texture rn_546 = getcardtx(rn_10259);
+								zoomdraw_lbns(screen, rn_546, rn_544, rn_545, 0, 0);
+								if (plantHasChoose(rn_10259)) {
+									drawRect3(screen, rn_544, ope.rn_1786(rn_545, 600, 70), 50, 70, true, -2147483648);
 								} else {
-									Rectx rn_670 = rn_476.rn_3703("precard_" + rn_10427, -1, -1, 50 * rn_461, 70 * rn_461, rn_445);
-									rn_670.rn_3666 = rn_667 * rn_461;
-									rn_670.rn_3667 = ope.rn_1913(rn_668, 600, 70) * rn_461;
-									if (rn_670.rn_3672) {
-										rn_670.rn_3672 = false;
-										rn_754(rn_10427, true);
+									Rectx rn_547 = trirect.rn_3535("precard_" + rn_10259, -1, -1, 50 * scale, 70 * scale, scrtype);
+									rn_547.rn_3485 = rn_544 * scale;
+									rn_547.rn_3486 = ope.rn_1786(rn_545, 600, 70) * scale;
+									if (rn_547.rn_3491) {
+										rn_547.rn_3491 = false;
+										select(rn_10259, true);
 									}
 								}
 							}
-							if (rn_664 == 7) {
-								rn_665 = rn_665 + 1;
-								rn_664 = 0;
+							if (rn_541 == 7) {
+								rn_542 = rn_542 + 1;
+								rn_541 = 0;
 							} else {
-								rn_664 = rn_664 + 1;
+								rn_541 = rn_541 + 1;
 							}
 						}
-						rn_689();
+						drawcardslot();
 					}
-				} else if (rn_445 == 7) {
-				} else if (rn_445 == 1) {
-					if (rn_3289.rn_6850(rn_530, "advent")) {
-						if (rn_532 > 3500) {
-							rn_1066(2);
+				} else if (scrtype == 7) {
+				} else if (scrtype == 1) {
+					if (rn_3081.rn_6682(state, "advent")) {
+						if (bool > 3500) {
+							updateScene(2);
 						} else {
-							if (rn_484 > rn_532 + 125) {
-								rn_532 = rn_532 + 125;
-								if (rn_532 % 2 == 1) {
-									if (UserdataList.rn_3006(rn_529.rn_2977, rn_529.rn_2976).rn_2981 < 0) {
-										Animed.rn_3374(rn_528, 0).rn_3521("SelectorScreen_StartAdventure_button", new float[]{1.0F, 1.0F, 1.0F, 1.0F});
+							if (animproc > bool + 125) {
+								bool = bool + 125;
+								if (bool % 2 == 1) {
+									if (UserdataList.rn_2785(USER.account, USER.currentAccount).alevel < 0) {
+										Animed.rn_3169(animess, 0).rn_3323("SelectorScreen_StartAdventure_button", new float[]{1.0F, 1.0F, 1.0F, 1.0F});
 									} else {
-										Animed.rn_3374(rn_528, 0).rn_3521("SelectorScreen_Adventure_button", new float[]{1.0F, 1.0F, 1.0F, 1.0F});
+										Animed.rn_3169(animess, 0).rn_3323("SelectorScreen_Adventure_button", new float[]{1.0F, 1.0F, 1.0F, 1.0F});
 									}
 								} else {
-									if (UserdataList.rn_3006(rn_529.rn_2977, rn_529.rn_2976).rn_2981 < 0) {
-										Animed.rn_3374(rn_528, 0).rn_3521("SelectorScreen_StartAdventure_button", new float[]{0.5F, 0.5F, 0.5F, 1.0F});
+									if (UserdataList.rn_2785(USER.account, USER.currentAccount).alevel < 0) {
+										Animed.rn_3169(animess, 0).rn_3323("SelectorScreen_StartAdventure_button", new float[]{0.5F, 0.5F, 0.5F, 1.0F});
 									} else {
-										Animed.rn_3374(rn_528, 0).rn_3521("SelectorScreen_Adventure_button", new float[]{0.5F, 0.5F, 0.5F, 1.0F});
+										Animed.rn_3169(animess, 0).rn_3323("SelectorScreen_Adventure_button", new float[]{0.5F, 0.5F, 0.5F, 1.0F});
 									}
 								}
 							}
-							rn_484 = rn_484 + rn_579;
+							animproc = animproc + rn_458;
 						}
-					} else if (Animed.rn_1225(rn_528) >= 1 && Animed.rn_3374(rn_528, 0).rn_3498) {
-						if (rn_3289.rn_6850(Animed.rn_3374(rn_528, 0).rn_3495, "anim_open")) {
-							if (rn_3289.rn_6850(rn_530, "none")) {
-								rn_530 = "pre";
-								if (rn_529.rn_2975 == 0) {
-									rn_751(true);
+					} else if (Animed.rn_1021(animess) >= 1 && Animed.rn_3169(animess, 0).pause) {
+						if (rn_3081.rn_6682(Animed.rn_3169(animess, 0).animname, "anim_open")) {
+							if (rn_3081.rn_6682(state, "none")) {
+								state = "pre";
+								if (USER.accountNumber == 0) {
+									createAccount(true);
 								} else {
-									rn_758(true);
+									login(true);
 								}
 							}
 						}
 					}
-					if (Animed.rn_1225(rn_528) > 0 && rn_529.rn_2975 != 0) {
-						if (rn_3289.rn_6852(rn_530, "none")) {
-							String rn_671 = UserdataList.rn_3006(rn_529.rn_2977, rn_529.rn_2976).rn_2979 + "!";
-							rn_956(rn_453, rn_671, 173, (int) (95 + Animed.rn_3374(rn_528, 0).rn_3532("woodsign1").rn_3272), -1, 23, -0.5F, 0.0F);
+					if (Animed.rn_1021(animess) > 0 && USER.accountNumber != 0) {
+						if (rn_3081.rn_6684(state, "none")) {
+							String rn_548 = UserdataList.rn_2785(USER.account, USER.currentAccount).yourname + "!";
+							write(screen, rn_548, 173, (int) (95 + Animed.rn_3169(animess, 0).rn_3336("woodsign1").rn_3051), -1, 23, -0.5F, 0.0F);
 						}
-						if (rn_529.rn_2978().rn_2981 > 0) {
-							rn_733(rn_453);
+						if (USER.getCurrentAccount().alevel > 0) {
+							drawLevel(screen);
 						}
 					}
 				}
 			}
-			long rn_672 = rn_10083.rn_10089();
-			long rn_673 = rn_672;
-			for (int rn_10428 = 0;rn_10428 < rn_476.rn_1225();rn_10428 += 1) {
+			long rn_549 = rn_9915.rn_9921();
+			long rn_550 = rn_549;
+			for (int rn_10260 = 0;rn_10260 < trirect.rn_1021();rn_10260 += 1) {
 			}
-			if (rn_458 >= 360.0F) {
-				rn_458 = 0.0F;
+			if (gcv >= 360.0F) {
+				gcv = 0.0F;
 			} else {
-				rn_458 = rn_458 + 1.0F;
+				gcv = gcv + 1.0F;
 			}
-			for (int rn_10429 = 0;rn_10429 < ZombieList.rn_1225(rn_477);rn_10429 += 1) {
-				Zombie rn_675 = ZombieList.rn_2366(rn_477, rn_10429);
-				Rectx rn_676 = ZombieList.rn_2366(rn_477, rn_10429).rn_2219;
-				Rectx rn_677 = new Rectx();
-				rn_677.rn_3666 = (rn_676.rn_3666 + rn_459 + ZombieList.rn_2366(rn_477, rn_10429).rn_2329()) * rn_461;
-				rn_677.rn_3667 = (rn_676.rn_3667 + rn_460 + ZombieList.rn_2366(rn_477, rn_10429).rn_2171) * rn_461;
-				rn_677.rn_3668 = rn_676.rn_3668 * rn_461;
-				rn_677.rn_3669 = rn_676.rn_3669 * rn_461;
-				rn_924(rn_453, rn_677, -16776961);
-				String rn_678 = rn_6928.rn_6933(rn_675.rn_2166);
-				if (rn_675.rn_2175 == true) {
-					rn_678 = rn_678 + "+" + rn_6928.rn_6933(rn_675.rn_2176);
+			for (int rn_10261 = 0;rn_10261 < ZombieList.rn_1021(zombieList);rn_10261 += 1) {
+				Zombie rn_552 = ZombieList.rn_2149(zombieList, rn_10261);
+				Rectx rn_553 = ZombieList.rn_2149(zombieList, rn_10261).cv;
+				Rectx rn_554 = new Rectx();
+				rn_554.rn_3485 = (rn_553.rn_3485 + x + ZombieList.rn_2149(zombieList, rn_10261).x()) * scale;
+				rn_554.rn_3486 = (rn_553.rn_3486 + y + ZombieList.rn_2149(zombieList, rn_10261).y) * scale;
+				rn_554.rn_3487 = rn_553.rn_3487 * scale;
+				rn_554.rn_3488 = rn_553.rn_3488 * scale;
+				drawRect(screen, rn_554, -16776961);
+				String rn_555 = rn_6760.rn_6765(rn_552.HP);
+				if (rn_552.hasH == true) {
+					rn_555 = rn_555 + "+" + rn_6760.rn_6765(rn_552.HHP);
 				}
-				if (rn_675.rn_2179 == true) {
-					rn_678 = rn_678 + "+" + rn_6928.rn_6933(rn_675.rn_2180);
+				if (rn_552.hasS == true) {
+					rn_555 = rn_555 + "+" + rn_6760.rn_6765(rn_552.SHP);
 				}
-				if (rn_676.rn_3671) {
-					STSL rn_679 = rn_675.rn_2360();
-					rn_769(rn_453, (int) rn_677.rn_3666, (int) rn_677.rn_3667, rn_679);
-				}
-			}
-			for (int rn_10430 = 0;rn_10430 < PlantList.rn_1225(rn_478);rn_10430 += 1) {
-				Plant rn_680 = PlantList.rn_2398(rn_478, rn_10430);
-				Rectx rn_681 = PlantList.rn_2398(rn_478, rn_10430).rn_2627;
-				Rectx rn_682 = new Rectx();
-				rn_682.rn_3666 = (rn_681.rn_3666 + rn_459 + PlantList.rn_2398(rn_478, rn_10430).rn_2736()) * rn_461;
-				rn_682.rn_3667 = (rn_681.rn_3667 + rn_460 + PlantList.rn_2398(rn_478, rn_10430).rn_2620) * rn_461;
-				rn_682.rn_3668 = rn_681.rn_3668 * rn_461;
-				rn_682.rn_3669 = rn_681.rn_3669 * rn_461;
-				rn_924(rn_453, rn_682, -16776961);
-				if (rn_681.rn_3671) {
-					STSL rn_683 = rn_680.rn_2738();
-					rn_769(rn_453, (int) rn_682.rn_3666, (int) rn_682.rn_3667, rn_683);
+				if (rn_553.rn_3490) {
+					STSL rn_556 = rn_552.info();
+					drawSTSL(screen, (int) rn_554.rn_3485, (int) rn_554.rn_3486, rn_556);
 				}
 			}
-			for (int rn_10431 = 0;rn_10431 < CoinList.rn_1225(rn_492);rn_10431 += 1) {
-				Coin rn_684 = CoinList.rn_2460(rn_492, rn_10431);
-				rn_786(rn_684.rn_2774, rn_684.rn_2799(), rn_684.rn_2800(), -65536);
+			for (int rn_10262 = 0;rn_10262 < PlantList.rn_1021(plantList);rn_10262 += 1) {
+				Plant rn_557 = PlantList.rn_2181(plantList, rn_10262);
+				Rectx rn_558 = PlantList.rn_2181(plantList, rn_10262).rn_2426;
+				Rectx rn_559 = new Rectx();
+				rn_559.rn_3485 = (rn_558.rn_3485 + x + PlantList.rn_2181(plantList, rn_10262).rn_2539()) * scale;
+				rn_559.rn_3486 = (rn_558.rn_3486 + y + PlantList.rn_2181(plantList, rn_10262).y) * scale;
+				rn_559.rn_3487 = rn_558.rn_3487 * scale;
+				rn_559.rn_3488 = rn_558.rn_3488 * scale;
+				drawRect(screen, rn_559, -16776961);
+				if (rn_558.rn_3490) {
+					STSL rn_560 = rn_557.rn_2541();
+					drawSTSL(screen, (int) rn_559.rn_3485, (int) rn_559.rn_3486, rn_560);
+				}
 			}
-			rn_672 = rn_10083.rn_10089();
-			rn_515 = rn_515 + "\n" + "collisoin:" + rn_6935.rn_6939((rn_672 - rn_673)) + "ms";
-			rn_673 = rn_672;
-			if (rn_507) {
-				DrawStyle rn_685 = new DrawStyle();
-				rn_685.rn_3773 = rn_501;
-				rn_685.rn_3774 = 1.0F;
-				rn_685.rn_3775 = 1.0F;
-				rn_685.rn_3776 = 0.0F;
-				rn_685.rn_3777 = 0.0F;
-				rn_685.rn_3780 = -1;
-				rn_685.rn_3781 = rn_504 - rn_459 - 50;
-				rn_685.rn_3782 = rn_505 - 50;
-				rn_985(rn_453, rn_685, rn_586);
+			for (int rn_10263 = 0;rn_10263 < CoinList.rn_1021(coinlist);rn_10263 += 1) {
+				Coin rn_561 = CoinList.rn_2243(coinlist, rn_10263);
+				drawcollv(rn_561.rn_2587, rn_561.rn_2612(), rn_561.rn_2613(), -65536);
+			}
+			rn_549 = rn_9915.rn_9921();
+			frameinfo = frameinfo + "\n" + "collisoin:" + rn_6767.rn_6771((rn_549 - rn_550)) + "ms";
+			rn_550 = rn_549;
+			if (pred) {
+				DrawStyle rn_562 = new DrawStyle();
+				rn_562.rn_3605 = predanim;
+				rn_562.rn_3606 = 1.0F;
+				rn_562.rn_3607 = 1.0F;
+				rn_562.rn_3608 = 0.0F;
+				rn_562.rn_3609 = 0.0F;
+				rn_562.rn_3612 = -1;
+				rn_562.rn_3613 = predxp - x - 50;
+				rn_562.rn_3614 = predyp - 50;
+				draw(screen, rn_562, rn_462);
 			}
 		}
-		if (rn_546 != 0) {
-			rn_905(rn_453, 0, 400, rn_455 / rn_461, 110, true, -1442840576);
-			rn_966(rn_453, rn_545, (int) (rn_455 / 2.0F / rn_461), 440, -527701, -16777216, 30, -0.5F, 0.0F, 2, 2);
+		if (captionscd != 0) {
+			drawRect3(screen, 0, 400, width / scale, 110, true, -1442840576);
+			write3stroke(screen, captions, (int) (width / 2.0F / scale), 440, -527701, -16777216, 30, -0.5F, 0.0F, 2, 2);
 		}
-		SpriteBatch.rn_4056(rn_453);
-		FrameBuffer_.rn_4099(rn_454);
-		ShaderProgram_.rn_4117(rn_524, "u_opacity", 1.0F);
-		ShaderProgram_.rn_4106(rn_524, "u_rgbFactors", 1.0F, 1.0F, 1.0F);
-		com.badlogic.gdx.graphics.g2d.TextureRegion rn_686 = TextureRegion_.rn_3995(TextureRegion_.rn_3991(FrameBuffer_.rn_4100(rn_454), rn_455, rn_456), Const.rn_1778, Const.rn_1779);
-		return rn_686;
+		SpriteBatch.rn_3888(screen);
+		FrameBuffer_.rn_3931(fbo);
+		ShaderProgram_.rn_3949(rgbShader, "u_opacity", 1.0F);
+		ShaderProgram_.rn_3938(rgbShader, "u_rgbFactors", 1.0F, 1.0F, 1.0F);
+		com.badlogic.gdx.graphics.g2d.TextureRegion rn_563 = TextureRegion_.rn_3827(TextureRegion_.rn_3823(FrameBuffer_.rn_3932(fbo), width, height), Const.rn_1641, Const.rn_1642);
+		return rn_563;
 	}
 
-	public final void rn_689() {
-		android.graphics.Matrix rn_690 = new android.graphics.Matrix();
-		Matrix_.rn_3592(rn_690, rn_461, rn_461);
-		if (rn_536 == null) {
-			com.badlogic.gdx.graphics.Pixmap rn_691 = Pixmap_.rn_4082(1, 1);
-			rn_691.setColor(0x00000055);
-			rn_691.fill();
-			rn_536 = Texture_.rn_4059(rn_691);
+	public final void drawcardslot() {
+		android.graphics.Matrix rn_565 = new android.graphics.Matrix();
+		Matrix_.rn_3411(rn_565, scale, scale);
+		if (t1 == null) {
+			com.badlogic.gdx.graphics.Pixmap rn_566 = Pixmap_.rn_3914(1, 1);
+			rn_566.setColor(0x00000055);
+			rn_566.fill();
+			t1 = Texture_.rn_3891(rn_566);
 		}
-		if (rn_537 == null) {
-			com.badlogic.gdx.graphics.Pixmap rn_692 = Pixmap_.rn_4082(1, 1);
-			rn_692.setColor(0x00000088);
-			rn_692.fill();
-			rn_537 = Texture_.rn_4059(rn_692);
+		if (t2 == null) {
+			com.badlogic.gdx.graphics.Pixmap rn_567 = Pixmap_.rn_3914(1, 1);
+			rn_567.setColor(0x00000088);
+			rn_567.fill();
+			t2 = Texture_.rn_3891(rn_567);
 		}
-		if (rn_538 == null) {
-			com.badlogic.gdx.graphics.Pixmap rn_693 = Pixmap_.rn_4082(1, 1);
-			rn_693.setColor(0x00000040);
-			rn_693.fill();
-			rn_538 = Texture_.rn_4059(rn_693);
+		if (t3 == null) {
+			com.badlogic.gdx.graphics.Pixmap rn_568 = Pixmap_.rn_3914(1, 1);
+			rn_568.setColor(0x00000040);
+			rn_568.fill();
+			t3 = Texture_.rn_3891(rn_568);
 		}
-		for (int rn_10432 = 0;rn_10432 < rn_811();rn_10432 += 1) {
-			int rn_694 = 95 + rn_10432 * (rn_485 + 10);
-			com.badlogic.gdx.graphics.Texture rn_695 = String_Nlimage.rn_3336(rn_450.rn_3643, "SeedPacketSilhouette").rn_3634().rn_2068(1, 1, 0);
-			rn_726(rn_453, rn_695, rn_694, 600 - 8 - 70 - rn_535, 0, 0);
-			if (rn_10432 >= rn_482.length || rn_482 [rn_10432] == -1) {
+		for (int rn_10264 = 0;rn_10264 < cardnum();rn_10264 += 1) {
+			int rn_569 = 95 + rn_10264 * (mmx + 10);
+			com.badlogic.gdx.graphics.Texture rn_570 = String_Nlimagesm.rn_3128(image.rn_3462, "SeedPacketSilhouette").rn_3453().rn_1941(1, 1, 0);
+			zoomdraw_lbns(screen, rn_570, rn_569, 600 - 8 - 70 - sdoffy, 0, 0);
+			if (rn_10264 >= cards.length || cards [rn_10264] == -1) {
 			} else {
-				Rectx rn_696 = rn_476.rn_3703("card_" + rn_10432, rn_694 * rn_461, 8 * rn_461, 50 * rn_461, 70 * rn_461, rn_445);
-				float rn_697 = 0;
-				float rn_698 = 0;
-				if ((rn_549 != -1) && rn_549 == rn_482 [rn_10432]) {
-					float rn_699 = rn_550 * 1.0F / rn_551;
-					if (rn_552 == false) {
-						rn_699 = 1 - rn_699;
+				Rectx rn_571 = trirect.rn_3535("card_" + rn_10264, rn_569 * scale, 8 * scale, 50 * scale, 70 * scale, scrtype);
+				float rn_572 = 0;
+				float rn_573 = 0;
+				if ((sobj != -1) && sobj == cards [rn_10264]) {
+					float rn_574 = cardev * 1.0F / cardevtime;
+					if (evdir == false) {
+						rn_574 = 1 - rn_574;
 					}
-					Rectx rn_700 = rn_476.rn_3698("precard_" + rn_482 [rn_10432]);
-					rn_697 = (rn_700.rn_3666 / rn_461 - rn_694) * rn_699;
-					rn_698 = (rn_700.rn_3667 / rn_461 - 8) * rn_699;
+					Rectx rn_575 = trirect.rn_3530("precard_" + cards [rn_10264]);
+					rn_572 = (rn_575.rn_3485 / scale - rn_569) * rn_574;
+					rn_573 = (rn_575.rn_3486 / scale - 8) * rn_574;
 				}
-				if ((rn_549 != -1) && rn_552 == false && rn_10432 >= rn_553) {
-					float rn_701 = rn_550 * 1.0F / rn_551;
-					rn_697 = (50 + 10) * rn_701;
+				if ((sobj != -1) && evdir == false && rn_10264 >= recallid) {
+					float rn_576 = cardev * 1.0F / cardevtime;
+					rn_572 = (50 + 10) * rn_576;
 				}
-				com.badlogic.gdx.graphics.Texture rn_703 = rn_565(rn_482 [rn_10432]);
-				rn_726(rn_453, rn_703, rn_694 + rn_697, ope.rn_1913(8 + rn_698 + rn_535, 600, Texture_.rn_4066(rn_703)), 0, 0);
-				if (rn_510 == 3 || rn_510 == 12) {
-					float rn_706 = 1.0F;
-					if (rn_510 == 3) {
-						rn_706 = rn_484 * 1.0F / 150;
+				com.badlogic.gdx.graphics.Texture rn_578 = getcardtx(cards [rn_10264]);
+				zoomdraw_lbns(screen, rn_578, rn_569 + rn_572, ope.rn_1786(8 + rn_573 + sdoffy, 600, Texture_.rn_3898(rn_578)), 0, 0);
+				if (proc == 3 || proc == 12) {
+					float rn_581 = 1.0F;
+					if (proc == 3) {
+						rn_581 = animproc * 1.0F / 150;
 					}
-					int rn_707 = (int) (rn_706 * 64);
-					rn_905(rn_453, rn_694, 8 + rn_535, 50, 70, true, ope.rn_1865(new int[]{rn_707, 0, 0, 0}));
+					int rn_582 = (int) (rn_581 * 64);
+					drawRect3(screen, rn_569, 8 + sdoffy, 50, 70, true, ope.rn_1738(new int[]{rn_582, 0, 0, 0}));
 				}
-				if (rn_1164()) {
-					if (rn_696.rn_3671 && rn_483 [rn_10432] <= 0 && (rn_794(rn_482 [rn_10432]) <= rn_509 || rn_527)) {
-						rn_865(rn_482 [rn_10432]);
-						rn_508 = rn_10432;
-						if (rn_3289.rn_6850(rn_530, "cp")) {
-							rn_530 = "op";
-							rn_1140("ADVICE_CLICK_ON_GRASS", -1);
-						} else if (rn_3289.rn_6850(rn_530, "bp")) {
-							rn_546 = 0;
-							rn_530 = "sp";
+				if (gamestart()) {
+					if (rn_571.rn_3490 && card_cool [rn_10264] <= 0 && (getvalue(cards [rn_10264]) <= suncount || free)) {
+						choose(cards [rn_10264]);
+						predidx = rn_10264;
+						if (rn_3081.rn_6682(state, "cp")) {
+							state = "op";
+							captions("ADVICE_CLICK_ON_GRASS", -1);
+						} else if (rn_3081.rn_6682(state, "bp")) {
+							captionscd = 0;
+							state = "sp";
 						}
 					}
-					if (rn_483 [rn_10432] <= 0 && rn_794(rn_482 [rn_10432]) <= rn_509) {
-						if ((rn_3289.rn_6850(rn_530, "cp")) && rn_10432 == 0) {
-							int rn_708 = 80;
-							int rn_709 = rn_781(rn_484, rn_708, 0);
-							rn_905(rn_453, rn_694, 8, 50, 70, true, ope.rn_1865(new int[]{rn_709, 0, 0, 0}));
-							com.badlogic.gdx.graphics.Texture rn_710 = String_Nlimage.rn_3336(rn_450.rn_3643, "DownArrow").rn_3634().rn_2068(1, 1, 0);
-							android.graphics.Matrix rn_711 = Matrix_.rn_3577(rn_1026);
-							Matrix_.rn_3603(Matrix_.rn_3592(rn_711, 1, -1), (rn_694 + (50 - Texture_.rn_4065(rn_710)) / 2) * rn_461, (Texture_.rn_4066(rn_710) + 8 + 70 + rn_781(rn_484, rn_708 - 20, 0) / 18.0F) * rn_461);
-							SpriteBatch.rn_4034(rn_453, rn_710, rn_711, new float[]{1.0F, 0.9F, 0.4F, 1.0F}, rn_456, Nirvana.this, false);
+					if (card_cool [rn_10264] <= 0 && getvalue(cards [rn_10264]) <= suncount) {
+						if ((rn_3081.rn_6682(state, "cp")) && rn_10264 == 0) {
+							int rn_583 = 80;
+							int rn_584 = gettransp(animproc, rn_583, 0);
+							drawRect3(screen, rn_569, 8, 50, 70, true, ope.rn_1738(new int[]{rn_584, 0, 0, 0}));
+							com.badlogic.gdx.graphics.Texture rn_585 = String_Nlimagesm.rn_3128(image.rn_3462, "DownArrow").rn_3453().rn_1941(1, 1, 0);
+							android.graphics.Matrix rn_586 = Matrix_.rn_3396(matrix);
+							Matrix_.rn_3422(Matrix_.rn_3411(rn_586, 1, -1), (rn_569 + (50 - Texture_.rn_3897(rn_585)) / 2) * scale, (Texture_.rn_3898(rn_585) + 8 + 70 + gettransp(animproc, rn_583 - 20, 0) / 18.0F) * scale);
+							SpriteBatch.rn_3866(screen, rn_585, rn_586, new float[]{1.0F, 0.9F, 0.4F, 1.0F}, height, Nirvana.this, false);
 						}
 					}
-					if (rn_483 [rn_10432] > 0) {
-						int rn_712 = rn_792(rn_482 [rn_10432]);
-						float rn_713 = (0 + 50) * rn_461;
-						float rn_714 = (0 + 70) * rn_461;
-						SpriteBatch.rn_4028(rn_453, rn_536, rn_694 * rn_461, ope.rn_1913(8 * rn_461, rn_456, rn_714), rn_713, rn_714);
-						rn_714 = (0 + 70 * (rn_483 [rn_10432] * 1.0F / rn_712)) * rn_461;
-						SpriteBatch.rn_4028(rn_453, rn_538, rn_694 * rn_461, ope.rn_1913(8 * rn_461, rn_456, rn_714), rn_713, rn_714);
+					if (card_cool [rn_10264] > 0) {
+						int rn_587 = getct(cards [rn_10264]);
+						float rn_588 = (0 + 50) * scale;
+						float rn_589 = (0 + 70) * scale;
+						SpriteBatch.rn_3860(screen, t1, rn_569 * scale, ope.rn_1786(8 * scale, height, rn_589), rn_588, rn_589);
+						rn_589 = (0 + 70 * (card_cool [rn_10264] * 1.0F / rn_587)) * scale;
+						SpriteBatch.rn_3860(screen, t3, rn_569 * scale, ope.rn_1786(8 * scale, height, rn_589), rn_588, rn_589);
 					}
-					if (rn_509 < rn_794(rn_482 [rn_10432])) {
-						float rn_715 = (0 + 50) * rn_461;
-						float rn_716 = (0 + 70) * rn_461;
-						SpriteBatch.rn_4028(rn_453, rn_537, rn_694 * rn_461, ope.rn_1913(8 * rn_461, rn_456, rn_716), rn_715, rn_716);
+					if (suncount < getvalue(cards [rn_10264])) {
+						float rn_590 = (0 + 50) * scale;
+						float rn_591 = (0 + 70) * scale;
+						SpriteBatch.rn_3860(screen, t2, rn_569 * scale, ope.rn_1786(8 * scale, height, rn_591), rn_590, rn_591);
 					}
 				}
-				if (rn_696.rn_3672) {
-					rn_696.rn_3672 = false;
-					if (rn_1164()) {
-						if (rn_483 [rn_10432] <= 0 && rn_794(rn_482 [rn_10432]) <= rn_509) {
-							rn_865(rn_482 [rn_10432]);
-							rn_508 = rn_482 [rn_10432];
+				if (rn_571.rn_3491) {
+					rn_571.rn_3491 = false;
+					if (gamestart()) {
+						if (card_cool [rn_10264] <= 0 && getvalue(cards [rn_10264]) <= suncount) {
+							choose(cards [rn_10264]);
+							predidx = cards [rn_10264];
 						}
 					} else {
-						rn_754(rn_482 [rn_10432], false);
+						select(cards [rn_10264], false);
 					}
 				}
 			}
 		}
-		if ((rn_549 != -1) && rn_552 == false) {
-			int rn_717 = 95 + rn_553 * (rn_485 + 10);
-			float rn_718 = 0;
-			float rn_719 = 0;
-			float rn_720 = 1 - rn_550 * 1.0F / rn_551;
-			Rectx rn_721 = rn_476.rn_3698("precard_" + rn_549);
-			rn_718 = (rn_721.rn_3666 / rn_461 - rn_717) * rn_720;
-			rn_719 = (rn_721.rn_3667 / rn_461 - 8) * rn_720;
-			android.graphics.Matrix rn_722 = Matrix_.rn_3577(rn_690);
-			Matrix_.rn_3628(rn_722, rn_717 + rn_718, 8 + rn_719);
-			com.badlogic.gdx.graphics.Pixmap rn_723 = Pixmap_.rn_4087(rn_569(rn_549));
-			SpriteBatch.rn_4005(rn_453, rn_723, rn_722, 1.0F, rn_456 - (int) (rn_535 * rn_461));
-			rn_723.dispose();
+		if ((sobj != -1) && evdir == false) {
+			int rn_592 = 95 + recallid * (mmx + 10);
+			float rn_593 = 0;
+			float rn_594 = 0;
+			float rn_595 = 1 - cardev * 1.0F / cardevtime;
+			Rectx rn_596 = trirect.rn_3530("precard_" + sobj);
+			rn_593 = (rn_596.rn_3485 / scale - rn_592) * rn_595;
+			rn_594 = (rn_596.rn_3486 / scale - 8) * rn_595;
+			android.graphics.Matrix rn_597 = Matrix_.rn_3396(rn_565);
+			Matrix_.rn_3447(rn_597, rn_592 + rn_593, 8 + rn_594);
+			com.badlogic.gdx.graphics.Pixmap rn_598 = Pixmap_.rn_3919(getcardcs(sobj));
+			SpriteBatch.rn_3837(screen, rn_598, rn_597, 1.0F, height - (int) (sdoffy * scale));
+			rn_598.dispose();
 		}
 	}
 
-	public final boolean rn_724(int rn_725) {
-		for (int rn_10433 = 0;rn_10433 < rn_482.length;rn_10433 += 1) {
-			if (rn_482 [rn_10433] == rn_725) {
+	public final boolean plantHasChoose(int rn_599) {
+		for (int rn_10265 = 0;rn_10265 < cards.length;rn_10265 += 1) {
+			if (cards [rn_10265] == rn_599) {
 				return true;
 			}
 		}
 		return false;
 	}
 
-	public final void rn_726(com.badlogic.gdx.graphics.g2d.SpriteBatch rn_727, com.badlogic.gdx.graphics.Texture rn_728, float rn_729, float rn_730, float rn_731, float rn_732) {
-		SpriteBatch.rn_4028(rn_727, rn_728, (rn_729 + Texture_.rn_4065(rn_728) * rn_731) * rn_461, (rn_730 + Texture_.rn_4066(rn_728) * rn_732) * rn_461, Texture_.rn_4065(rn_728) * rn_461, Texture_.rn_4066(rn_728) * rn_461);
+	public final void zoomdraw_lbns(com.badlogic.gdx.graphics.g2d.SpriteBatch rn_600, com.badlogic.gdx.graphics.Texture rn_601, float rn_602, float rn_603, float rn_604, float rn_605) {
+		SpriteBatch.rn_3860(rn_600, rn_601, (rn_602 + Texture_.rn_3897(rn_601) * rn_604) * scale, (rn_603 + Texture_.rn_3898(rn_601) * rn_605) * scale, Texture_.rn_3897(rn_601) * scale, Texture_.rn_3898(rn_601) * scale);
 	}
 
-	public final void rn_733(com.badlogic.gdx.graphics.g2d.SpriteBatch rn_734) {
-		String rn_735 = rn_6928.rn_6933(rn_946(rn_529.rn_2978().rn_2981));
-		String rn_736 = rn_6928.rn_6933(rn_950(rn_529.rn_2978().rn_2981));
-		int rn_737 = 557;
-		for (int rn_10434 = 0;rn_10434 < rn_6845.rn_1225(rn_735);rn_10434 += 1) {
-			int rn_738 = rn_3289.rn_6894(rn_3289.rn_6887(rn_735, rn_6845.rn_1225(rn_735) - rn_10434 - 1, rn_6845.rn_1225(rn_735) - rn_10434 - 1), 10);
-			com.badlogic.gdx.graphics.Pixmap rn_739 = String_Nlimage.rn_3336(rn_450.rn_3643, "SelectorScreen_LevelNumbers").rn_3634().rn_2054(10, 1, rn_738);
-			SpriteBatch.rn_4028(rn_734, Texture_.rn_4059(rn_739), rn_737 * rn_461, ope.rn_1913(rn_742(rn_737) * rn_461, rn_456, Pixmap_.rn_4094(rn_739) * rn_461), Pixmap_.rn_4093(rn_739) * rn_461, Pixmap_.rn_4094(rn_739) * rn_461);
-			rn_737 = rn_737 - (int) (Pixmap_.rn_4093(rn_739) * 0.8F);
+	public final void drawLevel(com.badlogic.gdx.graphics.g2d.SpriteBatch rn_606) {
+		String rn_607 = rn_6760.rn_6765(getOzeki(USER.getCurrentAccount().alevel));
+		String rn_608 = rn_6760.rn_6765(getsLevel(USER.getCurrentAccount().alevel));
+		int rn_609 = 557;
+		for (int rn_10266 = 0;rn_10266 < rn_6677.rn_1021(rn_607);rn_10266 += 1) {
+			int rn_610 = rn_3081.rn_6726(rn_3081.rn_6719(rn_607, rn_6677.rn_1021(rn_607) - rn_10266 - 1, rn_6677.rn_1021(rn_607) - rn_10266 - 1), 10);
+			com.badlogic.gdx.graphics.Pixmap rn_611 = String_Nlimagesm.rn_3128(image.rn_3462, "SelectorScreen_LevelNumbers").rn_3453().rn_1927(10, 1, rn_610);
+			SpriteBatch.rn_3860(rn_606, Texture_.rn_3891(rn_611), rn_609 * scale, ope.rn_1786(cbc(rn_609) * scale, height, Pixmap_.rn_3926(rn_611) * scale), Pixmap_.rn_3925(rn_611) * scale, Pixmap_.rn_3926(rn_611) * scale);
+			rn_609 = rn_609 - (int) (Pixmap_.rn_3925(rn_611) * 0.8F);
 		}
-		rn_737 = 575;
-		for (int rn_10435 = 0;rn_10435 < rn_6845.rn_1225(rn_736);rn_10435 += 1) {
-			int rn_740 = rn_3289.rn_6894(rn_3289.rn_6887(rn_736, rn_10435, rn_10435), 10);
-			com.badlogic.gdx.graphics.Pixmap rn_741 = String_Nlimage.rn_3336(rn_450.rn_3643, "SelectorScreen_LevelNumbers").rn_2054(10, 1, rn_740);
-			SpriteBatch.rn_4028(rn_734, Texture_.rn_4059(rn_741), rn_737 * rn_461, ope.rn_1913(rn_742(rn_737) * rn_461, rn_456, Pixmap_.rn_4094(rn_741) * rn_461), Pixmap_.rn_4093(rn_741) * rn_461, Pixmap_.rn_4094(rn_741) * rn_461);
-			rn_737 = rn_737 + (int) (Pixmap_.rn_4093(rn_741) * 0.8F);
-		}
-	}
-
-	public final int rn_742(int rn_743) {
-		return (int) (11.25F / 80 * rn_743 + 50 + Animed.rn_3374(rn_528, 0).rn_3532("SelectorScreen_BG_Right").rn_3272);
-	}
-
-	public final void rn_744(float rn_745, float rn_746, String rn_747, android.graphics.Matrix rn_748) {
-		android.graphics.Matrix rn_749 = Matrix_.rn_3603(Matrix_.rn_3577(rn_748), (rn_459 + rn_745) * rn_461, (rn_460 + rn_746) * rn_461);
-		com.badlogic.gdx.graphics.Texture rn_750 = String_Nlimage.rn_3336(rn_450.rn_3643, rn_747).rn_3634().rn_2068(1, 1, 0);
-		SpriteBatch.rn_4021(rn_453, rn_750, rn_749, 1.0F, rn_456, null);
-	}
-
-	public final void rn_751(boolean rn_752) {
-		rn_529.rn_2975 = rn_529.rn_2975 + 1;
-		Userdata rn_753 = new Userdata();
-		rn_753.rn_2979 = "Developer";
-		rn_753.rn_2981 = -1;
-		UserdataList.rn_2998(rn_529.rn_2977, rn_753);
-		rn_529.rn_2976 = UserdataList.rn_1225(rn_529.rn_2977) - 1;
-		rn_823();
-		if (rn_752) {
-			rn_758(true);
+		rn_609 = 575;
+		for (int rn_10267 = 0;rn_10267 < rn_6677.rn_1021(rn_608);rn_10267 += 1) {
+			int rn_612 = rn_3081.rn_6726(rn_3081.rn_6719(rn_608, rn_10267, rn_10267), 10);
+			com.badlogic.gdx.graphics.Pixmap rn_613 = String_Nlimagesm.rn_3128(image.rn_3462, "SelectorScreen_LevelNumbers").rn_1927(10, 1, rn_612);
+			SpriteBatch.rn_3860(rn_606, Texture_.rn_3891(rn_613), rn_609 * scale, ope.rn_1786(cbc(rn_609) * scale, height, Pixmap_.rn_3926(rn_613) * scale), Pixmap_.rn_3925(rn_613) * scale, Pixmap_.rn_3926(rn_613) * scale);
+			rn_609 = rn_609 + (int) (Pixmap_.rn_3925(rn_613) * 0.8F);
 		}
 	}
 
-	public final void rn_754(int rn_755, boolean rn_756) {
-		if (rn_756 == false) {
-			String rn_757 = "search";
-			for (int rn_10436 = 0;rn_10436 < rn_482.length;rn_10436 += 1) {
-				if (rn_3289.rn_6850(rn_757, "search")) {
-					if (rn_482 [rn_10436] == rn_755) {
-						rn_553 = rn_10436;
-						rn_757 = "move";
+	public final int cbc(int rn_614) {
+		return (int) (11.25F / 80 * rn_614 + 50 + Animed.rn_3169(animess, 0).rn_3336("SelectorScreen_BG_Right").rn_3051);
+	}
+
+	public final void shadow(float rn_615, float rn_616, String rn_617, android.graphics.Matrix rn_618) {
+		android.graphics.Matrix rn_619 = Matrix_.rn_3422(Matrix_.rn_3396(rn_618), (x + rn_615) * scale, (y + rn_616) * scale);
+		com.badlogic.gdx.graphics.Texture rn_620 = String_Nlimagesm.rn_3128(image.rn_3462, rn_617).rn_3453().rn_1941(1, 1, 0);
+		SpriteBatch.rn_3853(screen, rn_620, rn_619, 1.0F, height, null);
+	}
+
+	public final void createAccount(boolean rn_621) {
+		USER.accountNumber = USER.accountNumber + 1;
+		Userdata rn_622 = new Userdata();
+		rn_622.yourname = "Developer";
+		rn_622.alevel = -1;
+		UserdataList.rn_2777(USER.account, rn_622);
+		USER.currentAccount = UserdataList.rn_1021(USER.account) - 1;
+		saveArchive();
+		if (rn_621) {
+			login(true);
+		}
+	}
+
+	public final void select(int rn_623, boolean rn_624) {
+		if (rn_624 == false) {
+			String rn_625 = "search";
+			for (int rn_10268 = 0;rn_10268 < cards.length;rn_10268 += 1) {
+				if (rn_3081.rn_6682(rn_625, "search")) {
+					if (cards [rn_10268] == rn_623) {
+						recallid = rn_10268;
+						rn_625 = "move";
 					}
 				}
-				if (rn_3289.rn_6850(rn_757, "move")) {
-					if (rn_10436 == rn_482.length - 1) {
-						rn_482 [rn_10436] = -1;
+				if (rn_3081.rn_6682(rn_625, "move")) {
+					if (rn_10268 == cards.length - 1) {
+						cards [rn_10268] = -1;
 					} else {
-						rn_482 [rn_10436] = rn_482 [rn_10436 + 1];
+						cards [rn_10268] = cards [rn_10268 + 1];
 					}
 				}
 			}
-			rn_549 = rn_755;
-			rn_550 = rn_551;
-			rn_552 = rn_756;
+			sobj = rn_623;
+			cardev = cardevtime;
+			evdir = rn_624;
 		} else {
-			for (int rn_10437 = 0;rn_10437 < rn_482.length;rn_10437 += 1) {
-				if (rn_482 [rn_10437] == -1) {
-					rn_549 = rn_755;
-					rn_550 = rn_551;
-					rn_552 = rn_756;
-					rn_482 [rn_10437] = rn_755;
+			for (int rn_10269 = 0;rn_10269 < cards.length;rn_10269 += 1) {
+				if (cards [rn_10269] == -1) {
+					sobj = rn_623;
+					cardev = cardevtime;
+					evdir = rn_624;
+					cards [rn_10269] = rn_623;
 					break;
 				}
 			}
 		}
 	}
 
-	public final void rn_758(boolean rn_759) {
-		if (UserdataList.rn_2990((rn_529.rn_2977), rn_529.rn_2976).rn_2981 >= 0) {
-			Animed.rn_3374(rn_528, 0).rn_3556(new String[]{"SelectorScreen_Adventure_button", "SelectorScreen_Adventure_shadow"}, 0, false);
-			Animed.rn_3374(rn_528, 0).rn_3556(new String[]{"SelectorScreen_StartAdventure_button", "SelectorScreen_StartAdventure_shadow"}, -1, false);
+	public final void login(boolean rn_626) {
+		if (UserdataList.rn_2769((USER.account), USER.currentAccount).alevel >= 0) {
+			Animed.rn_3169(animess, 0).rn_3360(new String[]{"SelectorScreen_Adventure_button", "SelectorScreen_Adventure_shadow"}, 0, false);
+			Animed.rn_3169(animess, 0).rn_3360(new String[]{"SelectorScreen_StartAdventure_button", "SelectorScreen_StartAdventure_shadow"}, -1, false);
 		}
-		if (UserdataList.rn_2990((rn_529.rn_2977), rn_529.rn_2976).rn_2983 == false) {
-			Animed.rn_3374(rn_528, 0).rn_3521("SelectorScreen_Survival_button", new float[]{0.5F, 0.5F, 0.5F, 1.0F});
+		if (UserdataList.rn_2769((USER.account), USER.currentAccount).unlockmini == false) {
+			Animed.rn_3169(animess, 0).rn_3323("SelectorScreen_Survival_button", new float[]{0.5F, 0.5F, 0.5F, 1.0F});
 		}
-		if (UserdataList.rn_2990((rn_529.rn_2977), rn_529.rn_2976).rn_2984 == false) {
-			Animed.rn_3374(rn_528, 0).rn_3521("SelectorScreen_Challenges_button", new float[]{0.5F, 0.5F, 0.5F, 1.0F});
+		if (UserdataList.rn_2769((USER.account), USER.currentAccount).unlockpuzzle == false) {
+			Animed.rn_3169(animess, 0).rn_3323("SelectorScreen_Challenges_button", new float[]{0.5F, 0.5F, 0.5F, 1.0F});
 		}
-		if (UserdataList.rn_2990((rn_529.rn_2977), rn_529.rn_2976).rn_2985 == false) {
-			Animed.rn_3374(rn_528, 0).rn_3521("SelectorScreen_ZenGarden_button", new float[]{0.5F, 0.5F, 0.5F, 1.0F});
+		if (UserdataList.rn_2769((USER.account), USER.currentAccount).unlockendless == false) {
+			Animed.rn_3169(animess, 0).rn_3323("SelectorScreen_ZenGarden_button", new float[]{0.5F, 0.5F, 0.5F, 1.0F});
 		}
-		if (rn_759) {
-			rn_530 = "sign";
-			Animed.rn_3374(rn_528, 0).rn_3562("anim_sign", false);
-			Animed.rn_3374(rn_528, 0).rn_3499 = true;
+		if (rn_626) {
+			state = "sign";
+			Animed.rn_3169(animess, 0).rn_3366("anim_sign", false);
+			Animed.rn_3169(animess, 0).pauseAfterBroadcasting = true;
 		}
-		String[] rn_760 = {"leaf1", "leaf2", "leaf3", "leaf4", "leaf5", "leaf_SelectorScreen_Leaves"};
-		Animed.rn_3374(rn_528, 0).rn_3556(rn_760, -1, false);
-		Animed.rn_3382(rn_528, Anim.rn_3508("SelectorScreen", Nirvana.this).rn_3562("anim_grass", false));
+		String[] rn_627 = {"leaf1", "leaf2", "leaf3", "leaf4", "leaf5", "leaf_SelectorScreen_Leaves"};
+		Animed.rn_3169(animess, 0).rn_3360(rn_627, -1, false);
+		Animed.rn_3177(animess, Anim.rn_3310("SelectorScreen", Nirvana.this).rn_3366("anim_grass", false));
 	}
 
-	public final int rn_763() {
-		int rn_764 = rn_497 % 10;
-		int rn_765 = (rn_497 - rn_764) / 10;
-		int rn_766 = rn_764;
-		if (rn_766 > 4) {
-			rn_766 = rn_766 - 1;
+	public final int getwonplant() {
+		int rn_630 = level % 10;
+		int rn_631 = (level - rn_630) / 10;
+		int rn_632 = rn_630;
+		if (rn_632 > 4) {
+			rn_632 = rn_632 - 1;
 		} else {
-			rn_766 = rn_766;
+			rn_632 = rn_632;
 		}
-		return rn_765 * 8 + rn_766;
+		return rn_631 * 8 + rn_632;
 	}
 
-	public final boolean rn_767() {
-		if (rn_482.length != 0 && rn_482 [rn_482.length - 1] != -1) {
+	public final boolean selectedplant() {
+		if (cards.length != 0 && cards [cards.length - 1] != -1) {
 			return true;
 		}
 		return false;
 	}
 
-	public final void rn_769(com.badlogic.gdx.graphics.g2d.SpriteBatch rn_770, int rn_771, int rn_772, STSL rn_773) {
-		int rn_774 = 1;
-		if (rn_772 + rn_774 * 16 * rn_4366.rn_1225(rn_773.rn_3659) > rn_456) {
-			rn_772 = rn_456 - rn_774 * 16 * rn_4366.rn_1225(rn_773.rn_3659);
+	public final void drawSTSL(com.badlogic.gdx.graphics.g2d.SpriteBatch rn_633, int rn_634, int rn_635, STSL rn_636) {
+		int rn_637 = 1;
+		if (rn_635 + rn_637 * 16 * rn_4198.rn_1021(rn_636.rn_3478) > height) {
+			rn_635 = height - rn_637 * 16 * rn_4198.rn_1021(rn_636.rn_3478);
 		}
-		int rn_775 = ope.rn_1867(ope.rn_1945(new float[]{rn_458, 1.0F, 1.0F}), 255);
-		int rn_776 = ope.rn_1986(rn_775, 255);
-		android.graphics.Paint rn_777 = Paint_.rn_1665(Paint_.rn_1667(Paint_.rn_1663(), rn_774 * 32), rn_464);
-		int rn_778 = rn_772;
-		for (int rn_10439 = 0;rn_10439 < rn_4366.rn_1225(rn_773.rn_3659);rn_10439 += 1) {
-			Paint_.rn_1670(rn_777, rn_775);
-			int rn_779 = (int) Paint_.rn_1673(rn_777, rn_4366.rn_4369((rn_773.rn_3659), rn_10439));
-			BitmapFontData_.rn_4174(BitmapFont_.rn_4157(rn_525), 1);
-			BitmapFont_.rn_4158(rn_525, Color_.rn_4068(ope.rn_1919(rn_775)));
-			BitmapFont_.rn_4167(rn_525, rn_770, rn_4366.rn_4369((rn_773.rn_3659), rn_10439), rn_771, ope.rn_1913(rn_778, rn_456, 80));
-			Paint_.rn_1670(rn_777, rn_776);
-			BitmapFont_.rn_4158(rn_525, Color_.rn_4068(ope.rn_1919(rn_776)));
-			BitmapFont_.rn_4167(rn_525, rn_770, rn_4366.rn_4369((rn_773.rn_3660), rn_10439), rn_771 + rn_779 + 15, ope.rn_1913(rn_778, rn_456, 80));
-			rn_778 = rn_778 + rn_774 * 16;
+		int rn_638 = ope.rn_1740(ope.rn_1818(new float[]{gcv, 1.0F, 1.0F}), 255);
+		int rn_639 = ope.rn_1859(rn_638, 255);
+		android.graphics.Paint rn_640 = Paint_.rn_1528(Paint_.rn_1530(Paint_.rn_1526(), rn_637 * 32), textfont);
+		int rn_641 = rn_635;
+		for (int rn_10271 = 0;rn_10271 < rn_4198.rn_1021(rn_636.rn_3478);rn_10271 += 1) {
+			Paint_.rn_1533(rn_640, rn_638);
+			int rn_642 = (int) Paint_.rn_1536(rn_640, rn_4198.rn_4201((rn_636.rn_3478), rn_10271));
+			BitmapFontData_.rn_4006(BitmapFont_.rn_3989(font1), 1);
+			BitmapFont_.rn_3990(font1, Color_.rn_3900(ope.rn_1792(rn_638)));
+			BitmapFont_.rn_3999(font1, rn_633, rn_4198.rn_4201((rn_636.rn_3478), rn_10271), rn_634, ope.rn_1786(rn_641, height, 80));
+			Paint_.rn_1533(rn_640, rn_639);
+			BitmapFont_.rn_3990(font1, Color_.rn_3900(ope.rn_1792(rn_639)));
+			BitmapFont_.rn_3999(font1, rn_633, rn_4198.rn_4201((rn_636.rn_3479), rn_10271), rn_634 + rn_642 + 15, ope.rn_1786(rn_641, height, 80));
+			rn_641 = rn_641 + rn_637 * 16;
 		}
 	}
 
-	public final int rn_781(int rn_782, int rn_783, int rn_784) {
-		int rn_785 = rn_782 % rn_783;
-		if (rn_785 < rn_783 / 2) {
-			return (int) (rn_785 * 1.0F / (rn_783 / 2) * 200 + 55 * rn_784);
+	public final int gettransp(int rn_643, int rn_644, int rn_645) {
+		int rn_646 = rn_643 % rn_644;
+		if (rn_646 < rn_644 / 2) {
+			return (int) (rn_646 * 1.0F / (rn_644 / 2) * 200 + 55 * rn_645);
 		} else {
-			return (int) ((rn_783 - rn_785) * 1.0F / (rn_783 / 2) * 200 + 55 * rn_784);
+			return (int) ((rn_644 - rn_646) * 1.0F / (rn_644 / 2) * 200 + 55 * rn_645);
 		}
 	}
 
-	public final void rn_786(Rectx rn_787, float rn_788, float rn_789, int rn_790) {
-		Rectx rn_791 = new Rectx();
-		rn_791.rn_3666 = (rn_787.rn_3666 + rn_459 + rn_788) * rn_461;
-		rn_791.rn_3667 = (rn_787.rn_3667 + rn_460 + rn_789) * rn_461;
-		rn_791.rn_3668 = rn_787.rn_3668 * rn_461;
-		rn_791.rn_3669 = rn_787.rn_3669 * rn_461;
-		rn_924(rn_453, rn_791, rn_790);
+	public final void drawcollv(Rectx rn_647, float rn_648, float rn_649, int rn_650) {
+		Rectx rn_651 = new Rectx();
+		rn_651.rn_3485 = (rn_647.rn_3485 + x + rn_648) * scale;
+		rn_651.rn_3486 = (rn_647.rn_3486 + y + rn_649) * scale;
+		rn_651.rn_3487 = rn_647.rn_3487 * scale;
+		rn_651.rn_3488 = rn_647.rn_3488 * scale;
+		drawRect(screen, rn_651, rn_650);
 	}
 
-	public final int rn_792(int rn_793) {
-		return rn_3289.rn_6894(rn_452.rn_3032("card").rn_3032(rn_6928.rn_6933(rn_793)).rn_3038("ct"), 10);
+	public final int getct(int rn_652) {
+		return rn_3081.rn_6726(config.rn_2811("card").rn_2811(rn_6760.rn_6765(rn_652)).rn_2817("ct"), 10);
 	}
 
-	public final int rn_794(int rn_795) {
-		return rn_3289.rn_6894(rn_452.rn_3032("card").rn_3032(rn_6928.rn_6933(rn_795)).rn_3038("v"), 10);
+	public final int getvalue(int rn_653) {
+		return rn_3081.rn_6726(config.rn_2811("card").rn_2811(rn_6760.rn_6765(rn_653)).rn_2817("v"), 10);
 	}
 
-	public final boolean rn_796() {
+	public final boolean readSceneArchive() {
 		try {;
-		UserdataList.rn_3012(rn_529.rn_2977);
-		String rn_797 = "/storage/emulated/0/.pvz/user.dat";
-		if (rn_9923.rn_9959(rn_797)) {
-			byte[] rn_798 = rn_9923.rn_9969(rn_797);
-			int rn_799 = 24;
-			rn_529.rn_2975 = rn_7395.rn_7410(rn_848(rn_798, rn_799, 4));
-			rn_529.rn_2976 = rn_7395.rn_7410(rn_848(rn_798, rn_799 + 4, 4));
-			rn_799 = rn_7395.rn_7410(rn_848(rn_798, rn_799 + 8, 4));
-			for (int rn_10440 = 0;rn_10440 < rn_529.rn_2975;rn_10440 += 1) {
-				int rn_800 = rn_7395.rn_7410(rn_848(rn_798, rn_799 + rn_10440 * 4, 4));
-				Userdata rn_801 = new Userdata();
-				byte[] rn_802 = rn_860(rn_798, rn_800);
-				rn_801.rn_2979 = op.rn_1285(rn_802);
-				rn_800 = rn_800 + rn_802.length + 1;
-				rn_801.rn_2980 = rn_7395.rn_7410(rn_848(rn_798, rn_800, 4));
-				rn_801.rn_2981 = rn_7395.rn_7410(rn_848(rn_798, rn_800 + 4, 4));
-				rn_801.rn_2983 = op.rn_1345(rn_848(rn_798, rn_800 + 8, 1) [0]);
-				rn_801.rn_2984 = op.rn_1345(rn_848(rn_798, rn_800 + 9, 1) [0]);
-				rn_801.rn_2985 = op.rn_1345(rn_848(rn_798, rn_800 + 10, 1) [0]);
-				UserdataList.rn_2998(rn_529.rn_2977, rn_801);
+		UserdataList.rn_2791(USER.account);
+		String rn_654 = "/storage/emulated/0/.pvz/user.dat";
+		if (rn_9755.rn_9791(rn_654)) {
+			byte[] rn_655 = rn_9755.rn_9801(rn_654);
+			int rn_656 = 24;
+			USER.accountNumber = rn_7227.rn_7242(readHex(rn_655, rn_656, 4));
+			USER.currentAccount = rn_7227.rn_7242(readHex(rn_655, rn_656 + 4, 4));
+			rn_656 = rn_7227.rn_7242(readHex(rn_655, rn_656 + 8, 4));
+			for (int rn_10272 = 0;rn_10272 < USER.accountNumber;rn_10272 += 1) {
+				int rn_657 = rn_7227.rn_7242(readHex(rn_655, rn_656 + rn_10272 * 4, 4));
+				Userdata rn_658 = new Userdata();
+				byte[] rn_659 = loadText2(rn_655, rn_657);
+				rn_658.yourname = op.rn_1081(rn_659);
+				rn_657 = rn_657 + rn_659.length + 1;
+				rn_658.aweekly = rn_7227.rn_7242(readHex(rn_655, rn_657, 4));
+				rn_658.alevel = rn_7227.rn_7242(readHex(rn_655, rn_657 + 4, 4));
+				rn_658.unlockmini = op.rn_1141(readHex(rn_655, rn_657 + 8, 1) [0]);
+				rn_658.unlockpuzzle = op.rn_1141(readHex(rn_655, rn_657 + 9, 1) [0]);
+				rn_658.unlockendless = op.rn_1141(readHex(rn_655, rn_657 + 10, 1) [0]);
+				UserdataList.rn_2777(USER.account, rn_658);
 			}
 			return true;
 		} else {
 			return false;
 		}
 		} catch (Exception e) {;
-		rn_805("注意，已有存档读取失败，说不定是损坏了，简而言之，你存档没了。");
+		popup("注意，已有存档读取失败，说不定是损坏了，简而言之，你存档没了。");
 		};
 		return false;
 	}
 
-	public final boolean rn_803(int rn_804) {
-		if (rn_804 >= 40) {
+	public final boolean drawZombie(int rn_660) {
+		if (rn_660 >= 40) {
 		} else {
-			if (rn_529.rn_2978().rn_2980 == 0) {
-				if (rn_804 < rn_529.rn_2978().rn_2981) {
+			if (USER.getCurrentAccount().aweekly == 0) {
+				if (rn_660 < getwonplant()) {
 					return true;
 				} else {
 					return false;
@@ -1087,1392 +1125,1448 @@ public class Nirvana {	public int rn_445 = 5;
 		return false;
 	}
 
-	public final void rn_805(String rn_806) {
-		rn_806 = rn_806;
+	public final void popup(String rn_661) {
+		rn_661 = rn_661;
 	}
 
-	public final void rn_807(Plant rn_808, float rn_809, android.graphics.Matrix rn_810) {
-		rn_744(rn_808.rn_2619 + rn_808.rn_2627.rn_3666 - 50, rn_808.rn_2620 + rn_808.rn_2627.rn_3667 + 12, "plantshadow", rn_810);
-		rn_518.rn_3773 = null;
-		rn_518.rn_3774 = rn_808.rn_2621;
-		rn_518.rn_3775 = rn_808.rn_2621;
-		rn_518.rn_3776 = rn_808.rn_2630;
-		rn_518.rn_3777 = rn_808.rn_2630;
-		rn_518.rn_3778 = 0.0F;
-		rn_518.rn_3779 = 0.0F;
-		rn_518.rn_3780 = -1;
-		rn_518.rn_3781 = rn_808.rn_2736();
-		rn_518.rn_3782 = rn_808.rn_2620;
-		rn_518.rn_3783 = null;
-		for (int rn_10441 = 0;rn_10441 < rn_808.rn_2618.length;rn_10441 += 1) {
-			rn_518.rn_3773 = (rn_808.rn_2618) [rn_10441];
-			ShaderProgram_.rn_4111(rn_524, "u_clipRegion", 0, 0, rn_455, rn_456);
-			rn_985(rn_453, rn_518, rn_809);
-		}
-	}
-
-	public final int rn_811() {
-		if (rn_497 < 6) {
-			return rn_497;
-		}
-		return rn_529.rn_2978().rn_2986;
-	}
-
-	public final void rn_812(Zombie rn_813, float rn_814, android.graphics.Matrix rn_815) {
-		rn_744(rn_813.rn_2329() + rn_813.rn_2219.rn_3666 - 27, rn_813.rn_2171 + rn_813.rn_2219.rn_3667 + rn_813.rn_2219.rn_3669 - 20, "plantshadow", rn_815);
-		rn_518.rn_3773 = rn_813.rn_2169;
-		rn_518.rn_3774 = 1.0F;
-		rn_518.rn_3775 = 1.0F;
-		rn_518.rn_3776 = rn_813.rn_2190;
-		rn_518.rn_3777 = rn_813.rn_2190;
-		rn_518.rn_3780 = -1;
-		rn_518.rn_3781 = rn_813.rn_2329();
-		rn_518.rn_3782 = rn_813.rn_2171;
-		if (rn_813.rn_2227) {
-			rn_518.rn_3783 = rn_813.rn_2226;
+	public final void drawPlant(Plant rn_662, float rn_663, android.graphics.Matrix rn_664) {
+		shadow(rn_662.x + rn_662.rn_2426.rn_3485 - 50, rn_662.y + rn_662.rn_2426.rn_3486 + 12, "plantshadow", rn_664);
+		ds.rn_3605 = null;
+		if (rn_662.rn_2436) {
+			ds.rn_3615 = rn_662.rn_2437;
 		} else {
-			rn_518.rn_3783 = null;
+			ds.rn_3615 = null;
 		}
-		if (rn_813.rn_2200) {
-			float rn_816 = (rn_459 + rn_813.rn_2329() * rn_813.rn_2201.rn_4284 + rn_813.rn_2201.rn_4280) * rn_461;
-			float rn_817 = (rn_460 + rn_813.rn_2171 * rn_813.rn_2201.rn_4285 + rn_813.rn_2201.rn_4281) * rn_461;
-			float rn_818 = rn_813.rn_2201.rn_4282 * rn_461;
-			float rn_819 = rn_813.rn_2201.rn_4283 * rn_461;
-			ShaderProgram_.rn_4111(rn_524, "u_clipRegion", rn_816, ope.rn_1913(rn_817, rn_456, rn_819), rn_818, rn_819);
+		ds.rn_3606 = rn_662.scale;
+		ds.rn_3607 = rn_662.scale;
+		ds.rn_3608 = rn_662.rn_2429;
+		ds.rn_3609 = rn_662.rn_2429;
+		ds.rn_3610 = 0.0F;
+		ds.rn_3611 = 0.0F;
+		ds.rn_3612 = -1;
+		ds.rn_3613 = rn_662.rn_2539();
+		ds.rn_3614 = rn_662.y;
+		for (int rn_10273 = 0;rn_10273 < rn_662.anim.length;rn_10273 += 1) {
+			ds.rn_3605 = (rn_662.anim) [rn_10273];
+			ShaderProgram_.rn_3943(rgbShader, "u_clipRegion", 0, 0, width, height);
+			draw(screen, ds, rn_663);
+		}
+	}
+
+	public final int cardnum() {
+		if (level < 6) {
+			return level;
+		}
+		return USER.getCurrentAccount().slotnumber;
+	}
+
+	public final void drawZombie(Zombie rn_665, float rn_666, android.graphics.Matrix rn_667) {
+		shadow(rn_665.x() + rn_665.cv.rn_3485 - 27, rn_665.y + rn_665.cv.rn_3486 + rn_665.cv.rn_3488 - 20, "plantshadow", rn_667);
+		ds.rn_3605 = rn_665.anim;
+		ds.rn_3606 = 1.0F;
+		ds.rn_3607 = 1.0F;
+		ds.rn_3608 = rn_665.Rotation;
+		ds.rn_3609 = rn_665.Rotation;
+		ds.rn_3612 = -1;
+		ds.rn_3613 = rn_665.x();
+		ds.rn_3614 = rn_665.y;
+		if (rn_665.shake != 0) {
+			ds.rn_3613 = ds.rn_3613 + ope.rn_1684(0, rn_665.shake) - rn_665.shake * 0.5F;
+			ds.rn_3614 = ds.rn_3614 + ope.rn_1684(0, rn_665.shake) - rn_665.shake * 0.5F;
+		}
+		if (rn_665.enableMatrix) {
+			ds.rn_3615 = rn_665.matrix;
 		} else {
-			ShaderProgram_.rn_4111(rn_524, "u_clipRegion", 0, 0, rn_455, rn_456);
+			ds.rn_3615 = null;
 		}
-		rn_985(rn_453, rn_518, rn_814);
-		rn_813.rn_2324();
-	}
-
-	public final void rn_820(Mower rn_821, float rn_822) {
-		rn_518.rn_3773 = rn_821.rn_2600;
-		rn_518.rn_3774 = rn_821.rn_2603;
-		rn_518.rn_3775 = rn_821.rn_2603;
-		rn_518.rn_3776 = 0;
-		rn_518.rn_3777 = 0;
-		rn_518.rn_3780 = -1;
-		rn_518.rn_3781 = rn_821.rn_2595;
-		rn_518.rn_3782 = rn_821.rn_2610();
-		rn_518.rn_3783 = null;
-		rn_985(rn_453, rn_518, rn_822);
-	}
-
-	public final void rn_823() {
-		byte[] rn_824 = (byte[]) (new byte[1024]);
-		rn_833(rn_824, 0, Nirvana.rn_829("FF FF FF FF FF FF FF FF    FF FF FF FF FF FF FF FF    50 56 5A 31 00 00 00 01"));
-		int rn_825 = 24;
-		rn_833(rn_824, rn_825, op.rn_1353(UserdataList.rn_1225(rn_529.rn_2977)));
-		rn_833(rn_824, rn_825 + 4, op.rn_1353(rn_529.rn_2976));
-		rn_833(rn_824, rn_825 + 8, op.rn_1353(rn_825 + 16));
-		rn_825 = rn_825 + 16;
-		int rn_826 = rn_825 + UserdataList.rn_1225(rn_529.rn_2977) * 4;
-		for (int rn_10442 = 0;rn_10442 < UserdataList.rn_1225(rn_529.rn_2977);rn_10442 += 1) {
-			rn_833(rn_824, rn_825 + rn_10442 * 4, op.rn_1353(rn_826));
-			byte[] rn_827 = rn_3289.rn_6901(UserdataList.rn_3006(rn_529.rn_2977, rn_10442).rn_2979, "UTF-8");
-			rn_833(rn_824, rn_826, rn_827);
-			rn_826 = rn_826 + rn_827.length + 1;
-			rn_833(rn_824, rn_826, op.rn_1353(UserdataList.rn_3006(rn_529.rn_2977, rn_10442).rn_2980));
-			rn_833(rn_824, rn_826 + 4, op.rn_1353(UserdataList.rn_3006(rn_529.rn_2977, rn_10442).rn_2981));
-			rn_826 = rn_826 + 8;
-			rn_833(rn_824, rn_826, new byte[]{op.rn_1341(UserdataList.rn_3006(rn_529.rn_2977, rn_10442).rn_2983)});
-			rn_833(rn_824, rn_826 + 1, new byte[]{op.rn_1341(UserdataList.rn_3006(rn_529.rn_2977, rn_10442).rn_2984)});
-			rn_833(rn_824, rn_826 + 2, new byte[]{op.rn_1341(UserdataList.rn_3006(rn_529.rn_2977, rn_10442).rn_2985)});
-			rn_826 = rn_826 + 3;
+		if (rn_665.enableBroken) {
+			float rn_668 = (x + rn_665.x() * rn_665.limitRect.rn_4116 + rn_665.limitRect.rn_4112) * scale;
+			float rn_669 = (y + rn_665.y * rn_665.limitRect.rn_4117 + rn_665.limitRect.rn_4113) * scale;
+			float rn_670 = rn_665.limitRect.rn_4114 * scale;
+			float rn_671 = rn_665.limitRect.rn_4115 * scale;
+			ShaderProgram_.rn_3943(rgbShader, "u_clipRegion", rn_668, ope.rn_1786(rn_669, height, rn_671), rn_670, rn_671);
+		} else {
+			ShaderProgram_.rn_3943(rgbShader, "u_clipRegion", 0, 0, width, height);
 		}
-		String rn_828 = "/storage/emulated/0/.pvz/user.dat";
-		rn_9923.rn_9971(rn_828, rn_824);
+		draw(screen, ds, rn_666);
+		rn_665.immUpdate();
 	}
 
-	public static final byte[] rn_829(String rn_830) {
-		rn_830 = rn_3289.rn_6866(rn_3289.rn_6866(rn_830, " ", ""), "\n", "");
-		byte[] rn_831 = null;
-		rn_831=new byte[rn_830.length()/2];
-		for (int rn_10443 = 0;rn_10443 < rn_831.length;rn_10443 += 1) {
-			int rn_832 = rn_3289.rn_6894(rn_3289.rn_6887(rn_830, rn_10443 * 2, rn_10443 * 2 + 1), 16);
-			if (rn_832 > 127) {
-				rn_832 = rn_832 - 256;
+	public final void drawMower(Mower rn_672, float rn_673) {
+		ds.rn_3605 = rn_672.rn_2396;
+		ds.rn_3606 = rn_672.rn_2399;
+		ds.rn_3607 = rn_672.rn_2399;
+		ds.rn_3608 = 0;
+		ds.rn_3609 = 0;
+		ds.rn_3612 = -1;
+		ds.rn_3613 = rn_672.rn_2391;
+		ds.rn_3614 = rn_672.rn_2406();
+		ds.rn_3615 = null;
+		draw(screen, ds, rn_673);
+	}
+
+	public final void saveArchive() {
+		byte[] rn_674 = (byte[]) (new byte[1024]);
+		writeHex(rn_674, 0, Nirvana.text2byte("FF FF FF FF FF FF FF FF    FF FF FF FF FF FF FF FF    50 56 5A 31 00 00 00 01"));
+		int rn_675 = 24;
+		writeHex(rn_674, rn_675, op.rn_1149(UserdataList.rn_1021(USER.account)));
+		writeHex(rn_674, rn_675 + 4, op.rn_1149(USER.currentAccount));
+		writeHex(rn_674, rn_675 + 8, op.rn_1149(rn_675 + 16));
+		rn_675 = rn_675 + 16;
+		int rn_676 = rn_675 + UserdataList.rn_1021(USER.account) * 4;
+		for (int rn_10274 = 0;rn_10274 < UserdataList.rn_1021(USER.account);rn_10274 += 1) {
+			writeHex(rn_674, rn_675 + rn_10274 * 4, op.rn_1149(rn_676));
+			byte[] rn_677 = rn_3081.rn_6733(UserdataList.rn_2785(USER.account, rn_10274).yourname, "UTF-8");
+			writeHex(rn_674, rn_676, rn_677);
+			rn_676 = rn_676 + rn_677.length + 1;
+			writeHex(rn_674, rn_676, op.rn_1149(UserdataList.rn_2785(USER.account, rn_10274).aweekly));
+			writeHex(rn_674, rn_676 + 4, op.rn_1149(UserdataList.rn_2785(USER.account, rn_10274).alevel));
+			rn_676 = rn_676 + 8;
+			writeHex(rn_674, rn_676, new byte[]{op.rn_1137(UserdataList.rn_2785(USER.account, rn_10274).unlockmini)});
+			writeHex(rn_674, rn_676 + 1, new byte[]{op.rn_1137(UserdataList.rn_2785(USER.account, rn_10274).unlockpuzzle)});
+			writeHex(rn_674, rn_676 + 2, new byte[]{op.rn_1137(UserdataList.rn_2785(USER.account, rn_10274).unlockendless)});
+			rn_676 = rn_676 + 3;
+		}
+		String rn_678 = "/storage/emulated/0/.pvz/user.dat";
+		rn_9755.rn_9803(rn_678, rn_674);
+	}
+
+	public static final byte[] text2byte(String rn_679) {
+		rn_679 = rn_3081.rn_6698(rn_3081.rn_6698(rn_679, " ", ""), "\n", "");
+		byte[] rn_680 = null;
+		rn_680=new byte[rn_679.length()/2];
+		for (int rn_10275 = 0;rn_10275 < rn_680.length;rn_10275 += 1) {
+			int rn_681 = rn_3081.rn_6726(rn_3081.rn_6719(rn_679, rn_10275 * 2, rn_10275 * 2 + 1), 16);
+			if (rn_681 > 127) {
+				rn_681 = rn_681 - 256;
 			}
-			rn_831 [rn_10443] = (byte)rn_832;
+			rn_680 [rn_10275] = (byte)rn_681;
 		}
-		return rn_831;
+		return rn_680;
 	}
 
-	public final void rn_833(byte[] rn_834, int rn_835, byte[] rn_836) {
-		for (int rn_10444 = rn_835;rn_10444 < rn_835 + rn_836.length;rn_10444 += 1) {
-			rn_834 [rn_10444] = rn_836 [rn_10444 - rn_835];
+	public final void writeHex(byte[] rn_682, int rn_683, byte[] rn_684) {
+		for (int rn_10276 = rn_683;rn_10276 < rn_683 + rn_684.length;rn_10276 += 1) {
+			rn_682 [rn_10276] = rn_684 [rn_10276 - rn_683];
 		}
 	}
 
-	public final byte[] rn_848(byte[] rn_849, int rn_850, int rn_851) {
-		byte[] rn_852 = null;
-		rn_852=new byte[rn_851];
-		for (int rn_10447 = rn_850;rn_10447 < rn_850 + rn_851;rn_10447 += 1) {
-			rn_852 [rn_10447 - rn_850] = rn_849 [rn_10447];
+	public final byte[] readHex(byte[] rn_693, int rn_694, int rn_695) {
+		byte[] rn_696 = null;
+		rn_696=new byte[rn_695];
+		for (int rn_10279 = rn_694;rn_10279 < rn_694 + rn_695;rn_10279 += 1) {
+			rn_696 [rn_10279 - rn_694] = rn_693 [rn_10279];
 		}
-		return rn_852;
+		return rn_696;
 	}
 
-	public final byte[] rn_860(byte[] rn_861, int rn_862) {
-		int rn_863 = rn_862;
-		int rn_864 = 0;
-		for (int rn_10450 = 0;rn_10450 < 10;rn_10450 += 1) {
-			rn_10450 = 1;
-			if (rn_861 [rn_862] == 0) {
+	public final byte[] loadText2(byte[] rn_702, int rn_703) {
+		int rn_704 = rn_703;
+		int rn_705 = 0;
+		for (int rn_10282 = 0;rn_10282 < 10;rn_10282 += 1) {
+			rn_10282 = 1;
+			if (rn_702 [rn_703] == 0) {
 				break;
 			} else {
-				rn_862 = rn_862 + 1;
-				rn_864 = rn_864 + 1;
+				rn_703 = rn_703 + 1;
+				rn_705 = rn_705 + 1;
 			}
 		}
-		byte[] bytes = new byte[rn_864];
-		for (int rn_10451 = 0;rn_10451 < rn_864;rn_10451 += 1) {
-			bytes[rn_10451]=rn_861[rn_10451+rn_863];
+		byte[] bytes = new byte[rn_705];
+		for (int rn_10283 = 0;rn_10283 < rn_705;rn_10283 += 1) {
+			bytes[rn_10283]=rn_702[rn_10283+rn_704];
 		}
 		return bytes;
 	}
 
-	public final void rn_865(int rn_866) {
-		Plant rn_867 = Plant.rn_2637(Nirvana.this, -1, -1, rn_866);
-		rn_507 = true;
-		rn_501 = (rn_867.rn_2618) [0];
-		rn_506 = rn_866;
+	public final void choose(int rn_706) {
+		Plant rn_707 = Plant.rn_2439(Nirvana.this, -1, -1, rn_706);
+		pred = true;
+		predanim = (rn_707.anim) [0];
+		predtype = rn_706;
 	}
 
-	public final void rn_869(int rn_870, int rn_871) {
-		rn_497 = rn_870;
-		rn_498 = rn_871;
-		rn_500 = rn_889(rn_870, rn_871);
-		rn_540 = false;
-		rn_484 = 0;
-		rn_482 = (int[]) (new int[0]);
-		rn_530 = "none";
-		int[] rn_872 = rn_878(rn_874().rn_3038("allowedZombies"));
-		rn_493 = 0;
-		rn_494 = XMLRED.rn_1225(rn_874().rn_3025);
-		rn_490 = 0;
-		rn_509 = 50;
-		if (rn_497 == 1) {
-			rn_509 = 150;
-		}
-		if (rn_497 != 50) {
-			if (rn_497 == 1) {
-				for (int rn_10452 = 0;rn_10452 < 5;rn_10452 += 1) {
-					ZombieList.rn_2374(rn_477, rn_875(0));
-				}
-			} else if (rn_497 == 2) {
-				for (int rn_10453 = 0;rn_10453 < 10;rn_10453 += 1) {
-					ZombieList.rn_2374(rn_477, rn_875(0));
-				}
-			} else {
-				for (int rn_10454 = 0;rn_10454 < rn_872.length;rn_10454 += 1) {
-					ZombieList.rn_2374(rn_477, rn_875(rn_872 [rn_10454]));
-				}
-				int rn_873 = rn_7317.rn_7328(2, 5);
-				if (rn_872.length < 5) {
-					rn_873 = rn_872.length;
-				}
-				for (int rn_10455 = 0;rn_10455 < rn_873;rn_10455 += 1) {
-					ZombieList.rn_2374(rn_477, rn_875(rn_872 [rn_7317.rn_7328(0, rn_872.length - 1)]));
+	public final void initLevel(int rn_708, int rn_709) {
+		level = rn_708;
+		leveltype = rn_709;
+		String rn_710 = rn_9755.rn_9795("/sdcard/.pvz/" + levelname() + ".json", "UTF-8");
+		if (rn_3081.rn_6684(rn_710, "")) {
+			rn_959(rn_710);
+		} else {
+			scene = initLevel_scene(rn_708, rn_709);
+			ccend = false;
+			animproc = 0;
+			cards = (int[]) (new int[0]);
+			state = "none";
+			int[] rn_711 = getzombie(getwaveinfo().rn_2817("allowedZombies"));
+			wave = 0;
+			wavemax = XMLRED.rn_1021(getwaveinfo().rn_2804);
+			sunapp = 0;
+			suncount = 50;
+			if (level == 1) {
+				suncount = 150;
+			}
+			if (level != 50) {
+				if (level == 1) {
+					for (int rn_10284 = 0;rn_10284 < 5;rn_10284 += 1) {
+						ZombieList.rn_2157(zombieList, zombieidle(0));
+					}
+				} else if (level == 2) {
+					for (int rn_10285 = 0;rn_10285 < 10;rn_10285 += 1) {
+						ZombieList.rn_2157(zombieList, zombieidle(0));
+					}
+				} else {
+					for (int rn_10286 = 0;rn_10286 < rn_711.length;rn_10286 += 1) {
+						ZombieList.rn_2157(zombieList, zombieidle(rn_711 [rn_10286]));
+					}
+					int rn_712 = rn_7149.rn_7160(2, 5);
+					if (rn_711.length < 5) {
+						rn_712 = rn_711.length;
+					}
+					for (int rn_10287 = 0;rn_10287 < rn_712;rn_10287 += 1) {
+						ZombieList.rn_2157(zombieList, zombieidle(rn_711 [rn_7149.rn_7160(0, rn_711.length - 1)]));
+					}
 				}
 			}
+			for (int rn_10288 = 0;rn_10288 < 5;rn_10288 += 1) {
+			}
 		}
-		for (int rn_10456 = 0;rn_10456 < 5;rn_10456 += 1) {
-		}
 	}
 
-	public final XMLR rn_874() {
-		return rn_511.rn_3032("PVZ").rn_3040("id", rn_885(rn_497, rn_498));
+	public final XMLR getwaveinfo() {
+		return levels.rn_2811("PVZ").rn_2819("id", getlevelname(level, leveltype));
 	}
 
-	public final Zombie rn_875(int rn_876) {
-		Zombie rn_877 = Zombie.万恶之源(Nirvana.this, rn_876, -1);
-		rn_877.rn_2169.rn_3562("anim_idle", false);
-		rn_877.rn_2170 = rn_7317.rn_7328(1050, 1200);
-		rn_877.rn_2171 = rn_7317.rn_7328(0, 500);
-		rn_877.rn_2169.rn_3487 = 0.5F * Zombie.rn_2255();
-		return rn_877;
+	public final Zombie zombieidle(int rn_713) {
+		Zombie rn_714 = Zombie.create(Nirvana.this, rn_713, -1);
+		rn_714.anim.rn_3366("anim_idle", false);
+		rn_714.x = rn_7149.rn_7160(1050, 1200);
+		rn_714.y = rn_7149.rn_7160(0, 500);
+		rn_714.idle = true;
+		rn_714.anim.speed = 0.5F * Zombie.tool_getrandom();
+		return rn_714;
 	}
 
-	public final int[] rn_878(String rn_879) {
-		String[] rn_880 = rn_3289.rn_6892(rn_879, " ");
-		int[] rn_881 = (int[]) (new int[rn_880.length]);
-		for (int rn_10457 = 0;rn_10457 < rn_880.length;rn_10457 += 1) {
+	public final int[] getzombie(String rn_715) {
+		String[] rn_716 = rn_3081.rn_6724(rn_715, " ");
+		int[] rn_717 = (int[]) (new int[rn_716.length]);
+		for (int rn_10289 = 0;rn_10289 < rn_716.length;rn_10289 += 1) {
 			try {;
-			rn_881 [rn_10457] = rn_3289.rn_6894(rn_880 [rn_10457], 10);
+			rn_717 [rn_10289] = rn_3081.rn_6726(rn_716 [rn_10289], 10);
 			} catch (Exception e) { e.printStackTrace(); };
 		}
-		rn_881 = op.rn_1309(rn_881);
-		int rn_882 = 0;
-		for (int rn_10458 = 1;rn_10458 < rn_881.length;rn_10458 += 1) {
-			if (rn_881 [rn_10458] == rn_881 [rn_10458 - 1]) {
-				rn_882 = rn_882 + 1;
+		rn_717 = op.rn_1105(rn_717);
+		int rn_718 = 0;
+		for (int rn_10290 = 1;rn_10290 < rn_717.length;rn_10290 += 1) {
+			if (rn_717 [rn_10290] == rn_717 [rn_10290 - 1]) {
+				rn_718 = rn_718 + 1;
 			}
 		}
-		int[] rn_883 = (int[]) (new int[rn_881.length - rn_882]);
-		rn_883 [0] = rn_881 [0];
-		int rn_884 = 1;
-		for (int rn_10459 = 1;rn_10459 < rn_881.length;rn_10459 += 1) {
-			if (rn_881 [rn_10459] != rn_881 [rn_10459 - 1]) {
-				rn_883 [rn_884] = rn_881 [rn_10459];
-				rn_884 = rn_884 + 1;
+		int[] rn_719 = (int[]) (new int[rn_717.length - rn_718]);
+		rn_719 [0] = rn_717 [0];
+		int rn_720 = 1;
+		for (int rn_10291 = 1;rn_10291 < rn_717.length;rn_10291 += 1) {
+			if (rn_717 [rn_10291] != rn_717 [rn_10291 - 1]) {
+				rn_719 [rn_720] = rn_717 [rn_10291];
+				rn_720 = rn_720 + 1;
 			}
 		}
-		return rn_883;
+		return rn_719;
 	}
 
-	public final String rn_885(int rn_886, int rn_887) {
-		String rn_888 = "";
-		if (rn_887 == 0) {
-			rn_888 = "";
-		} else if (rn_887 == 1) {
-			rn_888 = "B";
-		} else if (rn_887 == 2) {
-			rn_888 = "C";
-		} else if (rn_887 == 3) {
-			rn_888 = "D";
+	public final String getlevelname(int rn_721, int rn_722) {
+		String rn_723 = "";
+		if (rn_722 == 0) {
+			rn_723 = "";
+		} else if (rn_722 == 1) {
+			rn_723 = "B";
+		} else if (rn_722 == 2) {
+			rn_723 = "C";
+		} else if (rn_722 == 3) {
+			rn_723 = "D";
 		}
-		return rn_888 + rn_6928.rn_6933(rn_886);
+		return rn_723 + rn_6760.rn_6765(rn_721);
 	}
 
-	public final int rn_889(int rn_890, int rn_891) {
-		if (rn_891 == 0 || rn_891 == 1) {
-			if (rn_890 <= 10) {
+	public final int initLevel_scene(int rn_724, int rn_725) {
+		if (rn_725 == 0 || rn_725 == 1) {
+			if (rn_724 <= 10) {
 				return 0;
-			} else if (rn_890 <= 20) {
+			} else if (rn_724 <= 20) {
 				return 1;
-			} else if (rn_890 <= 30) {
+			} else if (rn_724 <= 30) {
 				return 2;
-			} else if (rn_890 <= 40) {
+			} else if (rn_724 <= 40) {
 				return 3;
-			} else if (rn_890 < 50) {
+			} else if (rn_724 < 50) {
 				return 4;
-			} else if (rn_890 == 50) {
+			} else if (rn_724 == 50) {
 				return 5;
 			}
 		}
 		return 0;
 	}
 
-	public final int[] rn_892(float rn_893, float rn_894) {
-		float rn_895 = rn_893 - 260;
-		rn_895 = (rn_895 - rn_895 % 80) / 80;
-		float rn_896 = rn_894 - 80;
-		rn_896 = (rn_896 - rn_896 % 100) / 100;
-		int[] rn_897 = {(int) rn_895, (int) rn_896};
-		return rn_897;
+	public final int[] pixel2grid(float rn_726, float rn_727) {
+		float rn_728 = rn_726 - 260;
+		rn_728 = (rn_728 - rn_728 % 80) / 80;
+		float rn_729 = rn_727 - 80;
+		rn_729 = (rn_729 - rn_729 % 100) / 100;
+		int[] rn_730 = {(int) rn_728, (int) rn_729};
+		return rn_730;
 	}
 
-	public final void rn_905(com.badlogic.gdx.graphics.g2d.SpriteBatch rn_906, float rn_907, float rn_908, float rn_909, float rn_910, boolean rn_911, int rn_912) {
-		if (rn_911) {
-			com.badlogic.gdx.graphics.Pixmap rn_913 = Pixmap_.rn_4082(1, 1);
-			int rn_914 = ope.rn_1919(rn_912);
-			rn_913.setColor(rn_914);
-			rn_913.fill();
-			com.badlogic.gdx.graphics.Texture rn_915 = Texture_.rn_4059(rn_913);
-			SpriteBatch.rn_4028(rn_906, rn_915, rn_907 * rn_461, ope.rn_1913(rn_908 * rn_461, rn_456, rn_910 * rn_461), rn_909 * rn_461, rn_910 * rn_461);
-			ShaderProgram_.rn_4117(rn_524, "u_opacity", 1);
-			ShaderProgram_.rn_4106(rn_524, "u_rgbFactors", 1, 1, 1);
+	public final void drawRect3(com.badlogic.gdx.graphics.g2d.SpriteBatch rn_737, float rn_738, float rn_739, float rn_740, float rn_741, boolean rn_742, int rn_743) {
+		if (rn_742) {
+			com.badlogic.gdx.graphics.Pixmap rn_744 = Pixmap_.rn_3914(1, 1);
+			int rn_745 = ope.rn_1792(rn_743);
+			rn_744.setColor(rn_745);
+			rn_744.fill();
+			com.badlogic.gdx.graphics.Texture rn_746 = Texture_.rn_3891(rn_744);
+			SpriteBatch.rn_3860(rn_737, rn_746, rn_738 * scale, ope.rn_1786(rn_739 * scale, height, rn_741 * scale), rn_740 * scale, rn_741 * scale);
+			ShaderProgram_.rn_3949(rgbShader, "u_opacity", 1);
+			ShaderProgram_.rn_3938(rgbShader, "u_rgbFactors", 1, 1, 1);
 		} else {
-			com.badlogic.gdx.graphics.Pixmap rn_916 = Pixmap_.rn_4082(1, 1);
-			int rn_917 = ope.rn_1919(rn_912);
-			rn_916.setColor(rn_917);
-			rn_916.fill();
-			com.badlogic.gdx.graphics.Texture rn_918 = Texture_.rn_4059(rn_916);
-			float rn_919 = rn_907 * rn_461;
-			float rn_920 = ope.rn_1913(rn_908 * rn_461, rn_456, rn_910 * rn_461);
-			float rn_921 = rn_909 * rn_461;
-			float rn_922 = rn_910 * rn_461;
-			int rn_923 = 2;
-			SpriteBatch.rn_4028(rn_906, rn_918, rn_919, rn_920, rn_921 + rn_923, rn_923);
-			ShaderProgram_.rn_4117(rn_524, "u_opacity", 1);
-			ShaderProgram_.rn_4106(rn_524, "u_rgbFactors", 1, 1, 1);
-			SpriteBatch.rn_4028(rn_906, rn_918, rn_919, rn_920, rn_923, rn_922);
-			SpriteBatch.rn_4028(rn_906, rn_918, rn_919 + rn_921, rn_920, rn_923, rn_922);
-			SpriteBatch.rn_4028(rn_906, rn_918, rn_919, rn_920 + rn_922, rn_921, rn_923);
+			com.badlogic.gdx.graphics.Pixmap rn_747 = Pixmap_.rn_3914(1, 1);
+			int rn_748 = ope.rn_1792(rn_743);
+			rn_747.setColor(rn_748);
+			rn_747.fill();
+			com.badlogic.gdx.graphics.Texture rn_749 = Texture_.rn_3891(rn_747);
+			float rn_750 = rn_738 * scale;
+			float rn_751 = ope.rn_1786(rn_739 * scale, height, rn_741 * scale);
+			float rn_752 = rn_740 * scale;
+			float rn_753 = rn_741 * scale;
+			int rn_754 = 2;
+			SpriteBatch.rn_3860(rn_737, rn_749, rn_750, rn_751, rn_752 + rn_754, rn_754);
+			ShaderProgram_.rn_3949(rgbShader, "u_opacity", 1);
+			ShaderProgram_.rn_3938(rgbShader, "u_rgbFactors", 1, 1, 1);
+			SpriteBatch.rn_3860(rn_737, rn_749, rn_750, rn_751, rn_754, rn_753);
+			SpriteBatch.rn_3860(rn_737, rn_749, rn_750 + rn_752, rn_751, rn_754, rn_753);
+			SpriteBatch.rn_3860(rn_737, rn_749, rn_750, rn_751 + rn_753, rn_752, rn_754);
 		}
 	}
 
-	public final void rn_924(com.badlogic.gdx.graphics.g2d.SpriteBatch rn_925, Rectx rn_926, int rn_927) {
-		rn_925 = rn_925;
-		rn_926 = rn_926;
-		rn_927 = rn_927;
+	public final void drawRect(com.badlogic.gdx.graphics.g2d.SpriteBatch rn_755, Rectx rn_756, int rn_757) {
+		rn_755 = rn_755;
+		rn_756 = rn_756;
+		rn_757 = rn_757;
 	}
 
-	public final void rn_928(android.view.MotionEvent rn_929, boolean rn_930) {
+	public final void handleTouch(android.view.MotionEvent rn_758, boolean rn_759) {
 		try {;
-		rn_470 = rn_929;
-		boolean rn_931 = false;
-		boolean rn_932 = false;
-		rn_467 = (float) ((float) ((rn_8820.rn_8826(rn_929, 0) - rn_473)));
-		rn_468 = (float) ((float) (rn_8820.rn_8828(rn_929, 0)));
-		long rn_933 = rn_10083.rn_10089();
-		if (rn_507) {
-			int[] rn_934 = rn_892(rn_467 / rn_461 - rn_459, rn_468 / rn_461);
-			rn_502 = rn_934 [0];
-			rn_503 = rn_934 [1];
-			rn_504 = rn_467 / rn_461;
-			rn_505 = rn_468 / rn_461;
+		touch = rn_758;
+		boolean rn_760 = false;
+		boolean rn_761 = false;
+		tx = (float) ((float) ((rn_8652.rn_8658(rn_758, 0) - realx)));
+		ty = (float) ((float) (rn_8652.rn_8660(rn_758, 0)));
+		long rn_762 = rn_9915.rn_9921();
+		if (pred) {
+			int[] rn_763 = pixel2grid(tx / scale - x, ty / scale);
+			predx = rn_763 [0];
+			predy = rn_763 [1];
+			predxp = tx / scale;
+			predyp = ty / scale;
 		}
-		if (rn_8820.rn_8822(rn_929) == rn_8813.rn_8814 && rn_930 == false) {
-			rn_465 = rn_467;
-			rn_466 = rn_468;
-			rn_469 = rn_10083.rn_10089();
-		} else if (rn_8820.rn_8822(rn_929) == rn_8813.rn_8816 && rn_930 == false) {
-			if (rn_507) {
-				boolean rn_935 = true;
-				for (int rn_10460 = 0;rn_10460 < PlantList.rn_1225(rn_478);rn_10460 += 1) {
-					if (rn_503 == PlantList.rn_2398(rn_478, rn_10460).rn_2622 && rn_502 == PlantList.rn_2398(rn_478, rn_10460).rn_2623 && rn_982(rn_502, rn_503)) {
-						rn_935 = false;
+		if (rn_8652.rn_8654(rn_758) == rn_8645.rn_8646 && rn_759 == false) {
+			dx = tx;
+			dy = ty;
+			tt = rn_9915.rn_9921();
+		} else if (rn_8652.rn_8654(rn_758) == rn_8645.rn_8648 && rn_759 == false) {
+			if (pred) {
+				boolean rn_764 = true;
+				for (int rn_10292 = 0;rn_10292 < PlantList.rn_1021(plantList);rn_10292 += 1) {
+					if (predy == PlantList.rn_2181(plantList, rn_10292).rn_2421 && predx == PlantList.rn_2181(plantList, rn_10292).rn_2422 && couldPlant(predx, predy)) {
+						rn_764 = false;
 						break;
 					}
 				}
-				if (rn_935 && rn_982(rn_502, rn_503)) {
-					if (rn_3289.rn_6850(rn_530, "op")) {
-						rn_530 = "ep";
-						rn_1140("ADVICE_PLANTED_PEASHOOTER", -1);
-						rn_484 = 0;
-						rn_490 = 200;
-						rn_547 = true;
-					} else if (rn_3289.rn_6850(rn_530, "sp")) {
-						rn_1140("ADVICE_ZOMBIE_ONSLAUGHT", 400);
-						rn_510 = 4;
-						rn_484 = 0;
-						rn_530 = "";
+				if (rn_764 && couldPlant(predx, predy)) {
+					if (rn_3081.rn_6682(state, "op")) {
+						state = "ep";
+						captions("ADVICE_PLANTED_PEASHOOTER", -1);
+						animproc = 0;
+						sunapp = 200;
+						canshedsun = true;
+					} else if (rn_3081.rn_6682(state, "sp")) {
+						captions("ADVICE_ZOMBIE_ONSLAUGHT", 400);
+						proc = 4;
+						animproc = 0;
+						state = "";
 					}
-					PlantList.rn_2406(rn_478, Plant.rn_2637(Nirvana.this, rn_503, rn_502, rn_506));
-					XMLR rn_936 = (rn_452).rn_3032("card").rn_3032(rn_6928.rn_6933(rn_506));
-					if (rn_526 == false) {
-						rn_483 [rn_508] = rn_3289.rn_6894(rn_936.rn_3038("ct"), 10);
+					PlantList.rn_2189(plantList, Plant.rn_2439(Nirvana.this, predy, predx, predtype));
+					XMLR rn_765 = (config).rn_2811("card").rn_2811(rn_6760.rn_6765(predtype));
+					if (nntw == false) {
+						card_cool [predidx] = rn_3081.rn_6726(rn_765.rn_2817("ct"), 10);
 					}
-					if (rn_527 == false) {
-						rn_509 = rn_509 - rn_794(rn_506);
+					if (free == false) {
+						suncount = suncount - getvalue(predtype);
 					}
 				}
-				rn_507 = false;
-				rn_501 = null;
+				pred = false;
+				predanim = null;
 			}
-			if (ope.rn_1855(rn_467 - rn_465) + ope.rn_1855(rn_467 - rn_465) < 50 && rn_933 - rn_469 < 100) {
-				rn_931 = true;
-				rn_447.rn_3081 = "click:x=" + rn_467 + "  y=" + rn_468;
+			if (ope.rn_1728(tx - dx) + ope.rn_1728(tx - dx) < 50 && rn_762 - tt < 100) {
+				rn_760 = true;
+				loadproc.rn_2860 = "click:x=" + tx + "  y=" + ty;
 			}
-			rn_470 = null;
-		} else if (rn_8820.rn_8822(rn_929) == rn_8813.rn_8815 || rn_930) {
-			if (rn_933 - rn_469 >= 20) {
-				rn_932 = true;
-				rn_447.rn_3081 = "move:x=" + rn_467 + "  y=" + rn_468;
+			touch = null;
+		} else if (rn_8652.rn_8654(rn_758) == rn_8645.rn_8647 || rn_759) {
+			if (rn_762 - tt >= 20) {
+				rn_761 = true;
+				loadproc.rn_2860 = "move:x=" + tx + "  y=" + ty;
 			}
 		}
-		boolean rn_937 = false;
-		Point rn_938 = Point.rn_4178(rn_467 / rn_461, rn_468 / rn_461);
-		if (rn_932 || rn_931) {
-			for (int rn_10461 = 0;rn_10461 < rn_476.rn_1225() + CoinList.rn_1225(rn_492) + PlantList.rn_1225(rn_478) + ZombieList.rn_1225(rn_477) + RectaList.rn_1225(rn_531);rn_10461 += 1) {
-				Rectx rn_939 = new Rectx();
-				Rectx rn_940 = null;
-				if (rn_10461 < rn_476.rn_1225()) {
-					rn_939 = rn_476.rn_3696(rn_10461);
-					rn_940 = rn_939;
-				} else if (rn_10461 < rn_476.rn_1225() + CoinList.rn_1225(rn_492)) {
-					Coin rn_941 = CoinList.rn_2460(rn_492, rn_10461 - rn_476.rn_1225());
-					rn_939.rn_3666 = (rn_941.rn_2799() + rn_941.rn_2774.rn_3666 + rn_459) * rn_461;
-					rn_939.rn_3667 = (rn_941.rn_2800() + rn_941.rn_2774.rn_3667) * rn_461;
-					rn_939.rn_3668 = rn_941.rn_2774.rn_3668 * rn_461;
-					rn_939.rn_3669 = rn_941.rn_2774.rn_3669 * rn_461;
-					rn_940 = rn_941.rn_2774;
-				} else if (rn_10461 < rn_476.rn_1225() + CoinList.rn_1225(rn_492) + PlantList.rn_1225(rn_478)) {
-					Plant rn_942 = PlantList.rn_2398(rn_478, rn_10461 - rn_476.rn_1225() - CoinList.rn_1225(rn_492));
-					rn_939.rn_3666 = (rn_942.rn_2736() + rn_942.rn_2627.rn_3666 + rn_459) * rn_461;
-					rn_939.rn_3667 = (rn_942.rn_2737() + rn_942.rn_2627.rn_3667) * rn_461;
-					rn_939.rn_3668 = rn_942.rn_2627.rn_3668 * rn_461;
-					rn_939.rn_3669 = rn_942.rn_2627.rn_3669 * rn_461;
-					rn_940 = rn_942.rn_2627;
-				} else if (rn_10461 < rn_476.rn_1225() + CoinList.rn_1225(rn_492) + PlantList.rn_1225(rn_478) + ZombieList.rn_1225(rn_477)) {
-					Zombie rn_943 = ZombieList.rn_2366(rn_477, rn_10461 - rn_476.rn_1225() - CoinList.rn_1225(rn_492) - PlantList.rn_1225(rn_478));
-					rn_939.rn_3666 = (rn_943.rn_2329() + rn_943.rn_2219.rn_3666 + rn_459) * rn_461;
-					rn_939.rn_3667 = (rn_943.rn_2171 + rn_943.rn_2219.rn_3667) * rn_461;
-					rn_939.rn_3668 = rn_943.rn_2219.rn_3668 * rn_461;
-					rn_939.rn_3669 = rn_943.rn_2219.rn_3669 * rn_461;
-					rn_940 = rn_943.rn_2219;
+		boolean rn_766 = false;
+		Point rn_767 = Point.rn_4010(tx / scale, ty / scale);
+		if (rn_761 || rn_760) {
+			for (int rn_10293 = 0;rn_10293 < trirect.rn_1021() + CoinList.rn_1021(coinlist) + PlantList.rn_1021(plantList) + ZombieList.rn_1021(zombieList) + RectaList.rn_1021(judarea);rn_10293 += 1) {
+				Rectx rn_768 = new Rectx();
+				Rectx rn_769 = null;
+				if (rn_10293 < trirect.rn_1021()) {
+					rn_768 = trirect.rn_3528(rn_10293);
+					rn_769 = rn_768;
+				} else if (rn_10293 < trirect.rn_1021() + CoinList.rn_1021(coinlist)) {
+					Coin rn_770 = CoinList.rn_2243(coinlist, rn_10293 - trirect.rn_1021());
+					rn_768.rn_3485 = (rn_770.rn_2612() + rn_770.rn_2587.rn_3485 + x) * scale;
+					rn_768.rn_3486 = (rn_770.rn_2613() + rn_770.rn_2587.rn_3486) * scale;
+					rn_768.rn_3487 = rn_770.rn_2587.rn_3487 * scale;
+					rn_768.rn_3488 = rn_770.rn_2587.rn_3488 * scale;
+					rn_769 = rn_770.rn_2587;
+				} else if (rn_10293 < trirect.rn_1021() + CoinList.rn_1021(coinlist) + PlantList.rn_1021(plantList)) {
+					Plant rn_771 = PlantList.rn_2181(plantList, rn_10293 - trirect.rn_1021() - CoinList.rn_1021(coinlist));
+					rn_768.rn_3485 = (rn_771.rn_2539() + rn_771.rn_2426.rn_3485 + x) * scale;
+					rn_768.rn_3486 = (rn_771.rn_2540() + rn_771.rn_2426.rn_3486) * scale;
+					rn_768.rn_3487 = rn_771.rn_2426.rn_3487 * scale;
+					rn_768.rn_3488 = rn_771.rn_2426.rn_3488 * scale;
+					rn_769 = rn_771.rn_2426;
+				} else if (rn_10293 < trirect.rn_1021() + CoinList.rn_1021(coinlist) + PlantList.rn_1021(plantList) + ZombieList.rn_1021(zombieList)) {
+					Zombie rn_772 = ZombieList.rn_2149(zombieList, rn_10293 - trirect.rn_1021() - CoinList.rn_1021(coinlist) - PlantList.rn_1021(plantList));
+					rn_768.rn_3485 = (rn_772.x() + rn_772.cv.rn_3485 + x) * scale;
+					rn_768.rn_3486 = (rn_772.y + rn_772.cv.rn_3486) * scale;
+					rn_768.rn_3487 = rn_772.cv.rn_3487 * scale;
+					rn_768.rn_3488 = rn_772.cv.rn_3488 * scale;
+					rn_769 = rn_772.cv;
 				} else {
-					rn_940 = null;
+					rn_769 = null;
 				}
-				if (rn_940 != null) {
-					if (rn_939.rn_3679(rn_467, rn_468)) {
-						rn_940.rn_3671 = rn_932;
-						rn_940.rn_3672 = rn_931;
+				if (rn_769 != null) {
+					if (rn_768.rn_3498(tx, ty)) {
+						rn_769.rn_3490 = rn_761;
+						rn_769.rn_3491 = rn_760;
 					} else {
-						rn_940.rn_3671 = false;
-						rn_940.rn_3672 = false;
+						rn_769.rn_3490 = false;
+						rn_769.rn_3491 = false;
 					}
 				}
 			}
 		}
-		for (int rn_10462 = 0;rn_10462 < RectaList.rn_1225(rn_531);rn_10462 += 1) {
-			Detrect rn_944 = RectaList.rn_4248(rn_531, rn_10462);
-			if (rn_937 == false) {
-				if (rn_944.rn_4207(rn_938)) {
-					rn_937 = true;
-					if (rn_8820.rn_8822(rn_929) == rn_8813.rn_8816) {
-						if (rn_944.rn_4202(rn_938)) {
-							rn_944.rn_4213(rn_938);
+		for (int rn_10294 = 0;rn_10294 < RectaList.rn_1021(judarea);rn_10294 += 1) {
+			Detrect rn_773 = RectaList.rn_4080(judarea, rn_10294);
+			if (rn_766 == false) {
+				if (rn_773.rn_4039(rn_767)) {
+					rn_766 = true;
+					if (rn_8652.rn_8654(rn_758) == rn_8645.rn_8648) {
+						if (rn_773.rn_4034(rn_767)) {
+							rn_773.rn_4045(rn_767);
 						} else {
-							rn_944.rn_4210(rn_938, "up");
+							rn_773.rn_4042(rn_767, "up");
 						}
-						rn_531.rn_4277 = "";
+						judarea.rn_4109 = "";
 					} else {
-						if (rn_3289.rn_6850(rn_531.rn_4277, rn_944.rn_4183)) {
-							rn_944.rn_4210(rn_938, "move");
+						if (rn_3081.rn_6682(judarea.rn_4109, rn_773.rn_4015)) {
+							rn_773.rn_4042(rn_767, "move");
 						} else {
-							if (rn_3289.rn_6852(rn_531.rn_4277, "")) {
-								rn_531.rn_4278(rn_531.rn_4277).rn_4210(rn_938, "up");
+							if (rn_3081.rn_6684(judarea.rn_4109, "")) {
+								judarea.rn_4110(judarea.rn_4109).rn_4042(rn_767, "up");
 							}
-							rn_944.rn_4184 = rn_10083.rn_10089();
-							rn_944.rn_4185 = rn_938;
-							rn_944.rn_4210(rn_938, "down");
-							rn_531.rn_4277 = rn_944.rn_4183;
+							rn_773.rn_4016 = rn_9915.rn_9921();
+							rn_773.rn_4017 = rn_767;
+							rn_773.rn_4042(rn_767, "down");
+							judarea.rn_4109 = rn_773.rn_4015;
 						}
 					}
 				}
 			}
 		}
-		if (rn_937 == false && rn_3289.rn_6852(rn_531.rn_4277, "")) {
-			rn_531.rn_4278(rn_531.rn_4277).rn_4210(rn_938, "up");
-			rn_531.rn_4277 = "";
+		if (rn_766 == false && rn_3081.rn_6684(judarea.rn_4109, "")) {
+			judarea.rn_4110(judarea.rn_4109).rn_4042(rn_767, "up");
+			judarea.rn_4109 = "";
 		}
 		} catch (Exception e) {;
 		};
 	}
 
-	public final int rn_946(int rn_947) {
-		int rn_948 = rn_950(rn_947);
-		int rn_949 = (rn_947 - rn_948) / 10 + 1;
-		return rn_949;
+	public final int getOzeki(int rn_774) {
+		int rn_775 = getsLevel(rn_774);
+		int rn_776 = (rn_774 - rn_775) / 10 + 1;
+		return rn_776;
 	}
 
-	public final int rn_950(int rn_951) {
-		int rn_952 = rn_951 % 10;
-		if (rn_952 == 0) {
-			rn_952 = 10;
+	public final int getsLevel(int rn_777) {
+		int rn_778 = rn_777 % 10;
+		if (rn_778 == 0) {
+			rn_778 = 10;
 		}
-		return rn_952;
+		return rn_778;
 	}
 
-	public final String rn_953() {
-		int rn_954 = rn_950(rn_497);
-		int rn_955 = rn_946(rn_497);
-		return rn_4434.rn_4447(rn_462, "LEVEL") + rn_955 + "-" + rn_954;
+	public final String levelname() {
+		int rn_779 = getsLevel(level);
+		int rn_780 = getOzeki(level);
+		return rn_4266.rn_4279(gametext, "LEVEL") + rn_780 + "-" + rn_779;
 	}
 
-	public final void rn_956(com.badlogic.gdx.graphics.g2d.SpriteBatch rn_957, String rn_958, int rn_959, int rn_960, int rn_961, float rn_962, float rn_963, float rn_964) {
-		android.graphics.Paint rn_965 = Paint_.rn_1670(Paint_.rn_1667(Paint_.rn_1665(Paint_.rn_1663(), rn_464), (int) (rn_962 * rn_461)), -16777216);
-		BitmapFontData_.rn_4174(BitmapFont_.rn_4157(rn_525), rn_962 * rn_461 / 32);
-		BitmapFont_.rn_4158(rn_525, Color_.rn_4068(ope.rn_1919(rn_961)));
-		BitmapFont_.rn_4167(rn_525, rn_957, rn_958, (int) (rn_959 * rn_461 + Paint_.rn_1673(rn_965, rn_958) * rn_963), (int) (rn_456 - (rn_960 * rn_461 + rn_964 * rn_962)));
-		ShaderProgram_.rn_4117(rn_524, "u_opacity", 1);
-		ShaderProgram_.rn_4106(rn_524, "u_rgbFactors", 1, 1, 1);
+	public final void write(com.badlogic.gdx.graphics.g2d.SpriteBatch rn_781, String rn_782, int rn_783, int rn_784, int rn_785, float rn_786, float rn_787, float rn_788) {
+		android.graphics.Paint rn_789 = Paint_.rn_1533(Paint_.rn_1530(Paint_.rn_1528(Paint_.rn_1526(), textfont), (int) (rn_786 * scale)), -16777216);
+		BitmapFontData_.rn_4006(BitmapFont_.rn_3989(font1), rn_786 * scale / 32);
+		BitmapFont_.rn_3990(font1, Color_.rn_3900(ope.rn_1792(rn_785)));
+		BitmapFont_.rn_3999(font1, rn_781, rn_782, (int) (rn_783 * scale + Paint_.rn_1536(rn_789, rn_782) * rn_787), (int) (height - (rn_784 * scale + rn_788 * rn_786)));
+		ShaderProgram_.rn_3949(rgbShader, "u_opacity", 1);
+		ShaderProgram_.rn_3938(rgbShader, "u_rgbFactors", 1, 1, 1);
 	}
 
-	public final void rn_966(com.badlogic.gdx.graphics.g2d.SpriteBatch rn_967, String rn_968, int rn_969, int rn_970, int rn_971, int rn_972, float rn_973, float rn_974, float rn_975, int rn_976, int rn_977) {
-		rn_956(rn_967, rn_968, rn_969 + rn_976, rn_970 + rn_977, rn_972, rn_973, rn_974, rn_975);
-		rn_956(rn_967, rn_968, rn_969, rn_970, rn_971, rn_973, rn_974, rn_975);
+	public final void write3stroke(com.badlogic.gdx.graphics.g2d.SpriteBatch rn_790, String rn_791, int rn_792, int rn_793, int rn_794, int rn_795, float rn_796, float rn_797, float rn_798, int rn_799, int rn_800) {
+		write(rn_790, rn_791, rn_792 + rn_799, rn_793 + rn_800, rn_795, rn_796, rn_797, rn_798);
+		write(rn_790, rn_791, rn_792, rn_793, rn_794, rn_796, rn_797, rn_798);
 	}
 
-	public final float rn_978() {
-		float rn_979 = 0.0F;
-		if (rn_3289.rn_6850(rn_447.rn_3084, "reanim")) {
-		} else if (rn_3289.rn_6850(rn_447.rn_3084, "image")) {
+	public final float getLoadingProc() {
+		float rn_801 = 0.0F;
+		if (rn_3081.rn_6682(loadproc.rn_2863, "reanim")) {
+		} else if (rn_3081.rn_6682(loadproc.rn_2863, "image")) {
 			return 0.0F;
-		} else if (rn_3289.rn_6850(rn_447.rn_3084, "anim")) {
-			rn_979 = rn_979 + 0.5F;
+		} else if (rn_3081.rn_6682(loadproc.rn_2863, "anim")) {
+			rn_801 = rn_801 + 0.5F;
 		}
-		if (rn_447.rn_3083 != 0) {
-			rn_979 = rn_979 + rn_447.rn_3082 * 0.5F / rn_447.rn_3083;
+		if (loadproc.rn_2862 != 0) {
+			rn_801 = rn_801 + loadproc.rn_2861 * 0.5F / loadproc.rn_2862;
 		}
-		return rn_979;
+		return rn_801;
 	}
 
-	public final float rn_980(float rn_981) {
-		return (rn_455 - rn_981) / 2;
+	public final float center(float rn_802) {
+		return (width - rn_802) / 2;
 	}
 
-	public final boolean rn_982(int rn_983, int rn_984) {
-		if (rn_497 == 1 && rn_984 != 2) {
+	public final boolean couldPlant(int rn_803, int rn_804) {
+		if (level == 1 && rn_804 != 2) {
 			return false;
-		} else if (rn_497 == 2 && (rn_984 != 1 || rn_984 != 2 || rn_984 != 3)) {
+		} else if (level == 2 && (rn_804 != 1 || rn_804 != 2 || rn_804 != 3)) {
 			return false;
-		} else if (rn_983 < 0 || rn_983 >= 9 || rn_984 < 0 || rn_984 >= rn_1148()) {
+		} else if (rn_803 < 0 || rn_803 >= 9 || rn_804 < 0 || rn_804 >= getRowNumber()) {
 			return false;
 		}
 		return true;
 	}
 
-	public final void rn_985(com.badlogic.gdx.graphics.g2d.SpriteBatch rn_986, DrawStyle rn_987, float rn_988) {
-		Anim rn_989 = rn_987.rn_3773;
-		for (int rn_10463 = 0;rn_10463 < Reanimed.rn_1225(rn_989.rn_3483);rn_10463 += 1) {
-			rn_998(rn_986, rn_987.rn_3773, rn_989.rn_3485, Reanimed.rn_3343((rn_989.rn_3483), rn_10463), rn_987.rn_3781, rn_987.rn_3782, rn_987.rn_3776, rn_987.rn_3777, 0, rn_987.rn_3774, rn_987.rn_3775, rn_10463, rn_988, rn_987.rn_3778, rn_987.rn_3779, rn_987.rn_3783);
-			Anim rn_990 = (rn_989.rn_3492).rn_3416(rn_10463);
-			if (rn_990 != null) {
-				DrawStyle rn_991 = new DrawStyle();
-				POS_int rn_992 = rn_989.rn_3536(rn_989.rn_3485, rn_10463);
-				POS rn_993 = rn_992.rn_3788;
-				rn_991.rn_3773 = rn_990;
-				rn_991.rn_3774 = rn_993.rn_3273;
-				rn_991.rn_3775 = rn_993.rn_3274;
-				rn_991.rn_3776 = rn_993.rn_3275;
-				rn_991.rn_3777 = rn_993.rn_3276;
-				rn_991.rn_3781 = rn_993.rn_3271;
-				rn_991.rn_3782 = rn_993.rn_3272;
-				if ((rn_989.rn_3492.rn_3407).rn_1200(rn_989.rn_3492.rn_3418(rn_10463))) {
-					rn_991.rn_3784(rn_987);
-					POS rn_994 = rn_989.rn_3492.rn_3420(rn_10463);
-					rn_519.rn_3781 = rn_994.rn_3271;
-					rn_519.rn_3782 = rn_994.rn_3272;
-					rn_519.rn_3774 = rn_994.rn_3273;
-					rn_519.rn_3775 = rn_994.rn_3274;
-					rn_519.rn_3776 = rn_994.rn_3275;
-					rn_519.rn_3777 = rn_994.rn_3276;
-					rn_991.rn_3784(rn_519);
-					rn_991.rn_3778 = rn_994.rn_3280;
-					rn_991.rn_3779 = rn_994.rn_3281;
-					ope.rn_1923(rn_994);
+	public final void draw(com.badlogic.gdx.graphics.g2d.SpriteBatch rn_805, DrawStyle rn_806, float rn_807) {
+		Anim rn_808 = rn_806.rn_3605;
+		for (int rn_10295 = 0;rn_10295 < Reanimed.rn_1021(rn_808.rean);rn_10295 += 1) {
+			drawanim(rn_805, rn_806.rn_3605, rn_808.frame, Reanimed.rn_3138((rn_808.rean), rn_10295), rn_806.rn_3613, rn_806.rn_3614, rn_806.rn_3608, rn_806.rn_3609, 0, rn_806.rn_3606, rn_806.rn_3607, rn_10295, rn_807, rn_806.rn_3610, rn_806.rn_3611, rn_806.rn_3615);
+			Anim rn_809 = (rn_808.panims).rn_3206(rn_10295);
+			if (rn_809 != null) {
+				DrawStyle rn_810 = new DrawStyle();
+				POS_int rn_811 = rn_808.rn_3340(rn_808.frame, rn_10295);
+				POS rn_812 = rn_811.rn_3620;
+				rn_810.rn_3605 = rn_809;
+				rn_810.rn_3606 = rn_812.rn_3052;
+				rn_810.rn_3607 = rn_812.rn_3053;
+				rn_810.rn_3608 = rn_812.rn_3054;
+				rn_810.rn_3609 = rn_812.rn_3055;
+				rn_810.rn_3613 = rn_812.rn_3050;
+				rn_810.rn_3614 = rn_812.rn_3051;
+				if ((rn_808.panims.isDbanim).rn_996(rn_808.panims.rn_3208(rn_10295))) {
+					rn_810.rn_3616(rn_806);
+					POS rn_813 = rn_808.panims.rn_3210(rn_10295);
+					dst.rn_3613 = rn_813.rn_3050;
+					dst.rn_3614 = rn_813.rn_3051;
+					dst.rn_3606 = rn_813.rn_3052;
+					dst.rn_3607 = rn_813.rn_3053;
+					dst.rn_3608 = rn_813.rn_3054;
+					dst.rn_3609 = rn_813.rn_3055;
+					rn_810.rn_3616(dst);
+					rn_810.rn_3610 = rn_813.rn_3059;
+					rn_810.rn_3611 = rn_813.rn_3060;
+					ope.rn_1796(rn_813);
+					rn_810.rn_3615 = rn_806.rn_3615;
 				}
-				rn_985(rn_986, rn_991, rn_988);
-				ope.rn_1923(rn_991);
-				ope.rn_1923(rn_992);
-				ope.rn_1923(rn_993);
-				ope.rn_1923(rn_519);
+				draw(rn_805, rn_810, rn_807);
+				ope.rn_1796(rn_810);
+				ope.rn_1796(rn_811);
+				ope.rn_1796(rn_812);
+				ope.rn_1796(dst);
 			}
 		}
-		if (rn_989.rn_3489 != -1) {
-			rn_989.rn_3491 = rn_989.rn_3491 + rn_989.rn_3487 * rn_989.rn_3505() * rn_988 * rn_471;
-			if (rn_989.rn_3491 >= rn_989.rn_3490) {
-				rn_989.rn_3485 = rn_989.rn_3489;
-				rn_989.rn_3489 = -1;
-				rn_989.rn_3490 = -1.0F;
-				rn_989.rn_3491 = -1.0F;
-				rn_989.rn_3493 = true;
+		if (rn_808.ForcedEvolutionFrame != -1) {
+			rn_808.ForcedEvolutionProc = rn_808.ForcedEvolutionProc + rn_808.speed * rn_808.rn_3307() * rn_807 * speed;
+			if (rn_808.ForcedEvolutionProc >= rn_808.ForcedEvolutionTime) {
+				rn_808.frame = rn_808.ForcedEvolutionFrame;
+				rn_808.ForcedEvolutionFrame = -1;
+				rn_808.ForcedEvolutionTime = -1.0F;
+				rn_808.ForcedEvolutionProc = -1.0F;
+				rn_808.update = true;
 			}
 		} else {
-			if (rn_989.rn_3498 == false) {
-				rn_989.rn_3485 = rn_989.rn_3485 + rn_989.rn_3487 * rn_989.rn_3505() * rn_988 * rn_471;
-				if (rn_989.rn_3485 + 1 + rn_989.rn_3487 * rn_988 * rn_471 >= rn_989.rn_3486) {
-					if (rn_989.rn_3499) {
-						rn_989.rn_3498 = true;
-						rn_989.rn_3485 = rn_989.rn_3486 - 1;
+			if (rn_808.pause == false) {
+				rn_808.frame = rn_808.frame + rn_808.speed * rn_808.rn_3307() * rn_807 * speed;
+				if (rn_808.frame + 1 + rn_808.speed * rn_807 * speed >= rn_808.maxframe) {
+					if (rn_808.pauseAfterBroadcasting) {
+						rn_808.pause = true;
+						rn_808.frame = rn_808.maxframe - 1;
 					}
 				}
-				if (rn_989.rn_3485 + 1 + rn_989.rn_3487 * rn_989.rn_3505() * rn_988 * rn_471 >= rn_989.rn_3486) {
-					if (rn_3289.rn_6852(rn_989.rn_3494, "")) {
-						rn_989.rn_3562(rn_989.rn_3494, false);
-						rn_989.rn_3494 = "";
-						rn_989.rn_3496 = true;
-					} else if (rn_989.rn_3499 == false) {
-						rn_989.rn_3485 = rn_989.rn_3484;
-						rn_989.rn_3493 = true;
+				if (rn_808.frame + 1 + rn_808.speed * rn_808.rn_3307() * rn_807 * speed >= rn_808.maxframe) {
+					if (rn_3081.rn_6684(rn_808.animReturn, "")) {
+						rn_808.rn_3366(rn_808.animReturn, false);
+						rn_808.animReturn = "";
+						rn_808.hasReplay = true;
+					} else if (rn_808.pauseAfterBroadcasting == false) {
+						rn_808.frame = rn_808.startframe;
+						rn_808.update = true;
 					}
 				}
 			}
 		}
-		ope.rn_1923(rn_987);
+		ope.rn_1796(rn_806);
 	}
-	public int rn_995 = 0;
-	public long rn_996 = 0L;
-	public long rn_997 = 0L;
+	public int buildtime = 0;
+	public long nullait = 0L;
+	public long nullnbt = 0L;
 
-	public final POS rn_998(com.badlogic.gdx.graphics.g2d.SpriteBatch rn_999, Anim rn_1000, float rn_1001, Reanim rn_1002, float rn_1003, float rn_1004, float rn_1005, float rn_1006, int rn_1007, float rn_1008, float rn_1009, int rn_1010, float rn_1011, float rn_1012, float rn_1013, android.graphics.Matrix rn_1014) {
-		rn_997 = rn_997 + 1;
-		rn_1007 = rn_1007;
-		POS_int rn_1015 = rn_1000.rn_3536(rn_1001, rn_1010);
-		POS rn_1016 = rn_1015.rn_3786;
-		POS rn_1017 = rn_1015.rn_3788;
-		int rn_1018 = rn_1015.rn_3789;
-		if (rn_1000.rn_3547(rn_1010, rn_1018) == -1) {
+	public final POS drawanim(com.badlogic.gdx.graphics.g2d.SpriteBatch rn_814, Anim rn_815, float rn_816, Reanim rn_817, float rn_818, float rn_819, float rn_820, float rn_821, int rn_822, float rn_823, float rn_824, int rn_825, float rn_826, float rn_827, float rn_828, android.graphics.Matrix rn_829) {
+		nullnbt = nullnbt + 1;
+		rn_822 = rn_822;
+		POS_int rn_830 = rn_815.rn_3340(rn_816, rn_825);
+		POS rn_831 = rn_830.rn_3618;
+		POS rn_832 = rn_830.rn_3620;
+		int rn_833 = rn_830.rn_3621;
+		if (rn_815.rn_3351(rn_825, rn_833) == -1) {
 			return null;
 		}
-		if (rn_3289.rn_6850(rn_1016.rn_3279, "")) {
+		if (rn_3081.rn_6682(rn_831.rn_3058, "")) {
 			return null;
 		}
-		rn_1002.rn_3123 = String_Nlimage.rn_3336(rn_446, rn_1016.rn_3279).rn_3634();
-		com.badlogic.gdx.graphics.Texture rn_1019 = rn_1002.rn_3123.rn_2068(1, 1, 0);
-		com.badlogic.gdx.graphics.Color rn_1020 = Color_.rn_4070(1, 1, 1, 1);
-		Renderinfo rn_1021 = RenderinfoList.rn_3453((rn_1000.rn_3497), rn_1010);
-		if (rn_1021.rn_3433) {
-			float[] rn_1022 = rn_1021.rn_3443();
-			float[] rn_1023 = rn_1022;
-			if (rn_1020 == null) {
-				rn_1020 = Color_.rn_4070(1, 1, 1, 1);
-				rn_995 = rn_995 + 1;
+		rn_817.rn_2902 = resall.rn_3133(rn_831.rn_3058).rn_3453();
+		com.badlogic.gdx.graphics.Texture rn_834 = rn_817.rn_2902.rn_1941(1, 1, 0);
+		com.badlogic.gdx.graphics.Color rn_835 = Color_.rn_3902(1, 1, 1, 1);
+		Renderinfo rn_836 = RenderinfoList.rn_3278((rn_815.RenderValue), rn_825);
+		if (rn_836.rn_3243) {
+			float[] rn_837 = rn_836.rn_3253();
+			float[] rn_838 = rn_837;
+			if (rn_835 == null) {
+				rn_835 = Color_.rn_3902(1, 1, 1, 1);
+				buildtime = buildtime + 1;
 			}
-			Color_.rn_4077(rn_1020, rn_1023 [0], rn_1023 [1], rn_1023 [2], rn_1023 [3]);
-			rn_1021.rn_3428 = rn_1021.rn_3428 - rn_1000.rn_3487 * rn_1011;
+			Color_.rn_3909(rn_835, rn_838 [0], rn_838 [1], rn_838 [2], rn_838 [3]);
+			rn_836.rn_3238 = rn_836.rn_3238 - rn_815.speed * rn_826;
 		}
-		if (rn_3289.rn_6852(rn_1021.rn_3429, "")) {
-			rn_1019 = String_Nlimage.rn_3336(rn_446, rn_1021.rn_3429).rn_3634().rn_2068(1, 1, 0);
+		if (rn_3081.rn_6684(rn_836.rn_3239, "")) {
+			rn_834 = resall.rn_3133(rn_836.rn_3239).rn_3453().rn_1941(1, 1, 0);
 		}
-		float[] rn_1024 = rn_1021.rn_3443();
-		浮光掠影(rn_999, rn_1019, rn_459 * rn_461 + rn_1003 * rn_461, rn_460 * rn_461 + rn_1004 * rn_461, (rn_1017.rn_3273 * rn_1008) * rn_461, (rn_1017.rn_3274 * rn_1009) * rn_461, rn_1017.rn_3275, rn_1017.rn_3276, -1, rn_1024, rn_1005, rn_1006, rn_459 * rn_461 + rn_1003 * rn_461 + rn_1012, rn_460 * rn_461 + rn_1004 * rn_461 + rn_1013, rn_1002.rn_3123.rn_2019, rn_1002.rn_3123.rn_2020, rn_1014, rn_1017.rn_3271 * rn_461 * rn_1008, rn_1017.rn_3272 * rn_461 * rn_1009);
-		ope.rn_1923(rn_1015);
-		ope.rn_1923(rn_1016);
-		ope.rn_1923(rn_1017);
-		ope.rn_1923(rn_1019);
-		ope.rn_1923(rn_1020);
+		float[] rn_839 = rn_836.rn_3253();
+		浮光掠影(rn_814, rn_834, x * scale + rn_818 * scale, y * scale + rn_819 * scale, (rn_832.rn_3052 * rn_823) * scale, (rn_832.rn_3053 * rn_824) * scale, rn_832.rn_3054, rn_832.rn_3055, -1, rn_839, rn_820, rn_821, x * scale + rn_818 * scale + rn_827, y * scale + rn_819 * scale + rn_828, rn_817.rn_2902.rn_1892, rn_817.rn_2902.rn_1893, rn_829, rn_832.rn_3050 * scale * rn_823, rn_832.rn_3051 * scale * rn_824);
+		ope.rn_1796(rn_830);
+		ope.rn_1796(rn_831);
+		ope.rn_1796(rn_832);
+		ope.rn_1796(rn_834);
+		ope.rn_1796(rn_835);
 		return null;
 	}
 
-	public final int rn_1025() {
+	public final int gridWidth() {
 		return 80;
 	}
-	public android.graphics.Matrix rn_1026 = Matrix_.rn_3576();
-	public android.graphics.Paint rn_1027 = null;
+	public android.graphics.Matrix matrix = Matrix_.rn_3395();
+	public android.graphics.Paint paint_ = null;
 
-	public final Object 浮光掠影(com.badlogic.gdx.graphics.g2d.SpriteBatch rn_1028, com.badlogic.gdx.graphics.Texture rn_1029, float rn_1030, float rn_1031, float rn_1032, float rn_1033, float rn_1034, float rn_1035, int rn_1036, float[] rn_1037, float rn_1038, float rn_1039, float rn_1040, float rn_1041, int rn_1042, int rn_1043, android.graphics.Matrix rn_1044, float rn_1045, float rn_1046) {
-		rn_1028 = rn_1028;
-		rn_1036 = rn_1036;
-		rn_1042 = rn_1042;
-		rn_1043 = rn_1043;
-		if (rn_1026 == null) {
-			rn_1026 = Matrix_.rn_3576();
+	public final Object 浮光掠影(com.badlogic.gdx.graphics.g2d.SpriteBatch rn_840, com.badlogic.gdx.graphics.Texture rn_841, float rn_842, float rn_843, float rn_844, float rn_845, float rn_846, float rn_847, int rn_848, float[] rn_849, float rn_850, float rn_851, float rn_852, float rn_853, int rn_854, int rn_855, android.graphics.Matrix rn_856, float rn_857, float rn_858) {
+		rn_840 = rn_840;
+		rn_848 = rn_848;
+		rn_854 = rn_854;
+		rn_855 = rn_855;
+		if (matrix == null) {
+			matrix = Matrix_.rn_3395();
 		} else {
-			rn_1026.reset();
+			matrix.reset();
 		}
-		float[] rn_1047 = new float[0];
-		if (rn_1044 != null) {
-			rn_1047 = Matrix_.rn_3579(rn_1044);
-			rn_1047 [2] = rn_1047 [2] * rn_461;
-			rn_1047 [5] = rn_1047 [5] * rn_461;
-			rn_1044 = Matrix_.rn_3576();
-			rn_1044.setValues(rn_1047);
+		float[] rn_859 = new float[0];
+		if (rn_856 != null) {
+			rn_859 = Matrix_.rn_3398(rn_856);
+			rn_859 [2] = rn_859 [2] * scale;
+			rn_859 [5] = rn_859 [5] * scale;
+			rn_856 = Matrix_.rn_3395();
+			rn_856.setValues(rn_859);
 		}
-		if (rn_1027 == null) {
-			rn_1027 = Paint_.rn_1663();
-			rn_1027.setFilterBitmap(true);
+		if (paint_ == null) {
+			paint_ = Paint_.rn_1526();
+			paint_.setFilterBitmap(true);
 		}
-		float rn_1048 = rn_1035 - rn_1034;
-		float rn_1049 = op.rn_1242(rn_7317.rn_7356(360 - rn_1048));
-		Matrix_.rn_3587(rn_1026, rn_1032, rn_1033, 0, 0);
-		float rn_1050 = op.rn_1242(rn_7317.rn_7322(rn_1049));
-		float rn_1051 = op.rn_1242(rn_7317.rn_7334(rn_1049));
-		Matrix_.rn_3587(rn_1026, 1.0F, rn_1050, 0, 0);
-		Matrix_.rn_3595(rn_1026, rn_1051, 0, 0, 0);
-		Matrix_.rn_3581(rn_1026, rn_1034, 0, 0);
-		Matrix_.rn_3603(rn_1026, rn_1045, rn_1046);
-		if (rn_1044 != null) {
-			rn_1026.postConcat(rn_1044);
+		float rn_860 = rn_847 - rn_846;
+		float rn_861 = op.rn_1038(rn_7149.rn_7188(360 - rn_860));
+		Matrix_.rn_3406(matrix, rn_844, rn_845, 0, 0);
+		float rn_862 = op.rn_1038(rn_7149.rn_7154(rn_861));
+		float rn_863 = op.rn_1038(rn_7149.rn_7166(rn_861));
+		Matrix_.rn_3406(matrix, 1.0F, rn_862, 0, 0);
+		Matrix_.rn_3414(matrix, rn_863, 0, 0, 0);
+		Matrix_.rn_3400(matrix, rn_846, 0, 0);
+		Matrix_.rn_3422(matrix, rn_857, rn_858);
+		if (rn_856 != null) {
+			matrix.postConcat(rn_856);
 		}
-		Matrix_.rn_3603(rn_1026, rn_1030, rn_1031);
-		Matrix_.rn_3581(rn_1026, (rn_1038 + rn_1039) / 2, rn_1040, rn_1041);
+		Matrix_.rn_3422(matrix, rn_842, rn_843);
+		Matrix_.rn_3400(matrix, (rn_850 + rn_851) / 2, rn_852, rn_853);
 		
-		if (rn_1037 == null) {
+		if (rn_849 == null) {
 		} else {
-			SpriteBatch.rn_4034(rn_453, rn_1029, rn_1026, rn_1037, rn_456, Nirvana.this, false);
+			SpriteBatch.rn_3866(screen, rn_841, matrix, rn_849, height, Nirvana.this, false);
 		}
-		ope.rn_1923(rn_1029);
-		ope.rn_1923(rn_1026);
+		ope.rn_1796(rn_841);
+		ope.rn_1796(matrix);
 		return null;
 	}
 
-	public final void rn_1052() {
-		String rn_1053 = rn_9923.rn_9963("/storage/emulated/0/.pvz/main/properties/LawnStrings.txt", "GB2312");
-		String rn_1054 = "";
-		String rn_1055 = "";
-		String rn_1056 = "wait";
-		boolean rn_1057 = false;
-		String rn_1058 = "";
-		for (int rn_10464 = 0;rn_10464 < rn_6845.rn_1225(rn_1053);rn_10464 += 1) {
-			rn_1054 = rn_3289.rn_6887(rn_1053, rn_10464, rn_10464);
-			if (rn_3289.rn_6850(rn_1056, "wait")) {
-				if (rn_3289.rn_6850(rn_1054, "[")) {
-					rn_1056 = "name";
-					rn_1055 = "";
+	public final void initLawnString() {
+		String rn_864 = rn_9755.rn_9795("/storage/emulated/0/.pvz/main/properties/LawnStrings.txt", "GB2312");
+		String rn_865 = "";
+		String rn_866 = "";
+		String rn_867 = "wait";
+		boolean rn_868 = false;
+		String rn_869 = "";
+		for (int rn_10296 = 0;rn_10296 < rn_6677.rn_1021(rn_864);rn_10296 += 1) {
+			rn_865 = rn_3081.rn_6719(rn_864, rn_10296, rn_10296);
+			if (rn_3081.rn_6682(rn_867, "wait")) {
+				if (rn_3081.rn_6682(rn_865, "[")) {
+					rn_867 = "name";
+					rn_866 = "";
 				}
-			} else if (rn_3289.rn_6850(rn_1056, "name") && rn_3289.rn_6850(rn_1054, "]")) {
-				rn_1058 = rn_1055;
-				rn_1055 = "";
-				rn_1056 = "text";
+			} else if (rn_3081.rn_6682(rn_867, "name") && rn_3081.rn_6682(rn_865, "]")) {
+				rn_869 = rn_866;
+				rn_866 = "";
+				rn_867 = "text";
 			} else {
-				if (rn_3289.rn_6850(rn_1054, "\n")) {
-					if (rn_3289.rn_6852(rn_1055, "")) {
-						if (rn_3289.rn_6850(rn_1056, "text")) {
-							if (rn_1057) {
-								rn_4434.rn_4442(rn_462, rn_1058, rn_1055);
-								rn_1055 = "";
-								rn_1056 = "wait";
+				if (rn_3081.rn_6682(rn_865, "\n")) {
+					if (rn_3081.rn_6684(rn_866, "")) {
+						if (rn_3081.rn_6682(rn_867, "text")) {
+							if (rn_868) {
+								rn_4266.rn_4274(gametext, rn_869, rn_866);
+								rn_866 = "";
+								rn_867 = "wait";
 							} else {
-								rn_1057 = true;
+								rn_868 = true;
 							}
 						}
 					}
 				} else {
-					if (rn_1057) {
-						if (rn_3289.rn_6850(rn_1056, "text")) {
-							rn_1054 = "\n" + rn_1054;
+					if (rn_868) {
+						if (rn_3081.rn_6682(rn_867, "text")) {
+							rn_865 = "\n" + rn_865;
 						}
-						rn_1057 = false;
+						rn_868 = false;
 					}
-					rn_1055 = rn_1055 + rn_1054;
+					rn_866 = rn_866 + rn_865;
 				}
 			}
 		}
 	}
 
-	public final void rn_1059() {
-		String[] rn_1060 = op.rn_1381(new String[][]{rn_9923.rn_10013("/storage/emulated/0/.pvz/pvz/reanim/"), rn_9923.rn_10013("/storage/emulated/0/.pvz/main/reanim/")});
-		rn_447.rn_3084 = "reanim";
-		for (int rn_10465 = 0;rn_10465 < rn_1060.length;rn_10465 += 1) {
-			if (rn_3289.rn_6864(rn_1060 [rn_10465], ".jpg") || rn_3289.rn_6864(rn_1060 [rn_10465], ".png")) {
-				String_Nlimage.rn_3331(rn_446, "IMAGE_REANIM_" + rn_9923.rn_9935(rn_9923.rn_9937(rn_3289.rn_6879(rn_1060 [rn_10465]))), Nirvana.rn_1061("", rn_1060 [rn_10465]));
-				rn_447 = new Stringk(rn_4301.rn_6843(("索引资源:" + rn_6928.rn_6933((rn_10465 + 1)) + "/" + rn_1060.length)) + "  " + rn_9923.rn_9935(rn_9923.rn_9937(rn_1060 [rn_10465])));
-				rn_447.rn_3082 = (rn_10465 + 1);
-				rn_447.rn_3083 = rn_1060.length;
+	public final void initilize() {
+		String[] rn_870 = op.rn_1177(new String[][]{rn_9755.rn_9845("/storage/emulated/0/.pvz/pvz/reanim/"), rn_9755.rn_9845("/storage/emulated/0/.pvz/main/reanim/")});
+		loadproc.rn_2863 = "reanim";
+		for (int rn_10297 = 0;rn_10297 < rn_870.length;rn_10297 += 1) {
+			if (rn_3081.rn_6696(rn_870 [rn_10297], ".jpg") || rn_3081.rn_6696(rn_870 [rn_10297], ".png")) {
+				String_Nlimagesm.rn_3123(resall, "IMAGE_REANIM_" + rn_9755.rn_9767(rn_9755.rn_9769(rn_3081.rn_6711(rn_870 [rn_10297]))), Nirvana.loadPic("", rn_870 [rn_10297]));
+				loadproc = new Stringk(rn_4133.rn_6675(("索引资源:" + rn_6760.rn_6765((rn_10297 + 1)) + "/" + rn_870.length)) + "  " + rn_9755.rn_9767(rn_9755.rn_9769(rn_870 [rn_10297])));
+				loadproc.rn_2861 = (rn_10297 + 1);
+				loadproc.rn_2862 = rn_870.length;
 			}
 		}
-		rn_447 = new Stringk("加载动画");
-		rn_448 = reanims.rn_3101(rn_447, Nirvana.this);
-		rn_449 = true;
+		loadproc = new Stringk("加载动画");
+		REANIM = reanims.rn_2880(loadproc, Nirvana.this);
+		loadfinish = true;
 	}
 
-	public static final Nlimage rn_1061(String rn_1062, String rn_1063) {
-		String rn_1064 = rn_1063 + rn_1062;
-		if (rn_9923.rn_9959(rn_1064 + ".jpg")) {
-			rn_1064 = rn_1064 + ".jpg";
-		} else if (rn_9923.rn_9959(rn_1064 + ".png")) {
-			rn_1064 = rn_1064 + ".png";
+	public static final Nlimage loadPic(String rn_871, String rn_872) {
+		String rn_873 = rn_872 + rn_871;
+		if (rn_9755.rn_9791(rn_873 + ".jpg")) {
+			rn_873 = rn_873 + ".jpg";
+		} else if (rn_9755.rn_9791(rn_873 + ".png")) {
+			rn_873 = rn_873 + ".png";
 		}
-		Nlimage rn_1065 = new Nlimage();
-		rn_1065.rn_3632 = rn_1064;
-		if (rn_3289.rn_6864(rn_1064, "jpg")) {
-			for (int rn_10466 = 0;rn_10466 < rn_1065.rn_2018.length;rn_10466 += 1) {
-				if ((rn_1065.rn_2018) [rn_10466] == -16777216) {
-					(rn_1065.rn_2018) [rn_10466] = 0;
+		Nlimage rn_874 = new Nlimage();
+		rn_874.rn_3451 = rn_873;
+		if (rn_3081.rn_6696(rn_873, "jpg")) {
+			for (int rn_10298 = 0;rn_10298 < rn_874.rn_1891.length;rn_10298 += 1) {
+				if ((rn_874.rn_1891) [rn_10298] == -16777216) {
+					(rn_874.rn_1891) [rn_10298] = 0;
 				}
 			}
 		}
-		return rn_1065;
+		return rn_874;
 	}
 
-	public final void rn_1066(int rn_1067) {
-		ope.rn_1923(rn_528);
-		rn_528 = new java.util.ArrayList<Anim>();
-		rn_445 = rn_1067;
-		rn_484 = 0;
-		if (rn_1067 == 0) {
-			rn_1059();
-		} else if (rn_1067 == 1) {
-			Anim rn_1068 = Anim.rn_3508("SelectorScreen", Nirvana.this).rn_3562("anim_open", false);
-			rn_1068.rn_3499 = true;
-			rn_1068.rn_3556(new String[]{"SelectorScreen_Adventure_button", "SelectorScreen_Adventure_shadow"}, -1, false);
-			Animed.rn_3382(rn_528, rn_1068);
-			for (int rn_10467 = 0;rn_10467 < 7;rn_10467 += 1) {
-				if (rn_10467 != 3) {
-					Anim rn_1069 = Anim.rn_3508("SelectorScreen", Nirvana.this).rn_3562("anim_cloud" + rn_10467, false);
-					rn_1069.rn_3487 = rn_1069.rn_3487 / ope.rn_1821(48, 64);
-					rn_1069.rn_3485 = ope.rn_1821(rn_1069.rn_3484, rn_1069.rn_3486 - 1);
-					Animed.rn_3374(rn_528, 0).rn_3524("Cloud" + rn_10467, rn_1069, new POS(), false);
+	public final void updateScene(int rn_875) {
+		ope.rn_1796(animess);
+		animess = new java.util.ArrayList<Anim>();
+		scrtype = rn_875;
+		animproc = 0;
+		if (rn_875 == 0) {
+			initilize();
+		} else if (rn_875 == 1) {
+			Anim rn_876 = Anim.rn_3310("SelectorScreen", Nirvana.this).rn_3366("anim_open", false);
+			rn_876.pauseAfterBroadcasting = true;
+			rn_876.rn_3360(new String[]{"SelectorScreen_Adventure_button", "SelectorScreen_Adventure_shadow"}, -1, false);
+			Animed.rn_3177(animess, rn_876);
+			for (int rn_10299 = 0;rn_10299 < 7;rn_10299 += 1) {
+				if (rn_10299 != 3) {
+					Anim rn_877 = Anim.rn_3310("SelectorScreen", Nirvana.this).rn_3366("anim_cloud" + rn_10299, false);
+					rn_877.speed = rn_877.speed / ope.rn_1684(48, 64);
+					rn_877.frame = ope.rn_1684(rn_877.startframe, rn_877.maxframe - 1);
+					Animed.rn_3169(animess, 0).rn_3326("Cloud" + rn_10299, rn_877, new POS(), false);
 				}
 			}
-			Detrect rn_1070 = Detrect.rn_4186(410, 81, 410, 160, 730, 200, 735, 100);
-			rn_1070.rn_4183 = "冒险模式";
-			RectaList.rn_4256(rn_531, rn_1070);
-			rn_1070.rn_4210_s(new bk.pvz.Detrect.rn_4210_r() {
+			Detrect rn_878 = Detrect.rn_4018(410, 81, 410, 160, 730, 200, 735, 100);
+			rn_878.rn_4015 = "冒险模式";
+			RectaList.rn_4088(judarea, rn_878);
+			rn_878.rn_4042_s(new bk.pvz.Detrect.rn_4042_r() {
 				@Override
-				public void dispatch(Point rn_1072, String rn_1073) {
-					if (rn_3289.rn_6852(rn_530, "advent")) {
-						if (rn_3289.rn_6850(rn_1073, "down")) {
-							rn_531.rn_4277 = rn_1070.rn_4183;
-							if (UserdataList.rn_3006(rn_529.rn_2977, rn_529.rn_2976).rn_2981 < 0) {
-								Animed.rn_3374(rn_528, 0).rn_3529("SelectorScreen_StartAdventure_button", "IMAGE_REANIM_" + rn_3289.rn_6879("SelectorScreen_StartAdventure_Highlight"));
+				public void dispatch(Point rn_880, String rn_881) {
+					if (rn_3081.rn_6684(state, "advent")) {
+						if (rn_3081.rn_6682(rn_881, "down")) {
+							judarea.rn_4109 = rn_878.rn_4015;
+							if (UserdataList.rn_2785(USER.account, USER.currentAccount).alevel < 0) {
+								Animed.rn_3169(animess, 0).rn_3333("SelectorScreen_StartAdventure_button", "IMAGE_REANIM_" + rn_3081.rn_6711("SelectorScreen_StartAdventure_Highlight"));
 							} else {
-								Animed.rn_3374(rn_528, 0).rn_3529("SelectorScreen_Adventure_button", "IMAGE_REANIM_" + rn_3289.rn_6879("SelectorScreen_Adventure_highlight"));
+								Animed.rn_3169(animess, 0).rn_3333("SelectorScreen_Adventure_button", "IMAGE_REANIM_" + rn_3081.rn_6711("SelectorScreen_Adventure_highlight"));
 							}
-						} else if (rn_3289.rn_6850(rn_1073, "move")) {
-						} else if (rn_3289.rn_6850(rn_1073, "up")) {
-							rn_531.rn_4277 = "";
-							if (UserdataList.rn_3006(rn_529.rn_2977, rn_529.rn_2976).rn_2981 < 0) {
-								Animed.rn_3374(rn_528, 0).rn_3529("SelectorScreen_StartAdventure_button", "IMAGE_REANIM_" + rn_3289.rn_6879("SelectorScreen_StartAdventure_Button1"));
+						} else if (rn_3081.rn_6682(rn_881, "move")) {
+						} else if (rn_3081.rn_6682(rn_881, "up")) {
+							judarea.rn_4109 = "";
+							if (UserdataList.rn_2785(USER.account, USER.currentAccount).alevel < 0) {
+								Animed.rn_3169(animess, 0).rn_3333("SelectorScreen_StartAdventure_button", "IMAGE_REANIM_" + rn_3081.rn_6711("SelectorScreen_StartAdventure_Button1"));
 							} else {
-								Animed.rn_3374(rn_528, 0).rn_3529("SelectorScreen_Adventure_button", "IMAGE_REANIM_" + rn_3289.rn_6879("SelectorScreen_Adventure_button"));
+								Animed.rn_3169(animess, 0).rn_3333("SelectorScreen_Adventure_button", "IMAGE_REANIM_" + rn_3081.rn_6711("SelectorScreen_Adventure_button"));
 							}
 						}
 					}
 				}
 			});
-			rn_1070.rn_4213_s(new bk.pvz.Detrect.rn_4213_r() {
+			rn_878.rn_4045_s(new bk.pvz.Detrect.rn_4045_r() {
 				@Override
-				public void dispatch(Point rn_1075) {
-					if (rn_3289.rn_6852(rn_530, "advent") && rn_3289.rn_6852(rn_530, "none")) {
-						rn_1070.rn_4210(rn_1075, "up");
-						Anim rn_1076 = Anim.rn_3508("Zombie_hand", Nirvana.this);
-						rn_1076.rn_3499 = true;
-						Animed.rn_3382(rn_528, rn_1076);
-						rn_530 = "advent";
+				public void dispatch(Point rn_883) {
+					if (rn_3081.rn_6684(state, "advent") && rn_3081.rn_6684(state, "none")) {
+						rn_878.rn_4042(rn_883, "up");
+						Anim rn_884 = Anim.rn_3310("Zombie_hand", Nirvana.this);
+						rn_884.pauseAfterBroadcasting = true;
+						Animed.rn_3177(animess, rn_884);
+						state = "advent";
 					}
 				}
 			});
-			Detrect rn_1077 = Detrect.rn_4186(410, 170, 410, 250, 710, 305, 725, 220);
-			rn_1077.rn_4183 = "迷你游戏";
-			RectaList.rn_4256(rn_531, rn_1077);
-			rn_1077.rn_4210_s(new bk.pvz.Detrect.rn_4210_r() {
+			Detrect rn_885 = Detrect.rn_4018(410, 170, 410, 250, 710, 305, 725, 220);
+			rn_885.rn_4015 = "迷你游戏";
+			RectaList.rn_4088(judarea, rn_885);
+			rn_885.rn_4042_s(new bk.pvz.Detrect.rn_4042_r() {
 				@Override
-				public void dispatch(Point rn_1079, String rn_1080) {
-					if (rn_3289.rn_6850(rn_1080, "down")) {
-						rn_531.rn_4277 = rn_1077.rn_4183;
-						Animed.rn_3374(rn_528, 0).rn_3529("SelectorScreen_Survival_button", "IMAGE_REANIM_" + rn_3289.rn_6879("SelectorScreen_Survival_highlight"));
-					} else if (rn_3289.rn_6850(rn_1080, "move")) {
-					} else if (rn_3289.rn_6850(rn_1080, "up")) {
-						rn_531.rn_4277 = "";
-						Animed.rn_3374(rn_528, 0).rn_3529("SelectorScreen_Survival_button", "IMAGE_REANIM_" + rn_3289.rn_6879("SelectorScreen_Survival_button"));
+				public void dispatch(Point rn_887, String rn_888) {
+					if (rn_3081.rn_6682(rn_888, "down")) {
+						judarea.rn_4109 = rn_885.rn_4015;
+						Animed.rn_3169(animess, 0).rn_3333("SelectorScreen_Survival_button", "IMAGE_REANIM_" + rn_3081.rn_6711("SelectorScreen_Survival_highlight"));
+					} else if (rn_3081.rn_6682(rn_888, "move")) {
+					} else if (rn_3081.rn_6682(rn_888, "up")) {
+						judarea.rn_4109 = "";
+						Animed.rn_3169(animess, 0).rn_3333("SelectorScreen_Survival_button", "IMAGE_REANIM_" + rn_3081.rn_6711("SelectorScreen_Survival_button"));
 					}
 				}
 			});
-			rn_1077.rn_4213_s(new bk.pvz.Detrect.rn_4213_r() {
+			rn_885.rn_4045_s(new bk.pvz.Detrect.rn_4045_r() {
 				@Override
-				public void dispatch(Point rn_1082) {
-					rn_1077.rn_4210(rn_1082, "up");
+				public void dispatch(Point rn_890) {
+					rn_885.rn_4042(rn_890, "up");
 				}
 			});
-			Detrect rn_1083 = Detrect.rn_4186(415, 260, 415, 320, 680, 380, 700, 310);
-			rn_1083.rn_4183 = "益智模式";
-			RectaList.rn_4256(rn_531, rn_1083);
-			rn_1083.rn_4210_s(new bk.pvz.Detrect.rn_4210_r() {
+			Detrect rn_891 = Detrect.rn_4018(415, 260, 415, 320, 680, 380, 700, 310);
+			rn_891.rn_4015 = "益智模式";
+			RectaList.rn_4088(judarea, rn_891);
+			rn_891.rn_4042_s(new bk.pvz.Detrect.rn_4042_r() {
 				@Override
-				public void dispatch(Point rn_1085, String rn_1086) {
-					if (rn_3289.rn_6850(rn_1086, "down")) {
-						rn_531.rn_4277 = rn_1083.rn_4183;
-						Animed.rn_3374(rn_528, 0).rn_3529("SelectorScreen_Challenges_button", "IMAGE_REANIM_" + rn_3289.rn_6879("SelectorScreen_Challenges_highlight"));
-					} else if (rn_3289.rn_6850(rn_1086, "move")) {
-					} else if (rn_3289.rn_6850(rn_1086, "up")) {
-						rn_531.rn_4277 = "";
-						Animed.rn_3374(rn_528, 0).rn_3529("SelectorScreen_Challenges_button", "IMAGE_REANIM_" + rn_3289.rn_6879("SelectorScreen_Challenges_button"));
+				public void dispatch(Point rn_893, String rn_894) {
+					if (rn_3081.rn_6682(rn_894, "down")) {
+						judarea.rn_4109 = rn_891.rn_4015;
+						Animed.rn_3169(animess, 0).rn_3333("SelectorScreen_Challenges_button", "IMAGE_REANIM_" + rn_3081.rn_6711("SelectorScreen_Challenges_highlight"));
+					} else if (rn_3081.rn_6682(rn_894, "move")) {
+					} else if (rn_3081.rn_6682(rn_894, "up")) {
+						judarea.rn_4109 = "";
+						Animed.rn_3169(animess, 0).rn_3333("SelectorScreen_Challenges_button", "IMAGE_REANIM_" + rn_3081.rn_6711("SelectorScreen_Challenges_button"));
 					}
 				}
 			});
-			rn_1083.rn_4213_s(new bk.pvz.Detrect.rn_4213_r() {
+			rn_891.rn_4045_s(new bk.pvz.Detrect.rn_4045_r() {
 				@Override
-				public void dispatch(Point rn_1088) {
-					rn_1083.rn_4210(rn_1088, "up");
+				public void dispatch(Point rn_896) {
+					rn_891.rn_4042(rn_896, "up");
 				}
 			});
-			Detrect rn_1089 = Detrect.rn_4186(420, 330, 420, 385, 665, 450, 680, 385);
-			rn_1089.rn_4183 = "生存模式";
-			RectaList.rn_4256(rn_531, rn_1089);
-			rn_1089.rn_4210_s(new bk.pvz.Detrect.rn_4210_r() {
+			Detrect rn_897 = Detrect.rn_4018(420, 330, 420, 385, 665, 450, 680, 385);
+			rn_897.rn_4015 = "生存模式";
+			RectaList.rn_4088(judarea, rn_897);
+			rn_897.rn_4042_s(new bk.pvz.Detrect.rn_4042_r() {
 				@Override
-				public void dispatch(Point rn_1091, String rn_1092) {
-					if (rn_3289.rn_6850(rn_1092, "down")) {
-						rn_531.rn_4277 = rn_1089.rn_4183;
-						Animed.rn_3374(rn_528, 0).rn_3529("SelectorScreen_ZenGarden_button", "IMAGE_REANIM_" + rn_3289.rn_6879("SelectorScreen_Vasebreaker_highlight"));
-					} else if (rn_3289.rn_6850(rn_1092, "move")) {
-					} else if (rn_3289.rn_6850(rn_1092, "up")) {
-						rn_531.rn_4277 = "";
-						Animed.rn_3374(rn_528, 0).rn_3529("SelectorScreen_ZenGarden_button", "IMAGE_REANIM_" + rn_3289.rn_6879("SelectorScreen_Vasebreaker_button"));
+				public void dispatch(Point rn_899, String rn_900) {
+					if (rn_3081.rn_6682(rn_900, "down")) {
+						judarea.rn_4109 = rn_897.rn_4015;
+						Animed.rn_3169(animess, 0).rn_3333("SelectorScreen_ZenGarden_button", "IMAGE_REANIM_" + rn_3081.rn_6711("SelectorScreen_Vasebreaker_highlight"));
+					} else if (rn_3081.rn_6682(rn_900, "move")) {
+					} else if (rn_3081.rn_6682(rn_900, "up")) {
+						judarea.rn_4109 = "";
+						Animed.rn_3169(animess, 0).rn_3333("SelectorScreen_ZenGarden_button", "IMAGE_REANIM_" + rn_3081.rn_6711("SelectorScreen_Vasebreaker_button"));
 					}
 				}
 			});
-			rn_1089.rn_4213_s(new bk.pvz.Detrect.rn_4213_r() {
+			rn_897.rn_4045_s(new bk.pvz.Detrect.rn_4045_r() {
 				@Override
-				public void dispatch(Point rn_1094) {
-					rn_1089.rn_4210(rn_1094, "up");
+				public void dispatch(Point rn_902) {
+					rn_897.rn_4042(rn_902, "up");
 				}
 			});
-			if (rn_529.rn_2975 == 0) {
+			if (USER.accountNumber == 0) {
 			} else {
-				rn_758(false);
+				login(false);
 			}
-		} else if (rn_1067 == 2) {
-			rn_535 = -87;
-			int rn_1095 = UserdataList.rn_2990((rn_529.rn_2977), rn_529.rn_2976).rn_2981;
-			if (rn_1095 == -1) {
-				rn_869(1, 0);
+		} else if (rn_875 == 2) {
+			sdoffy = -87;
+			int rn_903 = UserdataList.rn_2769((USER.account), USER.currentAccount).alevel;
+			if (rn_903 == -1) {
+				initLevel(1, 0);
 			} else {
-				rn_869(rn_1095, 0);
+				initLevel(rn_903, 0);
 			}
-		} else if (rn_1067 == 7) {
-			int rn_1096 = UserdataList.rn_2990((rn_529.rn_2977), rn_529.rn_2976).rn_2981;
-			if (rn_1096 == -1) {
-				rn_869(0, 0);
+		} else if (rn_875 == 7) {
+			int rn_904 = UserdataList.rn_2769((USER.account), USER.currentAccount).alevel;
+			if (rn_904 == -1) {
+				initLevel(0, 0);
 			} else {
-				rn_869(rn_1096, 0);
+				initLevel(rn_904, 0);
 			}
 		}
 	}
 
-	public final void rn_1097() {
-		rn_512 = 0;
-		rn_513 = 1.0F;
-		XMLR rn_1098 = XMLRED.rn_3211((rn_511.rn_3032("PVZ").rn_3040("id", rn_885(rn_497, rn_498)).rn_3025), rn_493);
-		int rn_1099 = rn_3289.rn_6894(rn_1098.rn_3038("points"), 10);
-		int[] rn_1100 = rn_878(rn_1098.rn_3038("mustHaveZombies"));
-		for (int rn_10468 = 0;rn_10468 < rn_1100.length;rn_10468 += 1) {
-			ZombieList.rn_2374(rn_477, Zombie.万恶之源(Nirvana.this, rn_1100 [rn_10468], rn_1160()));
-			rn_512 = rn_512 + 1;
+	public final void addwave() {
+		zombiecount = 0;
+		procf = 1.0F;
+		XMLR rn_905 = XMLRED.rn_2990((levels.rn_2811("PVZ").rn_2819("id", getlevelname(level, leveltype)).rn_2804), wave);
+		int rn_906 = rn_3081.rn_6726(rn_905.rn_2817("points"), 10);
+		int[] rn_907 = getzombie(rn_905.rn_2817("mustHaveZombies"));
+		for (int rn_10300 = 0;rn_10300 < rn_907.length;rn_10300 += 1) {
+			ZombieList.rn_2157(zombieList, Zombie.create(Nirvana.this, rn_907 [rn_10300], getRightWay()));
+			zombiecount = zombiecount + 1;
 		}
-		for (int rn_10469 = 0;rn_10469 < 10;rn_10469 += 1) {
-			rn_10469 = 1;
-			if (rn_1099 <= 1) {
+		for (int rn_10301 = 0;rn_10301 < 10;rn_10301 += 1) {
+			rn_10301 = 1;
+			if (rn_906 <= 1) {
 				break;
 			}
-			ints rn_1101 = new ints();
-			ints rn_1102 = new ints();
-			int[] rn_1103 = rn_878(rn_874().rn_3038("allowedZombies"));
-			for (int rn_10470 = 0;rn_10470 < rn_1103.length;rn_10470 += 1) {
-				if (rn_3289.rn_6894(rn_1108(rn_1103 [rn_10470], "p"), 10) <= rn_1099) {
-					rn_1101.rn_1423(rn_1103 [rn_10470]);
-					float rn_1104 = rn_3289.rn_6899(rn_1108(rn_1103 [rn_10470], "s"));
-					float rn_1105 = rn_3289.rn_6899(rn_1108(rn_1103 [rn_10470], "e"));
-					rn_1102.rn_1423((int) (rn_1104 + (rn_1105 - rn_1104) * (rn_493 * 1.0F / rn_494)));
+			ints rn_908 = new ints();
+			ints rn_909 = new ints();
+			int[] rn_910 = getzombie(getwaveinfo().rn_2817("allowedZombies"));
+			for (int rn_10302 = 0;rn_10302 < rn_910.length;rn_10302 += 1) {
+				if (rn_3081.rn_6726(getzv(rn_910 [rn_10302], "p"), 10) <= rn_906) {
+					rn_908.rn_1286(rn_910 [rn_10302]);
+					float rn_911 = rn_3081.rn_6731(getzv(rn_910 [rn_10302], "s"));
+					float rn_912 = rn_3081.rn_6731(getzv(rn_910 [rn_10302], "e"));
+					rn_909.rn_1286((int) (rn_911 + (rn_912 - rn_911) * (wave * 1.0F / wavemax)));
 				}
 			}
-			int rn_1106 = 0;
-			for (int rn_10471 = 0;rn_10471 < rn_1102.rn_1225();rn_10471 += 1) {
-				rn_1106 = rn_1106 + rn_1102.rn_1418(rn_10471);
+			int rn_913 = 0;
+			for (int rn_10303 = 0;rn_10303 < rn_909.rn_1021();rn_10303 += 1) {
+				rn_913 = rn_913 + rn_909.rn_1281(rn_10303);
 			}
-			int rn_1107 = rn_7317.rn_7328(0, rn_1106);
-			for (int rn_10472 = 0;rn_10472 < rn_1101.rn_1225();rn_10472 += 1) {
-				if (rn_1107 < rn_1102.rn_1418(rn_10472)) {
-					ZombieList.rn_2374(rn_477, Zombie.万恶之源(Nirvana.this, rn_1101.rn_1418(rn_10472), rn_1160()));
-					rn_512 = rn_512 + 1;
-					rn_1099 = rn_1099 - rn_3289.rn_6894(rn_1108(rn_1101.rn_1418(rn_10472), "p"), 10);
+			int rn_914 = rn_7149.rn_7160(0, rn_913);
+			for (int rn_10304 = 0;rn_10304 < rn_908.rn_1021();rn_10304 += 1) {
+				if (rn_914 < rn_909.rn_1281(rn_10304)) {
+					ZombieList.rn_2157(zombieList, Zombie.create(Nirvana.this, rn_908.rn_1281(rn_10304), getRightWay()));
+					zombiecount = zombiecount + 1;
+					rn_906 = rn_906 - rn_3081.rn_6726(getzv(rn_908.rn_1281(rn_10304), "p"), 10);
 					break;
 				}
 			}
 		}
-		if (rn_3289.rn_6850(rn_1098.rn_3038("flag"), "1")) {
-			ZombieList.rn_2374(rn_477, Zombie.万恶之源(Nirvana.this, 1, rn_1160()));
+		if (rn_3081.rn_6682(rn_905.rn_2817("flag"), "1")) {
+			ZombieList.rn_2157(zombieList, Zombie.create(Nirvana.this, 1, getRightWay()));
 		}
-		rn_493 = rn_493 + 1;
+		wave = wave + 1;
 	}
 
-	public final String rn_1108(int rn_1109, String rn_1110) {
-		return ((rn_452).rn_3032("Zombie")).rn_3032(rn_6928.rn_6933(rn_1109)).rn_3038(rn_1110);
+	public final String getzv(int rn_915, String rn_916) {
+		return ((config).rn_2811("Zombie")).rn_2811(rn_6760.rn_6765(rn_915)).rn_2817(rn_916);
 	}
 
-	public final void rn_1113() {
-		String rn_1114 = "";
-		if (rn_546 > 0) {
-			rn_546 = rn_546 - 1;
+	public final void Update() {
+		String rn_918 = "";
+		if (captionscd > 0) {
+			captionscd = captionscd - 1;
 		}
-		if (rn_445 == 5) {
-			XMLR rn_1115 = (rn_452).rn_3032("image").rn_3032("logo");
-			float rn_1116 = rn_3289.rn_6899(rn_1115.rn_3038("1time"));
-			float rn_1117 = rn_3289.rn_6899(rn_1115.rn_3038("2time"));
-			float rn_1118 = rn_3289.rn_6899(rn_1115.rn_3038("3time"));
-			float rn_1119 = rn_3289.rn_6899(rn_1115.rn_3038("exchangeTime"));
-			if (rn_484 < rn_1116) {
-				rn_475 = rn_484 / rn_1116;
-			} else if (rn_484 > rn_1119) {
-				rn_1066(0);
-			} else if (rn_484 >= rn_1118) {
-				rn_475 = 0;
-			} else if (rn_484 > rn_1117) {
-				rn_475 = (rn_1118 - rn_484) / (rn_1118 - rn_1117);
+		if (scrtype == 5) {
+			XMLR rn_919 = (config).rn_2811("image").rn_2811("logo");
+			float rn_920 = rn_3081.rn_6731(rn_919.rn_2817("1time"));
+			float rn_921 = rn_3081.rn_6731(rn_919.rn_2817("2time"));
+			float rn_922 = rn_3081.rn_6731(rn_919.rn_2817("3time"));
+			float rn_923 = rn_3081.rn_6731(rn_919.rn_2817("exchangeTime"));
+			if (animproc < rn_920) {
+				transp = animproc / rn_920;
+			} else if (animproc > rn_923) {
+				updateScene(0);
+			} else if (animproc >= rn_922) {
+				transp = 0;
+			} else if (animproc > rn_921) {
+				transp = (rn_922 - animproc) / (rn_922 - rn_921);
 			}
-		} else if (rn_445 == 0) {
-			Rectx rn_1120 = rn_476.rn_3698("start_botton");
-			if (rn_1120 != null) {
-				if (rn_1120.rn_3671) {
-				} else if (rn_1120.rn_3672) {
-					if (rn_978() == 1.0F) {
-						rn_1066(1);
+		} else if (scrtype == 0) {
+			Rectx rn_924 = trirect.rn_3530("start_botton");
+			if (rn_924 != null) {
+				if (rn_924.rn_3490) {
+				} else if (rn_924.rn_3491) {
+					if (getLoadingProc() == 1.0F) {
+						updateScene(1);
 					} else {
-						rn_1120.rn_3672 = false;
+						rn_924.rn_3491 = false;
 					}
 				}
 			}
-		} else if (rn_445 == 7 || rn_445 == 2) {
-			if (rn_513 > 0.0F) {
-				rn_513 = rn_513 - 0.01F;
+		} else if (scrtype == 7 || scrtype == 2) {
+			if (procf > 0.0F) {
+				procf = procf - 0.01F;
 			} else {
-				rn_513 = 0.0F;
+				procf = 0.0F;
 			}
-			rn_484 = rn_484 + 1;
-			if (rn_510 == 0 && rn_484 >= 100) {
-				rn_510 = 1;
-				rn_484 = 0;
-			} else if (rn_510 == 1) {
-				rn_459 = rn_459 + ope.rn_1824(0, -601, 200, rn_484);
-				if (rn_459 <= -600) {
-					rn_1136();
-					rn_510 = 2;
-					rn_484 = 0;
+			animproc = animproc + 1;
+			if (proc == 0 && animproc >= 100) {
+				proc = 1;
+				animproc = 0;
+			} else if (proc == 1) {
+				x = x + ope.rn_1687(0, -601, 200, animproc);
+				if (x <= -600) {
+					chooseCard();
+					proc = 2;
+					animproc = 0;
 				}
-			} else if (rn_510 == 2) {
-				if (rn_540 && rn_484 >= 100) {
-					rn_541 = rn_541 - 17.5F;
-					if (rn_541 <= -513.0F) {
-						rn_484 = 0;
-						rn_510 = 3;
+			} else if (proc == 2) {
+				if (ccend && animproc >= 100) {
+					csint = csint - 17.5F;
+					if (csint <= -513.0F) {
+						animproc = 0;
+						proc = 3;
 					}
-				} else if (rn_3289.rn_6850(rn_530, "none")) {
-					if (rn_540) {
-						if (rn_484 >= 100) {
-							rn_530 = "skipc";
-							rn_510 = 8;
+				} else if (rn_3081.rn_6682(state, "none")) {
+					if (ccend) {
+						if (animproc >= 100) {
+							state = "skipc";
+							proc = 8;
 						}
 					} else {
-						rn_541 = rn_541 + 17.5F;
-						if (rn_535 < 0) {
-							rn_535 = rn_535 + 3.0F;
+						csint = csint + 17.5F;
+						if (sdoffy < 0) {
+							sdoffy = sdoffy + 3.0F;
 						}
-						if (rn_535 >= 0) {
-							rn_535 = 0;
+						if (sdoffy >= 0) {
+							sdoffy = 0;
 						}
-						if (rn_541 >= 513.0F) {
-							rn_541 = 513.0F;
-							rn_530 = "choose";
+						if (csint >= 513.0F) {
+							csint = 513.0F;
+							state = "choose";
 						}
 					}
-				} else if (rn_3289.rn_6850(rn_530, "choose")) {
-				} else if (rn_3289.rn_6850(rn_530, "start")) {
+				} else if (rn_3081.rn_6682(state, "choose")) {
+				} else if (rn_3081.rn_6682(state, "start")) {
 				}
-			} else if (rn_510 == 3) {
-				rn_459 = rn_459 + ope.rn_1824(0, (600 - 217) + 1, 150, rn_484);
-				if (rn_459 >= -217.0F) {
-					if (rn_497 == 1) {
-						Anim rn_1121 = Anim.rn_3508("SodRoll", Nirvana.this);
-						rn_1121.rn_3499 = true;
-						DrawStyle rn_1122 = new DrawStyle();
-						rn_1122.rn_3773 = rn_1121;
-						rn_1122.rn_3774 = 1;
-						rn_1122.rn_3775 = 1;
-						rn_1122.rn_3776 = 0;
-						rn_1122.rn_3777 = 0;
-						rn_1122.rn_3780 = -1;
-						rn_1122.rn_3781 = 220;
-						rn_1122.rn_3782 = 5;
-						rn_1122.rn_3783 = null;
-						DrawStyles.rn_3752(rn_548, rn_1122);
-						ParticleList.rn_2530(rn_481, Particle.rn_2852("SodRoll", 220, 280, -1, Nirvana.this));
-						rn_510 = 9;
-					} else if (rn_497 == 2 || rn_497 == 3) {
-						rn_510 = 10;
-					} else if (rn_3289.rn_6850(rn_530, "start")) {
-						rn_1137();
-						rn_510 = 12;
+			} else if (proc == 3) {
+				x = x + ope.rn_1687(0, (600 - 217) + 1, 150, animproc);
+				if (x >= -217.0F) {
+					if (level == 1) {
+						Anim rn_925 = Anim.rn_3310("SodRoll", Nirvana.this);
+						rn_925.pauseAfterBroadcasting = true;
+						DrawStyle rn_926 = new DrawStyle();
+						rn_926.rn_3605 = rn_925;
+						rn_926.rn_3606 = 1;
+						rn_926.rn_3607 = 1;
+						rn_926.rn_3608 = 0;
+						rn_926.rn_3609 = 0;
+						rn_926.rn_3612 = -1;
+						rn_926.rn_3613 = 220;
+						rn_926.rn_3614 = 5;
+						rn_926.rn_3615 = null;
+						DrawStyles.rn_3584(foreds, rn_926);
+						ParticleList.rn_2313(particleList, Particle.rn_2665("SodRoll", 220, 280, -1, Nirvana.this));
+						proc = 9;
+					} else if (level == 2 || level == 3) {
+						proc = 10;
+					} else if (rn_3081.rn_6682(state, "start")) {
+						PreMower();
+						proc = 12;
 					} else {
-						rn_510 = 8;
+						proc = 8;
 					}
-					rn_484 = 0;
+					animproc = 0;
 				}
-			} else if (rn_510 == 4) {
-				if (rn_484 >= 200) {
-					rn_1097();
-					rn_510 = 5;
-					rn_484 = 0;
+			} else if (proc == 4) {
+				if (animproc >= 200) {
+					addwave();
+					proc = 5;
+					animproc = 0;
 				}
-			} else if (rn_510 == 5) {
-				if (rn_484 >= 3000 || ZombieList.rn_1225(rn_477) * 3 <= rn_512) {
-					rn_1097();
-					if (rn_493 == rn_494) {
-						rn_510 = 6;
+			} else if (proc == 5) {
+				if (animproc >= 3000 || ZombieList.rn_1021(zombieList) * 3 <= zombiecount) {
+					addwave();
+					if (wave == wavemax) {
+						proc = 6;
 					}
-					rn_484 = 0;
+					animproc = 0;
 				}
-			} else if (rn_510 == 6) {
-				if (ZombieList.rn_1225(rn_477) == 0) {
-					rn_1151();
-					rn_510 = 11;
+			} else if (proc == 6) {
+				if (ZombieList.rn_1021(zombieList) == 0) {
+					plantwin();
+					proc = 11;
 				}
-			} else if (rn_510 == 7) {
-				if (rn_484 >= rn_539) {
-					if (rn_497 == 1) {
+			} else if (proc == 7) {
+				if (animproc >= inapptime) {
+					if (level == 1) {
 					} else {
-						rn_510 = 4;
+						proc = 4;
 					}
 				}
-			} else if (rn_510 == 8) {
-				rn_535 = rn_535 + 3.0F;
-				if (rn_535 >= 0) {
-					rn_535 = 0;
-					rn_484 = 0;
-					rn_1137();
-					rn_510 = 12;
+			} else if (proc == 8) {
+				sdoffy = sdoffy + 3.0F;
+				if (sdoffy >= 0) {
+					sdoffy = 0;
+					animproc = 0;
+					PreMower();
+					proc = 12;
 				}
-			} else if (rn_510 == 9) {
-				rn_484 = rn_484 + 3;
-				if (rn_484 >= 771) {
-					DrawStyles.rn_3766(rn_548);
-					ParticleList.rn_2544(rn_481);
-					rn_510 = 8;
-					rn_484 = 0;
+			} else if (proc == 9) {
+				animproc = animproc + 3;
+				if (animproc >= 771) {
+					DrawStyles.rn_3598(foreds);
+					ParticleList.rn_2327(particleList);
+					proc = 8;
+					animproc = 0;
 				}
-			} else if (rn_510 == 10) {
-				rn_484 = rn_484 + 2;
-				if (rn_484 >= 771) {
-					rn_510 = 8;
-					rn_484 = 0;
+			} else if (proc == 10) {
+				animproc = animproc + 2;
+				if (animproc >= 771) {
+					proc = 8;
+					animproc = 0;
 				}
-			} else if (rn_510 == 11) {
-			} else if (rn_510 == 12) {
-				for (int rn_10473 = 0;rn_10473 < MowerList.rn_1225(rn_543.rn_2551);rn_10473 += 1) {
-					Mower rn_1123 = MowerList.rn_2582(rn_543.rn_2551, rn_10473);
-					rn_1123.rn_2595 = rn_1123.rn_2595 + ope.rn_1824(130, 190, 50, rn_484 + rn_1123.rn_2599 * 10 - 80);
+			} else if (proc == 11) {
+			} else if (proc == 12) {
+				for (int rn_10305 = 0;rn_10305 < MowerList.rn_1021(mowerList.rn_2334);rn_10305 += 1) {
+					Mower rn_927 = MowerList.rn_2378(mowerList.rn_2334, rn_10305);
+					rn_927.rn_2391 = rn_927.rn_2391 + ope.rn_1687(130, 190, 50, animproc + rn_927.rn_2395 * 10 - 80);
 				}
-				if (rn_484 >= 150) {
-					ZombieList.rn_2388(rn_477);
-					for (int rn_10474 = 0;rn_10474 < 5;rn_10474 += 1) {
-						ZombieList.rn_2374(rn_477, Zombie.万恶之源(Nirvana.this, rn_7317.rn_7328(7, 7), rn_1160()));
+				if (animproc >= 150) {
+					ZombieList.rn_2171(zombieList);
+					for (int rn_10306 = 0;rn_10306 < 5;rn_10306 += 1) {
 					}
-					for (int rn_10475 = 0;rn_10475 < 5;rn_10475 += 1) {
+					for (int rn_10307 = 0;rn_10307 < 5;rn_10307 += 1) {
 					}
-					for (int rn_10476 = 0;rn_10476 < 3;rn_10476 += 1) {
-						for (int rn_10477 = 0;rn_10477 < 5;rn_10477 += 1) {
+					for (int rn_10308 = 0;rn_10308 < 3;rn_10308 += 1) {
+						for (int rn_10309 = 0;rn_10309 < 5;rn_10309 += 1) {
 						}
 					}
-					if (rn_497 == 1) {
-						rn_547 = false;
-						rn_1140("ADVICE_CLICK_SEED_PACKET", -1);
-						rn_530 = "cp";
+					if (level == 1) {
+						canshedsun = false;
+						captions("ADVICE_CLICK_SEED_PACKET", -1);
+						state = "cp";
 					}
-					rn_510 = 7;
+					proc = 7;
 				}
 			}
-			if (rn_1147()) {
-				rn_490 = rn_490 - 1;
-				if (rn_490 <= 0) {
-					rn_490 = rn_491;
-					Coin rn_1124 = Coin.rn_2788(Nirvana.this, static_.rn_2805, rn_7317.rn_7328(400, 800), 50);
-					rn_1124.rn_2772 = 0.5F;
-					rn_1124.rn_2780 = rn_7317.rn_7328(200, 500);
-					CoinList.rn_2468(rn_492, rn_1124);
-					if (rn_3289.rn_6850(rn_530, "ep")) {
-						rn_490 = 500;
-						rn_1140("ADVICE_CLICK_ON_SUN", -1);
+			if (canDropSun()) {
+				sunapp = sunapp - 1;
+				if (sunapp <= 0) {
+					sunapp = sunappmax;
+					Coin rn_928 = Coin.rn_2601(Nirvana.this, static_.rn_2618, rn_7149.rn_7160(400, 800), 50);
+					rn_928.rn_2585 = 0.5F;
+					rn_928.rn_2593 = rn_7149.rn_7160(200, 500);
+					CoinList.rn_2251(coinlist, rn_928);
+					if (rn_3081.rn_6682(state, "ep")) {
+						sunapp = 500;
+						captions("ADVICE_CLICK_ON_SUN", -1);
 					}
 				}
 			}
 		}
-		for (int rn_10478 = 0;rn_10478 < rn_483.length;rn_10478 += 1) {
-			if (rn_483 [rn_10478] > 0) {
-				rn_483 [rn_10478] = rn_483 [rn_10478] - 1;
+		for (int rn_10310 = 0;rn_10310 < card_cool.length;rn_10310 += 1) {
+			if (card_cool [rn_10310] > 0) {
+				card_cool [rn_10310] = card_cool [rn_10310] - 1;
 			}
 		}
-		long rn_1125 = rn_10083.rn_10089();
-		long rn_1126 = 0L;
-		for (int rn_10479 = 0;rn_10479 < ZombieList.rn_1225(rn_477);rn_10479 += 1) {
-			int rn_1127 = ZombieList.rn_1225(rn_477) - rn_10479 - 1;
-			Zombie rn_1128 = ZombieList.rn_2366(rn_477, rn_1127);
-			if (rn_1128.rn_2193 > 0) {
-				rn_1128.rn_2193 = rn_1128.rn_2193 - 1;
-			} else if (rn_1128.rn_2192 > 0) {
-				rn_1128.rn_2169.rn_3502 = 0.5F;
-				rn_1128.rn_2192 = rn_1128.rn_2192 - 1;
-				if (rn_1128.rn_2224) {
-					if (ZombieList.rn_2366(rn_477, rn_1127).rn_2294()) {
-						ope.rn_1923(ZombieList.rn_2366(rn_477, rn_1127));
-						ZombieList.rn_2389(rn_477, rn_1127);
+		long rn_929 = rn_9915.rn_9921();
+		long rn_930 = 0L;
+		for (int rn_10311 = 0;rn_10311 < ZombieList.rn_1021(zombieList);rn_10311 += 1) {
+			int rn_931 = ZombieList.rn_1021(zombieList) - rn_10311 - 1;
+			Zombie rn_932 = ZombieList.rn_2149(zombieList, rn_931);
+			if (rn_932.Frost > 0) {
+				rn_932.Frost = rn_932.Frost - 1;
+			} else if (rn_932.Coldness > 0) {
+				rn_932.anim.speedslows = 0.5F;
+				rn_932.Coldness = rn_932.Coldness - 1;
+				if (rn_932.disc) {
+					if (ZombieList.rn_2149(zombieList, rn_931).Update()) {
+						ope.rn_1796(ZombieList.rn_2149(zombieList, rn_931));
+						ZombieList.rn_2172(zombieList, rn_931);
 					}
-					rn_1128.rn_2224 = false;
+					rn_932.disc = false;
 				} else {
-					rn_1128.rn_2224 = true;
+					rn_932.disc = true;
 				}
 			} else {
-				if (ZombieList.rn_2366(rn_477, rn_1127).rn_2294()) {
-					ope.rn_1923(ZombieList.rn_2366(rn_477, rn_1127));
-					ZombieList.rn_2389(rn_477, rn_1127);
+				if (ZombieList.rn_2149(zombieList, rn_931).Update()) {
+					ope.rn_1796(ZombieList.rn_2149(zombieList, rn_931));
+					ZombieList.rn_2172(zombieList, rn_931);
 				}
 			}
 		}
-		rn_1126 = rn_10083.rn_10089();
-		rn_1114 = rn_1114 + "uZombie:" + rn_6935.rn_6939((rn_1126 - rn_1125)) + "\n";
-		rn_1125 = rn_10083.rn_10089();
-		for (int rn_10480 = 0;rn_10480 < PlantList.rn_1225(rn_478);rn_10480 += 1) {
-			int rn_1129 = PlantList.rn_1225(rn_478) - rn_10480 - 1;
-			if (PlantList.rn_2398(rn_478, rn_1129).rn_2702()) {
-				ope.rn_1923(PlantList.rn_2398(rn_478, rn_1129));
-				PlantList.rn_2421(rn_478, rn_1129);
+		rn_930 = rn_9915.rn_9921();
+		rn_918 = rn_918 + "uZombie:" + rn_6767.rn_6771((rn_930 - rn_929)) + "\n";
+		rn_929 = rn_9915.rn_9921();
+		for (int rn_10312 = 0;rn_10312 < PlantList.rn_1021(plantList);rn_10312 += 1) {
+			int rn_933 = PlantList.rn_1021(plantList) - rn_10312 - 1;
+			if (PlantList.rn_2181(plantList, rn_933).rn_2504()) {
+				ope.rn_1796(PlantList.rn_2181(plantList, rn_933));
+				PlantList.rn_2204(plantList, rn_933);
 			}
 		}
-		rn_1126 = rn_10083.rn_10089();
-		rn_1114 = rn_1114 + "uPlant:" + rn_6935.rn_6939((rn_1126 - rn_1125)) + "\n";
-		rn_1125 = rn_10083.rn_10089();
-		for (int rn_10481 = 0;rn_10481 < ProjList.rn_1225(rn_479);rn_10481 += 1) {
-			int rn_1130 = ProjList.rn_1225(rn_479) - rn_10481 - 1;
-			if (ProjList.rn_2429(rn_479, rn_1130).rn_2765()) {
-				ope.rn_1923(ProjList.rn_2429(rn_479, rn_1130));
-				ProjList.rn_2452(rn_479, rn_1130);
+		rn_930 = rn_9915.rn_9921();
+		rn_918 = rn_918 + "uPlant:" + rn_6767.rn_6771((rn_930 - rn_929)) + "\n";
+		rn_929 = rn_9915.rn_9921();
+		for (int rn_10313 = 0;rn_10313 < ProjList.rn_1021(projList);rn_10313 += 1) {
+			int rn_934 = ProjList.rn_1021(projList) - rn_10313 - 1;
+			if (ProjList.rn_2212(projList, rn_934).rn_2578()) {
+				ope.rn_1796(ProjList.rn_2212(projList, rn_934));
+				ProjList.rn_2235(projList, rn_934);
 			}
 		}
-		rn_1126 = rn_10083.rn_10089();
-		rn_1114 = rn_1114 + "uProj:" + rn_6935.rn_6939((rn_1126 - rn_1125)) + "\n";
-		rn_1125 = rn_10083.rn_10089();
-		for (int rn_10482 = 0;rn_10482 < CoinList.rn_1225(rn_492);rn_10482 += 1) {
-			int rn_1131 = CoinList.rn_1225(rn_492) - rn_10482 - 1;
-			if (CoinList.rn_2460(rn_492, rn_1131).rn_2801() == true) {
-				ope.rn_1923(CoinList.rn_2460(rn_492, rn_1131));
-				CoinList.rn_2483(rn_492, rn_1131);
+		rn_930 = rn_9915.rn_9921();
+		rn_918 = rn_918 + "uProj:" + rn_6767.rn_6771((rn_930 - rn_929)) + "\n";
+		rn_929 = rn_9915.rn_9921();
+		for (int rn_10314 = 0;rn_10314 < CoinList.rn_1021(coinlist);rn_10314 += 1) {
+			int rn_935 = CoinList.rn_1021(coinlist) - rn_10314 - 1;
+			if (CoinList.rn_2243(coinlist, rn_935).rn_2614() == true) {
+				ope.rn_1796(CoinList.rn_2243(coinlist, rn_935));
+				CoinList.rn_2266(coinlist, rn_935);
 			}
 		}
-		rn_1126 = rn_10083.rn_10089();
-		rn_1114 = rn_1114 + "uCoin:" + rn_6935.rn_6939((rn_1126 - rn_1125)) + "\n";
-		rn_1125 = rn_10083.rn_10089();
-		for (int rn_10483 = 0;rn_10483 < TracleList.rn_1225(rn_480);rn_10483 += 1) {
-			int rn_1132 = TracleList.rn_1225(rn_480) - rn_10483 - 1;
-			if (TracleList.rn_2491(rn_480, rn_1132).rn_2838() == true) {
-				ope.rn_1923(TracleList.rn_2491(rn_480, rn_1132));
-				TracleList.rn_2514(rn_480, rn_1132);
+		rn_930 = rn_9915.rn_9921();
+		rn_918 = rn_918 + "uCoin:" + rn_6767.rn_6771((rn_930 - rn_929));
+		rn_929 = rn_9915.rn_9921();
+		for (int rn_10315 = 0;rn_10315 < TracleList.rn_1021(tracleList);rn_10315 += 1) {
+			int rn_936 = TracleList.rn_1021(tracleList) - rn_10315 - 1;
+			if (TracleList.rn_2274(tracleList, rn_936).rn_2651() == true) {
+				ope.rn_1796(TracleList.rn_2274(tracleList, rn_936));
+				TracleList.rn_2297(tracleList, rn_936);
 			}
 		}
-		rn_1126 = rn_10083.rn_10089();
-		rn_1125 = rn_10083.rn_10089();
-		for (int rn_10484 = 0;rn_10484 < ParticleList.rn_1225(rn_481);rn_10484 += 1) {
-			int rn_1133 = ParticleList.rn_1225(rn_481) - rn_10484 - 1;
-			if (ParticleList.rn_2522(rn_481, rn_1133).rn_2891() == true) {
-				ope.rn_1923(ParticleList.rn_2522(rn_481, rn_1133));
-				ParticleList.rn_2545(rn_481, rn_1133);
+		rn_930 = rn_9915.rn_9921();
+		rn_929 = rn_9915.rn_9921();
+		for (int rn_10316 = 0;rn_10316 < ParticleList.rn_1021(particleList);rn_10316 += 1) {
+			int rn_937 = ParticleList.rn_1021(particleList) - rn_10316 - 1;
+			if (ParticleList.rn_2305(particleList, rn_937).Update() == true) {
+				ope.rn_1796(ParticleList.rn_2305(particleList, rn_937));
+				ParticleList.rn_2328(particleList, rn_937);
 			}
 		}
-		rn_1126 = rn_10083.rn_10089();
-		rn_1125 = rn_10083.rn_10089();
-		rn_543.rn_2562();
-		if (rn_549 != -1) {
-			rn_550 = rn_550 - 1;
-			if (rn_550 <= 0) {
-				rn_549 = -1;
+		rn_930 = rn_9915.rn_9921();
+		rn_929 = rn_9915.rn_9921();
+		mowerList.rn_2344();
+		if (sobj != -1) {
+			cardev = cardev - 1;
+			if (cardev <= 0) {
+				sobj = -1;
 			}
 		}
-		rn_555 = rn_1114;
+		uinfo = rn_918;
+		if (4 <= proc && proc <= 6) {
+			if (savecount <= 0) {
+				savecount = 100;
+				Thread thread = new Thread(new Runnable() { public void run() {;
+				rn_9755.rn_9798("/sdcard/.pvz/" + levelname() + ".json", ToJSON());
+				}}); thread.start();
+			} else {
+				savecount = savecount - 1;
+			}
+		}
 	}
 
-	public final void rn_1134(Coin rn_1135) {
-		rn_1135 = rn_1135;
-		if (rn_3289.rn_6850(rn_530, "ep")) {
-			rn_1140("ADVICE_CLICKED_ON_SUN", -1);
-			rn_530 = "2p";
-		} else if (rn_3289.rn_6850(rn_530, "2p")) {
-			rn_1140("ADVICE_ENOUGH_SUN", -1);
-			rn_530 = "bp";
+	public final void collectSun(Coin rn_938) {
+		rn_938 = rn_938;
+		if (rn_3081.rn_6682(state, "ep")) {
+			captions("ADVICE_CLICKED_ON_SUN", -1);
+			state = "2p";
+		} else if (rn_3081.rn_6682(state, "2p")) {
+			captions("ADVICE_ENOUGH_SUN", -1);
+			state = "bp";
 		}
 	}
 
-	public final void rn_1136() {
-		if (rn_497 <= 6) {
-			rn_482 = (int[]) (new int[rn_497]);
-			for (int rn_10485 = 0;rn_10485 < rn_482.length;rn_10485 += 1) {
-				rn_482 [rn_10485] = rn_10485;
+	public final void chooseCard() {
+		if (level <= 6) {
+			cards = (int[]) (new int[level]);
+			for (int rn_10317 = 0;rn_10317 < cards.length;rn_10317 += 1) {
+				cards [rn_10317] = rn_10317;
 			}
-			rn_540 = true;
+			ccend = true;
 		} else {
-			rn_482 = (int[]) (new int[rn_529.rn_2978().rn_2986]);
-			for (int rn_10486 = 0;rn_10486 < rn_482.length;rn_10486 += 1) {
-				rn_482 [rn_10486] = -1;
+			cards = (int[]) (new int[USER.getCurrentAccount().slotnumber]);
+			for (int rn_10318 = 0;rn_10318 < cards.length;rn_10318 += 1) {
+				cards [rn_10318] = -1;
 			}
 		}
 	}
 
-	public final void rn_1137() {
-		int[] rn_1138 = rn_1139();
-		rn_543.rn_2556(rn_1138.length, rn_1138, 130, Nirvana.this);
+	public final void PreMower() {
+		int[] rn_939 = getRowinfo();
+		mowerList.initi(rn_939.length, rn_939, 130, Nirvana.this);
 	}
 
-	public final int[] rn_1139() {
-		if (rn_500 == 0 || rn_500 == 1) {
-			if (rn_497 == 1) {
+	public final int[] getRowinfo() {
+		if (scene == 0 || scene == 1) {
+			if (level == 1) {
 				return new int[]{-1, -1, 0, -1, -1};
-			} else if (rn_497 == 2 || rn_497 == 3) {
+			} else if (level == 2 || level == 3) {
 				return new int[]{-1, 0, 0, 0, -1};
 			} else {
 				return new int[]{0, 0, 0, 0, 0};
 			}
-		} else if (rn_500 == 2 || rn_500 == 3) {
+		} else if (scene == 2 || scene == 3) {
 			return new int[]{0, 0, 1, 1, 0, 0};
-		} else if (rn_500 == 4 || rn_500 == 5) {
+		} else if (scene == 4 || scene == 5) {
 			return new int[]{2, 2, 2, 2, 2};
 		}
 		return new int[]{0, 0, 0, 0, 0};
 	}
 
-	public final void rn_1140(String rn_1141, int rn_1142) {
-		rn_545 = rn_4434.rn_4447(rn_462, rn_1141);
-		rn_546 = rn_1142;
+	public final void captions(String rn_940, int rn_941) {
+		captions = rn_4266.rn_4279(gametext, rn_940);
+		captionscd = rn_941;
 	}
 
-	public final float rn_1143(int rn_1144, float rn_1145) {
-		int rn_1146 = rn_1149();
-		if (rn_500 == 2 || rn_500 == 3) {
-			return 80 + rn_1146 + rn_1144 * rn_1146;
-		} else if (rn_500 == 4 || rn_500 == 5) {
-			if (rn_1145 > 670) {
-				return 80 + rn_1146 + rn_1144 * rn_1146;
+	public final float gety(int rn_942, float rn_943) {
+		int rn_944 = getRowHeight();
+		if (scene == 2 || scene == 3) {
+			return 80 + rn_944 + rn_942 * rn_944;
+		} else if (scene == 4 || scene == 5) {
+			if (rn_943 > 670) {
+				return 80 + rn_944 + rn_942 * rn_944;
 			} else {
-				return 80 + rn_1146 + (670 - rn_1145) / 4.0F + rn_1144 * rn_1146;
+				return 80 + rn_944 + (670 - rn_943) / 4.0F + rn_942 * rn_944;
 			}
 		} else {
-			return 80 + rn_1146 + rn_1144 * rn_1146;
+			return 80 + rn_944 + rn_942 * rn_944;
 		}
 	}
 
-	public final boolean rn_1147() {
-		if (rn_547 && (rn_500 == 0 || rn_500 == 2 || rn_500 == 4) && (4 <= rn_510 && rn_510 <= 7)) {
+	public final boolean canDropSun() {
+		if (canshedsun && (scene == 0 || scene == 2 || scene == 4) && (4 <= proc && proc <= 7)) {
 			return true;
 		}
 		return false;
 	}
 
-	public final int rn_1148() {
-		if (rn_500 == 2 || rn_500 == 3) {
+	public final int getRowNumber() {
+		if (scene == 2 || scene == 3) {
 			return 6;
 		}
 		return 5;
 	}
 
-	public final int rn_1149() {
-		if (2 <= rn_500 && rn_500 <= 5) {
+	public final int getRowHeight() {
+		if (2 <= scene && scene <= 5) {
 			return 85;
 		} else {
 			return 100;
 		}
 	}
 
-	public final int rn_1150() {
+	public final int getRowWidth() {
 		return 80;
 	}
 
-	public final void rn_1151() {
-		UserdataList.rn_2990((rn_529.rn_2977), rn_529.rn_2976).rn_2981 = rn_497 + 1;
-		rn_823();
-		CoinList.rn_2468(rn_492, Coin.rn_2788(Nirvana.this, static_.rn_2808, 900, 340));
+	public final void plantwin() {
+		UserdataList.rn_2769((USER.account), USER.currentAccount).alevel = level + 1;
+		saveArchive();
+		CoinList.rn_2251(coinlist, Coin.rn_2601(Nirvana.this, static_.rn_2621, 900, 340));
 	}
 
-	public final void rn_1152(Coin rn_1153) {
-		rn_1153 = rn_1153;
+	public final void clearance(Coin rn_945) {
+		rn_945 = rn_945;
 	}
 
-	public final int[] rn_1154() {
-		if (rn_497 == 1) {
+	public final int[] getAvailableRow() {
+		if (level == 1) {
 			return new int[]{2};
-		} else if (rn_497 == 2 || rn_497 == 3) {
+		} else if (level == 2 || level == 3) {
 			return new int[]{1, 2, 3};
 		} else {
-			int rn_1155 = rn_1148();
-			int[] rn_1156 = (int[]) (new int[rn_1155]);
-			for (int rn_10487 = 0;rn_10487 < rn_1156.length;rn_10487 += 1) {
-				rn_1156 [rn_10487] = rn_10487;
+			int rn_946 = getRowNumber();
+			int[] rn_947 = (int[]) (new int[rn_946]);
+			for (int rn_10319 = 0;rn_10319 < rn_947.length;rn_10319 += 1) {
+				rn_947 [rn_10319] = rn_10319;
 			}
-			return rn_1156;
+			return rn_947;
 		}
 	}
 
-	public final int[] rn_1157() {
-		int[] rn_1158 = rn_1154();
-		ints rn_1159 = new ints();
-		for (int rn_10488 = 0;rn_10488 < rn_1158.length;rn_10488 += 1) {
-			if (rn_542 [rn_1158 [rn_10488]] == 0) {
-				rn_1159.rn_1423(rn_1158 [rn_10488]);
+	public final int[] availableRow() {
+		int[] rn_948 = getAvailableRow();
+		ints rn_949 = new ints();
+		for (int rn_10320 = 0;rn_10320 < rn_948.length;rn_10320 += 1) {
+			if (proline [rn_948 [rn_10320]] == 0) {
+				rn_949.rn_1286(rn_948 [rn_10320]);
 			}
 		}
-		return rn_1159.rn_1442();
+		return rn_949.rn_1305();
 	}
 
-	public final int rn_1160() {
-		int[] rn_1161 = rn_1157();
-		return rn_1161 [rn_7317.rn_7328(0, rn_1161.length - 1)];
+	public final int getRightWay() {
+		int[] rn_950 = availableRow();
+		if (rn_950.length == 0) {
+			rn_950 = getAvailableRow();
+		}
+		return rn_950 [rn_7149.rn_7160(0, rn_950.length - 1)];
 	}
 
-	public final boolean rn_1164() {
-		if (rn_510 == 4 || rn_510 == 5 || rn_510 == 6 || rn_510 == 7) {
+	public final boolean gamestart() {
+		if (proc == 4 || proc == 5 || proc == 6 || proc == 7) {
 			return true;
 		}
 		return false;
+	}
+
+	public final String ToJSON() {
+		org.json.JSONObject rn_952 = new org.json.JSONObject();
+		java.lang.reflect.Field[] rn_953 = rn_8084.rn_8126(rn_4133.rn_6676(Nirvana.this));
+		for (int rn_10321 = 0;rn_10321 < rn_953.length;rn_10321 += 1) {
+			java.lang.reflect.Field rn_954 = rn_953 [rn_10321];
+			rn_954.setAccessible(true);
+			Object rn_955 = rn_8150.rn_8165(rn_954, Nirvana.this);
+			String classname = rn_8084.rn_8094(rn_8150.rn_8161(rn_954));
+			if (rn_3081.rn_6682(classname, "int") || rn_3081.rn_6682(classname, "boolean") || rn_3081.rn_6682(classname, "float") || rn_3081.rn_6682(classname, "java.lang.String")) {
+				rn_4577.rn_4607(rn_952, rn_8150.rn_7729(rn_954), rn_4133.rn_6675(rn_955));
+			} else if (rn_3081.rn_6682(classname, "[I")) {
+				int[] rn_956 = (int[]) ((int[]) (rn_955));
+				rn_4577.rn_4607(rn_952, rn_8150.rn_7729(rn_954), op.rn_1191(rn_956));
+			} else if (rn_3081.rn_6682(classname, "java.util.ArrayList")) {
+				java.util.ArrayList<Object> rn_957 = (java.util.ArrayList<Object>) (rn_955);
+				rn_4577.rn_4607(rn_952, rn_8150.rn_7729(rn_954), ope.rn_1698(rn_957));
+			} else if (rn_3081.rn_6682(classname, "bk.pvz.CartSet")) {
+				org.json.JSONObject rn_958 = rn_4577.rn_4578(rn_4133.rn_6675(rn_955));
+				rn_4577.rn_4607(rn_952, rn_8150.rn_7729(rn_954), rn_958);
+			}
+		}
+		return rn_4577.rn_4614(rn_952, 0);
+	}
+
+	public final void rn_959(String rn_960) {
+		org.json.JSONObject rn_961 = rn_4577.rn_4578(rn_960);
+		op.rn_1194(Nirvana.this, rn_961, Nirvana.this);
 	}
 }

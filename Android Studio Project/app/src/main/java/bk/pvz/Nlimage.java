@@ -1,53 +1,53 @@
 package bk.pvz;
-import rn_6840.rn_6841.rn_6842.rn_6925;
-import rn_4581.rn_4582.rn_4583.rn_9923;
-import rn_4294.rn_4295.rn_4296.rn_6193;
-import rn_6840.rn_6841.rn_6842.rn_6928;
+import rn_4126.rn_4127.rn_4128.rn_6025;
+import rn_6672.rn_6673.rn_6674.rn_3081;
+import rn_6672.rn_6673.rn_6674.rn_4133;
+import rn_6672.rn_6673.rn_6674.rn_6760;
+import rn_4413.rn_4414.rn_4415.rn_9755;
+import rn_4413.rn_4414.rn_4415.rn_8937;
 import bk.pvz.ope;
-import rn_4581.rn_4582.rn_4583.rn_9105;
+import rn_6672.rn_6673.rn_6674.rn_6757;
 import bk.pvz.Colorset;
-import rn_6840.rn_6841.rn_6842.rn_3289;
-import rn_6840.rn_6841.rn_6842.rn_4301;
 
 public class Nlimage extends Colorset {
-	public boolean rn_3631 = false;
-	public String rn_3632 = "";
+	public boolean rn_3450 = false;
+	public String rn_3451 = "";
 
-	public final Nlimage rn_3634() {
-		if (rn_3631 == false) {
-			rn_2031(rn_9105.rn_9108(rn_3632));
-			if (rn_3289.rn_6864(rn_3632, "jpg")) {
-				java.io.File rn_3635 = new java.io.File(rn_3632);
-				String rn_3636 = rn_6193.rn_6206(rn_3635) + "/" + rn_9923.rn_9935(rn_9923.rn_9937(rn_3632)) + "_.png";
-				if (rn_9923.rn_9959(rn_3636)) {
-					rn_3637(rn_3636);
+	public final Nlimage rn_3453() {
+		if (rn_3450 == false) {
+			rn_1904(rn_8937.rn_8940(rn_3451));
+			if (rn_3081.rn_6696(rn_3451, "jpg")) {
+				java.io.File rn_3454 = new java.io.File(rn_3451);
+				String rn_3455 = rn_6025.rn_6038(rn_3454) + "/" + rn_9755.rn_9767(rn_9755.rn_9769(rn_3451)) + "_.png";
+				if (rn_9755.rn_9791(rn_3455)) {
+					rn_3456(rn_3455);
 				} else {
-					rn_3636 = rn_3289.rn_6866(rn_4301.rn_6843(rn_6193.rn_6206(rn_3635)), "main", "pvz") + "/" + rn_9923.rn_9935(rn_9923.rn_9937(rn_3632)) + "_.png";
-					if (rn_9923.rn_9959(rn_3636)) {
-						rn_3637(rn_3636);
+					rn_3455 = rn_3081.rn_6698(rn_4133.rn_6675(rn_6025.rn_6038(rn_3454)), "main", "pvz") + "/" + rn_9755.rn_9767(rn_9755.rn_9769(rn_3451)) + "_.png";
+					if (rn_9755.rn_9791(rn_3455)) {
+						rn_3456(rn_3455);
 					}
 				}
 			}
-			rn_3631 = true;
+			rn_3450 = true;
 		}
-		ope.rn_1923(rn_2018);
+		ope.rn_1796(rn_1891);
 		return Nlimage.this;
 	}
 
-	public final void rn_3637(String rn_3638) {
-		Colorset rn_3639 = Colorset.rn_2028(rn_9105.rn_9108(rn_3638));
-		for (int rn_10613 = 0;rn_10613 < rn_3639.rn_2018.length;rn_10613 += 1) {
-			int rn_3640 = (rn_3639.rn_2018) [rn_10613];
-			int[] rn_3641 = ope.rn_1863(rn_2018 [rn_10613]);
-			int[] rn_3642 = ope.rn_1863(rn_3640);
-			if (rn_3642 [3] < 5) {
-				rn_2018 [rn_10613] = 0;
+	public final void rn_3456(String rn_3457) {
+		Colorset rn_3458 = Colorset.rn_1901(rn_8937.rn_8940(rn_3457));
+		for (int rn_10482 = 0;rn_10482 < rn_3458.rn_1891.length;rn_10482 += 1) {
+			int rn_3459 = (rn_3458.rn_1891) [rn_10482];
+			int[] rn_3460 = ope.rn_1736(rn_1891 [rn_10482]);
+			int[] rn_3461 = ope.rn_1736(rn_3459);
+			if (rn_3461 [3] < 5) {
+				rn_1891 [rn_10482] = 0;
 			} else {
-				rn_3641 [0] = rn_3642 [3];
-				rn_2018 [rn_10613] = ope.rn_1865(rn_3641);
+				rn_3460 [0] = rn_3461 [3];
+				rn_1891 [rn_10482] = ope.rn_1738(rn_3460);
 			}
 		}
-		rn_3639.rn_2018 = null;
-		ope.rn_1923(rn_3639);
+		rn_3458.rn_1891 = null;
+		ope.rn_1796(rn_3458);
 	}
 }

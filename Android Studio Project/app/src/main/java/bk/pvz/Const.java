@@ -1,8 +1,8 @@
 package bk.pvz;
-import rn_6840.rn_6841.rn_6842.rn_6925;
-import rn_6840.rn_6841.rn_6842.rn_4301;
+import rn_6672.rn_6673.rn_6674.rn_4133;
+import rn_6672.rn_6673.rn_6674.rn_6757;
 
 public class Const {
-	public static final boolean rn_1778 = false;
-	public static final boolean rn_1779 = true;
+	public static final boolean rn_1641 = false;
+	public static final boolean rn_1642 = true;
 }

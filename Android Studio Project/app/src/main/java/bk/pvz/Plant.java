@@ -1,500 +1,577 @@
 package bk.pvz;
-import bk.pvz.ProjList;
-import bk.pvz.Proj;
-import bk.pvz.ZombieList;
-import rn_6840.rn_6841.rn_6842.rn_6945;
-import bk.pvz.POS;
-import rn_6840.rn_6841.rn_6842.rn_3289;
-import bk.pvz.Anim;
-import rn_4581.rn_4582.rn_4583.rn_7317;
-import bk.pvz.STSL;
-import rn_6840.rn_6841.rn_6842.rn_6925;
-import bk.pvz.Particle;
-import bk.pvz.CoinList;
-import rn_6840.rn_6841.rn_6842.rn_6928;
 import bk.pvz.ParticleList;
 import bk.pvz.Zombie;
-import bk.pvz.static_;
-import bk.pvz.Coin;
-import rn_6840.rn_6841.rn_6842.rn_4301;
+import bk.pvz.Proj;
+import bk.pvz.Anim;
+import rn_6672.rn_6673.rn_6674.rn_4133;
+import bk.pvz.POS;
 import bk.pvz.Rectx;
+import bk.pvz.STSL;
+import rn_4126.rn_4127.rn_4128.rn_8150;
+import bk.pvz.ProjList;
+import bk.pvz.ope;
+import rn_6672.rn_6673.rn_6674.rn_6757;
+import rn_4126.rn_4127.rn_4128.rn_8084;
 import bk.pvz.Nirvana;
+import rn_4413.rn_4414.rn_4415.rn_4577;
 import bk.pvz.op;
+import rn_6672.rn_6673.rn_6674.rn_6777;
+import rn_6672.rn_6673.rn_6674.rn_3081;
+import rn_6672.rn_6673.rn_6674.rn_6760;
+import rn_4413.rn_4414.rn_4415.rn_7149;
+import bk.pvz.ZombieList;
+import bk.pvz.CoinList;
+import bk.pvz.Coin;
 import bk.pvz.ProxyAnim;
+import bk.pvz.Matrix_;
+import bk.pvz.static_;
+import bk.pvz.Particle;
 
 public class Plant {
-	public int rn_2615 = 0;
-	public int rn_2616 = 0;
-	public int rn_2617 = 0;
-	public Anim[] rn_2618 = new Anim[0];
-	public float rn_2619 = 0.0F;
-	public float rn_2620 = 0.0F;
-	public float rn_2621 = 1.0F;
-	public int rn_2622 = -1;
-	public int rn_2623 = -1;
-	public int rn_2624 = 0;
-	public int rn_2625 = 0;
-	public int rn_2626 = 0;
-	public Rectx rn_2627 = new Rectx();
-	public boolean rn_2628 = false;
-	public float rn_2630 = 0.0F;
-	public boolean rn_2632 = false;
-	public boolean rn_2633 = false;
-	public String rn_2634 = "";
-	public Nirvana rn_2636 = new Nirvana();
-
-	public static final Plant rn_2637(Nirvana rn_2638, int rn_2639, int rn_2640, int rn_2641) {
-		Plant rn_2642 = new Plant();
-		rn_2642.rn_2617 = rn_2641;
-		rn_2642.rn_2615 = 300;
-		rn_2642.rn_2622 = rn_2639;
-		rn_2642.rn_2623 = rn_2640;
-		rn_2642.rn_2619 = 260 + 80 * rn_2640;
-		rn_2642.rn_2620 = rn_2638.rn_1143(rn_2639, rn_2642.rn_2619) - rn_2638.rn_1149();
-		rn_2642.rn_2636 = rn_2638;
-		rn_2642.rn_2731(45, 40, 25, 50);
-		if (rn_2641 == 0) {
-			POS rn_2643 = new POS();
-			rn_2643.rn_3283(-1719.0F);
-			rn_2643.rn_3271 = -38;
-			rn_2643.rn_3272 = -48;
-			Anim rn_2644 = Anim.rn_3508("PeaShooterSingle", rn_2638).rn_3562("anim_head_idle", false);
-			rn_2644.rn_3487 = 0.5F;
-			Anim rn_2645 = Anim.rn_3508("PeaShooterSingle", rn_2638).rn_3562("anim_idle", false).rn_3524("anim_stem", rn_2644, rn_2643, true);
-			rn_2645.rn_3487 = Zombie.rn_2255() * 0.5F;
-			rn_2642.rn_2618 = new Anim[]{rn_2645};
-			rn_2642.rn_2625 = 150;
-			rn_2642.rn_2624 = rn_7317.rn_7328(80, 120);
-			rn_2642.rn_2626 = 30;
-		} else if (rn_2641 == 1) {
-			Anim rn_2646 = Anim.rn_3508("SunFlower", rn_2638).rn_3562("anim_idle", false);
-			rn_2646.rn_3487 = Zombie.rn_2255() * 0.5F;
-			rn_2642.rn_2618 = new Anim[]{rn_2646};
-			rn_2642.rn_2625 = rn_7317.rn_7328(2350, 2500);
-			rn_2642.rn_2624 = rn_7317.rn_7328(300, 1250);
-		} else if (rn_2641 == 2) {
-			Anim rn_2647 = Anim.rn_3508("CherryBomb", rn_2638).rn_3562("anim_explode", false);
-			rn_2647.rn_3499 = true;
-			rn_2642.rn_2618 = new Anim[]{rn_2647};
-			rn_2642.rn_2615 = 1800;
-			rn_2642.rn_2632 = true;
-		} else if (rn_2641 == 3) {
-			Anim rn_2648 = Anim.rn_3508("Wallnut", rn_2638).rn_3562("anim_idle", false);
-			rn_2642.rn_2618 = new Anim[]{rn_2648};
-			rn_2642.rn_2615 = 4000;
-			rn_2648.rn_3487 = 0.5F;
-		} else if (rn_2641 == 4) {
-			Anim rn_2649 = Anim.rn_3508("PotatoMine", rn_2638).rn_3562("anim_idle", false);
-			rn_2649.rn_3487 = Zombie.rn_2255() * 0.5F;
-			rn_2642.rn_2618 = new Anim[]{rn_2649};
-			rn_2642.rn_2621 = 0.8F;
-			rn_2642.rn_2728(0, 20);
-			rn_2642.rn_2624 = 1500;
-		} else if (rn_2641 == 5) {
-			POS rn_2650 = new POS();
-			rn_2650.rn_3283(-1719.0F);
-			rn_2650.rn_3271 = -38;
-			rn_2650.rn_3272 = -48;
-			Anim rn_2651 = Anim.rn_3508("SnowPea", rn_2638).rn_3562("anim_head_idle", false);
-			rn_2651.rn_3487 = 0.5F;
-			Anim rn_2652 = Anim.rn_3508("SnowPea", rn_2638).rn_3562("anim_idle", false).rn_3524("anim_stem", rn_2651, rn_2650, true);
-			rn_2652.rn_3487 = Zombie.rn_2255() * 0.5F;
-			rn_2642.rn_2618 = new Anim[]{rn_2652};
-			rn_2642.rn_2625 = 150;
-			rn_2642.rn_2624 = rn_7317.rn_7328(80, 120);
-			rn_2642.rn_2626 = 30;
-		} else if (rn_2641 == 6) {
-			Anim rn_2653 = Anim.rn_3508("Chomper", rn_2638).rn_3562("anim_idle", false);
-			rn_2653.rn_3487 = Zombie.rn_2255() * 0.5F;
-			rn_2642.rn_2618 = new Anim[]{rn_2653};
-		} else if (rn_2641 == 7) {
-			POS rn_2654 = new POS();
-			rn_2654.rn_3283(-1719.0F);
-			rn_2654.rn_3271 = -38;
-			rn_2654.rn_3272 = -48;
-			Anim rn_2655 = Anim.rn_3508("PeaShooter", rn_2638).rn_3562("anim_head_idle", false);
-			Anim rn_2656 = Anim.rn_3508("PeaShooter", rn_2638).rn_3562("anim_idle", false).rn_3524("anim_stem", rn_2655, rn_2654, true);
-			rn_2656.rn_3487 = Zombie.rn_2255() * 0.5F;
-			rn_2642.rn_2618 = new Anim[]{rn_2656};
-			rn_2642.rn_2625 = 150;
-			rn_2642.rn_2624 = rn_7317.rn_7328(80, 120);
-		} else if (rn_2641 == 8) {
-			Anim rn_2657 = Anim.rn_3508("Puffshroom", rn_2638).rn_3562("anim_idle", false);
-			rn_2657.rn_3487 = Zombie.rn_2255() * 0.5F;
-			rn_2642.rn_2618 = new Anim[]{rn_2657};
-			rn_2642.rn_2625 = 150;
-			rn_2642.rn_2624 = rn_7317.rn_7328(0, rn_2642.rn_2625);
-		} else if (rn_2641 == 9) {
-			Anim rn_2658 = Anim.rn_3508("SunShroom", rn_2638).rn_3562("anim_idle", false);
-			rn_2658.rn_3487 = Zombie.rn_2255() * 0.5F;
-			rn_2642.rn_2618 = new Anim[]{rn_2658};
-		} else if (rn_2641 == 10) {
-			Anim rn_2659 = Anim.rn_3508("Fumeshroom", rn_2638).rn_3562("anim_idle", false);
-			rn_2642.rn_2618 = new Anim[]{rn_2659};
-		} else if (rn_2641 == 11) {
-			Anim rn_2660 = Anim.rn_3508("Gravebuster", rn_2638).rn_3562("anim_idle", false);
-			rn_2642.rn_2618 = new Anim[]{rn_2660};
-		} else if (rn_2641 == 12) {
-			Anim rn_2661 = Anim.rn_3508("Hypnoshroom", rn_2638).rn_3562("anim_idle", false);
-			rn_2642.rn_2618 = new Anim[]{rn_2661};
-		} else if (rn_2641 == 13) {
-			Anim rn_2662 = Anim.rn_3508("ScaredyShroom", rn_2638).rn_3562("anim_idle", false);
-			rn_2642.rn_2618 = new Anim[]{rn_2662};
-		} else if (rn_2641 == 14) {
-			Anim rn_2663 = Anim.rn_3508("Iceshroom", rn_2638).rn_3562("anim_idle", false);
-			rn_2642.rn_2618 = new Anim[]{rn_2663};
-		} else if (rn_2641 == 15) {
-			Anim rn_2664 = Anim.rn_3508("DoomShroom", rn_2638).rn_3562("anim_idle", false);
-			rn_2642.rn_2618 = new Anim[]{rn_2664};
-		} else if (rn_2641 == 16) {
-			Anim rn_2665 = Anim.rn_3508("Lilypad", rn_2638).rn_3562("anim_idle", false);
-			rn_2642.rn_2618 = new Anim[]{rn_2665};
-		} else if (rn_2641 == 17) {
-			Anim rn_2666 = Anim.rn_3508("Squash", rn_2638).rn_3562("anim_idle", false);
-			rn_2642.rn_2618 = new Anim[]{rn_2666};
-		} else if (rn_2641 == 18) {
-			Anim rn_2667 = Anim.rn_3508("ThreePeater", rn_2638).rn_3562("anim_idle", false);
-			rn_2642.rn_2618 = new Anim[]{rn_2667};
-		} else if (rn_2641 == 19) {
-			Anim rn_2668 = Anim.rn_3508("Tanglekelp", rn_2638).rn_3562("anim_idle", false);
-			rn_2642.rn_2618 = new Anim[]{rn_2668};
-		} else if (rn_2641 == 20) {
-			Anim rn_2669 = Anim.rn_3508("Jalapeno", rn_2638).rn_3562("anim_idle", false);
-			rn_2642.rn_2618 = new Anim[]{rn_2669};
-		} else if (rn_2641 == 21) {
-			Anim rn_2670 = Anim.rn_3508("Caltrop", rn_2638).rn_3562("anim_idle", false);
-			rn_2642.rn_2618 = new Anim[]{rn_2670};
-		} else if (rn_2641 == 22) {
-			Anim rn_2671 = Anim.rn_3508("Torchwood", rn_2638).rn_3562("anim_idle", false);
-			rn_2642.rn_2618 = new Anim[]{rn_2671};
-		} else if (rn_2641 == 23) {
-			Anim rn_2672 = Anim.rn_3508("Tallnut", rn_2638).rn_3562("anim_idle", false);
-			rn_2642.rn_2618 = new Anim[]{rn_2672};
-		} else if (rn_2641 == 24) {
-			Anim rn_2673 = Anim.rn_3508("SeaShroom", rn_2638).rn_3562("anim_idle", false);
-			rn_2642.rn_2618 = new Anim[]{rn_2673};
-		} else if (rn_2641 == 25) {
-			Anim rn_2674 = Anim.rn_3508("Plantern", rn_2638).rn_3562("anim_idle", false);
-			rn_2642.rn_2618 = new Anim[]{rn_2674};
-		} else if (rn_2641 == 26) {
-			Anim rn_2675 = Anim.rn_3508("Cactus", rn_2638).rn_3562("anim_idle", false);
-			rn_2642.rn_2618 = new Anim[]{rn_2675};
-		} else if (rn_2641 == 27) {
-			Anim rn_2676 = Anim.rn_3508("Blover", rn_2638).rn_3562("anim_idle", false);
-			rn_2642.rn_2618 = new Anim[]{rn_2676};
-		} else if (rn_2641 == 28) {
-			Anim rn_2677 = Anim.rn_3508("SplitPea", rn_2638).rn_3562("anim_idle", false);
-			rn_2642.rn_2618 = new Anim[]{rn_2677};
-		} else if (rn_2641 == 29) {
-			Anim rn_2678 = Anim.rn_3508("Starfruit", rn_2638).rn_3562("anim_idle", false);
-			rn_2642.rn_2618 = new Anim[]{rn_2678};
-		} else if (rn_2641 == 30) {
-			Anim rn_2679 = Anim.rn_3508("Pumpkin", rn_2638).rn_3562("anim_idle", false);
-			rn_2642.rn_2615 = 4000;
-			rn_2679.rn_3487 = 0.5F;
-			rn_2642.rn_2618 = new Anim[]{rn_2679};
-		} else if (rn_2641 == 31) {
-			Anim rn_2680 = Anim.rn_3508("Magnetshroom", rn_2638).rn_3562("anim_idle", false);
-			rn_2642.rn_2618 = new Anim[]{rn_2680};
-		} else if (rn_2641 == 32) {
-			Anim rn_2681 = Anim.rn_3508("Cabbagepult", rn_2638).rn_3562("anim_idle", false);
-			rn_2642.rn_2618 = new Anim[]{rn_2681};
-		} else if (rn_2641 == 33) {
-			Anim rn_2682 = Anim.rn_3508("Pot", rn_2638).rn_3562("anim_idle", false);
-			rn_2642.rn_2618 = new Anim[]{rn_2682};
-		} else if (rn_2641 == 34) {
-			Anim rn_2683 = Anim.rn_3508("Cornpult", rn_2638).rn_3562("anim_idle", false);
-			rn_2642.rn_2618 = new Anim[]{rn_2683};
-		} else if (rn_2641 == 35) {
-			Anim rn_2684 = Anim.rn_3508("Coffeebean", rn_2638).rn_3562("anim_idle", false);
-			rn_2642.rn_2618 = new Anim[]{rn_2684};
-		} else if (rn_2641 == 36) {
-			Anim rn_2685 = Anim.rn_3508("Garlic", rn_2638).rn_3562("anim_idle", false);
-			rn_2642.rn_2618 = new Anim[]{rn_2685};
-		} else if (rn_2641 == 37) {
-			Anim rn_2686 = Anim.rn_3508("Umbrellaleaf", rn_2638).rn_3562("anim_idle", false);
-			rn_2642.rn_2618 = new Anim[]{rn_2686};
-		} else if (rn_2641 == 38) {
-			Anim rn_2687 = Anim.rn_3508("Marigold", rn_2638).rn_3562("anim_idle", false);
-			rn_2642.rn_2618 = new Anim[]{rn_2687};
-		} else if (rn_2641 == 39) {
-			Anim rn_2688 = Anim.rn_3508("Melonpult", rn_2638).rn_3562("anim_idle", false);
-			rn_2642.rn_2618 = new Anim[]{rn_2688};
-		} else if (rn_2641 == 40) {
-			Anim rn_2689 = Anim.rn_3508("GatlingPea", rn_2638).rn_3562("anim_idle", false);
-			rn_2642.rn_2618 = new Anim[]{rn_2689};
-		} else if (rn_2641 == 41) {
-			Anim rn_2690 = Anim.rn_3508("TwinSunflower", rn_2638).rn_3562("anim_idle", false);
-			rn_2642.rn_2618 = new Anim[]{rn_2690};
-		} else if (rn_2641 == 42) {
-			Anim rn_2691 = Anim.rn_3508("GloomShroom", rn_2638).rn_3562("anim_idle", false);
-			rn_2642.rn_2618 = new Anim[]{rn_2691};
-		} else if (rn_2641 == 43) {
-			Anim rn_2692 = Anim.rn_3508("Cattail", rn_2638).rn_3562("anim_idle", false);
-			rn_2642.rn_2618 = new Anim[]{rn_2692};
-		} else if (rn_2641 == 44) {
-			Anim rn_2693 = Anim.rn_3508("WinterMelon", rn_2638).rn_3562("anim_idle", false);
-			rn_2642.rn_2618 = new Anim[]{rn_2693};
-		} else if (rn_2641 == 45) {
-			Anim rn_2694 = Anim.rn_3508("GoldMagnet", rn_2638).rn_3562("anim_idle", false);
-			rn_2642.rn_2618 = new Anim[]{rn_2694};
-		} else if (rn_2641 == 46) {
-			Anim rn_2695 = Anim.rn_3508("SpikeRock", rn_2638).rn_3562("anim_idle", false);
-			rn_2642.rn_2618 = new Anim[]{rn_2695};
-		} else if (rn_2641 == 47) {
-			Anim rn_2696 = Anim.rn_3508("TangleKelp", rn_2638).rn_3562("anim_idle", false);
-			rn_2642.rn_2618 = new Anim[]{rn_2696};
-		} else if (rn_2641 == 48) {
-			Anim rn_2697 = Anim.rn_3508("Imitater", rn_2638).rn_3562("anim_idle", false);
-			rn_2642.rn_2618 = new Anim[]{rn_2697};
-		} else if (rn_2641 == 49) {
-			Anim rn_2698 = Anim.rn_3508("TangleKelp", rn_2638).rn_3562("anim_idle", false);
-			rn_2642.rn_2618 = new Anim[]{rn_2698};
-		} else if (rn_2641 == 50) {
-			Anim rn_2699 = Anim.rn_3508("TangleKelp", rn_2638).rn_3562("anim_idle", false);
-			rn_2642.rn_2618 = new Anim[]{rn_2699};
-		} else if (rn_2641 == 51) {
-			Anim rn_2700 = Anim.rn_3508("TangleKelp", rn_2638).rn_3562("anim_idle", false);
-			rn_2642.rn_2618 = new Anim[]{rn_2700};
-		} else if (rn_2641 == 52) {
-			Anim rn_2701 = Anim.rn_3508("TangleKelp", rn_2638).rn_3562("anim_idle", false);
-			rn_2642.rn_2618 = new Anim[]{rn_2701};
-		}
-		rn_2642.rn_2616 = rn_2642.rn_2615;
-		return rn_2642;
+	@Override
+	public String toString(){
+	    return ToJSON();
 	}
 
-	public final boolean rn_2702() {
-		if (rn_2615 <= 0) {
+	public int HP = 0;
+	public int HPM = 0;
+	public int type = 0;
+	public Anim[] anim = new Anim[0];
+	public float x = 0.0F;
+	public float y = 0.0F;
+	public float scale = 1.0F;
+	public int rn_2421 = -1;
+	public int rn_2422 = -1;
+	public int rn_2423 = 0;
+	public int rn_2424 = 0;
+	public int rn_2425 = 0;
+	public Rectx rn_2426 = new Rectx();
+	public boolean rn_2427 = false;
+	public float rn_2429 = 0.0F;
+	public boolean rn_2431 = false;
+	public boolean rn_2432 = false;
+	public boolean dying = false;
+	public String state = "";
+	public Nirvana rn_2434 = new Nirvana();
+	public boolean rn_2435 = false;
+	public boolean rn_2436 = false;
+	public android.graphics.Matrix rn_2437 = Matrix_.rn_3395();
+	public int rn_2438 = -1;
+
+	public static final Plant rn_2439(Nirvana rn_2440, int rn_2441, int rn_2442, int rn_2443) {
+		Plant rn_2444 = new Plant();
+		rn_2444.type = rn_2443;
+		rn_2444.HP = 300;
+		rn_2444.rn_2421 = rn_2441;
+		rn_2444.rn_2422 = rn_2442;
+		rn_2444.x = 260 + 80 * rn_2442;
+		rn_2444.y = rn_2440.gety(rn_2441, rn_2444.x) - rn_2440.getRowHeight();
+		rn_2444.rn_2434 = rn_2440;
+		rn_2444.rn_2534(45, 40, 25, 50);
+		if (rn_2443 == 0) {
+			POS rn_2445 = new POS();
+			rn_2445.rn_3062(-1719.0F);
+			rn_2445.rn_3050 = -38;
+			rn_2445.rn_3051 = -48;
+			Anim rn_2446 = Anim.rn_3310("PeaShooterSingle", rn_2440).rn_3366("anim_head_idle", false);
+			rn_2446.speed = 0.5F;
+			Anim rn_2447 = Anim.rn_3310("PeaShooterSingle", rn_2440).rn_3366("anim_idle", false).rn_3326("anim_stem", rn_2446, rn_2445, true);
+			rn_2447.speed = Zombie.tool_getrandom() * 0.5F;
+			rn_2444.anim = new Anim[]{rn_2447};
+			rn_2444.rn_2424 = 150;
+			rn_2444.rn_2423 = rn_7149.rn_7160(80, 120);
+			rn_2444.rn_2425 = 30;
+		} else if (rn_2443 == 1) {
+			Anim rn_2448 = Anim.rn_3310("SunFlower", rn_2440).rn_3366("anim_idle", false);
+			rn_2448.speed = Zombie.tool_getrandom() * 0.5F;
+			rn_2444.anim = new Anim[]{rn_2448};
+			rn_2444.rn_2424 = rn_7149.rn_7160(2350, 2500);
+			rn_2444.rn_2423 = rn_7149.rn_7160(300, 1250);
+		} else if (rn_2443 == 2) {
+			Anim rn_2449 = Anim.rn_3310("CherryBomb", rn_2440).rn_3366("anim_explode", false);
+			rn_2449.pauseAfterBroadcasting = true;
+			rn_2444.anim = new Anim[]{rn_2449};
+			rn_2444.HP = 1800;
+			rn_2444.rn_2431 = true;
+		} else if (rn_2443 == 3) {
+			Anim rn_2450 = Anim.rn_3310("Wallnut", rn_2440).rn_3366("anim_idle", false);
+			rn_2444.anim = new Anim[]{rn_2450};
+			rn_2444.HP = 4000;
+			rn_2450.speed = 0.5F;
+		} else if (rn_2443 == 4) {
+			Anim rn_2451 = Anim.rn_3310("PotatoMine", rn_2440).rn_3366("anim_idle", false);
+			rn_2451.speed = Zombie.tool_getrandom() * 0.5F;
+			rn_2444.anim = new Anim[]{rn_2451};
+			rn_2444.scale = 0.8F;
+			rn_2444.rn_2531(0, 20);
+			rn_2444.rn_2423 = 1500;
+		} else if (rn_2443 == 5) {
+			POS rn_2452 = new POS();
+			rn_2452.rn_3062(-1719.0F);
+			rn_2452.rn_3050 = -38;
+			rn_2452.rn_3051 = -48;
+			Anim rn_2453 = Anim.rn_3310("SnowPea", rn_2440).rn_3366("anim_head_idle", false);
+			rn_2453.speed = 0.5F;
+			Anim rn_2454 = Anim.rn_3310("SnowPea", rn_2440).rn_3366("anim_idle", false).rn_3326("anim_stem", rn_2453, rn_2452, true);
+			rn_2454.speed = Zombie.tool_getrandom() * 0.5F;
+			rn_2444.anim = new Anim[]{rn_2454};
+			rn_2444.rn_2424 = 150;
+			rn_2444.rn_2423 = rn_7149.rn_7160(80, 120);
+			rn_2444.rn_2425 = 30;
+		} else if (rn_2443 == 6) {
+			Anim rn_2455 = Anim.rn_3310("Chomper", rn_2440).rn_3366("anim_idle", false);
+			rn_2455.speed = Zombie.tool_getrandom() * 0.5F;
+			rn_2444.anim = new Anim[]{rn_2455};
+		} else if (rn_2443 == 7) {
+			POS rn_2456 = new POS();
+			rn_2456.rn_3062(-1719.0F);
+			rn_2456.rn_3050 = -38;
+			rn_2456.rn_3051 = -48;
+			Anim rn_2457 = Anim.rn_3310("PeaShooter", rn_2440).rn_3366("anim_head_idle", false);
+			Anim rn_2458 = Anim.rn_3310("PeaShooter", rn_2440).rn_3366("anim_idle", false).rn_3326("anim_stem", rn_2457, rn_2456, true);
+			rn_2458.speed = Zombie.tool_getrandom() * 0.5F;
+			rn_2444.anim = new Anim[]{rn_2458};
+			rn_2444.rn_2424 = 150;
+			rn_2444.rn_2423 = rn_7149.rn_7160(80, 120);
+		} else if (rn_2443 == 8) {
+			Anim rn_2459 = Anim.rn_3310("Puffshroom", rn_2440).rn_3366("anim_idle", false);
+			rn_2459.speed = Zombie.tool_getrandom() * 0.5F;
+			rn_2444.anim = new Anim[]{rn_2459};
+			rn_2444.rn_2424 = 150;
+			rn_2444.rn_2423 = rn_7149.rn_7160(0, rn_2444.rn_2424);
+		} else if (rn_2443 == 9) {
+			Anim rn_2460 = Anim.rn_3310("SunShroom", rn_2440).rn_3366("anim_idle", false);
+			rn_2460.speed = Zombie.tool_getrandom() * 0.5F;
+			rn_2444.anim = new Anim[]{rn_2460};
+		} else if (rn_2443 == 10) {
+			Anim rn_2461 = Anim.rn_3310("Fumeshroom", rn_2440).rn_3366("anim_idle", false);
+			rn_2444.anim = new Anim[]{rn_2461};
+		} else if (rn_2443 == 11) {
+			Anim rn_2462 = Anim.rn_3310("Gravebuster", rn_2440).rn_3366("anim_idle", false);
+			rn_2444.anim = new Anim[]{rn_2462};
+		} else if (rn_2443 == 12) {
+			Anim rn_2463 = Anim.rn_3310("Hypnoshroom", rn_2440).rn_3366("anim_idle", false);
+			rn_2444.anim = new Anim[]{rn_2463};
+		} else if (rn_2443 == 13) {
+			Anim rn_2464 = Anim.rn_3310("ScaredyShroom", rn_2440).rn_3366("anim_idle", false);
+			rn_2444.anim = new Anim[]{rn_2464};
+		} else if (rn_2443 == 14) {
+			Anim rn_2465 = Anim.rn_3310("Iceshroom", rn_2440).rn_3366("anim_idle", false);
+			rn_2444.anim = new Anim[]{rn_2465};
+		} else if (rn_2443 == 15) {
+			Anim rn_2466 = Anim.rn_3310("DoomShroom", rn_2440).rn_3366("anim_idle", false);
+			rn_2444.anim = new Anim[]{rn_2466};
+		} else if (rn_2443 == 16) {
+			Anim rn_2467 = Anim.rn_3310("Lilypad", rn_2440).rn_3366("anim_idle", false);
+			rn_2444.anim = new Anim[]{rn_2467};
+		} else if (rn_2443 == 17) {
+			Anim rn_2468 = Anim.rn_3310("Squash", rn_2440).rn_3366("anim_idle", false);
+			rn_2444.anim = new Anim[]{rn_2468};
+		} else if (rn_2443 == 18) {
+			Anim rn_2469 = Anim.rn_3310("ThreePeater", rn_2440).rn_3366("anim_idle", false);
+			rn_2444.anim = new Anim[]{rn_2469};
+		} else if (rn_2443 == 19) {
+			Anim rn_2470 = Anim.rn_3310("Tanglekelp", rn_2440).rn_3366("anim_idle", false);
+			rn_2444.anim = new Anim[]{rn_2470};
+		} else if (rn_2443 == 20) {
+			Anim rn_2471 = Anim.rn_3310("Jalapeno", rn_2440).rn_3366("anim_idle", false);
+			rn_2444.anim = new Anim[]{rn_2471};
+		} else if (rn_2443 == 21) {
+			Anim rn_2472 = Anim.rn_3310("Caltrop", rn_2440).rn_3366("anim_idle", false);
+			rn_2444.anim = new Anim[]{rn_2472};
+		} else if (rn_2443 == 22) {
+			Anim rn_2473 = Anim.rn_3310("Torchwood", rn_2440).rn_3366("anim_idle", false);
+			rn_2444.anim = new Anim[]{rn_2473};
+		} else if (rn_2443 == 23) {
+			Anim rn_2474 = Anim.rn_3310("Tallnut", rn_2440).rn_3366("anim_idle", false);
+			rn_2444.anim = new Anim[]{rn_2474};
+		} else if (rn_2443 == 24) {
+			Anim rn_2475 = Anim.rn_3310("SeaShroom", rn_2440).rn_3366("anim_idle", false);
+			rn_2444.anim = new Anim[]{rn_2475};
+		} else if (rn_2443 == 25) {
+			Anim rn_2476 = Anim.rn_3310("Plantern", rn_2440).rn_3366("anim_idle", false);
+			rn_2444.anim = new Anim[]{rn_2476};
+		} else if (rn_2443 == 26) {
+			Anim rn_2477 = Anim.rn_3310("Cactus", rn_2440).rn_3366("anim_idle", false);
+			rn_2444.anim = new Anim[]{rn_2477};
+		} else if (rn_2443 == 27) {
+			Anim rn_2478 = Anim.rn_3310("Blover", rn_2440).rn_3366("anim_idle", false);
+			rn_2444.anim = new Anim[]{rn_2478};
+		} else if (rn_2443 == 28) {
+			Anim rn_2479 = Anim.rn_3310("SplitPea", rn_2440).rn_3366("anim_idle", false);
+			rn_2444.anim = new Anim[]{rn_2479};
+		} else if (rn_2443 == 29) {
+			Anim rn_2480 = Anim.rn_3310("Starfruit", rn_2440).rn_3366("anim_idle", false);
+			rn_2444.anim = new Anim[]{rn_2480};
+		} else if (rn_2443 == 30) {
+			Anim rn_2481 = Anim.rn_3310("Pumpkin", rn_2440).rn_3366("anim_idle", false);
+			rn_2444.HP = 4000;
+			rn_2481.speed = 0.5F;
+			rn_2444.anim = new Anim[]{rn_2481};
+		} else if (rn_2443 == 31) {
+			Anim rn_2482 = Anim.rn_3310("Magnetshroom", rn_2440).rn_3366("anim_idle", false);
+			rn_2444.anim = new Anim[]{rn_2482};
+		} else if (rn_2443 == 32) {
+			Anim rn_2483 = Anim.rn_3310("Cabbagepult", rn_2440).rn_3366("anim_idle", false);
+			rn_2444.anim = new Anim[]{rn_2483};
+		} else if (rn_2443 == 33) {
+			Anim rn_2484 = Anim.rn_3310("Pot", rn_2440).rn_3366("anim_idle", false);
+			rn_2444.anim = new Anim[]{rn_2484};
+		} else if (rn_2443 == 34) {
+			Anim rn_2485 = Anim.rn_3310("Cornpult", rn_2440).rn_3366("anim_idle", false);
+			rn_2444.anim = new Anim[]{rn_2485};
+		} else if (rn_2443 == 35) {
+			Anim rn_2486 = Anim.rn_3310("Coffeebean", rn_2440).rn_3366("anim_idle", false);
+			rn_2444.anim = new Anim[]{rn_2486};
+		} else if (rn_2443 == 36) {
+			Anim rn_2487 = Anim.rn_3310("Garlic", rn_2440).rn_3366("anim_idle", false);
+			rn_2444.anim = new Anim[]{rn_2487};
+		} else if (rn_2443 == 37) {
+			Anim rn_2488 = Anim.rn_3310("Umbrellaleaf", rn_2440).rn_3366("anim_idle", false);
+			rn_2444.anim = new Anim[]{rn_2488};
+		} else if (rn_2443 == 38) {
+			Anim rn_2489 = Anim.rn_3310("Marigold", rn_2440).rn_3366("anim_idle", false);
+			rn_2444.anim = new Anim[]{rn_2489};
+		} else if (rn_2443 == 39) {
+			Anim rn_2490 = Anim.rn_3310("Melonpult", rn_2440).rn_3366("anim_idle", false);
+			rn_2444.anim = new Anim[]{rn_2490};
+		} else if (rn_2443 == 40) {
+			Anim rn_2491 = Anim.rn_3310("GatlingPea", rn_2440).rn_3366("anim_idle", false);
+			rn_2444.anim = new Anim[]{rn_2491};
+		} else if (rn_2443 == 41) {
+			Anim rn_2492 = Anim.rn_3310("TwinSunflower", rn_2440).rn_3366("anim_idle", false);
+			rn_2444.anim = new Anim[]{rn_2492};
+		} else if (rn_2443 == 42) {
+			Anim rn_2493 = Anim.rn_3310("GloomShroom", rn_2440).rn_3366("anim_idle", false);
+			rn_2444.anim = new Anim[]{rn_2493};
+		} else if (rn_2443 == 43) {
+			Anim rn_2494 = Anim.rn_3310("Cattail", rn_2440).rn_3366("anim_idle", false);
+			rn_2444.anim = new Anim[]{rn_2494};
+		} else if (rn_2443 == 44) {
+			Anim rn_2495 = Anim.rn_3310("WinterMelon", rn_2440).rn_3366("anim_idle", false);
+			rn_2444.anim = new Anim[]{rn_2495};
+		} else if (rn_2443 == 45) {
+			Anim rn_2496 = Anim.rn_3310("GoldMagnet", rn_2440).rn_3366("anim_idle", false);
+			rn_2444.anim = new Anim[]{rn_2496};
+		} else if (rn_2443 == 46) {
+			Anim rn_2497 = Anim.rn_3310("SpikeRock", rn_2440).rn_3366("anim_idle", false);
+			rn_2444.anim = new Anim[]{rn_2497};
+		} else if (rn_2443 == 47) {
+			Anim rn_2498 = Anim.rn_3310("TangleKelp", rn_2440).rn_3366("anim_idle", false);
+			rn_2444.anim = new Anim[]{rn_2498};
+		} else if (rn_2443 == 48) {
+			Anim rn_2499 = Anim.rn_3310("Imitater", rn_2440).rn_3366("anim_idle", false);
+			rn_2444.anim = new Anim[]{rn_2499};
+		} else if (rn_2443 == 49) {
+			Anim rn_2500 = Anim.rn_3310("TangleKelp", rn_2440).rn_3366("anim_idle", false);
+			rn_2444.anim = new Anim[]{rn_2500};
+		} else if (rn_2443 == 50) {
+			Anim rn_2501 = Anim.rn_3310("TangleKelp", rn_2440).rn_3366("anim_idle", false);
+			rn_2444.anim = new Anim[]{rn_2501};
+		} else if (rn_2443 == 51) {
+			Anim rn_2502 = Anim.rn_3310("TangleKelp", rn_2440).rn_3366("anim_idle", false);
+			rn_2444.anim = new Anim[]{rn_2502};
+		} else if (rn_2443 == 52) {
+			Anim rn_2503 = Anim.rn_3310("TangleKelp", rn_2440).rn_3366("anim_idle", false);
+			rn_2444.anim = new Anim[]{rn_2503};
+		}
+		rn_2444.HPM = rn_2444.HP;
+		return rn_2444;
+	}
+
+	public final boolean rn_2504() {
+		if (HP <= 0) {
 			return true;
 		}
-		if (rn_2617 == 0 || rn_2617 == 5 || rn_2617 == 7 || rn_2617 == 8) {
-			Zombie rn_2703 = rn_2725();
-			if (rn_2617 == 0 || rn_2617 == 5 || rn_2617 == 7 || rn_2617 == 8) {
-				Anim rn_2704 = null;
-				if (rn_2617 == 0 || rn_2617 == 5 || rn_2617 == 7) {
-					rn_2704 = rn_2618 [0].rn_3492.rn_3424("anim_stem");
-				} else if (rn_2617 == 8) {
-					rn_2704 = rn_2618 [0];
-				}
-				if ((rn_2624 == 30 || (rn_2624 == 0 && rn_2617 == 7)) && rn_2703 != null) {
-					rn_2704.rn_3487 = 1.0F;
-					if (rn_2617 == 7) {
-						rn_2704.rn_3487 = 1.8F;
-					}
-					String rn_2705 = rn_2704.rn_3495;
-					if (rn_3289.rn_6852(rn_2704.rn_3494, "")) {
-						rn_2705 = rn_2704.rn_3494;
-					}
-					rn_2704.rn_3562("anim_shooting", true);
-					rn_2704.rn_3494 = rn_2705;
-					rn_2628 = true;
-				} else if ((rn_2624 == 1 || (rn_2624 == 130 && rn_2617 == 7)) && rn_2628) {
-					rn_2721();
-					if ((rn_2617 == 7 && rn_2624 == 15) == false) {
-						rn_2628 = false;
-					}
-				}
-				if (rn_3289.rn_6852(rn_2704.rn_3495, "anim_shooting")) {
-					rn_2704.rn_3487 = 0.5F;
-				}
-			}
-			if (rn_2628 || rn_2703 != null) {
-				rn_2624 = rn_2624 - 1;
-				if (rn_2624 < 0) {
-					rn_2624 = rn_2625;
-				}
-			}
-		} else if (rn_2617 == 1) {
-			if (rn_2624 <= 0) {
-				Coin rn_2706 = Coin.rn_2788(rn_2636, static_.rn_2805, rn_2736() + 50, rn_2620);
-				rn_2706.rn_2772 = -2.0F;
-				rn_2706.rn_2773 = 0.04F;
-				rn_2706.rn_2771 = op.rn_1242(rn_7317.rn_7331(-0.5F, 0.5F));
-				rn_2706.rn_2778 = rn_2736() - 50;
-				rn_2706.rn_2779 = rn_2736() + 50;
-				rn_2706.rn_2780 = rn_2620 + 50;
-				CoinList.rn_2468(rn_2636.rn_492, rn_2706);
-				rn_2624 = rn_2625;
-			} else {
-				rn_2624 = rn_2624 - 1;
-			}
-		} else if (rn_2617 == 2) {
-			if (rn_2618 [0].rn_3498) {
-				ParticleList.rn_2530(rn_2636.rn_481, Particle.rn_2852("Powie", rn_2736(), rn_2737(), rn_2622, rn_2636));
-				float rn_2707 = rn_2619 + rn_2627.rn_3666;
-				float rn_2708 = rn_2620 + rn_2627.rn_3667;
-				for (int rn_10561 = 0;rn_10561 < ZombieList.rn_1225(rn_2636.rn_477);rn_10561 += 1) {
-					Zombie rn_2709 = ZombieList.rn_2366((rn_2636.rn_477), rn_10561);
-					float rn_2710 = rn_2709.rn_2170 + rn_2627.rn_3666 + rn_2627.rn_3668 / 2;
-					float rn_2711 = rn_2709.rn_2171 + rn_2627.rn_3667 + rn_2627.rn_3667 / 2;
-					int rn_2712 = 140;
-					if (rn_2707 - rn_2712 < rn_2710 && rn_2710 < rn_2707 + rn_2712 && (rn_2708 - rn_2712 < rn_2711 && rn_2711 < rn_2708 + rn_2712)) {
-						rn_2709.rn_2330(1800, 1);
-					}
-				}
+		if (rn_2438 != -1) {
+			rn_2438 = rn_2438 - 1;
+			if (rn_2438 < 1) {
 				return true;
 			}
-		} else if (rn_2617 == 3) {
-			if (rn_2615 < rn_2616 * 1 / 3) {
-				rn_2618 [0].rn_3529("anim_face", "IMAGE_REANIM_" + rn_3289.rn_6879("Wallnut_cracked2"));
-			} else if (rn_2615 < rn_2616 * 2 / 3) {
-				rn_2618 [0].rn_3529("anim_face", "IMAGE_REANIM_" + rn_3289.rn_6879("Wallnut_cracked1"));
-			} else {
-				rn_2618 [0].rn_3529("anim_face", "IMAGE_REANIM_WALLNUT_BODY");
-			}
-		} else if (rn_2617 == 4) {
-			if (rn_3289.rn_6850(rn_2634, "boom")) {
-				rn_2621 = 1.2F;
-				float rn_2713 = rn_2619 + rn_2627.rn_3666;
-				float rn_2714 = rn_2620 + rn_2627.rn_3667;
-				for (int rn_10562 = 0;rn_10562 < ZombieList.rn_1225(rn_2636.rn_477);rn_10562 += 1) {
-					Zombie rn_2715 = ZombieList.rn_2366((rn_2636.rn_477), rn_10562);
-					float rn_2716 = rn_2715.rn_2170 + rn_2627.rn_3666 + rn_2627.rn_3668 / 2;
-					float rn_2717 = rn_2715.rn_2171 + rn_2627.rn_3667 + rn_2627.rn_3667 / 2;
-					int rn_2718 = 100;
-					if (rn_2713 - rn_2718 < rn_2716 && rn_2716 < rn_2713 + rn_2718 && (rn_2714 - rn_2718 < rn_2717 && rn_2717 < rn_2714 + rn_2718)) {
-						rn_2715.rn_2330(1800, 3);
+		}
+		if (dying == false && rn_2438 == -1) {
+			if (type == 0 || type == 5 || type == 7 || type == 8) {
+				Zombie rn_2505 = rn_2527();
+				if (type == 0 || type == 5 || type == 7 || type == 8) {
+					Anim rn_2506 = null;
+					if (type == 0 || type == 5 || type == 7) {
+						rn_2506 = anim [0].panims.rn_3214("anim_stem");
+					} else if (type == 8) {
+						rn_2506 = anim [0];
+					}
+					if ((rn_2423 == 30 || (rn_2423 == 0 && type == 7)) && rn_2505 != null) {
+						rn_2506.speed = 1.0F;
+						if (type == 7) {
+							rn_2506.speed = 1.8F;
+						}
+						String rn_2507 = rn_2506.animname;
+						if (rn_3081.rn_6684(rn_2506.animReturn, "")) {
+							rn_2507 = rn_2506.animReturn;
+						}
+						rn_2506.rn_3366("anim_shooting", true);
+						rn_2506.animReturn = rn_2507;
+						rn_2427 = true;
+					} else if ((rn_2423 == 1 || (rn_2423 == 130 && type == 7)) && rn_2427) {
+						rn_2523();
+						if ((type == 7 && rn_2423 == 15) == false) {
+							rn_2427 = false;
+						}
+					}
+					if (rn_3081.rn_6684(rn_2506.animname, "anim_shooting")) {
+						rn_2506.speed = 0.5F;
 					}
 				}
-				rn_2633 = true;
-				rn_2618 [0].rn_3562("anim_mashed", false).rn_3498 = true;
-				rn_2618 [0].rn_3500 = true;
-				rn_2634 = "dying";
-				rn_2624 = 300;
-			}
-			if (rn_2624 == 0) {
-				if (rn_3289.rn_6850(rn_2634, "dying")) {
+				if (rn_2427 || rn_2505 != null) {
+					rn_2423 = rn_2423 - 1;
+					if (rn_2423 < 0) {
+						rn_2423 = rn_2424;
+					}
+				}
+			} else if (type == 1) {
+				if (rn_2423 <= 0) {
+					Coin rn_2508 = Coin.rn_2601(rn_2434, static_.rn_2618, rn_2539() + 50, y);
+					rn_2508.rn_2585 = -2.0F;
+					rn_2508.rn_2586 = 0.04F;
+					rn_2508.rn_2584 = op.rn_1038(rn_7149.rn_7163(-0.5F, 0.5F));
+					rn_2508.rn_2591 = rn_2539() - 50;
+					rn_2508.rn_2592 = rn_2539() + 50;
+					rn_2508.rn_2593 = y + 50;
+					CoinList.rn_2251(rn_2434.coinlist, rn_2508);
+					rn_2423 = rn_2424;
+				} else {
+					rn_2423 = rn_2423 - 1;
+				}
+			} else if (type == 2) {
+				if (anim [0].pause) {
+					ParticleList.rn_2313(rn_2434.particleList, Particle.rn_2665("Powie", rn_2539(), rn_2540(), rn_2421, rn_2434));
+					float rn_2509 = x + rn_2426.rn_3485;
+					float rn_2510 = y + rn_2426.rn_3486;
+					for (int rn_10415 = 0;rn_10415 < ZombieList.rn_1021(rn_2434.zombieList);rn_10415 += 1) {
+						Zombie rn_2511 = ZombieList.rn_2149((rn_2434.zombieList), rn_10415);
+						float rn_2512 = rn_2511.x + rn_2426.rn_3485 + rn_2426.rn_3487 / 2;
+						float rn_2513 = rn_2511.y + rn_2426.rn_3486 + rn_2426.rn_3486 / 2;
+						int rn_2514 = 140;
+						if (rn_2509 - rn_2514 < rn_2512 && rn_2512 < rn_2509 + rn_2514 && (rn_2510 - rn_2514 < rn_2513 && rn_2513 < rn_2510 + rn_2514)) {
+							rn_2511.damage(1800, 1);
+						}
+					}
 					return true;
+				}
+			} else if (type == 3) {
+				if (HP < HPM * 1 / 3) {
+					anim [0].rn_3333("anim_face", "IMAGE_REANIM_" + rn_3081.rn_6711("Wallnut_cracked2"));
+				} else if (HP < HPM * 2 / 3) {
+					anim [0].rn_3333("anim_face", "IMAGE_REANIM_" + rn_3081.rn_6711("Wallnut_cracked1"));
 				} else {
-					rn_2618 [0].rn_3562("anim_rise", false);
-					rn_2618 [0].rn_3494 = "anim_armed";
-					rn_2632 = true;
+					anim [0].rn_3333("anim_face", "IMAGE_REANIM_WALLNUT_BODY");
 				}
-			} else if (rn_2624 < 0) {
-				if (rn_3289.rn_6850(rn_2618 [0].rn_3494, "")) {
-					rn_2634 = "idle";
+			} else if (type == 4) {
+				if (rn_3081.rn_6682(state, "boom")) {
+					scale = 1.2F;
+					float rn_2515 = x + rn_2426.rn_3485;
+					float rn_2516 = y + rn_2426.rn_3486;
+					for (int rn_10416 = 0;rn_10416 < ZombieList.rn_1021(rn_2434.zombieList);rn_10416 += 1) {
+						Zombie rn_2517 = ZombieList.rn_2149((rn_2434.zombieList), rn_10416);
+						float rn_2518 = rn_2517.x + rn_2426.rn_3485 + rn_2426.rn_3487 / 2;
+						float rn_2519 = rn_2517.y + rn_2426.rn_3486 + rn_2426.rn_3486 / 2;
+						int rn_2520 = 100;
+						if (rn_2515 - rn_2520 < rn_2518 && rn_2518 < rn_2515 + rn_2520 && (rn_2516 - rn_2520 < rn_2519 && rn_2519 < rn_2516 + rn_2520)) {
+							rn_2517.damage(1800, 3);
+						}
+					}
+					rn_2432 = true;
+					anim [0].rn_3366("anim_mashed", false).pause = true;
+					anim [0].prohibitEvolution = true;
+					state = "dying";
+					rn_2423 = 300;
 				}
-			}
-			rn_2624 = rn_2624 - 1;
-		} else if (rn_2617 == 6) {
-			Zombie rn_2719 = rn_2725();
-			if (rn_2719 != null && (rn_2624 <= 0) && rn_3289.rn_6850(rn_2618 [0].rn_3495, "anim_idle")) {
-				rn_2618 [0].rn_3487 = rn_2618 [0].rn_3487 * 2;
-				rn_2634 = "bite";
-				rn_2618 [0].rn_3562("anim_bite", false);
-				rn_2618 [0].rn_3499 = true;
-			} else if (rn_3289.rn_6850(rn_2618 [0].rn_3495, "anim_bite") && rn_2618 [0].rn_3485 >= 42 && rn_3289.rn_6850(rn_2634, "bite")) {
-				rn_2634 = "chew";
-				if (rn_2719 == null) {
+				if (rn_2423 == 0) {
+					if (rn_3081.rn_6682(state, "dying")) {
+						return true;
+					} else {
+						anim [0].rn_3366("anim_rise", false);
+						anim [0].animReturn = "anim_armed";
+						rn_2431 = true;
+					}
+				} else if (rn_2423 < 0) {
+					if (rn_3081.rn_6682(anim [0].animReturn, "")) {
+						state = "idle";
+					}
+				}
+				rn_2423 = rn_2423 - 1;
+			} else if (type == 6) {
+				Zombie rn_2521 = rn_2527();
+				if (rn_2521 != null && (rn_2423 <= 0) && rn_3081.rn_6682(anim [0].animname, "anim_idle")) {
+					anim [0].speed = anim [0].speed * 2;
+					state = "bite";
+					anim [0].rn_3366("anim_bite", false);
+					anim [0].pauseAfterBroadcasting = true;
+				} else if (rn_3081.rn_6682(anim [0].animname, "anim_bite") && anim [0].frame >= 42 && rn_3081.rn_6682(state, "bite")) {
+					state = "chew";
+					if (rn_2521 == null) {
+					} else {
+						rn_2423 = 4340;
+						rn_2521.die = true;
+					}
+				} else if (rn_3081.rn_6682(anim [0].animname, "anim_bite") && anim [0].pause) {
+					anim [0].speed = 0.5F;
+					anim [0].pauseAfterBroadcasting = false;
+					if (rn_2423 == 0) {
+						float rn_2522 = anim [0].frame;
+						anim [0].rn_3366("anim_idle", false);
+						anim [0].rn_3354((int) rn_2522, 4);
+					} else {
+						anim [0].rn_3366("anim_chew", false);
+					}
+				} else if (rn_2423 <= 0 && rn_3081.rn_6682(anim [0].animname, "anim_chew")) {
+					state = "swall";
+					anim [0].rn_3366("anim_swallow", false);
+					anim [0].animReturn = "anim_idle";
+				}
+				if (rn_2423 > 0) {
+					rn_2423 = rn_2423 - 1;
 				} else {
-					rn_2624 = 4340;
-					rn_2719.rn_2196 = true;
+					rn_2423 = 0;
 				}
-			} else if (rn_3289.rn_6850(rn_2618 [0].rn_3495, "anim_bite") && rn_2618 [0].rn_3498) {
-				rn_2618 [0].rn_3487 = 0.5F;
-				rn_2618 [0].rn_3499 = false;
-				if (rn_2624 == 0) {
-					float rn_2720 = rn_2618 [0].rn_3485;
-					rn_2618 [0].rn_3562("anim_idle", false);
-					rn_2618 [0].rn_3550((int) rn_2720, 4);
+			} else if (type == 30) {
+				if (HP < HPM * 1 / 4) {
+					anim [0].rn_3333("Pumpkin_front", "IMAGE_REANIM_" + rn_3081.rn_6711("Pumpkin_damage3"));
+				} else if (HP < HPM * 2 / 4) {
+					anim [0].rn_3333("Pumpkin_front", "IMAGE_REANIM_" + rn_3081.rn_6711("Pumpkin_damage2"));
+				} else if (HP < HPM * 3 / 4) {
+					anim [0].rn_3333("Pumpkin_front", "IMAGE_REANIM_" + rn_3081.rn_6711("Pumpkin_damage1"));
 				} else {
-					rn_2618 [0].rn_3562("anim_chew", false);
+					anim [0].rn_3333("Pumpkin_front", "IMAGE_REANIM_" + rn_3081.rn_6711("Pumpkin_front"));
 				}
-			} else if (rn_2624 <= 0 && rn_3289.rn_6850(rn_2618 [0].rn_3495, "anim_chew")) {
-				rn_2634 = "swall";
-				rn_2618 [0].rn_3562("anim_swallow", false);
-				rn_2618 [0].rn_3494 = "anim_idle";
-			}
-			if (rn_2624 > 0) {
-				rn_2624 = rn_2624 - 1;
-			} else {
-				rn_2624 = 0;
-			}
-		} else if (rn_2617 == 30) {
-			if (rn_2615 < rn_2616 * 1 / 4) {
-				rn_2618 [0].rn_3529("Pumpkin_front", "IMAGE_REANIM_" + rn_3289.rn_6879("Pumpkin_damage3"));
-			} else if (rn_2615 < rn_2616 * 2 / 4) {
-				rn_2618 [0].rn_3529("Pumpkin_front", "IMAGE_REANIM_" + rn_3289.rn_6879("Pumpkin_damage2"));
-			} else if (rn_2615 < rn_2616 * 3 / 4) {
-				rn_2618 [0].rn_3529("Pumpkin_front", "IMAGE_REANIM_" + rn_3289.rn_6879("Pumpkin_damage1"));
-			} else {
-				rn_2618 [0].rn_3529("Pumpkin_front", "IMAGE_REANIM_" + rn_3289.rn_6879("Pumpkin_front"));
 			}
 		}
 		return false;
 	}
 
-	public final void rn_2721() {
-		int rn_2722 = 50;
-		int rn_2723 = 16 + rn_7317.rn_7328(0, 5) - 5;
-		String rn_2724 = "ProjectilePea";
-		if (rn_2617 == 5) {
-			rn_2724 = "ProjectileSnowPea";
-		} else if (rn_2617 == 8) {
-			rn_2724 = "PuffShroom_puff1";
-			rn_2723 = 45;
-			ParticleList.rn_2530(rn_2636.rn_481, Particle.rn_2852("PuffShroomMuzzle", rn_2736() + 50, rn_2737() + 45, rn_2622, rn_2636));
+	public final void rn_2523() {
+		int rn_2524 = 50;
+		int rn_2525 = 16 + rn_7149.rn_7160(0, 5) - 5;
+		String rn_2526 = "ProjectilePea";
+		if (type == 5) {
+			rn_2526 = "ProjectileSnowPea";
+		} else if (type == 8) {
+			rn_2526 = "PuffShroom_puff1";
+			rn_2525 = 45;
+			ParticleList.rn_2313(rn_2434.particleList, Particle.rn_2665("PuffShroomMuzzle", rn_2539() + 50, rn_2540() + 45, rn_2421, rn_2434));
 		}
-		ProjList.rn_2437(rn_2636.rn_479, Proj.rn_2756(rn_2636, rn_2724, rn_2622, rn_2736() + rn_2722, rn_2620 + rn_2723));
+		ProjList.rn_2220(rn_2434.projList, Proj.rn_2569(rn_2434, rn_2526, rn_2421, rn_2539() + rn_2524, y + rn_2525));
 	}
 
-	public final Zombie rn_2725() {
-		Zombie rn_2726 = null;
-		for (int rn_10563 = 0;rn_10563 < ZombieList.rn_1225(rn_2636.rn_477);rn_10563 += 1) {
-			Zombie rn_2727 = ZombieList.rn_2366((rn_2636.rn_477), rn_10563);
-			if (rn_2727.rn_2186 == false && rn_2727.rn_2174 == rn_2622 && rn_2727.rn_2329() > rn_2736() - 50 && (rn_2726 == null || rn_2727.rn_2329() < rn_2726.rn_2329())) {
-				rn_2726 = rn_2727;
+	public final Zombie rn_2527() {
+		Zombie rn_2528 = null;
+		for (int rn_10417 = 0;rn_10417 < ZombieList.rn_1021(rn_2434.zombieList);rn_10417 += 1) {
+			Zombie rn_2529 = ZombieList.rn_2149((rn_2434.zombieList), rn_10417);
+			if (rn_2529.IsIntangible == false && rn_2529.row == rn_2421 && rn_2529.x() + rn_2529.cv.rn_3485 > rn_2539() - 30 && (rn_2528 == null || rn_2529.x() + rn_2528.cv.rn_3485 < rn_2528.x() + rn_2528.cv.rn_3485)) {
+				rn_2528 = rn_2529;
 			}
 		}
-		if (rn_2617 == 6 && rn_2726 != null && rn_2726.rn_2329() > rn_2736() + 120) {
+		if (type == 6 && rn_2528 != null && rn_2528.x() + rn_2528.cv.rn_3485 > rn_2539() + 160) {
 			return null;
 		}
-		if (rn_2617 == 8 && rn_2726 != null && rn_2726.rn_2329() > rn_2736() + 300) {
+		if (type == 8 && rn_2528 != null && rn_2528.x() + rn_2528.cv.rn_3485 > rn_2539() + 340) {
 			return null;
 		}
-		return rn_2726;
+		return rn_2528;
 	}
 
-	public final void rn_2728(float rn_2729, float rn_2730) {
-		rn_2619 = rn_2619 + rn_2729;
-		rn_2620 = rn_2620 + rn_2730;
-		rn_2627.rn_3666 = rn_2627.rn_3666 - rn_2729;
-		rn_2627.rn_3667 = rn_2627.rn_3667 - rn_2730;
+	public final void rn_2530() {
+		for (int rn_10418 = 0;rn_10418 < anim.length;rn_10418 += 1) {
+			anim [rn_10418].rn_3331(true);
+		}
+		rn_2435 = true;
+		rn_2431 = true;
+		rn_2432 = true;
+		dying = true;
+		rn_2438 = 500;
+		rn_2437 = Matrix_.rn_3422(Matrix_.rn_3406(Matrix_.rn_3395(), 1, 0.2F, 0, 60), 0, 10);
+		rn_2436 = true;
 	}
 
-	public final void rn_2731(float rn_2732, float rn_2733, float rn_2734, float rn_2735) {
-		rn_2627.rn_3666 = rn_2732;
-		rn_2627.rn_3667 = rn_2733;
-		rn_2627.rn_3668 = rn_2734;
-		rn_2627.rn_3669 = rn_2735;
+	public final void rn_2531(float rn_2532, float rn_2533) {
+		x = x + rn_2532;
+		y = y + rn_2533;
+		rn_2426.rn_3485 = rn_2426.rn_3485 - rn_2532;
+		rn_2426.rn_3486 = rn_2426.rn_3486 - rn_2533;
 	}
 
-	public final float rn_2736() {
-		return rn_2619;
+	public final void rn_2534(float rn_2535, float rn_2536, float rn_2537, float rn_2538) {
+		rn_2426.rn_3485 = rn_2535;
+		rn_2426.rn_3486 = rn_2536;
+		rn_2426.rn_3487 = rn_2537;
+		rn_2426.rn_3488 = rn_2538;
 	}
 
-	public final float rn_2737() {
-		return rn_2620;
+	public final float rn_2539() {
+		return x;
 	}
 
-	public final STSL rn_2738() {
-		STSL rn_2739 = new STSL();
-		rn_2739.rn_3661("HP", rn_6928.rn_6933(rn_2615));
-		rn_2739.rn_3661("type", rn_6928.rn_6933(rn_2617));
-		rn_2739.rn_3661("anim.name", rn_2618 [0].rn_3482);
-		rn_2739.rn_3661("anim.frame", rn_6945.rn_6947(rn_2618 [0].rn_3485));
-		rn_2739.rn_3661("anim.speed", rn_6945.rn_6947(rn_2618 [0].rn_3487));
-		rn_2739.rn_3661("anim.return", rn_2618 [0].rn_3494);
-		rn_2739.rn_3661("x", rn_6945.rn_6947(rn_2736()));
-		rn_2739.rn_3661("y", rn_6945.rn_6947(rn_2620));
-		rn_2739.rn_3661("row", rn_6928.rn_6933(rn_2622));
-		rn_2739.rn_3661("line", rn_6928.rn_6933(rn_2623));
-		rn_2739.rn_3661("dtime", rn_6928.rn_6933(rn_2624));
-		rn_2739.rn_3661("dtimemax", rn_6928.rn_6933(rn_2625));
-		rn_2739.rn_3661("delayt", rn_6928.rn_6933(rn_2626));
-		rn_2739.rn_3661("shable", rn_6925.rn_6926(rn_2628));
-		rn_2739.rn_3661("state", rn_2634);
-		return rn_2739;
+	public final float rn_2540() {
+		return y;
+	}
+
+	public final STSL rn_2541() {
+		STSL rn_2542 = new STSL();
+		rn_2542.rn_3480("HP", rn_6760.rn_6765(HP));
+		rn_2542.rn_3480("type", rn_6760.rn_6765(type));
+		rn_2542.rn_3480("anim.name", anim [0].name);
+		rn_2542.rn_3480("anim.frame", rn_6777.rn_6779(anim [0].frame));
+		rn_2542.rn_3480("anim.speed", rn_6777.rn_6779(anim [0].speed));
+		rn_2542.rn_3480("anim.return", anim [0].animReturn);
+		rn_2542.rn_3480("x", rn_6777.rn_6779(rn_2539()));
+		rn_2542.rn_3480("y", rn_6777.rn_6779(y));
+		rn_2542.rn_3480("row", rn_6760.rn_6765(rn_2421));
+		rn_2542.rn_3480("line", rn_6760.rn_6765(rn_2422));
+		rn_2542.rn_3480("dtime", rn_6760.rn_6765(rn_2423));
+		rn_2542.rn_3480("dtimemax", rn_6760.rn_6765(rn_2424));
+		rn_2542.rn_3480("delayt", rn_6760.rn_6765(rn_2425));
+		rn_2542.rn_3480("shable", rn_6757.rn_6758(rn_2427));
+		rn_2542.rn_3480("state", state);
+		return rn_2542;
+	}
+
+	public final String ToJSON() {
+		org.json.JSONObject rn_2543 = new org.json.JSONObject();
+		java.lang.reflect.Field[] rn_2544 = rn_8084.rn_8126(rn_4133.rn_6676(Plant.this));
+		for (int rn_10419 = 0;rn_10419 < rn_2544.length;rn_10419 += 1) {
+			java.lang.reflect.Field rn_2545 = rn_2544 [rn_10419];
+			String classname = rn_8084.rn_8094(rn_8150.rn_8161(rn_2545));
+			if (rn_3081.rn_6682(classname, "bk.pvz.Nirvana")) {
+			} else if (rn_3081.rn_6682(rn_8150.rn_7729(rn_2545), "anim")) {
+				try {;
+				Anim[] rn_2546 = (Anim[]) (rn_8150.rn_8165(rn_2545, Plant.this));
+				org.json.JSONObject rn_2547 = new org.json.JSONObject();
+				for (int rn_10420 = 0;rn_10420 < rn_2546.length;rn_10420 += 1) {
+					org.json.JSONObject rn_2548 = rn_4577.rn_4578(rn_4133.rn_6675(rn_2546 [rn_10420]));
+					rn_4577.rn_4607(rn_2547, "i" + rn_6760.rn_6765(rn_10420), rn_2548);
+				}
+				rn_4577.rn_4607(rn_2543, rn_8150.rn_7729(rn_2545), rn_2547);
+				} catch (Exception e) {;
+				ope.rn_1798(android.util.Log.getStackTraceString(e));;
+				};
+			} else {
+				rn_2545.setAccessible(true);
+				Object rn_2549 = rn_8150.rn_8165(rn_2545, Plant.this);
+				if (rn_3081.rn_6693(rn_4133.rn_6675(rn_2549), "{", 0)) {
+					org.json.JSONObject rn_2550 = rn_4577.rn_4578(rn_4133.rn_6675(rn_2549));
+					rn_4577.rn_4607(rn_2543, rn_8150.rn_7729(rn_2545), rn_2550);
+				} else {
+					rn_4577.rn_4607(rn_2543, rn_8150.rn_7729(rn_2545), rn_4133.rn_6675(rn_2549));
+				}
+			}
+		}
+		return rn_4577.rn_4614(rn_2543, 0);
+	}
+
+	public static final Plant FromJSON(String rn_2551, Nirvana rn_2552) {
+		org.json.JSONObject rn_2553 = rn_4577.rn_4578(rn_2551);
+		Plant rn_2554 = new Plant();
+		op.rn_1194(rn_2554, rn_2553, rn_2552);
+		rn_2554.rn_2434 = rn_2552;
+		return rn_2554;
 	}
 }

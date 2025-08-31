@@ -1,59 +1,59 @@
 package bk.pvz;
-import rn_6840.rn_6841.rn_6842.rn_6925;
-import bk.pvz.Point;
-import bk.pvz.ope;
-import rn_6840.rn_6841.rn_6842.rn_6945;
-import rn_6840.rn_6841.rn_6842.rn_4301;
 import bk.pvz.Pointed;
-import rn_6840.rn_6841.rn_6842.rn_3289;
-import rn_4581.rn_4582.rn_4583.rn_10083;
-import rn_6840.rn_6841.rn_6842.rn_6935;
-import rn_6840.rn_6841.rn_6842.rn_6941;
-import rn_4581.rn_4582.rn_4583.rn_7317;
+import rn_6672.rn_6673.rn_6674.rn_6777;
+import rn_6672.rn_6673.rn_6674.rn_6773;
+import bk.pvz.Point;
+import rn_6672.rn_6673.rn_6674.rn_4133;
+import rn_6672.rn_6673.rn_6674.rn_3081;
+import rn_4413.rn_4414.rn_4415.rn_9915;
+import bk.pvz.ope;
+import rn_4413.rn_4414.rn_4415.rn_7149;
+import rn_6672.rn_6673.rn_6674.rn_6757;
+import rn_6672.rn_6673.rn_6674.rn_6767;
 
 public class Detrect {
-	public java.util.ArrayList<Point> rn_4182 = new java.util.ArrayList<Point>();
-	public String rn_4183 = "";
-	public long rn_4184 = 0;
-	public Point rn_4185 = new Point();
+	public java.util.ArrayList<Point> rn_4014 = new java.util.ArrayList<Point>();
+	public String rn_4015 = "";
+	public long rn_4016 = 0;
+	public Point rn_4017 = new Point();
 
-	public static final Detrect rn_4186(float rn_4187, float rn_4188, float rn_4189, float rn_4190, float rn_4191, float rn_4192, float rn_4193, float rn_4194) {
-		Point rn_4195 = Point.rn_4178(rn_4187, rn_4188);
-		Point rn_4196 = Point.rn_4178(rn_4189, rn_4190);
-		Point rn_4197 = Point.rn_4178(rn_4191, rn_4192);
-		Point rn_4198 = Point.rn_4178(rn_4193, rn_4194);
-		return Detrect.rn_4199(new Point[]{rn_4195, rn_4196, rn_4197, rn_4198});
+	public static final Detrect rn_4018(float rn_4019, float rn_4020, float rn_4021, float rn_4022, float rn_4023, float rn_4024, float rn_4025, float rn_4026) {
+		Point rn_4027 = Point.rn_4010(rn_4019, rn_4020);
+		Point rn_4028 = Point.rn_4010(rn_4021, rn_4022);
+		Point rn_4029 = Point.rn_4010(rn_4023, rn_4024);
+		Point rn_4030 = Point.rn_4010(rn_4025, rn_4026);
+		return Detrect.rn_4031(new Point[]{rn_4027, rn_4028, rn_4029, rn_4030});
 	}
 
-	public static final Detrect rn_4199(Point[] rn_4200) {
-		Detrect rn_4201 = new Detrect();
-		rn_4201.rn_4182 = Pointed.rn_4215(rn_4200);
-		return rn_4201;
+	public static final Detrect rn_4031(Point[] rn_4032) {
+		Detrect rn_4033 = new Detrect();
+		rn_4033.rn_4014 = Pointed.rn_4047(rn_4032);
+		return rn_4033;
 	}
 
-	public final boolean rn_4202(Point rn_4203) {
-		long rn_4204 = rn_10083.rn_10089() - rn_4184;
-		if (rn_4204 < 200) {
-			double rn_4205 = rn_7317.rn_7338(rn_4185.rn_4176 - rn_4203.rn_4176);
-			double rn_4206 = rn_7317.rn_7338(rn_4185.rn_4177 - rn_4203.rn_4177);
-			if (rn_4205 < 10 && rn_4206 < 10) {
+	public final boolean rn_4034(Point rn_4035) {
+		long rn_4036 = rn_9915.rn_9921() - rn_4016;
+		if (rn_4036 < 200) {
+			double rn_4037 = rn_7149.rn_7170(rn_4017.rn_4008 - rn_4035.rn_4008);
+			double rn_4038 = rn_7149.rn_7170(rn_4017.rn_4009 - rn_4035.rn_4009);
+			if (rn_4037 < 10 && rn_4038 < 10) {
 				return true;
 			}
 		}
 		return false;
 	}
 
-	public final boolean rn_4207(Point rn_4208) {
-		Point[] rn_4209 = Pointed.rn_4244(rn_4182);
-		Point[] quad=rn_4209;
-		Point touch=rn_4208;
+	public final boolean rn_4039(Point rn_4040) {
+		Point[] rn_4041 = Pointed.rn_4076(rn_4014);
+		Point[] quad=rn_4041;
+		Point touch=rn_4040;
         if (quad.length != 4) {
             throw new IllegalArgumentException("四边形必须有四个顶点");
         }
 
         // 计算四边形的面积（分成两个三角形）
-        double area1 = ope.rn_1857(quad[0], quad[1], quad[2]);
-        double area2 = ope.rn_1857(quad[0], quad[2], quad[3]);
+        double area1 = ope.rn_1730(quad[0], quad[1], quad[2]);
+        double area2 = ope.rn_1730(quad[0], quad[2], quad[3]);
         double area_quad = area1 + area2;
 
         // 计算触摸点与四边形构成的四个三角形的面积
@@ -61,36 +61,36 @@ public class Detrect {
         for (int i = 0; i < 4; i++) {
             Point p1 = quad[i];
             Point p2 = quad[(i + 1) % 4];
-            area_sum += ope.rn_1857(touch, p1, p2);
+            area_sum += ope.rn_1730(touch, p1, p2);
         }
 
         // 允许一定的浮点误差
         return Math.abs(area_sum - area_quad) < 1;
 	}
 
-	public interface rn_4210_r {
-		void dispatch(Point rn_4211, String rn_4212);
+	public interface rn_4042_r {
+		void dispatch(Point rn_4043, String rn_4044);
 	}
-	private rn_4210_r rn_4210_v;
-	public final void rn_4210_s(rn_4210_r receiver) {
-		this.rn_4210_v = receiver;
+	private rn_4042_r rn_4042_v;
+	public final void rn_4042_s(rn_4042_r receiver) {
+		this.rn_4042_v = receiver;
 	}
-	public final void rn_4210(Point rn_4211, String rn_4212) {
-		if (this.rn_4210_v != null) {
-			this.rn_4210_v.dispatch(rn_4211, rn_4212);
+	public final void rn_4042(Point rn_4043, String rn_4044) {
+		if (this.rn_4042_v != null) {
+			this.rn_4042_v.dispatch(rn_4043, rn_4044);
 		}
 	}
 
-	public interface rn_4213_r {
-		void dispatch(Point rn_4214);
+	public interface rn_4045_r {
+		void dispatch(Point rn_4046);
 	}
-	private rn_4213_r rn_4213_v;
-	public final void rn_4213_s(rn_4213_r receiver) {
-		this.rn_4213_v = receiver;
+	private rn_4045_r rn_4045_v;
+	public final void rn_4045_s(rn_4045_r receiver) {
+		this.rn_4045_v = receiver;
 	}
-	public final void rn_4213(Point rn_4214) {
-		if (this.rn_4213_v != null) {
-			this.rn_4213_v.dispatch(rn_4214);
+	public final void rn_4045(Point rn_4046) {
+		if (this.rn_4045_v != null) {
+			this.rn_4045_v.dispatch(rn_4046);
 		}
 	}
 }

@@ -1,30 +1,33 @@
 package bk.pvz;
-import rn_6840.rn_6841.rn_6842.rn_6928;
-import bk.pvz.Matrix_;
-import rn_6840.rn_6841.rn_6842.rn_6945;
-import rn_6840.rn_6841.rn_6842.rn_4301;
 import bk.pvz.Anim;
+import rn_6672.rn_6673.rn_6674.rn_6777;
+import rn_6672.rn_6673.rn_6674.rn_4133;
+import rn_6672.rn_6673.rn_6674.rn_6760;
+import bk.pvz.Matrix_;
 
 public class DrawStyle {
-	public Anim rn_3773 = null;
-	public float rn_3774 = 1.0F;
-	public float rn_3775 = 1.0F;
-	public float rn_3776 = 0.0F;
-	public float rn_3777 = 0.0F;
-	public float rn_3778 = 0.0F;
-	public float rn_3779 = 0.0F;
-	public int rn_3780 = 0;
-	public float rn_3781 = 0.0F;
-	public float rn_3782 = 0.0F;
-	public android.graphics.Matrix rn_3783 = null;
+	public Anim rn_3605 = null;
+	public float rn_3606 = 1.0F;
+	public float rn_3607 = 1.0F;
+	public float rn_3608 = 0.0F;
+	public float rn_3609 = 0.0F;
+	public float rn_3610 = 0.0F;
+	public float rn_3611 = 0.0F;
+	public int rn_3612 = 0;
+	public float rn_3613 = 0.0F;
+	public float rn_3614 = 0.0F;
+	public android.graphics.Matrix rn_3615 = null;
 
-	public final void rn_3784(DrawStyle rn_3785) {
-		rn_3774 = rn_3774 * rn_3785.rn_3774;
-		rn_3775 = rn_3775 * rn_3785.rn_3775;
-		rn_3776 = rn_3776 + rn_3785.rn_3776;
-		rn_3777 = rn_3777 + rn_3785.rn_3777;
-		rn_3780 = rn_3780 + rn_3785.rn_3780;
-		rn_3781 = rn_3781 + rn_3785.rn_3781;
-		rn_3782 = rn_3782 + rn_3785.rn_3782;
+	public final void rn_3616(DrawStyle rn_3617) {
+		rn_3606 = rn_3606 * rn_3617.rn_3606;
+		rn_3607 = rn_3607 * rn_3617.rn_3607;
+		rn_3608 = rn_3608 + rn_3617.rn_3608;
+		rn_3610 = rn_3610 + rn_3617.rn_3610;
+		rn_3611 = rn_3611 + rn_3617.rn_3611;
+		rn_3609 = rn_3609 + rn_3617.rn_3609;
+		rn_3612 = rn_3612 + rn_3617.rn_3612;
+		rn_3613 = rn_3613 + rn_3617.rn_3613;
+		rn_3614 = rn_3614 + rn_3617.rn_3614;
+		rn_3615 = rn_3617.rn_3615;
 	}
 }

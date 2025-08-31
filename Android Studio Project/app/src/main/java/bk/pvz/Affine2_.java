@@ -1,12 +1,12 @@
 package bk.pvz;
 import com.badlogic.gdx.math.Affine2;
+import rn_6672.rn_6673.rn_6674.rn_4133;
 import bk.pvz.Matrix3_;
-import rn_6840.rn_6841.rn_6842.rn_4301;
 
 public class Affine2_ {
-	public static com.badlogic.gdx.math.Affine2 rn_4057(com.badlogic.gdx.math.Matrix3 rn_4058) {
+	public static com.badlogic.gdx.math.Affine2 rn_3889(com.badlogic.gdx.math.Matrix3 rn_3890) {
 		Affine2 a2= new Affine2();
-		a2.set(rn_4058);
+		a2.set(rn_3890);
 		return a2;
 	}
 }

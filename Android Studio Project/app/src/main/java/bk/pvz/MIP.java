@@ -1,9 +1,9 @@
 package bk.pvz;
-import rn_6840.rn_6841.rn_6842.rn_6928;
+import rn_4413.rn_4414.rn_4415.rn_8652;
+import rn_6672.rn_6673.rn_6674.rn_4133;
+import rn_6672.rn_6673.rn_6674.rn_6760;
+import rn_4413.rn_4414.rn_4415.rn_9915;
 import bk.pvz.ope;
-import rn_6840.rn_6841.rn_6842.rn_4301;
-import rn_4581.rn_4582.rn_4583.rn_10083;
-import rn_4581.rn_4582.rn_4583.rn_8820;
 
 public class MIP implements com.badlogic.gdx.InputProcessor {
 	@Override
@@ -34,21 +34,21 @@ public class MIP implements com.badlogic.gdx.InputProcessor {
     @Override
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
         //System.out.println("Touch down at: " + screenX + ", " + screenY);
-		rn_4124(screenX,screenY);
+		rn_3956(screenX,screenY);
         return true;
     }
 
     @Override
     public boolean touchUp(int screenX, int screenY, int pointer, int button) {
         //System.out.println("Touch up at: " + screenX + ", " + screenY);
-		rn_4130(screenX,screenY);
+		rn_3962(screenX,screenY);
         return true;
     }
 
     @Override
     public boolean touchDragged(int screenX, int screenY, int pointer) {
         //System.out.println("Touch dragged to: " + screenX + ", " + screenY);
-		rn_4127(screenX,screenY);
+		rn_3959(screenX,screenY);
         return true;
     }
 
@@ -64,28 +64,28 @@ public class MIP implements com.badlogic.gdx.InputProcessor {
         return true;
     }
 
-	public final void rn_4124(int rn_4125, int rn_4126) {
-		rn_4133(ope.rn_2002(rn_10083.rn_10089(), 0, rn_4125, rn_4126));
+	public final void rn_3956(int rn_3957, int rn_3958) {
+		rn_3965(ope.rn_1875(rn_9915.rn_9921(), 0, rn_3957, rn_3958));
 	}
 
-	public final void rn_4127(int rn_4128, int rn_4129) {
-		rn_4133(ope.rn_2002(rn_10083.rn_10089(), 2, rn_4128, rn_4129));
+	public final void rn_3959(int rn_3960, int rn_3961) {
+		rn_3965(ope.rn_1875(rn_9915.rn_9921(), 2, rn_3960, rn_3961));
 	}
 
-	public final void rn_4130(int rn_4131, int rn_4132) {
-		rn_4133(ope.rn_2002(rn_10083.rn_10089(), 1, rn_4131, rn_4132));
+	public final void rn_3962(int rn_3963, int rn_3964) {
+		rn_3965(ope.rn_1875(rn_9915.rn_9921(), 1, rn_3963, rn_3964));
 	}
 
-	public interface rn_4133_r {
-		void dispatch(android.view.MotionEvent rn_4134);
+	public interface rn_3965_r {
+		void dispatch(android.view.MotionEvent rn_3966);
 	}
-	private rn_4133_r rn_4133_v;
-	public final void rn_4133_s(rn_4133_r receiver) {
-		this.rn_4133_v = receiver;
+	private rn_3965_r rn_3965_v;
+	public final void rn_3965_s(rn_3965_r receiver) {
+		this.rn_3965_v = receiver;
 	}
-	public final void rn_4133(android.view.MotionEvent rn_4134) {
-		if (this.rn_4133_v != null) {
-			this.rn_4133_v.dispatch(rn_4134);
+	public final void rn_3965(android.view.MotionEvent rn_3966) {
+		if (this.rn_3965_v != null) {
+			this.rn_3965_v.dispatch(rn_3966);
 		}
 	}
 }

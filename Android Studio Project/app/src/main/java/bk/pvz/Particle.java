@@ -1,218 +1,339 @@
 package bk.pvz;
-import rn_6840.rn_6841.rn_6842.rn_6925;
-import rn_6840.rn_6841.rn_6842.rn_6928;
+import bk.pvz.Nirvana;
+import bk.pvz.op;
+import rn_6672.rn_6673.rn_6674.rn_6777;
+import rn_6672.rn_6673.rn_6674.rn_6773;
+import bk.pvz.GrainSet;
+import rn_6672.rn_6673.rn_6674.rn_4133;
+import rn_6672.rn_6673.rn_6674.rn_6760;
+import rn_6672.rn_6673.rn_6674.rn_3081;
 import bk.pvz.Grain;
 import bk.pvz.ope;
-import rn_6840.rn_6841.rn_6842.rn_6945;
-import bk.pvz.GrainSet;
-import rn_6840.rn_6841.rn_6842.rn_4301;
-import rn_6840.rn_6841.rn_6842.rn_3289;
-import rn_6840.rn_6841.rn_6842.rn_6941;
-import bk.pvz.Nirvana;
-import rn_4581.rn_4582.rn_4583.rn_7317;
-import bk.pvz.op;
+import rn_4413.rn_4414.rn_4415.rn_7149;
+import rn_6672.rn_6673.rn_6674.rn_6757;
 
 public class Particle {
-	public java.util.ArrayList<Grain> rn_2842 = new java.util.ArrayList<Grain>();
-	public float rn_2843 = 0F;
-	public float rn_2844 = 0F;
-	public int rn_2845 = 0;
-	public int rn_2846 = 0;
-	public String rn_2847 = "";
-	public int rn_2849 = 0;
-	public Nirvana rn_2850 = null;
-	public boolean rn_2851 = false;
+	public java.util.ArrayList<Grain> rn_2655 = new java.util.ArrayList<Grain>();
+	public float rn_2656 = 0F;
+	public float rn_2657 = 0F;
+	public int rn_2658 = 0;
+	public int rn_2659 = 0;
+	public String rn_2660 = "";
+	public int rn_2662 = 0;
+	public Nirvana rn_2663 = null;
+	public boolean rn_2664 = false;
 
-	public static final Particle rn_2852(String rn_2853, float rn_2854, float rn_2855, int rn_2856, Nirvana rn_2857) {
-		Particle rn_2858 = new Particle();
-		rn_2858.rn_2849 = rn_2856;
-		rn_2858.rn_2843 = rn_2854;
-		rn_2858.rn_2844 = rn_2855;
-		rn_2858.rn_2847 = rn_2853;
-		rn_2858.rn_2850 = rn_2857;
-		if (rn_3289.rn_6850(rn_2853, "PeaSplat")) {
-			int rn_2859 = 20;
-			rn_2858.rn_2845 = 0;
-			rn_2858.rn_2846 = rn_2859;
-			Grain rn_2860 = Grain.rn_2953(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
-			rn_2860.rn_2942 = "pea_splats";
-			rn_2860.rn_2961(rn_2859);
-			rn_2860.rn_2943 = 4;
-			rn_2860.rn_2947 = true;
-			GrainSet.rn_2903(rn_2858.rn_2842, rn_2860);
-			for (int rn_10565 = 0;rn_10565 < rn_7317.rn_7328(6, 10);rn_10565 += 1) {
-				Grain rn_2861 = Grain.rn_2953(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
-				rn_2861.rn_2942 = "Pea_particles";
-				rn_2861.rn_2961(rn_2859);
-				rn_2861.rn_2943 = 3;
-				rn_2861.rn_2944 = rn_7317.rn_7328(0, 2);
-				float rn_2862 = ope.rn_1821(0.8F, 1.2F);
-				rn_2861.rn_2933 = "0-" + rn_2862 + " 80-" + rn_2862 + " 100-0";
-				rn_2861.rn_2932 = "0-1 80-1 100-0";
-				float rn_2863 = op.rn_1242(rn_7317.rn_7331(1.5F, 1.8F));
-				double rn_2864 = rn_7317.rn_7356(rn_7317.rn_7328(0, 359));
-				rn_2861.rn_2926 = rn_2863 * op.rn_1242(rn_7317.rn_7322(rn_2864));
-				rn_2861.rn_2927 = rn_2863 * op.rn_1242(rn_7317.rn_7334(rn_2864));
-				rn_2861.rn_2929 = 0.15F;
-				rn_2861.rn_2930 = Grain.rn_2967(0.1F);
-				rn_2861.rn_2931 = Grain.rn_2967(0.1F);
-				GrainSet.rn_2903(rn_2858.rn_2842, rn_2861);
+	public static final Particle rn_2665(String rn_2666, float rn_2667, float rn_2668, int rn_2669, Nirvana rn_2670) {
+		Particle rn_2671 = new Particle();
+		rn_2671.rn_2662 = rn_2669;
+		rn_2671.rn_2656 = rn_2667;
+		rn_2671.rn_2657 = rn_2668;
+		rn_2671.rn_2660 = rn_2666;
+		rn_2671.rn_2663 = rn_2670;
+		if (rn_3081.rn_6682(rn_2666, "PeaSplat")) {
+			int rn_2672 = 20;
+			rn_2671.rn_2658 = 0;
+			rn_2671.rn_2659 = rn_2672;
+			Grain rn_2673 = Grain.create(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
+			rn_2673.pic = "pea_splats";
+			rn_2673.setdtime(rn_2672);
+			rn_2673.cutn = 4;
+			rn_2673.isCarousel = true;
+			GrainSet.rn_2729(rn_2671.rn_2655, rn_2673);
+			for (int rn_10422 = 0;rn_10422 < rn_7149.rn_7160(6, 10);rn_10422 += 1) {
+				Grain rn_2674 = Grain.create(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
+				rn_2674.pic = "Pea_particles";
+				rn_2674.setdtime(rn_2672);
+				rn_2674.cutn = 3;
+				rn_2674.cutp = rn_7149.rn_7160(0, 2);
+				float rn_2675 = ope.rn_1684(0.8F, 1.2F);
+				rn_2674.scale = "0-" + rn_2675 + " 80-" + rn_2675 + " 100-0";
+				rn_2674.alpha = "0-1 80-1 100-0";
+				float rn_2676 = op.rn_1038(rn_7149.rn_7163(1.5F, 1.8F));
+				double rn_2677 = rn_7149.rn_7188(rn_7149.rn_7160(0, 359));
+				rn_2674.xv = rn_2676 * op.rn_1038(rn_7149.rn_7154(rn_2677));
+				rn_2674.yv = rn_2676 * op.rn_1038(rn_7149.rn_7166(rn_2677));
+				rn_2674.ya = 0.15F;
+				rn_2674.xf = Grain.fullvalue(0.1F);
+				rn_2674.yf = Grain.fullvalue(0.1F);
+				GrainSet.rn_2729(rn_2671.rn_2655, rn_2674);
 			}
-		} else if (rn_3289.rn_6850(rn_2853, "Powie")) {
-			int rn_2865 = 100;
-			rn_2858.rn_2851 = true;
-			rn_2858.rn_2845 = 0;
-			rn_2858.rn_2846 = rn_2865;
-			int rn_2866 = 10;
-			for (int rn_10566 = 0;rn_10566 < rn_2866;rn_10566 += 1) {
-				Grain rn_2867 = Grain.rn_2953(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
-				rn_2867.rn_2942 = "ExplosionCloud";
-				rn_2867.rn_2961(rn_2865);
-				String rn_2868 = rn_6945.rn_6947((rn_10566 * 10.0F / rn_2866 + 60.0F));
-				float rn_2869 = ope.rn_1821(1.2F, 1.6F);
-				rn_2867.rn_2933 = "0-" + rn_2869 + " 60-" + rn_2869 + " 100-0";
-				rn_2867.rn_2934 = Grain.rn_2967(1);
-				rn_2867.rn_2935 = "0-0.9 100-0.4";
-				rn_2867.rn_2936 = Grain.rn_2967(0);
-				rn_2867.rn_2932 = "0-1 " + rn_2868 + "-1 100-0";
-				rn_2867.rn_2937 = ope.rn_1821(0, 359);
-				rn_2867.rn_2938 = ope.rn_1821(-2, 2);
-				int rn_2870 = 2;
-				double rn_2871 = rn_7317.rn_7356(rn_7317.rn_7328(0, 359));
-				rn_2867.rn_2926 = rn_2870 * op.rn_1242(rn_7317.rn_7322(rn_2871));
-				rn_2867.rn_2927 = rn_2870 * op.rn_1242(rn_7317.rn_7334(rn_2871));
-				rn_2867.rn_2930 = "0-0.1 40-0.1 100-1";
-				rn_2867.rn_2931 = "0-0.28 40-0.28 100-1";
-				GrainSet.rn_2903(rn_2858.rn_2842, rn_2867);
+		} else if (rn_3081.rn_6682(rn_2666, "Powie")) {
+			int rn_2678 = 100;
+			rn_2671.rn_2664 = true;
+			rn_2671.rn_2658 = 0;
+			rn_2671.rn_2659 = rn_2678;
+			int rn_2679 = 10;
+			for (int rn_10423 = 0;rn_10423 < rn_2679;rn_10423 += 1) {
+				Grain rn_2680 = Grain.create(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
+				rn_2680.pic = "ExplosionCloud";
+				rn_2680.setdtime(rn_2678);
+				String rn_2681 = rn_6777.rn_6779((rn_10423 * 10.0F / rn_2679 + 60.0F));
+				float rn_2682 = ope.rn_1684(1.2F, 1.6F);
+				rn_2680.scale = "0-" + rn_2682 + " 60-" + rn_2682 + " 100-0";
+				rn_2680.red = Grain.fullvalue(1);
+				rn_2680.green = "0-0.9 100-0.4";
+				rn_2680.blue = Grain.fullvalue(0);
+				rn_2680.alpha = "0-1 " + rn_2681 + "-1 100-0";
+				rn_2680.rotate = ope.rn_1684(0, 359);
+				rn_2680.spinspeed = ope.rn_1684(-2, 2);
+				int rn_2683 = 2;
+				double rn_2684 = rn_7149.rn_7188(rn_7149.rn_7160(0, 359));
+				rn_2680.xv = rn_2683 * op.rn_1038(rn_7149.rn_7154(rn_2684));
+				rn_2680.yv = rn_2683 * op.rn_1038(rn_7149.rn_7166(rn_2684));
+				rn_2680.xf = "0-0.1 40-0.1 100-1";
+				rn_2680.yf = "0-0.28 40-0.28 100-1";
+				GrainSet.rn_2729(rn_2671.rn_2655, rn_2680);
 			}
-			rn_2866 = 14;
-			for (int rn_10567 = 0;rn_10567 < rn_2866;rn_10567 += 1) {
-				Grain rn_2872 = Grain.rn_2953(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
-				rn_2872.rn_2942 = "ExplosionCloud";
-				rn_2872.rn_2961(rn_2865);
-				rn_2872.rn_2934 = Grain.rn_2967(1);
-				rn_2872.rn_2935 = "0-0.7 100-0";
-				rn_2872.rn_2936 = Grain.rn_2967(0);
-				float rn_2873 = (rn_10567 * 50.0F / rn_2866 + 25.0F);
-				rn_2872.rn_2932 = "0-1 " + rn_6945.rn_6947(rn_2873) + "-1 " + rn_6945.rn_6947((rn_2873 + 24.0F)) + "-0";
-				rn_2872.rn_2933 = "0-0.5 60-0.5 100-0";
-				rn_2872.rn_2937 = ope.rn_1821(0, 359);
-				rn_2872.rn_2938 = ope.rn_1821(-2, 2);
-				int rn_2874 = 5;
-				double rn_2875 = rn_7317.rn_7356(rn_7317.rn_7328(0, 359));
-				rn_2872.rn_2926 = rn_2874 * op.rn_1242(rn_7317.rn_7322(rn_2875));
-				rn_2872.rn_2927 = rn_2874 * op.rn_1242(rn_7317.rn_7334(rn_2875));
-				rn_2872.rn_2930 = "0-0.15 40-0.15 100-1";
-				rn_2872.rn_2931 = "0-0.25 40-0.25 100-1";
-				GrainSet.rn_2903(rn_2858.rn_2842, rn_2872);
+			rn_2679 = 14;
+			for (int rn_10424 = 0;rn_10424 < rn_2679;rn_10424 += 1) {
+				Grain rn_2685 = Grain.create(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
+				rn_2685.pic = "ExplosionCloud";
+				rn_2685.setdtime(rn_2678);
+				rn_2685.red = Grain.fullvalue(1);
+				rn_2685.green = "0-0.7 100-0";
+				rn_2685.blue = Grain.fullvalue(0);
+				float rn_2686 = (rn_10424 * 50.0F / rn_2679 + 25.0F);
+				rn_2685.alpha = "0-1 " + rn_6777.rn_6779(rn_2686) + "-1 " + rn_6777.rn_6779((rn_2686 + 24.0F)) + "-0";
+				rn_2685.scale = "0-0.5 60-0.5 100-0";
+				rn_2685.rotate = ope.rn_1684(0, 359);
+				rn_2685.spinspeed = ope.rn_1684(-2, 2);
+				int rn_2687 = 5;
+				double rn_2688 = rn_7149.rn_7188(rn_7149.rn_7160(0, 359));
+				rn_2685.xv = rn_2687 * op.rn_1038(rn_7149.rn_7154(rn_2688));
+				rn_2685.yv = rn_2687 * op.rn_1038(rn_7149.rn_7166(rn_2688));
+				rn_2685.xf = "0-0.15 40-0.15 100-1";
+				rn_2685.yf = "0-0.25 40-0.25 100-1";
+				GrainSet.rn_2729(rn_2671.rn_2655, rn_2685);
 			}
-			Grain rn_2876 = Grain.rn_2953(-70, -70, 0.0F, 0.0F, 0.0F, 0.0F);
-			rn_2876.rn_2942 = "ExplosionPowie";
-			rn_2876.rn_2961(70);
-			GrainSet.rn_2903(rn_2858.rn_2842, rn_2876);
-		} else if (rn_3289.rn_6850(rn_2853, "DancerRise")) {
-			int rn_2877 = 200;
-			rn_2858.rn_2845 = 0;
-			rn_2858.rn_2846 = rn_2877;
-			for (int rn_10568 = 0;rn_10568 < 14;rn_10568 += 1) {
-				Grain rn_2878 = Grain.rn_2953(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
-				rn_2878.rn_2942 = "dirtbig";
-				rn_2878.rn_2961(rn_2877);
-				rn_2878.rn_2932 = "0-1 100-1";
-				float rn_2879 = ope.rn_1821(0.7F, 0.9F);
-				rn_2878.rn_2933 = "0-0 10-" + rn_2879 + " 100-" + rn_2879;
-				rn_2878.rn_2924 = ope.rn_1821(-30.0F, 30.0F);
-				rn_2878.rn_2925 = ope.rn_1821(-5.0F, 5.0F);
-				rn_2878.rn_2939 = 2.5F;
-				rn_2878.rn_2943 = 4;
-				rn_2878.rn_2945 = 2;
-				rn_2878.rn_2944 = rn_7317.rn_7328(0, 7);
-				GrainSet.rn_2903(rn_2858.rn_2842, rn_2878);
+			Grain rn_2689 = Grain.create(-70, -70, 0.0F, 0.0F, 0.0F, 0.0F);
+			rn_2689.pic = "ExplosionPowie";
+			rn_2689.setdtime(70);
+			GrainSet.rn_2729(rn_2671.rn_2655, rn_2689);
+		} else if (rn_3081.rn_6682(rn_2666, "DancerRise")) {
+			int rn_2690 = 200;
+			rn_2671.rn_2658 = 0;
+			rn_2671.rn_2659 = rn_2690;
+			for (int rn_10425 = 0;rn_10425 < 14;rn_10425 += 1) {
+				Grain rn_2691 = Grain.create(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
+				rn_2691.pic = "dirtbig";
+				rn_2691.setdtime(rn_2690);
+				rn_2691.alpha = "0-1 100-1";
+				float rn_2692 = ope.rn_1684(0.7F, 0.9F);
+				rn_2691.scale = "0-0 10-" + rn_2692 + " 100-" + rn_2692;
+				rn_2691.x = ope.rn_1684(-30.0F, 30.0F);
+				rn_2691.y = ope.rn_1684(-5.0F, 5.0F);
+				rn_2691.shake = 2.5F;
+				rn_2691.cutn = 4;
+				rn_2691.row = 2;
+				rn_2691.cutp = rn_7149.rn_7160(0, 7);
+				GrainSet.rn_2729(rn_2671.rn_2655, rn_2691);
 			}
-			int rn_2880 = 40;
-			for (int rn_10569 = 0;rn_10569 < rn_2880;rn_10569 += 1) {
-				Grain rn_2881 = Grain.rn_2953(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
-				rn_2881.rn_2942 = "dirtsmall";
-				rn_2881.rn_2961(rn_2877);
-				float rn_2882 = (rn_10569 * 1.0F / rn_2880) * 0.6F * 100 + 2;
-				float rn_2883 = rn_2882 + 40;
-				rn_2881.rn_2932 = "0-0 " + rn_6945.rn_6947((rn_2882 - 1)) + "-0 " + rn_2882 + "-1 " + rn_2883 + "-1 " + rn_6945.rn_6947((rn_2883 + 1)) + "-0" + " 100-0";
-				rn_2881.rn_2949 = rn_2882 * rn_2877 / 100;
-				rn_2881.rn_2950 = rn_2883 * rn_2877 / 100;
-				rn_2881.rn_2924 = ope.rn_1821(-5.0F, 5.0F);
-				rn_2881.rn_2926 = ope.rn_1821(-0.5F, 0.5F);
-				rn_2881.rn_2927 = -1.5F;
-				rn_2881.rn_2929 = 0.03F;
-				rn_2881.rn_2939 = 0.1F;
-				rn_2881.rn_2933 = Grain.rn_2967(0.65F);
-				rn_2881.rn_2943 = 8;
-				rn_2881.rn_2945 = 2;
-				rn_2881.rn_2944 = rn_7317.rn_7328(0, 15);
-				GrainSet.rn_2903(rn_2858.rn_2842, rn_2881);
+			int rn_2693 = 40;
+			for (int rn_10426 = 0;rn_10426 < rn_2693;rn_10426 += 1) {
+				Grain rn_2694 = Grain.create(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
+				rn_2694.pic = "dirtsmall";
+				rn_2694.setdtime(rn_2690);
+				float rn_2695 = (rn_10426 * 1.0F / rn_2693) * 0.6F * 100 + 2;
+				float rn_2696 = rn_2695 + 40;
+				rn_2694.alpha = "0-0 " + rn_6777.rn_6779((rn_2695 - 1)) + "-0 " + rn_2695 + "-1 " + rn_2696 + "-1 " + rn_6777.rn_6779((rn_2696 + 1)) + "-0" + " 100-0";
+				rn_2694.starte = rn_2695 * rn_2690 / 100;
+				rn_2694.ende = rn_2696 * rn_2690 / 100;
+				rn_2694.x = ope.rn_1684(-5.0F, 5.0F);
+				rn_2694.xv = ope.rn_1684(-0.5F, 0.5F);
+				rn_2694.yv = -1.5F;
+				rn_2694.ya = 0.03F;
+				rn_2694.shake = 0.1F;
+				rn_2694.scale = Grain.fullvalue(0.65F);
+				rn_2694.cutn = 8;
+				rn_2694.row = 2;
+				rn_2694.cutp = rn_7149.rn_7160(0, 15);
+				GrainSet.rn_2729(rn_2671.rn_2655, rn_2694);
 			}
-		} else if (rn_3289.rn_6850(rn_2853, "SodRoll")) {
-			rn_2858.rn_2845 = 0;
-			rn_2858.rn_2846 = 200;
-			int rn_2884 = 50;
-			for (int rn_10570 = 0;rn_10570 < 100;rn_10570 += 1) {
-				Grain rn_2885 = Grain.rn_2953(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
-				rn_2885.rn_2942 = "dirtsmall";
-				rn_2885.rn_2961(rn_2884);
-				rn_2885.rn_2951 = rn_2884;
-				rn_2885.rn_2952 = (int) (rn_10570 * 1.5F);
-				rn_2885.rn_2932 = "0-1 80-1 100-0";
-				rn_2885.rn_2924 = 0;
-				rn_2885.rn_2925 = ope.rn_1821(0, 50.0F);
-				rn_2885.rn_2926 = ope.rn_1821(-1.0F, 0);
-				rn_2885.rn_2927 = -1.5F;
-				rn_2885.rn_2929 = 0.03F;
-				rn_2885.rn_2939 = 0.1F;
-				rn_2885.rn_2933 = Grain.rn_2967(1.0F);
-				rn_2885.rn_2943 = 8;
-				rn_2885.rn_2945 = 2;
-				rn_2885.rn_2944 = rn_7317.rn_7328(0, 15);
-				GrainSet.rn_2903(rn_2858.rn_2842, rn_2885);
+		} else if (rn_3081.rn_6682(rn_2666, "SodRoll")) {
+			rn_2671.rn_2658 = 0;
+			rn_2671.rn_2659 = 200;
+			int rn_2697 = 50;
+			for (int rn_10427 = 0;rn_10427 < 100;rn_10427 += 1) {
+				Grain rn_2698 = Grain.create(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
+				rn_2698.pic = "dirtsmall";
+				rn_2698.setdtime(rn_2697);
+				rn_2698.alivecd = rn_2697;
+				rn_2698.activecd = (int) (rn_10427 * 1.5F);
+				rn_2698.alpha = "0-1 80-1 100-0";
+				rn_2698.x = 0;
+				rn_2698.y = ope.rn_1684(0, 50.0F);
+				rn_2698.xv = ope.rn_1684(-1.0F, 0);
+				rn_2698.yv = -1.5F;
+				rn_2698.ya = 0.03F;
+				rn_2698.shake = 0.1F;
+				rn_2698.scale = Grain.fullvalue(1.0F);
+				rn_2698.cutn = 8;
+				rn_2698.row = 2;
+				rn_2698.cutp = rn_7149.rn_7160(0, 15);
+				GrainSet.rn_2729(rn_2671.rn_2655, rn_2698);
 			}
-		} else if (rn_3289.rn_6850(rn_2853, "PuffShroomMuzzle")) {
-			rn_2858.rn_2845 = 0;
-			rn_2858.rn_2846 = 20;
-			int rn_2886 = 20;
-			for (int rn_10571 = 0;rn_10571 < rn_7317.rn_7328(6, 8);rn_10571 += 1) {
-				Grain rn_2887 = Grain.rn_2953(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
-				rn_2887.rn_2942 = "PuffShroom_puff2";
-				rn_2887.rn_2961(rn_2886);
-				float rn_2888 = ope.rn_1821(0.3F, 0.8F);
-				rn_2887.rn_2932 = "0-" + rn_2888 + " 80-" + rn_2888 + " 100-0";
-				rn_2887.rn_2924 = ope.rn_1821(2, 4);
-				rn_2887.rn_2925 = ope.rn_1821(-3, 2);
-				rn_2887.rn_2926 = ope.rn_1821(1.0F, 0);
-				rn_2887.rn_2927 = ope.rn_1821(-1.0F, 1.0F);
-				rn_2887.rn_2929 = 0.03F;
-				float rn_2889 = ope.rn_1821(0.2F, 0.3F);
-				float rn_2890 = ope.rn_1821(0.6F, 0.8F);
-				rn_2887.rn_2933 = "0-" + rn_2889 + " 70-" + rn_2890 + " 100-0";
-				GrainSet.rn_2903(rn_2858.rn_2842, rn_2887);
+		} else if (rn_3081.rn_6682(rn_2666, "PuffShroomMuzzle")) {
+			rn_2671.rn_2658 = 0;
+			rn_2671.rn_2659 = 20;
+			int dt = 20;
+			for (int rn_10428 = 0;rn_10428 < rn_7149.rn_7160(6, 8);rn_10428 += 1) {
+				Grain rn_2699 = Grain.create(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
+				rn_2699.pic = "PuffShroom_puff2";
+				rn_2699.setdtime(dt);
+				float rn_2700 = ope.rn_1684(0.3F, 0.8F);
+				rn_2699.alpha = "0-" + rn_2700 + " 80-" + rn_2700 + " 100-0";
+				rn_2699.x = ope.rn_1684(2, 4);
+				rn_2699.y = ope.rn_1684(-3, 2);
+				rn_2699.xv = ope.rn_1684(1.0F, 0);
+				rn_2699.yv = ope.rn_1684(-1.0F, 1.0F);
+				rn_2699.ya = 0.03F;
+				float rn_2701 = ope.rn_1684(0.2F, 0.3F);
+				float rn_2702 = ope.rn_1684(0.6F, 0.8F);
+				rn_2699.scale = "0-" + rn_2701 + " 70-" + rn_2702 + " 100-0";
+				GrainSet.rn_2729(rn_2671.rn_2655, rn_2699);
 			}
-		} else if (rn_3289.rn_6850(rn_2853, "PuffShroomTrail")) {
+		} else if (rn_3081.rn_6682(rn_2666, "PuffShroomTrail")) {
+		} else if (rn_3081.rn_6682(rn_2666, "SnowPeaTrail")) {
+			rn_2671.rn_2658 = 0;
+			rn_2671.rn_2659 = 20;
+			int dt = 15;
+			Grain rn_2703 = Grain.create(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
+			rn_2703.pic = "SnowFlakes";
+			rn_2703.cutn = 3;
+			rn_2703.cutp = rn_7149.rn_7160(0, 2);
+			rn_2703.setdtime(dt);
+			rn_2703.alpha = "0-1 100-0";
+			rn_2703.x = ope.rn_1684(2, 4);
+			rn_2703.y = ope.rn_1684(-3, 2);
+			rn_2703.xv = 0;
+			rn_2703.yv = ope.rn_1684(-1.0F, 1.0F);
+			rn_2703.ya = 0.03F;
+			rn_2703.spinspeed = rn_7149.rn_7160(-2, 2);
+			rn_2703.scale = "0-" + ope.rn_1684(1, 1.5F) + " 100-0";
+			GrainSet.rn_2729(rn_2671.rn_2655, rn_2703);
+		} else if (rn_3081.rn_6682(rn_2666, "ZamboniExplosion")) {
+			int rn_2704 = 100;
+			rn_2671.rn_2664 = true;
+			rn_2671.rn_2658 = 0;
+			rn_2671.rn_2659 = rn_2704;
+			int rn_2705 = 10;
+			for (int rn_10429 = 0;rn_10429 < rn_2705;rn_10429 += 1) {
+				Grain rn_2706 = Grain.create(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
+				rn_2706.pic = "ExplosionCloud";
+				rn_2706.setdtime(rn_2704);
+				float rn_2707 = ope.rn_1684(1.2F, 1.6F);
+				rn_2706.scale = "0-" + rn_2707 + " 60-" + rn_2707 + " 100-0";
+				rn_2706.red = "0-0.5 100-0";
+				rn_2706.green = "0-0.8 100-0";
+				rn_2706.blue = "0-1 50-0.75 100-0";
+				rn_2706.alpha = "0-1 70-0 100-0";
+				rn_2706.rotate = ope.rn_1684(0, 359);
+				rn_2706.spinspeed = ope.rn_1684(-2, 2);
+				int rn_2708 = 2;
+				double rn_2709 = rn_7149.rn_7188(rn_7149.rn_7160(0, 359));
+				rn_2706.xv = rn_2708 * op.rn_1038(rn_7149.rn_7154(rn_2709));
+				rn_2706.yv = rn_2708 * op.rn_1038(rn_7149.rn_7166(rn_2709));
+				rn_2706.xf = "0-0.1 40-0.1 100-1";
+				rn_2706.yf = "0-0.28 40-0.28 100-1";
+				GrainSet.rn_2729(rn_2671.rn_2655, rn_2706);
+			}
+			float rn_2710 = 0.08F;
+			Grain rn_2711 = Grain.create(-70, -70, 0.0F, 0.0F, 0.0F, 0.0F);
+			rn_2711.pic = "IMAGE_REANIM_" + rn_3081.rn_6711("Zombie_zamboni_brush");
+			rn_2711.scale = Grain.fullvalue(0.8F);
+			rn_2711.xv = ope.rn_1684(-2.0F, 2.0F);
+			rn_2711.yv = -1 * ope.rn_1684(2, 4);
+			rn_2711.ya = rn_2710;
+			rn_2711.alpha = "0-1 90-0 100-0";
+			rn_2711.rotate = ope.rn_1684(-720, 720);
+			rn_2711.spinspeed = ope.rn_1684(-2.0F, 2.0F);
+			rn_2711.setdtime(80);
+			GrainSet.rn_2729(rn_2671.rn_2655, rn_2711);
+			rn_2711 = Grain.create(-70, -70, 0.0F, 0.0F, 0.0F, 0.0F);
+			rn_2711.pic = "IMAGE_REANIM_" + rn_3081.rn_6711("Zombie_zamboni_wheel");
+			rn_2711.scale = Grain.fullvalue(0.8F);
+			rn_2711.xv = ope.rn_1684(-2.0F, 2.0F);
+			rn_2711.yv = -1 * ope.rn_1684(2, 4);
+			rn_2711.ya = rn_2710;
+			rn_2711.alpha = "0-1 90-0 100-0";
+			rn_2711.rotate = ope.rn_1684(-720, 720);
+			rn_2711.spinspeed = ope.rn_1684(-2.0F, 2.0F);
+			rn_2711.x = rn_7149.rn_7160(-35, 35);
+			rn_2711.y = 30;
+			rn_2711.setdtime(80);
+			GrainSet.rn_2729(rn_2671.rn_2655, rn_2711);
+			rn_2711 = Grain.create(-70, -70, 0.0F, 0.0F, 0.0F, 0.0F);
+			rn_2711.pic = "IMAGE_REANIM_" + rn_3081.rn_6711("Zombie_zamboni_1_damage1");
+			rn_2711.scale = Grain.fullvalue(0.8F);
+			rn_2711.xv = ope.rn_1684(-2.0F, 2.0F);
+			rn_2711.yv = -1 * ope.rn_1684(2, 4);
+			rn_2711.ya = rn_2710;
+			rn_2711.alpha = "0-1 90-0 100-0";
+			rn_2711.rotate = ope.rn_1684(-720, 720);
+			rn_2711.spinspeed = ope.rn_1684(-2.0F, 2.0F);
+			rn_2711.setdtime(80);
+			GrainSet.rn_2729(rn_2671.rn_2655, rn_2711);
+			rn_2705 = 10;
+			for (int rn_10430 = 0;rn_10430 < rn_2705;rn_10430 += 1) {
+				Grain rn_2712 = Grain.create(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
+				rn_2712.setdtime(rn_2704);
+				rn_2712.pic = "Zomboss_particles";
+				rn_2712.scale = Grain.fullvalue(ope.rn_1684(0.4F, 0.6F));
+				rn_2712.cutn = 5;
+				rn_2712.cutp = rn_7149.rn_7160(0, 4);
+				rn_2712.alpha = "0-1 70-1 100-0";
+				rn_2712.x = ope.rn_1684(-10, 10);
+				rn_2712.y = ope.rn_1684(-10, 10);
+				rn_2712.rotate = ope.rn_1684(0, 359);
+				rn_2712.spinspeed = ope.rn_1684(-2, 2);
+				int rn_2713 = 5;
+				double rn_2714 = rn_7149.rn_7188(rn_7149.rn_7160(0, 359));
+				rn_2712.xv = rn_2713 * op.rn_1038(rn_7149.rn_7154(rn_2714));
+				rn_2712.yv = rn_2713 * op.rn_1038(rn_7149.rn_7166(rn_2714));
+				rn_2712.xf = "0-0.1 40-0.1 100-1";
+				rn_2712.yf = "0-0.28 40-0.28 100-1";
+				GrainSet.rn_2729(rn_2671.rn_2655, rn_2712);
+			}
+			rn_2705 = 14;
+			for (int rn_10431 = 0;rn_10431 < rn_2705;rn_10431 += 1) {
+				Grain rn_2715 = Grain.create(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
+				rn_2715.pic = "ExplosionCloud";
+				rn_2715.setdtime(rn_2704);
+				rn_2715.red = "0-0.5 100-0";
+				rn_2715.green = "0-0.8 100-0";
+				rn_2715.blue = "0-1 50-0.75 100-0";
+				rn_2715.alpha = "0-1 70-0 100-0";
+				rn_2715.scale = "0-0.5 60-0.5 100-0";
+				rn_2715.rotate = ope.rn_1684(0, 359);
+				rn_2715.spinspeed = ope.rn_1684(-2, 2);
+				int rn_2716 = 5;
+				double rn_2717 = rn_7149.rn_7188(rn_7149.rn_7160(0, 359));
+				rn_2715.xv = rn_2716 * op.rn_1038(rn_7149.rn_7154(rn_2717));
+				rn_2715.yv = rn_2716 * op.rn_1038(rn_7149.rn_7166(rn_2717));
+				rn_2715.xf = "0-0.15 40-0.15 100-1";
+				rn_2715.yf = "0-0.25 40-0.25 100-1";
+				GrainSet.rn_2729(rn_2671.rn_2655, rn_2715);
+			}
 		}
-		return rn_2858;
+		return rn_2671;
 	}
 
-	public final boolean rn_2891() {
-		if (rn_3289.rn_6850(rn_2847, "SodRoll")) {
-			rn_2843 = 220 + rn_2850.rn_484;
+	public final boolean Update() {
+		if (rn_3081.rn_6682(rn_2660, "SodRoll")) {
+			rn_2656 = 220 + rn_2663.animproc;
 		}
-		if (rn_2845 >= rn_2846) {
+		if (rn_2658 >= rn_2659) {
 			return true;
 		}
-		for (int rn_10572 = 0;rn_10572 < GrainSet.rn_1225(rn_2842);rn_10572 += 1) {
-			int rn_2892 = GrainSet.rn_1225(rn_2842) - rn_10572 - 1;
-			if (GrainSet.rn_2895(rn_2842, rn_2892).rn_2963() == true) {
-				ope.rn_1923(GrainSet.rn_2895(rn_2842, rn_2892));
-				GrainSet.rn_2918(rn_2842, rn_2892);
+		for (int rn_10432 = 0;rn_10432 < GrainSet.rn_1021(rn_2655);rn_10432 += 1) {
+			int rn_2718 = GrainSet.rn_1021(rn_2655) - rn_10432 - 1;
+			if (GrainSet.rn_2721(rn_2655, rn_2718).Update() == true) {
+				ope.rn_1796(GrainSet.rn_2721(rn_2655, rn_2718));
+				GrainSet.rn_2744(rn_2655, rn_2718);
 			}
 		}
-		rn_2845 = rn_2845 + 1;
+		rn_2658 = rn_2658 + 1;
 		return false;
 	}
 }

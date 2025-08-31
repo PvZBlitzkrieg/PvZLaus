@@ -1,21 +1,21 @@
 package bk.pvz;
-import rn_6840.rn_6841.rn_6842.rn_6928;
 import bk.pvz.Anim;
+import rn_6672.rn_6673.rn_6674.rn_6760;
 
 public class Animed {
-	public static Anim rn_3374(java.util.ArrayList<Anim> r_obj, int rn_3375) {
-		return Animed.rn_3390(r_obj, rn_3375);
+	public static Anim rn_3169(java.util.ArrayList<Anim> r_obj, int rn_3170) {
+		return Animed.rn_3185(r_obj, rn_3170);
 	}
 
-	public static void rn_3382(java.util.ArrayList<Anim> r_obj, Anim rn_3383) {
-		r_obj.add(rn_3383);
+	public static void rn_3177(java.util.ArrayList<Anim> r_obj, Anim rn_3178) {
+		r_obj.add(rn_3178);
 	}
 
-	public static Anim rn_3390(java.util.ArrayList<Anim> r_obj, int rn_3391) {
-		return r_obj.get(rn_3391);
+	public static Anim rn_3185(java.util.ArrayList<Anim> r_obj, int rn_3186) {
+		return r_obj.get(rn_3186);
 	}
 
-	public static int rn_1225(java.util.ArrayList<Anim> r_obj) {
+	public static int rn_1021(java.util.ArrayList<Anim> r_obj) {
 		return r_obj.size();
 	}
 }

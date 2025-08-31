@@ -3,7 +3,7 @@ import android.opengl.GLSurfaceView.Renderer;
 import javax.microedition.khronos.opengles.GL10;
 import javax.microedition.khronos.egl.EGLConfig;
 import android.opengl.*;
-import rn_6840.rn_6841.rn_6842.rn_4301;
+import rn_6672.rn_6673.rn_6674.rn_4133;
 
 public class fuckrenderer  implements android.opengl.GLSurfaceView.Renderer {
 	private final float[] vPMatrix= new float[16];

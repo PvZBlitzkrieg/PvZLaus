@@ -1,20 +1,26 @@
 package bk.pvz;
-import rn_6840.rn_6841.rn_6842.rn_6928;
-import rn_6840.rn_6841.rn_6842.rn_4301;
+import rn_6672.rn_6673.rn_6674.rn_4133;
+import rn_6672.rn_6673.rn_6674.rn_6760;
 
 public class ints {
-	public int[] rn_1412 = new int[0];
+	public int[] rn_1274 = new int[0];
 
-	public final int rn_1418(int rn_1419) {
-		return rn_1412 [rn_1419];
+	public static final ints rn_1278(int[] rn_1279) {
+		ints rn_1280 = new ints();
+		rn_1280.rn_1274 = rn_1279;
+		return rn_1280;
 	}
 
-	public final void rn_1420(int rn_1421, int rn_1422) {
-		rn_1412 [rn_1421] = rn_1422;
+	public final int rn_1281(int rn_1282) {
+		return rn_1274 [rn_1282];
 	}
 
-	public final void rn_1423(int rn_1424) {
-		int[] b=new int[rn_1441()+1];
+	public final void rn_1283(int rn_1284, int rn_1285) {
+		rn_1274 [rn_1284] = rn_1285;
+	}
+
+	public final void rn_1286(int rn_1287) {
+		int[] b=new int[rn_1304()+1];
 		/*
 		for(int i=0;i==#集合1.length;i++){
 			b[i]=#集合1[i];
@@ -25,24 +31,24 @@ public class ints {
 		return b;
 		@end
 		*/
-		int[] rn_1425 = new int[0];
-		rn_1425=b;
-		for (int rn_10522 = 0;rn_10522 < rn_1441();rn_10522 += 1) {
-			rn_1425 [rn_10522] = rn_1412 [rn_10522];
+		int[] rn_1288 = new int[0];
+		rn_1288=b;
+		for (int rn_10370 = 0;rn_10370 < rn_1304();rn_10370 += 1) {
+			rn_1288 [rn_10370] = rn_1274 [rn_10370];
 		}
-		rn_1425 [rn_1441()] = rn_1424;
-		rn_1412 = rn_1425;
+		rn_1288 [rn_1304()] = rn_1287;
+		rn_1274 = rn_1288;
 	}
 
-	public final int rn_1441() {
-		return rn_1412.length;
+	public final int rn_1304() {
+		return rn_1274.length;
 	}
 
-	public final int[] rn_1442() {
-		return rn_1412;
+	public final int[] rn_1305() {
+		return rn_1274;
 	}
 
-	public final int rn_1225() {
-		return rn_1412.length;
+	public final int rn_1021() {
+		return rn_1274.length;
 	}
 }

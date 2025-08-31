@@ -1,36 +1,36 @@
 package bk.pvz;
-import rn_6840.rn_6841.rn_6842.rn_6925;
-import rn_6840.rn_6841.rn_6842.rn_6928;
-import rn_6840.rn_6841.rn_6842.rn_4301;
+import rn_6672.rn_6673.rn_6674.rn_4133;
+import rn_6672.rn_6673.rn_6674.rn_6760;
+import rn_6672.rn_6673.rn_6674.rn_6757;
 
 public class Boolset {
-	public boolean[] rn_2147 = new boolean[0];
-	public int rn_2148 = 0;
-	public int rn_2149 = 0;
+	public boolean[] rn_2020 = new boolean[0];
+	public int rn_2021 = 0;
+	public int rn_2022 = 0;
 
-	public static final Boolset rn_2150(int rn_2151, int rn_2152) {
-		Boolset rn_2153 = new Boolset();
-		rn_2153.rn_2154(rn_2151, rn_2152);
-		return rn_2153;
+	public static final Boolset rn_2023(int rn_2024, int rn_2025) {
+		Boolset rn_2026 = new Boolset();
+		rn_2026.rn_2027(rn_2024, rn_2025);
+		return rn_2026;
 	}
 
-	public final void rn_2154(int rn_2155, int rn_2156) {
-		rn_2148 = rn_2155;
-		rn_2149 = rn_2156;
-		rn_2147 = (boolean[]) (new boolean[rn_2155 * rn_2156]);
+	public final void rn_2027(int rn_2028, int rn_2029) {
+		rn_2021 = rn_2028;
+		rn_2022 = rn_2029;
+		rn_2020 = (boolean[]) (new boolean[rn_2028 * rn_2029]);
 	}
 
-	public final boolean rn_2157(int rn_2158, int rn_2159) {
-		return rn_2147 [rn_2159 * rn_2148 + rn_2158];
+	public final boolean rn_2030(int rn_2031, int rn_2032) {
+		return rn_2020 [rn_2032 * rn_2021 + rn_2031];
 	}
 
-	public final void rn_2160(int rn_2161, int rn_2162, boolean rn_2163) {
-		rn_2147 [rn_2162 * rn_2148 + rn_2161] = rn_2163;
+	public final void rn_2033(int rn_2034, int rn_2035, boolean rn_2036) {
+		rn_2020 [rn_2035 * rn_2021 + rn_2034] = rn_2036;
 	}
 
-	public final void rn_2164(boolean rn_2165) {
-		for (int rn_10545 = 0;rn_10545 < rn_2147.length;rn_10545 += 1) {
-			rn_2147 [rn_10545] = rn_2165;
+	public final void rn_2037(boolean rn_2038) {
+		for (int rn_10395 = 0;rn_10395 < rn_2020.length;rn_10395 += 1) {
+			rn_2020 [rn_10395] = rn_2038;
 		}
 	}
 }
