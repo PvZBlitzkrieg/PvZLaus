@@ -15,122 +15,182 @@ PvZLaus
     You should have received a copy of the GNU Affero General Public License
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 ****/
+@输出名("Zombie")
 类 Zombie
+	@输出名("HP")
 	变量 HP : 整数
+	@输出名("HPM")
 	变量 HPM : 整数
 
 	//0普僵
 	//1旗帜
+	@输出名("type")
 	变量 type : 整数
+	@输出名("anim")
 	变量 anim : Anim
+	@输出名("x")
 	变量 x : 单精度小数=0f
+	@输出名("y")
 	变量 y : 单精度小数=0f
 	变量 xv : 单精度小数=0f
+	@输出名("scale")
 	变量 scale : 单精度小数=1f
+	@输出名("row")
 	变量 row : 整数=-1
+
 	//头盔血helmet
+	@输出名("hasH")
 	变量 hasH : 逻辑型
+	@输出名("HHP")
 	变量 HHP : 整数
+	@输出名("HHPM")
 	变量 HHPM : 整数
+	@输出名("Htype")
 	变量 Htype : 文本
 	//护盾血shield
+	@输出名("hasS")
 	变量 hasS :逻辑型
+	@输出名("SHP")
 	变量 SHP : 整数
+	@输出名("SHPM")
 	变量 SHPM : 整数
+	@输出名("Stype")
 	变量 Stype : 文本
+	@输出名("Updatef")
 	变量 更新帧 : 单精度小数=0f
+	code // It will not be harmed
+	@输出名("isInvincible")
 	变量 无敌 : 逻辑型=假
+	@输出名("isIgnorant")
 	变量 无视 : 逻辑型=假
+	@输出名("IsIntangible")
 	变量 无形 : 逻辑型=假
+	@输出名("hasLostArm")
 	变量 hasLostArm : 逻辑型=假
+	@输出名("hasDying")
 	变量 hasDying : 逻辑型=假
+	@输出名("Cling")
 	变量 后摇 : 逻辑型=假
-
+	@输出名("Rotation")
 	变量 旋转度数 : 单精度小数=0f
+	@输出名("RotateSpeed")
 	变量 旋转速度 : 单精度小数=0f
-
+	@输出名("Coldness")
 	变量 寒冷 : 整数=0
+	@输出名("Frost")
 	变量 冰冻 : 整数=0
-
+	@输出名("spcsta")
 	变量 spcsta : 文本="none"
 	//2025.8.12
+	@输出名("Win")
 	变量 进了家 : 逻辑型=假
 	//2025.8.18
+	@输出名("die")
 	变量 die : 逻辑型=假
 
-
+	@输出名("frex")
 	//这个值每个固定帧会改变，可以完成一些2帧一次的操作
 	变量 frex : 逻辑型=假
-
+	@输出名("isCold")
 	变量 是否寒冷 : 逻辑型=假
-
+	@输出名("dtime")
 	//2025.8.4  计时 某些僵尸可能需要计时
 	变量 dtime : 整数
 	//2025.8.4
+	@输出名("enableBroken")
 	变量 enableBroken : 逻辑型
-
+	@输出名("limitRect")
 	变量 限制矩形 : 四边形
 	//生是true,死是false
 	//僵尸......真的有生命吗？
+	@输出名("lifestate")
 	变量 生命状态 : 逻辑型=真
-
+	@输出名("dancerp")
 	变量 舞王动画进度 : 单精度小数
-
+	@输出名("Inactive")
 	变量 无为 : 逻辑型
+	@输出名("Proxy")
 	变量 代理x : 单精度小数
 
 
 	@静态
+	@输出名("zombie_handin")
 	变量 zombie_handin : 文本[]={"anim_innerarm1","anim_innerarm2","anim_innerarm3"}
+	@输出名("zombie_handout")
 	@静态
 	变量 zombie_handout : 文本[]={"Zombie_outerarm_upper","Zombie_outerarm_lower","Zombie_outerarm_hand"}
+	@输出名("zombie_screen_hand")
 	@静态
 	变量 zombie_screen_hand : 文本[]={"Zombie_outerarm_screendoor",
 	"Zombie_innerarm_screendoor","Zombie_innerarm_screendoor_hand"}
 	@静态
+	@输出名("zombie_screen")
 	变量 zombie_screen : 文本[]={"anim_screendoor"}
 	@静态
+	@输出名("zombie_cone")
 	变量 zombie_cone : 文本[]={"anim_cone"}
 	@静态
+	@输出名("zombie_bucket")
 	变量 zombie_bucket : 文本[]={"anim_bucket"}
 	@静态
+	@输出名("zombie_flag_hand")
 	变量 zombie_flag_hand : 文本[]={"Zombie_flaghand","Zombie_innerarm_screendoor"}
 	@静态
+	@输出名("zombie_duckytube")
 	变量 zombie_duckytube : 文本[]={"Zombie_duckytube"}
 	@静态
+	@输出名("zombie_mustache")
 	变量 zombie_mustache : 文本[]={"Zombie_mustache"}
 	@静态
+	@输出名("zombie_tongue")
 	变量 zombie_tongue : 文本[]={"anim_tongue"}
 	@静态
+	@输出名("zombie_head")
 	变量 zombie_head : 文本[]={"Zombie_mustache","anim_tongue","anim_head1","anim_head2","anim_hair"}
 
-
+	@输出名("manager")
 	变量 管理器 : 窗口管理器
-
+	@输出名("state")
 	变量 state="uninit"
+	@输出名("cv")
 	变量 cv : 矩形x
+	@输出名("prex")
 	变量 预制位置x : 单精度小数=0f
+	@输出名("walkanim")
 	变量 行走动画 : 文本
+	@输出名("walkstate")
 	变量 行走状态 : 文本
+	@输出名("speed")
 	变量 speed : 单精度小数=0f
+	@输出名("disc")
 	变量 间断点 : 逻辑型=假
-
+	@输出名("isInverted")
 	//2025.8.2
 	变量 倒着走 : 逻辑型=假
 	//2025.8.2
+	@输出名("matrix")
 	变量 matrix : Matrix=Matrix.新建()
+	@输出名("enableMatrix")
 	变量 enableMatrix : 逻辑型=假
+	@输出名("bornx")
 	变量 诞生x : 单精度小数=0f
-
+	@输出名("zombie")
 	变量 僵尸 : Zombie[]
+	@输出名("isPushed")
 	变量 被推 : 逻辑型=假
+	@输出名("shake")
+	变量 shake : 单精度小数=0f
+	@输出名("idle")
+	变量 idle : 逻辑型=假
 
+	@输出名("setCoolness")
 	方法 设置寒冷(时间 : 整数)
 		寒冷=时间
 		是否寒冷=真
 		anim.真值渲染(,{0.6f,0.6f,1.8f,1f})
 	结束 方法
 
+	@输出名("setStay")
 	方法 setStay(bool : 逻辑型)
 		如果 bool 则
 			代理x=x()
@@ -142,28 +202,32 @@ PvZLaus
 		无为=bool
 	结束 方法
 
+	@输出名("setFrost")
 	方法 设置冰冻(时间 : 整数)
 		冰冻=时间
 		anim.真值渲染(,{0.7f,0.7f,1.6f,1f})
 	结束 方法
 
-
+	@输出名("upd")
 	方法 更新(帧长 : 整数)
 
 	结束 方法
 
+	@输出名("setHPM")
 	方法 setHPM(HPx : 整数) : Zombie
 		HPM=HPx
 		HP=HPM
 		返回 本对象
 	结束 方法
 
+	@输出名("setSHPM")
 	方法 setSHPM(HPx : 整数) : Zombie
 		SHPM=HPx
 		SHP=SHPM
 		返回 本对象
 	结束 方法
 
+	@输出名("setHHPM")
 	方法 setHHPM(HPx : 整数) : Zombie
 		HHPM=HPx
 		HHP=HHPM
@@ -171,12 +235,17 @@ PvZLaus
 	结束 方法
 
 	//创建僵尸，注意要zombieList.add(Zombie.create(...))添加到列表中
-	@输出名("万恶之源")
+	//@输出名("万恶之源")
+	@输出名("create")
 	@静态
 	方法 create(manager : 窗口管理器,type : 整数,row : 整数) : Zombie
 		变量 zombie : Zombie
 		zombie.管理器=manager
-		zombie.x=取随机数(950,1050)
+		如果 type==12 则
+			zombie.x=取随机数(1100,1150)
+		否则
+			zombie.x=取随机数(1000,1050)
+		结束 如果
 		zombie.row=row
 		zombie.state="walk"
 		zombie.type=type
@@ -266,36 +335,62 @@ PvZLaus
 			zombie.xv=zombie.speed
 			zombie.matrix.postScale(-1,1).postTranslate(100,0)
 			zombie.setsp(zombie.anim.speed/2)
+		否则 type==12
+			zombie.setHPM(1350)
+			zombie.anim=Anim.创建动画("Zombie_zamboni",manager)
+			zombie.y=zombie.gety()
+			zombie.播放行走动画("anim_drive")
+			zombie.sstate("walk")
+			zombie.speed =tool_getrandom()*0.5f
+			zombie.anim.speed=zombie.speed*2f
+			zombie.setsp(zombie.anim.speed/2)
+			zombie.cv.x=zombie.cv.x-100
+			zombie.cv.w=zombie.cv.w+100
 		结束 如果
 		zombie.xv=1f
+		//文件操作.写出文本文件("/sdcard/zombie.json",Zombie.FromJSON(zombie.ToJSON(),manager).ToJSON())
 		返回 zombie
 	结束 方法
 
+	@输出名("animove")
+	方法 动画移位(xn : 单精度小数,yn : 单精度小数)
+		x=x+xn
+		y=y+yn
+		cv.x=cv.x-xn
+		cv.y=cv.y-yn
+	结束 方法
+
+	@输出名("getShadowp")
 	方法 取影子位置() : 单精度小数[]
 
 	结束 方法
 
+	@输出名("sstate")
 	方法 sstate(sta : 文本)
 		state=sta
 		行走状态=sta
 	结束 方法
 
+	@输出名("playWalkAnim")
 	方法 播放行走动画(名称 : 文本)
 		行走动画=名称
 		anim.播放动画(名称)
 	结束 方法
 
+	@输出名("tool_getrandom")
 	@静态
 	方法 tool_getrandom() : 单精度小数
 		返回 取随机数(850,1150)/1000f
 	结束 方法
 
+	@输出名("setsp")
 	方法 setsp(ft : 单精度小数) : Zombie
 		speed=ft*0.5f
 		anim.speed=ft
 		返回 本对象
 	结束 方法
 
+	@输出名("anim_Zombie")
 	方法 anim_Zombie(速度 : 单精度小数=0.6f) : Zombie
 		sstate("walk")
 		setHPM(270)
@@ -315,6 +410,7 @@ PvZLaus
 		返回 本对象
 	结束 方法
 
+	@输出名("cv")
 	方法 cv()
 		cv.x=40
 		cv.y=40
@@ -322,10 +418,12 @@ PvZLaus
 		cv.h=80
 	结束 方法
 
+	@输出名("setC")
 	方法 setC(x : 单精度小数,y : 单精度小数,w : 单精度小数,h : 单精度小数)
 
 	结束 方法
 
+	@输出名("anim_helmet")
 	方法 anim_helmet(name : 文本,hHP : 整数) : Zombie
 		anim.强制显示({name},0,假)
 		Htype=name
@@ -334,7 +432,10 @@ PvZLaus
 		返回 本对象
 	结束 方法
 
+
+	@输出名("anim_zombie_shield")
 	方法 anim_zombie_shield(name : 文本,sHP : 整数) : Zombie
+		code //anim_zombie_shield(name : 文本,sHP : 整数) : Zombie
 		anim.强制显示(文本集集到文本集({{name},zombie_screen_hand}),0,假)
 		anim.强制显示(文本集集到文本集({zombie_handin,zombie_handout}),-1,假)
 		Stype=name
@@ -343,13 +444,16 @@ PvZLaus
 		返回 本对象
 	结束 方法
 
+	@输出名("anim_shield")
 	方法 anim_shield(name : 文本,hHP : 整数) : Zombie
+		code //anim_shield(name : 文本,hHP : 整数) : Zombie
 		Stype=name
 		setSHPM(hHP)
 		hasS=真
 		返回 本对象
 	结束 方法
 
+	@输出名("anim_zombie_randomtongue")
 	方法 anim_zombie_randomtongue() : Zombie
 		如果 取随机数(0,100)<50 则
 			anim.强制显示(zombie_tongue,-1,假)
@@ -358,16 +462,20 @@ PvZLaus
 	结束 方法
 
 	//2025.8.11
+	@输出名("Mower")
 	方法 推()
 		被推=真
 	结束 方法
 
 	@静态
+	@输出名("setY")
 	方法 setY(row : 整数) : 整数
+		code //setY(row : 整数) : 整数
 		返回 50+100*row
 	结束 方法
 
 	@静态
+	@输出名("sss2ss")
 	方法 文本集集到文本集(nr : 文本[][]) : 文本[]
 		变量 len : 整数
 		循环(i, 0, 取数组长度(nr))
@@ -389,6 +497,7 @@ PvZLaus
 		返回 rlt
 	结束 方法
 
+	@输出名("sss2ss2")
 	方法 文本集集到文本集2(t : 文本[][]) : 文本[]
 		变量 len=0
 		循环(i, 0, 取数组长度(t))
@@ -408,6 +517,7 @@ PvZLaus
 		返回 rlt
 	结束 方法
 
+	@输出名("gety")
 	方法 gety() : 单精度小数
 		变量 realy=管理器.gety(row,x()+50)-5
 		变量 offy=-130
@@ -415,83 +525,99 @@ PvZLaus
 			offy=-130
 		否则 anim.名称=="Zombie_polevaulter"||anim.名称=="Zombie_football"
 			offy=-140
+		否则 anim.名称=="Zombie_zamboni"
+			offy=-155
 		结束 如果
 		返回 realy+offy
 	结束 方法
 
+	@输出名("canOverwhelming")
+	方法 会碾压() : 逻辑型
+		如果 type==12 则
+			返回 真
+		结束 如果
+		返回 假
+	结束 方法
+
+	@输出名("Update")
 	方法 Update() : 逻辑型
-		如果 die 则
-			返回 真
-		结束 如果
-		//小推车——僵尸的终极克星
-		如果 被推 则
-			变量 tracle : Tracle=Tracle.create(管理器,zombie_mowered,x(),y)
-			anim.暂停=真
-			变量 posw : POS
-			posw.置值()
-			变量 animv : Anim=Anim.创建动画("LawnMoweredZombie",管理器).代理("locator",anim,posw,真)
-			animv.播完暂停=真
-			tracle.anim=animv
-
-			管理器.tracleList.添加成员(tracle)
-			返回 真
-		结束 如果
-
-		如果 anim.animname=="anim_idle" 则
+		如果 idle 则
 		否则
-			变量 realy=gety()
-			变量 cha=y-realy
-			如果 cha>=1f 则
-				y=y-1f
-			否则 cha<=-1f
-				y=y+1f
+			如果 die 则
+				返回 真
+			结束 如果
+			//小推车——僵尸的终极克星
+			如果 被推 则
+				变量 tracle : Tracle=Tracle.create(管理器,zombie_mowered,x(),y)
+				anim.暂停=真
+				变量 posw : POS
+				posw.置值()
+				变量 animv : Anim=Anim.创建动画("LawnMoweredZombie",管理器).代理("locator",anim,posw,真)
+				animv.播完暂停=真
+				tracle.anim=animv
+
+				管理器.tracleList.添加成员(tracle)
+				返回 真
+			结束 如果
+
+			如果 anim.animname=="anim_idle" 则
 			否则
-				y=realy
-			结束 如果
-		结束 如果
-		如果 frex 则
-			frex=假
-		否则
-			frex=真
-		结束 如果
-		如果 寒冷==0&&冰冻==0 则
-			anim.speedslows=1f
-		结束 如果
-		如果 state=="charry" 则
-			变量 tracle : Tracle=Tracle.create(管理器,zombie_charred,x(),y)
-			管理器.tracleList.添加成员(tracle)
-			返回 真
-		结束 如果
-		如果 x<0 则
-			返回 真
-		结束 如果
-		//日志(hpx)
-		如果 后摇&&(anim.frame>=anim.maxframe-1f-anim.speed||anim.update) 则
-			返回 真
-		结束 如果
-		如果 后摇==假 则
-			//日志("hp:"+hpx)
-			如果 HP<=0 则
-				后摇=真
-				无敌=真
-				无视=真
-				无形=真
-				变量 animt : 文本[]={"anim_death"}
-				如果 anim.名称=="Zombie" 则
-					animt={"anim_superlongdeath","anim_death","anim_death2"}
+				变量 realy=gety()
+				变量 cha=y-realy
+				如果 cha>=1f 则
+					y=y-1f
+				否则 cha<=-1f
+					y=y+1f
+				否则
+					y=realy
 				结束 如果
-				pos()
-				anim.播放动画(animt[取随机数(0,取数组长度(animt)-1)])
-				anim.强制显示({"Zombie_whitewater","Zombie_whitewater2"},-1)
-				anim.update=假
-				返回 假
 			结束 如果
-			x()
-		结束 如果
-		如果 hasDying&&frex 则
-			HP=HP-1
-		结束 如果
-		/*
+			如果 frex 则
+				frex=假
+			否则
+				frex=真
+			结束 如果
+			如果 寒冷==0&&冰冻==0 则
+				anim.speedslows=1f
+			结束 如果
+			如果 state=="charry" 则
+				变量 tracle : Tracle=Tracle.create(管理器,zombie_charred,x(),y)
+				管理器.tracleList.添加成员(tracle)
+				返回 真
+			结束 如果
+			如果 x<0 则
+				返回 真
+			结束 如果
+			//日志(hpx)
+			如果 后摇&&(anim.frame>=anim.maxframe-1f-anim.speed||anim.update) 则
+				如果 type==12 则
+					管理器.particleList.添加成员(Particle.新建("ZamboniExplosion",x(),y,row,管理器))
+				结束 如果
+				返回 真
+			结束 如果
+			如果 后摇==假 则
+				//日志("hp:"+hpx)
+				如果 HP<=0 则
+					后摇=真
+					无敌=真
+					无视=真
+					无形=真
+					变量 animt : 文本[]={"anim_death"}
+					如果 anim.名称=="Zombie" 则
+						animt={"anim_superlongdeath","anim_death","anim_death2"}
+					结束 如果
+					pos()
+					anim.播放动画(animt[取随机数(0,取数组长度(animt)-1)])
+					anim.强制显示({"Zombie_whitewater","Zombie_whitewater2"},-1)
+					anim.update=假
+					返回 假
+				结束 如果
+				x()
+			结束 如果
+			如果 hasDying&&frex 则
+				HP=HP-1
+			结束 如果
+			/*
 		如果 state=="eat" 则
 		否则
 			如果 anim.名称=="Zombie" 则
@@ -541,267 +667,277 @@ PvZLaus
 		结束 如果
 		变量 st=poslist[indexs].x
 		*/
-		//变量 delta=(st-ft)*(anim.frame-更新帧)*xv
-		//更新帧=indexw
-		如果 state!="eat" 则
-			变量 poslist=anim.获取Reanim("_ground").poslist
-			变量 indexw=anim.frame
-			变量 hb=indexw%1
-			变量 index=(indexw-hb).到整数()
+			//变量 delta=(st-ft)*(anim.frame-更新帧)*xv
+			//更新帧=indexw
+			如果 state!="eat"&&type!=12 则
+				变量 poslist=anim.获取Reanim("_ground").poslist
+				变量 indexw=anim.frame
+				变量 hb=indexw%1
+				变量 index=(indexw-hb).到整数()
 
-			如果 anim.强制演化帧==-1 则
-				如果 index>=anim.maxframe 则
-					index=anim.startframe
-					anim.frame=anim.startframe
-					pos()
-				结束 如果
-			结束 如果
-
-			变量 ft=poslist[anim.startframe].x
-			变量 ht=poslist[index].x
-			变量 indexs=index+1
-
-			如果 indexs>=anim.maxframe 则
-
-				indexs=anim.startframe
-				pos()
-			否则
-				变量 st=poslist[indexs].x
-				如果 anim.update 则
-					pos()
-					//anim.update=假
-				否则 anim.强制演化帧==-1
-
-					预制位置x=-1*((st-ht)*hb*xv+(ht-ft)*xv)
-
-					如果 enableMatrix 则
-						变量 f9=matrix.getValues()
-						预制位置x=预制位置x*f9[0]
-					结束 如果
-
-				结束 如果
-				//((ht-st)*hb-ft)*xv
-			结束 如果
-		结束 如果
-		如果 hasDying==假 则
-			如果 无视==假 则
-				变量 eat : 逻辑型=假
-				循环(i, 0, 管理器.plantList.长度)
-					变量 plant : Plant=(管理器.plantList)[i]
-					如果 plant.row==row&&plant.无视==假 则
-						变量 xd : 整数=x() : 整数
-						变量 xe : 整数=plant.x : 整数
-						如果 cv.碰撞(plant.cv,xd,xe) 则
-							如果 type==3&&state=="run" 则
-								pos()
-								anim.播放动画("anim_jump")
-								anim.动画回归="anim_walk"
-								state="waitwalk"
-								无敌=真
-								无视=真
-							否则
-								如果 state=="eat" 则
-								否则
-									pos()
-									空手到吃(假)
-									如果 hasS 则
-										铁门到空手(假)
-									结束 如果
-									变量 fr : 整数=anim.frame : 整数
-									anim.暂停=假
-									anim.播完暂停=假
-									如果 spcsta=="gasp" 则
-										anim.播放动画("anim_eat_nopaper")
-									否则
-										anim.播放动画("anim_eat")
-									结束 如果
-									anim.过渡从(fr,4)
-									cstate("eat")
-								结束 如果
-								如果 plant.type==4&&plant.state=="idle" 则
-									plant.state="boom"
-								结束 如果
-								如果 plant.无敌==假&&frex 则
-									(管理器.plantList)[i].HP=(管理器.plantList)[i].HP-1
-								结束 如果
-								eat=真
-							结束 如果
-							退出循环
-						结束 如果
-					结束 如果
-				结束 循环
-				如果 eat==假&&state=="eat" 则
-					如果 hasS 则
-						铁门到空手(真)
-					结束 如果
-					空手到吃(真)
-					变量 fr : 整数=anim.frame : 整数
-					anim.播放动画(行走动画)
-					如果 fr!=anim.startframe 则
-						anim.过渡从(fr,4)
-					结束 如果
-					cstate(行走状态)
-
-				结束 如果
-			结束 如果
-
-		结束 如果
-		如果 后摇==假 则
-			如果 type==8||(type==9&&state!="pre") 则
-				如果 state=="moonwalk" 则
-					enableMatrix=true
-					如果 诞生x-x()>=3*管理器.格子宽() 则
+				如果 anim.强制演化帧==-1 则
+					如果 index>=anim.maxframe 则
+						index=anim.startframe
+						anim.frame=anim.startframe
 						pos()
-						enableMatrix=假
-						state="point"
-						anim.播放动画("anim_point")
-						anim.播完暂停=真
 					结束 如果
-				否则 state=="point"
-					如果 dtime==50 则
-						循环(i, 0, 4)
-							//  0
-							//1    3
-							//  2
-							如果 (僵尸[i]==空||僵尸[i].生命状态==假)&&((row==0&&i==0)==假)&&((row==管理器.取行数()-1&&i==2)==假) 则
-								变量 rowh=row
-								变量 dancer : Zombie=Zombie.create(管理器,9,rowh)
-								dancer.state="pre"
-								dancer.anim.暂停=true
-								如果 i==0 则
-									dancer.row=row-1
-									dancer.x=x
-									dancer.y=y-管理器.取行高()
-								否则 i==1
-									dancer.x=x-管理器.取行宽()
-									dancer.y=y
-								否则 i==2
-									dancer.row=row+1
-									dancer.x=x
-									dancer.y=y+管理器.取行高()
-								否则 i==3
-									dancer.x=x+管理器.取行宽()
-									dancer.y=y
+				结束 如果
+
+				变量 ft=poslist[anim.startframe].x
+				变量 ht=poslist[index].x
+				变量 indexs=index+1
+
+				如果 indexs>=anim.maxframe 则
+
+					indexs=anim.startframe
+					pos()
+				否则
+					变量 st=poslist[indexs].x
+					如果 anim.update 则
+						pos()
+						//anim.update=假
+					否则 anim.强制演化帧==-1
+
+						预制位置x=-1*((st-ht)*hb*xv+(ht-ft)*xv)
+
+						如果 enableMatrix 则
+							变量 f9=matrix.getValues()
+							预制位置x=预制位置x*f9[0]
+						结束 如果
+
+					结束 如果
+					//((ht-st)*hb-ft)*xv
+				结束 如果
+			否则 type==12
+				x=x-0.15f
+			结束 如果
+			如果 hasDying==假 则
+				如果 无视==假 则
+					变量 eat : 逻辑型=假
+					循环(i, 0, 管理器.plantList.长度)
+						变量 plant : Plant=(管理器.plantList)[i]
+						如果 plant.row==row&&plant.无视==假 则
+							变量 xd : 整数=x() : 整数
+							变量 xe : 整数=plant.x : 整数
+							如果 cv.碰撞(plant.cv,xd,xe) 则
+								如果 会碾压() 则
+									plant.压扁()
+								否则
+									如果 type==3&&state=="run" 则
+										pos()
+										anim.播放动画("anim_jump")
+										anim.动画回归="anim_walk"
+										state="waitwalk"
+										无敌=真
+										无视=真
+									否则
+										如果 state=="eat" 则
+										否则
+											pos()
+											空手到吃(假)
+											如果 hasS 则
+												铁门到空手(假)
+											结束 如果
+											变量 fr : 整数=anim.frame : 整数
+											anim.暂停=假
+											anim.播完暂停=假
+											如果 spcsta=="gasp" 则
+												anim.播放动画("anim_eat_nopaper")
+											否则
+												anim.播放动画("anim_eat")
+											结束 如果
+											anim.过渡从(fr,4)
+											cstate("eat")
+										结束 如果
+										如果 plant.type==4&&plant.state=="idle" 则
+											plant.state="boom"
+										结束 如果
+										如果 plant.无敌==假&&frex 则
+											(管理器.plantList)[i].HP=(管理器.plantList)[i].HP-1
+										结束 如果
+										eat=真
+									结束 如果
 								结束 如果
-								//变量 sbx : 四边形=四边形.新建(dancer.y)
-								dancer.y=dancer.y+100
-								dancer.无视=真
-								dancer.限制矩形=四边形.新建(-200,dancer.y-120,400,145,1,0)
-								dancer.enableBroken=true
-								//dancer.限制矩形
-								管理器.zombieList.添加成员(dancer)
-								变量 part=Particle.新建("DancerRise",dancer.x()+10,dancer.y-15,row,管理器)
-								管理器.particleList.添加成员(part)
-								僵尸[i]=dancer
+								退出循环
+							结束 如果
+						结束 如果
+					结束 循环
+					如果 eat==假&&state=="eat" 则
+						如果 hasS 则
+							铁门到空手(真)
+						结束 如果
+						空手到吃(真)
+						变量 fr : 整数=anim.frame : 整数
+						anim.播放动画(行走动画)
+						如果 fr!=anim.startframe 则
+							anim.过渡从(fr,4)
+						结束 如果
+						cstate(行走状态)
+
+					结束 如果
+				结束 如果
+
+			结束 如果
+			如果 后摇==假 则
+				如果 type==8||(type==9&&state!="pre") 则
+					如果 state=="moonwalk" 则
+						enableMatrix=true
+						如果 诞生x-x()>=3*管理器.格子宽() 则
+							pos()
+							enableMatrix=假
+							state="point"
+							anim.播放动画("anim_point")
+							anim.播完暂停=真
+						结束 如果
+					否则 state=="point"
+						如果 dtime==50 则
+							循环(i, 0, 4)
+								//  0
+								//1    3
+								//  2
+								如果 (僵尸[i]==空||僵尸[i].生命状态==假)&&((row==0&&i==0)==假)&&((row==管理器.取行数()-1&&i==2)==假) 则
+									变量 rowh=row
+									变量 dancer : Zombie=Zombie.create(管理器,9,rowh)
+									dancer.state="pre"
+									dancer.anim.暂停=true
+									如果 i==0 则
+										dancer.row=row-1
+										dancer.x=x
+										dancer.y=y-管理器.取行高()
+									否则 i==1
+										dancer.x=x-管理器.取行宽()
+										dancer.y=y
+									否则 i==2
+										dancer.row=row+1
+										dancer.x=x
+										dancer.y=y+管理器.取行高()
+									否则 i==3
+										dancer.x=x+管理器.取行宽()
+										dancer.y=y
+									结束 如果
+									//变量 sbx : 四边形=四边形.新建(dancer.y)
+									dancer.y=dancer.y+100
+									dancer.无视=真
+									dancer.限制矩形=四边形.新建(-200,dancer.y-120,400,145,1,0)
+									dancer.enableBroken=true
+									//dancer.限制矩形
+									管理器.zombieList.添加成员(dancer)
+									变量 part=Particle.新建("DancerRise",dancer.x()+10,dancer.y-15,row,管理器)
+									管理器.particleList.添加成员(part)
+									僵尸[i]=dancer
+								结束 如果
+							结束 循环
+						结束 如果
+						如果 dtime>=200 则
+							setsp(anim.speed/2)
+							dtime=0
+							anim.播放动画("anim_armraise")
+							anim.update=假
+							sstate("dance")
+							enableMatrix=真
+						否则
+							dtime=dtime+1
+						结束 如果
+					否则 state=="dance"
+						变量 fr=67
+						如果 type==9 则
+							fr=21
+						结束 如果
+						变量 cr=46
+						如果 type==9 则
+							cr=0
+						结束 如果
+						如果 state!="pre"&&state!="moonwalk"&&state!="point"&&state!="eat" 则
+							anim.暂停=真
+							如果 舞王动画进度<40 则
+								anim.startframe=fr
+								anim.maxframe=fr+12
+								如果 anim.frame>fr+舞王动画进度%10 则
+									pos()
+								结束 如果
+								anim.frame=fr+舞王动画进度%10
+								enableMatrix=整数到逻辑型(((舞王动画进度.到整数()-舞王动画进度.到整数()%10)/10+1)%2)
+							否则 舞王动画进度<80
+								anim.startframe=cr
+								anim.maxframe=cr+22
+								如果 anim.frame>cr+(舞王动画进度-40)%20 则
+									pos()
+								结束 如果
+								anim.frame=cr+(舞王动画进度-40)%20
+								enableMatrix=假
+							否则
+								舞王动画进度=0
+								如果 舞王需要更新() 则
+									state="point"
+									anim.播放动画("anim_point")
+									dtime=0
+									anim.暂停=假
+									anim.播完暂停=true
+									anim.speed=1f
+								结束 如果
+
+							结束 如果
+							如果 type==8 则
+								变量 停止行动 : 逻辑型=假
+								循环(i, 0, 取数组长度(僵尸))
+									如果 僵尸[i]!=空&&(僵尸[i].state=="eat"&&僵尸[i].生命状态==true) 则
+										僵尸[i].enableMatrix=假
+										停止行动=真
+										退出循环
+									结束 如果
+								结束 循环
+								setStay(停止行动)
+								循环(i, 0, 取数组长度(僵尸))
+									如果 僵尸[i]!=空 则
+										僵尸[i].setStay(停止行动)
+									结束 如果
+								结束 循环
+							结束 如果
+						结束 如果
+						变量 baw=舞王动画进度
+						舞王动画进度=舞王动画进度+0.2f
+						如果 舞王动画进度>=60f&&baw<60f 则
+							pos()
+						结束 如果
+						循环(i, 0, 取数组长度(僵尸))
+							如果 僵尸[i]!=空 则
+								僵尸[i].舞王动画进度=舞王动画进度
+							结束 如果
+						结束 循环
+					否则 type==8&&state=="eat"
+						enableMatrix=假
+						循环(i, 0, 取数组长度(僵尸))
+							如果 僵尸[i]!=空 则
+								僵尸[i].setStay(真)
 							结束 如果
 						结束 循环
 					结束 如果
-					如果 dtime>=200 则
-						setsp(anim.speed/2)
-						dtime=0
-						anim.播放动画("anim_armraise")
-						anim.update=假
-						sstate("dance")
-						enableMatrix=真
-					否则
+				否则 type==9
+					如果 state=="pre" 则
 						dtime=dtime+1
+						//y=y+1
+						如果 dtime==100 则
+							enableBroken=假
+							anim.暂停=真
+							sstate("dance")
+							dtime=0
+							无视=假
+							enableMatrix=真
+							anim.暂停=假
+							anim.播完暂停=true
+						结束 如果
 					结束 如果
-				否则 state=="dance"
-					变量 fr=67
-					如果 type==9 则
-						fr=21
-					结束 如果
-					变量 cr=46
-					如果 type==9 则
-						cr=0
-					结束 如果
-					如果 state!="pre"&&state!="moonwalk"&&state!="point"&&state!="eat" 则
-						anim.暂停=真
-						如果 舞王动画进度<40 则
-							anim.startframe=fr
-							anim.maxframe=fr+12
-							如果 anim.frame>fr+舞王动画进度%10 则
-								pos()
-							结束 如果
-							anim.frame=fr+舞王动画进度%10
-							enableMatrix=整数到逻辑型(((舞王动画进度.到整数()-舞王动画进度.到整数()%10)/10+1)%2)
-						否则 舞王动画进度<80
-							anim.startframe=cr
-							anim.maxframe=cr+22
-							如果 anim.frame>cr+(舞王动画进度-40)%20 则
-								pos()
-							结束 如果
-							anim.frame=cr+(舞王动画进度-40)%20
-							enableMatrix=假
-						否则
-							舞王动画进度=0
-							如果 舞王需要更新() 则
-								state="point"
-								anim.播放动画("anim_point")
-								dtime=0
-								anim.暂停=假
-								anim.播完暂停=true
-								anim.speed=1f
-							结束 如果
+				否则 type==12
 
-						结束 如果
-						如果 type==8 则
-							变量 停止行动 : 逻辑型=假
-							循环(i, 0, 取数组长度(僵尸))
-								如果 僵尸[i]!=空&&(僵尸[i].state=="eat"&&僵尸[i].生命状态==true) 则
-									僵尸[i].enableMatrix=假
-									停止行动=真
-									退出循环
-								结束 如果
-							结束 循环
-							setStay(停止行动)
-							循环(i, 0, 取数组长度(僵尸))
-								如果 僵尸[i]!=空 则
-									僵尸[i].setStay(停止行动)
-								结束 如果
-							结束 循环
-						结束 如果
-					结束 如果
-					变量 baw=舞王动画进度
-					舞王动画进度=舞王动画进度+0.2f
-					如果 舞王动画进度>=60f&&baw<60f 则
-						pos()
-					结束 如果
-					循环(i, 0, 取数组长度(僵尸))
-						如果 僵尸[i]!=空 则
-							僵尸[i].舞王动画进度=舞王动画进度
-						结束 如果
-					结束 循环
-				否则 type==8&&state=="eat"
-					enableMatrix=假
-					循环(i, 0, 取数组长度(僵尸))
-						如果 僵尸[i]!=空 则
-							僵尸[i].setStay(真)
-						结束 如果
-					结束 循环
-				结束 如果
-			否则 type==9
-				如果 state=="pre" 则
-					dtime=dtime+1
-					//y=y+1
-					如果 dtime==100 则
-						enableBroken=假
-						anim.暂停=真
-						sstate("dance")
-						dtime=0
-						无视=假
-						enableMatrix=真
-						anim.暂停=假
-						anim.播完暂停=true
-					结束 如果
 				结束 如果
 			结束 如果
+			anim.update=假
+			immUpdate()
 		结束 如果
-		anim.update=假
-		immUpdate()
 		返回 假
 	结束 方法
 
+	@输出名("immUpdate")
 	方法 immUpdate()
 		如果 anim.animname.结尾为("nopaper")&&spcsta=="doubt" 则
 			anim.speed=anim.speed*4
@@ -823,6 +959,7 @@ PvZLaus
 		结束 如果
 	结束 方法
 
+	@输出名("dancerNeedUpdate")
 	方法 舞王需要更新() : 逻辑型
 		如果 type==8 则
 			循环(i, 0, 4)
@@ -834,6 +971,7 @@ PvZLaus
 		返回 假
 	结束 方法
 
+	@输出名("pos")
 	方法 pos()
 		如果 无为==假 则
 			x=x+预制位置x
@@ -841,6 +979,7 @@ PvZLaus
 		结束 如果
 	结束 方法
 
+	@输出名("cstate")
 	方法 cstate(sta : 文本)
 		如果 state=="walk" 则
 			pos()
@@ -853,6 +992,7 @@ PvZLaus
 		state=sta
 	结束 方法
 
+	@输出名("x")
 	方法 x() : 单精度小数
 		如果 无为 则
 			返回 代理x
@@ -861,6 +1001,7 @@ PvZLaus
 		结束 如果
 	结束 方法
 	//0豌豆,1爆炸,2寒冰,3地雷
+	@输出名("damage")
 	方法 damage(attack : 整数,typew : 整数=0)
 		如果 typew==2 则
 			如果 (hasS||type==12)==假 则
@@ -940,15 +1081,30 @@ PvZLaus
 				anim.代理图片("Zombie_polevaulter_outerarm_upper","IMAGE_REANIM_"+"Zombie_polevaulter_outerarm_upper2".到大写())
 			结束 如果
 		结束 如果
-		如果 hasDying==假&&HP<HPM*1f/3f 则
-			生命状态=假
-			hasDying=真
-			anim.speedcat=1f/anim.speed
-			断(zombie_head,100)
+		如果 type==12 则
+			如果 HP<HPM*0.1f 则
+				生命状态=假
+				hasDying=真
+				shake=3f
+			否则 HP<HPM*0.4f
+				anim.代理图片("Zombie_zamboni_1","IMAGE_REANIM_"+"Zombie_zamboni_1_damage2".到大写())
+			否则 HP<HPM*0.7f
+				anim.代理图片("Zombie_zamboni_1","IMAGE_REANIM_"+"Zombie_zamboni_1_damage1".到大写())
+			否则
+				anim.代理图片("Zombie_zamboni_1","IMAGE_REANIM_"+"Zombie_zamboni_1".到大写())
+			结束 如果
+		否则
+			如果 hasDying==假&&HP<HPM*1f/3f 则
+				生命状态=假
+				hasDying=真
+				//anim.speedcat=1f/anim.speed
+				断(zombie_head,100)
+			结束 如果
 		结束 如果
 		返回
 	结束 方法
 
+	@输出名("beBreak")
 	方法 断(txt : 文本[],高度 : 整数=50)
 		变量 显示=anim.过滤(txt)
 		anim.强制显示(txt,-1)
@@ -965,6 +1121,7 @@ PvZLaus
 		管理器.tracleList.添加成员(tracle)
 	结束 方法
 
+	@输出名("glow")
 	方法 glow(name : 文本="",color : 单精度小数,time : 单精度小数)
 		变量 colorx : 单精度小数[]={color,color,color,1f}
 		如果 name=="" 则
@@ -976,12 +1133,14 @@ PvZLaus
 		结束 如果
 	结束 方法
 
+	@输出名("delHelmet")
 	方法 delHelmet()
 		hasH=假
 		断({Htype},100)
 		//anim.强制显示({Htype},-1)
 	结束 方法
 
+	@输出名("delShield")
 	方法 delShield()
 		hasS=假
 		断({Stype},10)
@@ -999,6 +1158,7 @@ PvZLaus
 		结束 如果
 	结束 方法
 
+	@输出名("hd2eh")
 	方法 铁门到空手(正反 : 逻辑型=假)
 		变量 a=-1
 		变量 b=0
@@ -1010,6 +1170,7 @@ PvZLaus
 		anim.强制显示(文本集集到文本集({zombie_handout,zombie_handin}),b)
 	结束 方法
 
+	@输出名("eh2e")
 	方法 空手到吃(正反 : 逻辑型=假)
 		变量 a=-1
 		变量 b=0
@@ -1021,6 +1182,7 @@ PvZLaus
 		//anim.强制显示({"Zombie_outerarm_hand2"},b)
 	结束 方法
 
+	@输出名("info")
 	方法 取信息() : STSL
 		变量 stsl : STSL
 		stsl.add("BHP",HP.到文本()+"/"+HPM.到文本())
@@ -1063,27 +1225,99 @@ PvZLaus
 		返回 stsl
 	结束 方法
 
+	@code
+	@Override
+	public String toString(){
+	    return #ToJSON();
+	}
+	@end
+
+	@输出名("ToJSON")
+	方法 ToJSON() : 文本
+		变量 json : JSON对象
+		变量 class=本对象.取类信息().取所有字段()
+		循环(i, 0, 取数组长度(class))
+			变量 field=class[i]
+			@输出名("classname")
+			变量 classname=field.类型.完整类名
+			如果 classname=="bk.pvz.Nirvana"||field.名称.开头为("zombie") 则
+			否则
+				code #field.setAccessible(true); 
+				变量 text=field.取对象值(本对象)
+				如果 text.到文本().开头为("{") 则
+					变量 json2 : JSON对象=text.到文本()
+					json.置入(field.名称,json2)
+				否则
+					json.置入(field.名称,text.到文本())
+				结束 如果
+			结束 如果
+
+		结束 循环
+		返回 json.到文本()
+	结束 方法
+
+	@静态
+	@输出名("FromJSON")
+	方法 FromJSON(jsont : 文本,gm : 窗口管理器) : Zombie
+		变量 json : JSON对象=jsont
+		变量 zombie : Zombie
+		变量 class=zombie.取类信息()
+		/*
+		循环(i, 0, 取数组长度(json.键名))
+			变量 type=class.取字段((json.键名)[i]).类型.完整类名
+			变量 name=(json.键名)[i]
+			变量 field=class.取字段((json.键名)[i])
+			如果 type=="int" 则
+				field.置整数值(zombie,json.取文本(name).到整数())
+			否则 type=="float" 
+				field.置单精度小数值(zombie,json.取文本(name).到单精度小数())
+			否则 type=="boolean"
+				field.置逻辑值(zombie,json.取文本(name).到逻辑值())
+			否则 type=="java.lang.String"
+				field.置对象值(zombie,json.取文本(name))
+			否则 type=="bk.pvz.Anim"
+				变量 text=json.取JSON对象(name)
+				field.置对象值(zombie,Anim.FromJSON(text.到文本(),gm))
+			否则 type=="bk.pvz.Rectx"
+				变量 text=json.取JSON对象(name)
+				field.置对象值(zombie,矩形x.FromJSON(text.到文本(),gm))
+			结束 如果
+
+		结束 循环
+		*/
+		formJSON(zombie,json,gm)
+		zombie.管理器=gm
+		返回 zombie
+	结束 方法
+
 结束 类
 
+@输出名("ZombieList")
 类 ZombieList : 集合模板类<Zombie>
 结束 类
 
+@输出名("PlantList")
 类 PaintList : 集合模板类<Plant>
 结束 类
 
+@输出名("ProjList")
 类 ProjList : 集合模板类<Proj>
 结束 类
 
+@输出名("CoinList")
 类 CoinList : 集合模板类<Coin>
 结束 类
 
+@输出名("TracleList")
 类 TracleList : 集合模板类<Tracle>
 结束 类
 
+@输出名("ParticleList")
 类 ParticleList : 集合模板类<Particle>
 结束 类
 
 //2025.8.9
+@输出名("CartSet")
 类 推车集
 	变量 mowerList : MowerList
 	//x=强制x+强制索引乘数*index
@@ -1092,6 +1326,7 @@ PvZLaus
 	变量 显示 : 逻辑型=假
 	变量 gm : 窗口管理器=空
 
+	@输出名("initi")
 	方法 初始化(数量 : 整数,类型 : 整数[],x : 单精度小数,gm : 窗口管理器)
 		mowerList.清空()
 		本对象.gm=gm
@@ -1123,12 +1358,103 @@ PvZLaus
 			结束 如果
 		结束 循环
 	结束 方法
+
+	@code
+	@Override
+	public String toString(){
+	    return #ToJSON();
+	}
+	@end
+
+	@输出名("ToJSON")
+	方法 ToJSON() : 文本
+		变量 json : JSON对象
+		变量 class=本对象.取类信息().取所有字段()
+		循环(i, 0, 取数组长度(class))
+			变量 field=class[i]
+			@输出名("classname")
+			变量 classname=field.类型.完整类名
+			如果 classname=="bk.pvz.Nirvana" 则
+			否则 field.名称=="anim"
+				开始俘获异常()
+				变量 anims : Anim[]=field.取对象值(本对象) : Anim[]
+				变量 json2 : JSON对象
+				循环(u, 0, 取数组长度(anims))
+					变量 json3 : JSON对象=anims[u].到文本()
+					json2.置入("i"+u.到文本(),json3)
+				结束 循环
+				json.置入(field.名称,json2)
+				俘获所有异常()
+				输出异常()
+				结束俘获异常()
+			否则
+				code #field.setAccessible(true); 
+				变量 text=field.取对象值(本对象)
+				如果 text.到文本().开头为("{") 则
+					变量 json2 : JSON对象=text.到文本()
+					json.置入(field.名称,json2)
+				否则 classname=="java.util.ArrayList"
+					变量 temp : 集合=text : 集合
+					json.置入(field.名称,ArrayList转json(temp))
+				否则
+					json.置入(field.名称,text.到文本())
+				结束 如果
+			结束 如果
+
+		结束 循环
+		返回 json.到文本()
+	结束 方法
+
+	@静态
+	@输出名("FromJSON")
+	方法 FromJSON(jsont : 文本,gm : 窗口管理器) : 推车集
+		变量 json : JSON对象=jsont
+		变量 obj : 推车集
+		变量 class=obj.取类信息()
+		/*
+		循环(i, 0, 取数组长度(json.键名))
+			变量 type=class.取字段((json.键名)[i]).类型.完整类名
+			变量 name=(json.键名)[i]
+			变量 field=class.取字段((json.键名)[i])
+			/*
+			如果 type=="int" 则
+				field.置整数值(obj,json.取文本(name).到整数())
+			否则 type=="float" 
+				field.置单精度小数值(obj,json.取文本(name).到单精度小数())
+			否则 type=="boolean"
+				field.置逻辑值(obj,json.取文本(name).到逻辑值())
+			否则 type=="java.lang.String"
+				field.置对象值(obj,json.取文本(name))
+			否则 type=="bk.pvz.Anim"
+				变量 text=json.取JSON对象(name)
+				field.置对象值(obj,Anim.FromJSON(text.到文本(),gm))
+			否则 type=="bk.pvz.Rectx"
+				变量 text=json.取JSON对象(name)
+				field.置对象值(obj,矩形x.FromJSON(text.到文本(),gm))
+			否则 (json.键名)[i]=="anim"
+				变量 text=json.取JSON对象(name)
+				变量 obj2 : Anim[]=数组创建(Anim,取数组长度(text.键名)) : Anim[]
+				循环(u, 0, 取数组长度(text.键名))
+					obj2[u]=(Anim.FromJSON(text.取JSON对象((text.键名)[u]).到文本(),gm))
+					//rv.添加成员(创建 渲染信息)
+				结束 循环
+				field.置对象值(obj,obj2)
+			结束 如果
+
+		结束 循环
+		*/
+		formJSON(obj,json,gm)
+		obj.gm=gm
+		返回 obj
+	结束 方法
 结束 类
 
+@输出名("MowerList")
 类 MowerList : 集合模板类<Mower>
 
 结束 类
 
+@输出名("Mower")
 类 Mower
 	变量 x: 单精度小数=0f
 	变量 启动 : 逻辑型=假
@@ -1197,15 +1523,97 @@ PvZLaus
 		结束 如果
 		返回 假
 	结束 方法
+
+	@code
+	@Override
+	public String toString(){
+	    return #ToJSON();
+	}
+	@end
+
+	@输出名("ToJSON")
+	方法 ToJSON() : 文本
+		变量 json : JSON对象
+		变量 class=本对象.取类信息().取所有字段()
+		循环(i, 0, 取数组长度(class))
+			变量 field=class[i]
+			@输出名("classname")
+			变量 classname=field.类型.完整类名
+			如果 classname=="bk.pvz.Nirvana" 则
+			否则
+				code #field.setAccessible(true); 
+				变量 text=field.取对象值(本对象)
+				如果 text.到文本().开头为("{") 则
+					变量 json2 : JSON对象=text.到文本()
+					json.置入(field.名称,json2)
+				否则
+					json.置入(field.名称,text.到文本())
+				结束 如果
+			结束 如果
+
+		结束 循环
+		返回 json.到文本()
+	结束 方法
+
+	@静态
+	@输出名("FromJSON")
+	方法 FromJSON(jsont : 文本,gm : 窗口管理器) : Mower
+		变量 json : JSON对象=jsont
+		变量 obj : Mower
+		变量 class=obj.取类信息()
+		/*
+		循环(i, 0, 取数组长度(json.键名))
+			变量 type=class.取字段((json.键名)[i]).类型.完整类名
+			变量 name=(json.键名)[i]
+			变量 field=class.取字段((json.键名)[i])
+			/*
+			如果 type=="int" 则
+				field.置整数值(obj,json.取文本(name).到整数())
+			否则 type=="float" 
+				field.置单精度小数值(obj,json.取文本(name).到单精度小数())
+			否则 type=="boolean"
+				field.置逻辑值(obj,json.取文本(name).到逻辑值())
+			否则 type=="java.lang.String"
+				field.置对象值(obj,json.取文本(name))
+			否则 type=="bk.pvz.Anim"
+				变量 text=json.取JSON对象(name)
+				field.置对象值(obj,Anim.FromJSON(text.到文本(),gm))
+			否则 type=="bk.pvz.Rectx"
+				变量 text=json.取JSON对象(name)
+				field.置对象值(obj,矩形x.FromJSON(text.到文本(),gm))
+			否则 (json.键名)[i]=="anim"
+				变量 text=json.取JSON对象(name)
+				变量 obj2 : Anim[]=数组创建(Anim,取数组长度(text.键名)) : Anim[]
+				循环(u, 0, 取数组长度(text.键名))
+					obj2[u]=(Anim.FromJSON(text.取JSON对象((text.键名)[u]).到文本(),gm))
+					//rv.添加成员(创建 渲染信息)
+				结束 循环
+				field.置对象值(obj,obj2)
+			结束 如果
+
+		结束 循环
+		*/
+		formJSON(obj,json,gm)
+		obj.gm=gm
+		返回 obj
+	结束 方法
 结束 类
 
+@输出名("Plant")
 类 Plant
+	@输出名("HP")
 	变量 HP : 整数
+	@输出名("HPM")
 	变量 HPM : 整数
+	@输出名("type")
 	变量 type : 整数
+	@输出名("anim")
 	变量 anim : Anim[]
+	@输出名("x")
 	变量 x : 单精度小数=0f
+	@输出名("y")
 	变量 y : 单精度小数=0f
+	@输出名("scale")
 	变量 scale : 单精度小数=1f
 	变量 row : 整数=-1
 	变量 line : 整数=-1
@@ -1219,11 +1627,18 @@ PvZLaus
 	变量 旋转速度 : 单精度小数=0f
 	变量 无敌 : 逻辑型
 	变量 无视 : 逻辑型
+	@输出名("dying")
+	变量 即将死亡 : 逻辑型
+	@输出名("state")
 	变量 state : 文本
 	//2025.8.15
 	变量 遇到僵尸 : 逻辑型=假
 
 	变量 管理器 : 窗口管理器
+	变量 被碾压 : 逻辑型=假
+	变量 enableMatrix : 逻辑型=假
+	变量 matrix : Matrix=Matrix.新建()
+	变量 dyingtime : 整数=-1
 
 	@静态
 	方法 create(manager : 窗口管理器,row : 整数,line : 整数,type : 整数) : Plant
@@ -1462,18 +1877,31 @@ PvZLaus
 			plant.anim={animw}
 		结束 如果
 		plant.HPM=plant.HP
+		//测试json
+		//文件操作.写出文本文件("/sdcard/plant.json",plant.ToJSON())
+		//文件操作.写出文本文件("/sdcard/plant2.json",Plant.FromJSON(plant.ToJSON(),manager).ToJSON())
+
 		返回 plant
 	结束 方法
 
-	方法 Update() : 逻辑型
+	@输出名("initAnim")
+	方法 initAnim()
 
+	结束 方法
+
+	方法 Update() : 逻辑型
 		如果 HP<=0 则
 			返回 真
 		结束 如果
+		如果 dyingtime!=-1 则
+			dyingtime=dyingtime-1
+			如果 dyingtime<1 则
+				返回 真
+			结束 如果
+		结束 如果
 
-		如果 type==0||type==5||type==7||type==8 则
 
-			/*
+		/*
 			如果 (可发射&&dtime==dtimemax-发射延迟) 则
 				可发射=假
 				变量 tp="ProjectilePea"
@@ -1497,168 +1925,171 @@ PvZLaus
 			结束 如果
 			dtime=dtime-1
 			*/
-			变量 pd=判定僵尸()
-			//如果 pd!=空 则
+		如果 即将死亡==假&&dyingtime==-1 则
 			如果 type==0||type==5||type==7||type==8 则
-				变量 anim_head : Anim=空
-				如果 type==0||type==5||type==7 则
-					anim_head=anim[0].panims.名称("anim_stem")
-				否则 type==8
-					anim_head=anim[0]
-				结束 如果
-				如果 (dtime==30||(dtime==0&&type==7))&&pd!=空 则
+				变量 pd=判定僵尸()
+				//如果 pd!=空 则
+				如果 type==0||type==5||type==7||type==8 则
+					变量 anim_head : Anim=空
+					如果 type==0||type==5||type==7 则
+						anim_head=anim[0].panims.名称("anim_stem")
+					否则 type==8
+						anim_head=anim[0]
+					结束 如果
+					如果 (dtime==30||(dtime==0&&type==7))&&pd!=空 则
 
-					anim_head.speed=1f
-					如果 type==7 则
-						anim_head.speed=1.8f
+						anim_head.speed=1f
+						如果 type==7 则
+							anim_head.speed=1.8f
+						结束 如果
+						变量 fr=anim_head.animname
+						如果 anim_head.动画回归!="" 则
+							fr=anim_head.动画回归
+						结束 如果
+						anim_head.播放动画("anim_shooting",真)
+						anim_head.动画回归=fr
+						可发射=真
+					否则 （dtime==1||(dtime==130&&type==7))&&可发射
+						shoot()
+						如果 (type==7&&dtime==15)==假 则
+							可发射=假
+						结束 如果
 					结束 如果
-					变量 fr=anim_head.animname
-					如果 anim_head.动画回归!="" 则
-						fr=anim_head.动画回归
-					结束 如果
-					anim_head.播放动画("anim_shooting",真)
-					anim_head.动画回归=fr
-					可发射=真
-				否则 （dtime==1||(dtime==130&&type==7))&&可发射
-					shoot()
-					如果 (type==7&&dtime==15)==假 则
-						可发射=假
+					如果 anim_head.animname!="anim_shooting" 则
+						anim_head.speed=0.5f
 					结束 如果
 				结束 如果
-				如果 anim_head.animname!="anim_shooting" 则
-					anim_head.speed=0.5f
+				如果 可发射||pd!=空 则
+					dtime=dtime-1
+					如果 dtime<0 则
+						dtime=dtimemax
+					结束 如果
 				结束 如果
-			结束 如果
-			如果 可发射||pd!=空 则
-				dtime=dtime-1
-				如果 dtime<0 则
+			否则 type==1
+				如果 dtime<=0 则
+					变量 sunt : Coin=Coin.create(管理器,sun,x()+50,y)
+					sunt.yv=-2f
+					sunt.ya=0.04f
+					sunt.xv=double2float(取随机小数(-0.5f,0.5f))
+					sunt.最左x=x()-50
+					sunt.最右x=x()+50
+					sunt.最低y=y+50
+					管理器.coinList.添加成员(sunt)
 					dtime=dtimemax
+				否则
+					dtime=dtime-1
 				结束 如果
-			结束 如果
-		否则 type==1
-			如果 dtime<=0 则
-				变量 sunt : Coin=Coin.create(管理器,sun,x()+50,y)
-				sunt.yv=-2f
-				sunt.ya=0.04f
-				sunt.xv=double2float(取随机小数(-0.5f,0.5f))
-				sunt.最左x=x()-50
-				sunt.最右x=x()+50
-				sunt.最低y=y+50
-				管理器.coinList.添加成员(sunt)
-				dtime=dtimemax
-			否则
-				dtime=dtime-1
-			结束 如果
-		否则 type==2
-			如果 anim[0].暂停 则
-				管理器.particleList.添加成员(Particle.新建("Powie",x(),y(),row,管理器))
-				变量 ux=x+cv.x
-				变量 uy=y+cv.y
-				循环(i, 0, 管理器.zombieList.长度)
-					变量 zombie : Zombie=(管理器.zombieList)[i]
-					变量 zomx : 单精度小数=zombie.x+cv.x+cv.w/2
-					变量 zomy : 单精度小数=zombie.y+cv.y+cv.y/2
-					变量 半径 : 整数=140
-					如果 ux-半径<zomx&&zomx<ux+半径&&(uy-半径<zomy&&zomy<uy+半径) 则
-						zombie.damage(1800,1)
-					结束 如果
-				结束 循环
-				返回 真
-			结束 如果
-		否则 type==3
-			如果 HP<HPM*1/3 则
-				anim[0].代理图片("anim_face","IMAGE_REANIM_"+"Wallnut_cracked2".到大写())
-			否则 HP<HPM*2/3
-				anim[0].代理图片("anim_face","IMAGE_REANIM_"+"Wallnut_cracked1".到大写())
-			否则
-				anim[0].代理图片("anim_face","IMAGE_REANIM_WALLNUT_BODY")
-			结束 如果
-		否则 type==4
-			如果 state=="boom" 则
-				scale=1.2f
-				变量 ux=x+cv.x
-				变量 uy=y+cv.y
-				循环(i, 0, 管理器.zombieList.长度)
-					变量 zombie : Zombie=(管理器.zombieList)[i]
-					变量 zomx : 单精度小数=zombie.x+cv.x+cv.w/2
-					变量 zomy : 单精度小数=zombie.y+cv.y+cv.y/2
-					变量 半径 : 整数=100
-					如果 ux-半径<zomx&&zomx<ux+半径&&(uy-半径<zomy&&zomy<uy+半径) 则
-						zombie.damage(1800,3)
-					结束 如果
-				结束 循环
-				无视=真
-				anim[0].播放动画("anim_mashed").暂停=真
-				anim[0].禁止演化=真
-				state="dying"
-				dtime=300
-			结束 如果
-			如果 dtime==0 则
-				如果 state=="dying" 则
+			否则 type==2
+				如果 anim[0].暂停 则
+					管理器.particleList.添加成员(Particle.新建("Powie",x(),y(),row,管理器))
+					变量 ux=x+cv.x
+					变量 uy=y+cv.y
+					循环(i, 0, 管理器.zombieList.长度)
+						变量 zombie : Zombie=(管理器.zombieList)[i]
+						变量 zomx : 单精度小数=zombie.x+cv.x+cv.w/2
+						变量 zomy : 单精度小数=zombie.y+cv.y+cv.y/2
+						变量 半径 : 整数=140
+						如果 ux-半径<zomx&&zomx<ux+半径&&(uy-半径<zomy&&zomy<uy+半径) 则
+							zombie.damage(1800,1)
+						结束 如果
+					结束 循环
 					返回 真
+				结束 如果
+			否则 type==3
+				如果 HP<HPM*1/3 则
+					anim[0].代理图片("anim_face","IMAGE_REANIM_"+"Wallnut_cracked2".到大写())
+				否则 HP<HPM*2/3
+					anim[0].代理图片("anim_face","IMAGE_REANIM_"+"Wallnut_cracked1".到大写())
 				否则
-					anim[0].播放动画("anim_rise")
-					anim[0].动画回归="anim_armed"
-					无敌=真
+					anim[0].代理图片("anim_face","IMAGE_REANIM_WALLNUT_BODY")
 				结束 如果
-			否则 dtime<0
-				如果 anim[0].动画回归=="" 则
-					state="idle"
+			否则 type==4
+				如果 state=="boom" 则
+					scale=1.2f
+					变量 ux=x+cv.x
+					变量 uy=y+cv.y
+					循环(i, 0, 管理器.zombieList.长度)
+						变量 zombie : Zombie=(管理器.zombieList)[i]
+						变量 zomx : 单精度小数=zombie.x+cv.x+cv.w/2
+						变量 zomy : 单精度小数=zombie.y+cv.y+cv.y/2
+						变量 半径 : 整数=100
+						如果 ux-半径<zomx&&zomx<ux+半径&&(uy-半径<zomy&&zomy<uy+半径) 则
+							zombie.damage(1800,3)
+						结束 如果
+					结束 循环
+					无视=真
+					anim[0].播放动画("anim_mashed").暂停=真
+					anim[0].禁止演化=真
+					state="dying"
+					dtime=300
 				结束 如果
-			结束 如果
-			dtime=dtime-1
-		否则 type==6
-			变量 pd=判定僵尸()
-			//如果 (dtime<=0) 则
-			如果 pd!=空&&(dtime<=0)&&anim[0].animname=="anim_idle" 则
-				anim[0].speed=anim[0].speed*2
-				state="bite"
-				anim[0].播放动画("anim_bite")
-				anim[0].播完暂停=真
-
-			否则 anim[0].animname=="anim_bite"&&anim[0].frame>=42&&state=="bite"
-				state="chew"
-
-				如果 pd==空 则
-
-				否则
-
-					dtime=4340
-					pd.die=真
-				结束 如果
-			否则 anim[0].animname=="anim_bite"&&anim[0].暂停
-				anim[0].speed=0.5f
-				anim[0].播完暂停=假
 				如果 dtime==0 则
-					变量 fr=anim[0].frame
-					anim[0].播放动画("anim_idle")
-					//anim[0].speed=anim[0].speed/2
-					anim[0].过渡从(fr.到整数(),4)
-				否则
-					anim[0].播放动画("anim_chew")
+					如果 state=="dying" 则
+						返回 真
+					否则
+						anim[0].播放动画("anim_rise")
+						anim[0].动画回归="anim_armed"
+						无敌=真
+					结束 如果
+				否则 dtime<0
+					如果 anim[0].动画回归=="" 则
+						state="idle"
+					结束 如果
 				结束 如果
-			否则 dtime<=0&&anim[0].animname=="anim_chew"
-				state="swall"
-				anim[0].播放动画("anim_swallow")
-				anim[0].动画回归="anim_idle"
-				//anim[0].speed=anim[0].speed*2
-			结束 如果
-			如果 dtime>0 则
 				dtime=dtime-1
-			否则
-				dtime=0
-			结束 如果
-			//否则
-			//结束 如果
-		否则 type==30
-			如果 HP<HPM*1/4 则
-				anim[0].代理图片("Pumpkin_front","IMAGE_REANIM_"+"Pumpkin_damage3".到大写())
-			否则 HP<HPM*2/4
-				anim[0].代理图片("Pumpkin_front","IMAGE_REANIM_"+"Pumpkin_damage2".到大写())
-			否则 HP<HPM*3/4
-				anim[0].代理图片("Pumpkin_front","IMAGE_REANIM_"+"Pumpkin_damage1".到大写())
-			否则
-				anim[0].代理图片("Pumpkin_front","IMAGE_REANIM_"+"Pumpkin_front".到大写())
+			否则 type==6
+				变量 pd=判定僵尸()
+				//如果 (dtime<=0) 则
+				如果 pd!=空&&(dtime<=0)&&anim[0].animname=="anim_idle" 则
+					anim[0].speed=anim[0].speed*2
+					state="bite"
+					anim[0].播放动画("anim_bite")
+					anim[0].播完暂停=真
+
+				否则 anim[0].animname=="anim_bite"&&anim[0].frame>=42&&state=="bite"
+					state="chew"
+
+					如果 pd==空 则
+
+					否则
+
+						dtime=4340
+						pd.die=真
+					结束 如果
+				否则 anim[0].animname=="anim_bite"&&anim[0].暂停
+					anim[0].speed=0.5f
+					anim[0].播完暂停=假
+					如果 dtime==0 则
+						变量 fr=anim[0].frame
+						anim[0].播放动画("anim_idle")
+						//anim[0].speed=anim[0].speed/2
+						anim[0].过渡从(fr.到整数(),4)
+					否则
+						anim[0].播放动画("anim_chew")
+					结束 如果
+				否则 dtime<=0&&anim[0].animname=="anim_chew"
+					state="swall"
+					anim[0].播放动画("anim_swallow")
+					anim[0].动画回归="anim_idle"
+					//anim[0].speed=anim[0].speed*2
+				结束 如果
+				如果 dtime>0 则
+					dtime=dtime-1
+				否则
+					dtime=0
+				结束 如果
+				//否则
+				//结束 如果
+			否则 type==30
+				如果 HP<HPM*1/4 则
+					anim[0].代理图片("Pumpkin_front","IMAGE_REANIM_"+"Pumpkin_damage3".到大写())
+				否则 HP<HPM*2/4
+					anim[0].代理图片("Pumpkin_front","IMAGE_REANIM_"+"Pumpkin_damage2".到大写())
+				否则 HP<HPM*3/4
+					anim[0].代理图片("Pumpkin_front","IMAGE_REANIM_"+"Pumpkin_damage1".到大写())
+				否则
+					anim[0].代理图片("Pumpkin_front","IMAGE_REANIM_"+"Pumpkin_front".到大写())
+				结束 如果
 			结束 如果
 		结束 如果
 		返回 假
@@ -1682,17 +2113,30 @@ PvZLaus
 		变量 rlt : Zombie=空
 		循环(i, 0, 管理器.zombieList.长度)
 			变量 zombie=(管理器.zombieList)[i]
-			如果 zombie.无形==假&&zombie.row==row&&zombie.x()>x()-50&&(rlt==空||zombie.x()<rlt.x()) 则
+			如果 zombie.无形==假&&zombie.row==row&&zombie.x()+zombie.cv.x>x()-30&&(rlt==空||zombie.x()+rlt.cv.x<rlt.x()+rlt.cv.x) 则
 				rlt=zombie
 			结束 如果
 		结束 循环
-		如果 type==6&&rlt!=空&&rlt.x()>x()+120 则
+		如果 type==6&&rlt!=空&&rlt.x()+rlt.cv.x>x()+160 则
 			返回 空
 		结束 如果
-		如果 type==8&&rlt!=空&&rlt.x()>x()+300 则
+		如果 type==8&&rlt!=空&&rlt.x()+rlt.cv.x>x()+340 则
 			返回 空
 		结束 如果
 		返回 rlt
+	结束 方法
+
+	方法 压扁()
+		循环(i, 0, 取数组长度(anim))
+			anim[i].暂停(真)
+		结束 循环
+		被碾压=真
+		无敌=真
+		无视=真
+		即将死亡=真
+		dyingtime=500
+		matrix=Matrix.新建().postScale_4(1,0.2f,0,60).postTranslate(0,10)
+		enableMatrix=真
 	结束 方法
 
 	方法 动画移位(xn : 单精度小数,yn : 单精度小数)
@@ -1736,25 +2180,134 @@ PvZLaus
 		stsl.add("state",state)
 		返回 stsl
 	结束 方法
+
+	@code
+	@Override
+	public String toString(){
+	    return #ToJSON();
+	}
+	@end
+
+	@输出名("ToJSON")
+	方法 ToJSON() : 文本
+		变量 json : JSON对象
+		变量 class=本对象.取类信息().取所有字段()
+		循环(i, 0, 取数组长度(class))
+			变量 field=class[i]
+			@输出名("classname")
+			变量 classname=field.类型.完整类名
+			如果 classname=="bk.pvz.Nirvana" 则
+			否则 field.名称=="anim"
+				开始俘获异常()
+				变量 anims : Anim[]=field.取对象值(本对象) : Anim[]
+				变量 json2 : JSON对象
+				循环(u, 0, 取数组长度(anims))
+					变量 json3 : JSON对象=anims[u].到文本()
+					json2.置入("i"+u.到文本(),json3)
+				结束 循环
+				json.置入(field.名称,json2)
+				俘获所有异常()
+				输出异常()
+				结束俘获异常()
+			否则
+				code #field.setAccessible(true); 
+				变量 text=field.取对象值(本对象)
+				如果 text.到文本().开头为("{") 则
+					变量 json2 : JSON对象=text.到文本()
+					json.置入(field.名称,json2)
+				否则
+					json.置入(field.名称,text.到文本())
+				结束 如果
+			结束 如果
+
+		结束 循环
+		返回 json.到文本()
+	结束 方法
+
+	@静态
+	@输出名("FromJSON")
+	方法 FromJSON(jsont : 文本,gm : 窗口管理器) : Plant
+		变量 json : JSON对象=jsont
+		变量 obj : Plant
+		变量 class=obj.取类信息()
+		/*
+		循环(i, 0, 取数组长度(json.键名))
+			变量 type=class.取字段((json.键名)[i]).类型.完整类名
+			变量 name=(json.键名)[i]
+			变量 field=class.取字段((json.键名)[i])
+			/*
+			如果 type=="int" 则
+				field.置整数值(obj,json.取文本(name).到整数())
+			否则 type=="float" 
+				field.置单精度小数值(obj,json.取文本(name).到单精度小数())
+			否则 type=="boolean"
+				field.置逻辑值(obj,json.取文本(name).到逻辑值())
+			否则 type=="java.lang.String"
+				field.置对象值(obj,json.取文本(name))
+			否则 type=="bk.pvz.Anim"
+				变量 text=json.取JSON对象(name)
+				field.置对象值(obj,Anim.FromJSON(text.到文本(),gm))
+			否则 type=="bk.pvz.Rectx"
+				变量 text=json.取JSON对象(name)
+				field.置对象值(obj,矩形x.FromJSON(text.到文本(),gm))
+			否则 (json.键名)[i]=="anim"
+				变量 text=json.取JSON对象(name)
+				变量 obj2 : Anim[]=数组创建(Anim,取数组长度(text.键名)) : Anim[]
+				循环(u, 0, 取数组长度(text.键名))
+					obj2[u]=(Anim.FromJSON(text.取JSON对象((text.键名)[u]).到文本(),gm))
+					//rv.添加成员(创建 渲染信息)
+				结束 循环
+				field.置对象值(obj,obj2)
+			结束 如果
+
+		结束 循环
+		*/
+		formJSON(obj,json,gm)
+		obj.管理器=gm
+		返回 obj
+	结束 方法
+
+
 结束 类
 
+@输出名("Proj")
 类 Proj
+
 	变量 x : 单精度小数=0f
+
 	变量 y : 单精度小数=0f
+
 	变量 xv : 单精度小数=0f
+
 	变量 yv : 单精度小数=0f
+
 	变量 xa : 单精度小数=0f
+
 	变量 ya : 单精度小数=0f
+
 	变量 type : 文本
+
 	变量 管理器 : 窗口管理器=空
+
 	变量 tps : 文本
+
 	变量 row : 整数
+
 	变量 reanproj : 文本[]={"Melonpult_melon","WinterMelon_projectile"}
+
 	变量 imgproj : 文本[]={"ProjectileCactus","ProjectilePea","ProjectileSnowPea","Projectile_star"}
+
 	变量 damage : 整数
+	@输出名("splash")
 	变量 splash : 单精度小数=0f
+	@输出名("effect")
 	变量 effect : 整数=0
+	@输出名("scale")
 	变量 scale : 单精度小数=1f
+	@输出名("partdtime")
+	变量 partdtime : 整数=0
+	@输出名("pdtmax")
+	变量 pdtmax : 整数=0
 
 	@静态
 	方法 create(manager : 窗口管理器,type : 文本,row : 整数,横坐标 : 单精度小数,纵坐标 : 单精度小数) : Proj
@@ -1779,6 +2332,7 @@ PvZLaus
 			tps="image"
 			damage=20
 			effect=500
+			pdtmax=8
 		否则 type=="PuffShroom_puff1"
 			damage=20
 			tps="image"
@@ -1788,6 +2342,13 @@ PvZLaus
 	结束 方法
 
 	方法 Update() : 逻辑型
+		如果 pdtmax!=0&&partdtime<=0 则
+			partdtime=pdtmax
+			如果 type=="ProjectileSnowPea" 则
+				管理器.particleList.添加成员(Particle.新建("SnowPeaTrail",x,y+取随机数(0,5),row,管理器))
+			结束 如果
+		结束 如果
+		partdtime=partdtime-1
 		如果 x<0||x>1400||y<0||y>600 则
 			返回 真
 		结束 如果
@@ -1819,6 +2380,7 @@ PvZLaus
 
 结束 类
 
+@输出名("Coin")
 类 Coin
 	变量 x : 单精度小数=0f
 	变量 dx : 单精度小数=0f
@@ -1955,6 +2517,7 @@ PvZLaus
 
 @全局类
 @静态
+@输出名("static_")
 类 static
 
 	@静态
@@ -1984,6 +2547,7 @@ PvZLaus
 
 结束 类
 
+@输出名("Tracle")
 类 Tracle
 	变量 x : 单精度小数=0f
 	变量 y : 单精度小数=0f
@@ -2083,6 +2647,7 @@ PvZLaus
 结束 类
 
 //2025.7.26
+@输出名("Particle")
 类 Particle
 	变量 parts : 粒子集合
 	变量 x : 单精度小数
@@ -2269,6 +2834,7 @@ PvZLaus
 		否则 type=="PuffShroomMuzzle"
 			prt.dtime=0
 			prt.dtimemax=20
+			@输出名("dt")
 			变量 dt=20
 			循环(i, 0, 取随机数(6,8))
 				变量 lzb : 粒子=粒子.新建(,,,,,)
@@ -2289,11 +2855,157 @@ PvZLaus
 			//PuffShroom_puff2
 		否则 type=="PuffShroomTrail"
 
+		否则 type=="SnowPeaTrail"
+			prt.dtime=0
+			prt.dtimemax=20
+			@输出名("dt")
+			变量 dt=15
+			变量 lzb : 粒子=粒子.新建(,,,,,)
+			lzb.pic="SnowFlakes"
+			lzb.cutn=3
+			lzb.cutp=取随机数(0,2)
+			lzb.setdtime(dt)
+			lzb.alpha="0-1 100-0"
+			lzb.x=随机单精度小数(2,4)
+			lzb.y=随机单精度小数(-3,2)
+			lzb.xv=0
+			lzb.yv=随机单精度小数(-1f,1f)
+			lzb.ya=0.03f
+			lzb.spinspeed=取随机数(-2,2)
+			lzb.scale="0-"+随机单精度小数(1,1.5f)+" 100-0"
+			prt.parts.添加成员(lzb)
+		否则 type=="ZamboniExplosion"
+			变量 dt=100
+			prt.颜色渲染保护=真
+			prt.dtime=0
+			prt.dtimemax=dt
+			变量 count=10
+
+			//PowieBigClouds
+
+			循环(i, 0, count)
+				变量 lzb : 粒子=粒子.新建(,,,,,)
+				lzb.pic="ExplosionCloud"
+				lzb.setdtime(dt)
+				变量 缩放=随机单精度小数(1.2f,1.6f)
+				lzb.scale="0-"+缩放+" 60-"+缩放+" 100-0"
+
+				lzb.red="0-0.5 100-0"
+				lzb.green="0-0.8 100-0"
+				lzb.blue="0-1 50-0.75 100-0"
+				lzb.alpha="0-1 70-0 100-0"
+				//日志("zzzzz   "+lzb.scale.到文本())
+				lzb.rotate=随机单精度小数(0,359)
+				lzb.spinspeed=随机单精度小数(-2,2)
+				变量 speed=2
+				变量 dir=数学运算.角度转弧度(取随机数(0,359))
+				lzb.xv=speed*double2float(数学运算.求余弦(dir))
+				lzb.yv=speed*double2float(数学运算.求正弦(dir))
+				lzb.xf="0-0.1 40-0.1 100-1"
+				lzb.yf="0-0.28 40-0.28 100-1"
+
+				prt.parts.添加成员(lzb)
+			结束 循环
+			变量 yax=0.08f
+
+			变量 lz : 粒子=粒子.新建(-70,-70,,,,)
+			lz.pic="IMAGE_REANIM_"+"Zombie_zamboni_brush".到大写()
+			lz.scale=粒子.全值(0.8f)
+			lz.xv=随机单精度小数(-2f,2f)
+			lz.yv=-1*随机单精度小数(2,4)
+			lz.ya=yax
+			lz.alpha="0-1 90-0 100-0"
+			lz.rotate=随机单精度小数(-720,720)
+			lz.spinspeed=随机单精度小数(-2f,2f)
+			lz.setdtime(80)
+			prt.parts.添加成员(lz)
+
+			lz=粒子.新建(-70,-70,,,,)
+			lz.pic="IMAGE_REANIM_"+"Zombie_zamboni_wheel".到大写()
+			lz.scale=粒子.全值(0.8f)
+			lz.xv=随机单精度小数(-2f,2f)
+			lz.yv=-1*随机单精度小数(2,4)
+			lz.ya=yax
+			lz.alpha="0-1 90-0 100-0"
+			lz.rotate=随机单精度小数(-720,720)
+			lz.spinspeed=随机单精度小数(-2f,2f)
+			lz.x=取随机数(-35,35)
+			lz.y=30
+			lz.setdtime(80)
+			prt.parts.添加成员(lz)
+
+			lz=粒子.新建(-70,-70,,,,)
+			lz.pic="IMAGE_REANIM_"+"Zombie_zamboni_1_damage1".到大写()
+			lz.scale=粒子.全值(0.8f)
+			lz.xv=随机单精度小数(-2f,2f)
+			lz.yv=-1*随机单精度小数(2,4)
+			lz.ya=yax
+			lz.alpha="0-1 90-0 100-0"
+			lz.rotate=随机单精度小数(-720,720)
+			lz.spinspeed=随机单精度小数(-2f,2f)
+			lz.setdtime(80)
+			prt.parts.添加成员(lz)
+
+			count=10
+
+			//Parts
+			循环(i, 0, count)
+				变量 lzb : 粒子=粒子.新建(,,,,,)
+				lzb.setdtime(dt)
+				lzb.pic="Zomboss_particles"
+				lzb.scale=粒子.全值(随机单精度小数(0.4f,0.6f))
+				lzb.cutn=5
+				lzb.cutp=取随机数(0,4)
+				lzb.alpha="0-1 70-1 100-0"
+				lzb.x=随机单精度小数(-10,10)
+				lzb.y=随机单精度小数(-10,10)
+				//日志("zzzzz   "+lzb.scale.到文本())
+				lzb.rotate=随机单精度小数(0,359)
+				lzb.spinspeed=随机单精度小数(-2,2)
+				变量 speed=5
+				变量 dir=数学运算.角度转弧度(取随机数(0,359))
+				lzb.xv=speed*double2float(数学运算.求余弦(dir))
+				lzb.yv=speed*double2float(数学运算.求正弦(dir))
+				lzb.xf="0-0.1 40-0.1 100-1"
+				lzb.yf="0-0.28 40-0.28 100-1"
+
+				prt.parts.添加成员(lzb)
+			结束 循环
+
+
+			count=14
+			//ZamboniSmallClouds
+			循环(i, 0, count)
+
+				变量 lzb : 粒子=粒子.新建(,,,,,)
+				lzb.pic="ExplosionCloud"
+				lzb.setdtime(dt)
+				//变量 缩放=随机单精度小数(0.8f,1.2f)
+
+				lzb.red="0-0.5 100-0"
+				lzb.green="0-0.8 100-0"
+				lzb.blue="0-1 50-0.75 100-0"
+				lzb.alpha="0-1 70-0 100-0"
+				//日志("zzzzz   "+lzb.scale.到文本())
+				lzb.scale="0-0.5 60-0.5 100-0"
+				lzb.rotate=随机单精度小数(0,359)
+				lzb.spinspeed=随机单精度小数(-2,2)
+				变量 speed=5
+				变量 dir=数学运算.角度转弧度(取随机数(0,359))
+				lzb.xv=speed*double2float(数学运算.求余弦(dir))
+				lzb.yv=speed*double2float(数学运算.求正弦(dir))
+				lzb.xf="0-0.15 40-0.15 100-1"
+				lzb.yf="0-0.25 40-0.25 100-1"
+
+				prt.parts.添加成员(lzb)
+			结束 循环
+
+
 		结束 如果
 		返回 prt
 	结束 方法
 
-
+	@输出名("Update")
 	方法 Update() : 逻辑型
 		如果 type=="SodRoll" 则
 			x=220+管理器.动画进度
@@ -2319,57 +3031,88 @@ PvZLaus
 
 结束 类
 
+@输出名("GrainSet")
 类 粒子集合 : 集合模板类<粒子>
 结束 类
 
 //2025.7.26
+@输出名("Grain")
 类 粒子
+	@输出名("x")
 	变量 x : 单精度小数=0f
+	@输出名("y")
 	变量 y : 单精度小数=0f
+	@输出名("xv")
 	变量 xv : 单精度小数=0f
+	@输出名("yv")
 	变量 yv : 单精度小数=0f
+	@输出名("xa")
 	变量 xa : 单精度小数=0f
+	@输出名("ya")
 	变量 ya : 单精度小数=0f
 	//摩擦力，方向永远与xv相反
+	@输出名("xf")
 	变量 xf : 文本="0-0 100-0"
 	//摩擦力，方向永远与yv相反
+	@输出名("yf")
 	变量 yf : 文本="0-0 100-0"
 
+	@输出名("alpha")
 	变量 alpha : 文本="0-1 100-1"
+	@输出名("scale")
 	变量 scale : 文本="0-1 100-1"
+	@输出名("red")
 	变量 red : 文本="0-1 100-1"
+	@输出名("green")
 	变量 green : 文本="0-1 100-1"
+	@输出名("blue")
 	变量 blue : 文本="0-1 100-1"
+	@输出名("rotate")
 	变量 rotate : 单精度小数=0
+	@输出名("spinspeed")
 	变量 spinspeed : 单精度小数=0
+	@输出名("shake")
 	变量 shake : 单精度小数=0
 
 
 
-
+	@输出名("dtime")
 	//特效已存在的时长
 	变量 dtime : 整数
+
 	//特效的存在时长
+	@输出名("dtimemax")
 	变量 dtimemax : 整数
 	//要播的图片名称
+	@输出名("pic")
 	变量 pic : 文本
 	//如果图片要切割，这里是切割片段总数
+	@输出名("cutn")
 	变量 cutn : 整数=1
 	//要播第几张切割片段
+	@输出名("cutp")
 	变量 cutp : 整数=0
 	//切割行数
+	@输出名("row")
 	变量 row : 整数=1
+	@输出名("gm")
 	变量 gm : 窗口管理器
+	@输出名("isCarousel")
 	变量 轮播 : 逻辑型=假
+	@输出名("loopplay")
 	变量 循环播放 : 逻辑型=假
-
+	@输出名("starte")
 	变量 starte : 单精度小数=0
+	@输出名("ende")
 	变量 ende : 单精度小数=-1
+	@输出名("alivecd")
 	变量 存活倒计时 : 整数=-1
+	@输出名("activecd")
 	变量 激活倒计时 : 整数=0
 
 
 	@静态
+	@输出名("create")
 	方法 新建(xn : 单精度小数=0f,yn : 单精度小数=0f,xvn : 单精度小数=0f,yvn : 单精度小数=0f,xan : 单精度小数=0f,yan : 单精度小数=0f) : 粒子
 		变量 lz : 粒子
 		lz.x=xn
@@ -2381,12 +3124,14 @@ PvZLaus
 		返回 lz
 	结束 方法
 
+	@输出名("setdtime")
 	方法 setdtime(dt : 整数) : 粒子
 		dtime=0
 		dtimemax=dt
 		返回 本对象
 	结束 方法
 
+	@输出名("Update")
 	方法 Update() : 逻辑型
 		如果 激活倒计时<=0 则
 			如果 存活倒计时!=-1 则
@@ -2433,10 +3178,12 @@ PvZLaus
 	结束 方法
 
 	@静态
+	@输出名("fullvalue")
 	方法 全值(值 : 单精度小数) : 文本
 		返回 "0-"+值+" 1-"+值
 	结束 方法
 
+	@输出名("getValue")
 	方法 取值(东西 : 文本) : 单精度小数
 		变量 t=dtime*100f/dtimemax
 		变量 rule : 文本[]=东西.分割文本(" ")
@@ -2456,32 +3203,49 @@ PvZLaus
 	结束 方法
 结束 类
 
+@输出名("Userdatas")
 类 userdatas
+	@输出名("accountNumber")
 	变量 账户数量=0
+	@输出名("currentAccount")
 	变量 当前账户 : 整数=-1
+	@输出名("account")
 	变量 账户 : userdataed
 
+	@输出名("getCurrentAccount")
 	方法 当前账户() : userdata
 		返回 账户[当前账户]
 	结束 方法
 结束 类
 
+@输出名("Userdata")
 类 userdata
 	//用户名
+	@输出名("yourname")
 	变量 你的名字是ĉĵ : 文本
+	@输出名("aweekly")
 	变量 冒险周目 : 整数
+	@输出名("alevel")
 	变量 冒险关数 : 整数
+	@输出名("minilevel")
 	变量 小游戏通关 : 整数[]=数组创建(整数,100)
+	@输出名("unlockmini")
 	变量 解锁小游戏 : 逻辑型=假
+	@输出名("unlockpuzzle")
 	变量 解锁益智 : 逻辑型=假
+	@输出名("unlockendless")
 	变量 解锁无尽 : 逻辑型=假
+	@输出名("slotnumber")
 	变量 卡槽数量 : 整数=6
+	@输出名("unlockpurple")
 	变量 紫卡解锁 : 逻辑型[]=数组创建(逻辑型,8)
 结束 类
 
+@输出名("UserdataList")
 类 userdataed : 集合模板类<userdata>
 结束 类
 
+@输出名("Dialog")
 类 Dialog
 
 结束 类

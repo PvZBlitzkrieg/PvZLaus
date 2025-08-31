@@ -23,6 +23,7 @@ PvZLaus
 @导入Java("android.content.res.*")
 @导入Java("android.view.*")
 @导入Java("android.widget.*")
+@输出名("Editor")
 //@外部依赖库("../../assets/classes2.jar")
 类 Editor:可视化组件
 	
@@ -998,12 +999,14 @@ PvZLaus
 
 
 //@外部依赖库("../../jar/classes.jar")
+@输出名("EmptyLanguage_")
 @指代类("io.github.rosemoe.sora.lang.EmptyLanguage")
 类 空语言 : 语言
 	
 结束 类
 
 //@外部依赖库("../../jar/classes.jar")
+@输出名("Language_")
 @指代类("io.github.rosemoe.sora.lang.Language")
 类 语言
 	
@@ -1012,6 +1015,7 @@ PvZLaus
 
 //@外部依赖库("../../jar/classes.jar")
 @指代类("io.github.rosemoe.sora.langs.textmate.TextMateLanguage")
+@输出名("TextMateLanguage_")
 @禁止创建对象
 类 文本语言 : 空语言
 	
@@ -1039,6 +1043,7 @@ PvZLaus
 */
 
 //@外部依赖库("../../jar/classes.jar")
+@输出名("IThemeSource_")
 @指代类("org.eclipse.tm4e.core.registry.IThemeSource")
 类 I主题资源
 	方法 从加载器()
@@ -1092,6 +1097,7 @@ PvZLaus
 结束 类
 
 //@外部依赖库("../../jar/classes.jar")
+@输出名("Cursor_")
 @导入Java("io.github.rosemoe.sora.text.Cursor")
 类 光标
 	code private io.github.rosemoe.sora.text.Cursor cursor=null;

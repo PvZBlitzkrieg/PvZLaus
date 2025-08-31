@@ -15,6 +15,7 @@ PvZLaus
     You should have received a copy of the GNU Affero General Public License
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 ****/
+@输出名("rubie")
 类 rubie
 	变量 基本文本 : Stringk=""
 
@@ -33,6 +34,7 @@ PvZLaus
 	结束 方法
 结束 类
 
+@输出名("XMLR")
 类 XMLR : rubie
 	变量 namerd : 双整数
 	变量 inford : 双整数
@@ -309,6 +311,7 @@ PvZLaus
 	结束 方法
 结束 类
 
+@输出名("Stringk")
 类 Stringk
 	变量 value : 文本
 
@@ -352,6 +355,7 @@ PvZLaus
 
 结束 类
 
+@输出名("reanims")
 类 reanim
 
 	变量 name : 文本集合
@@ -375,10 +379,10 @@ PvZLaus
 			rean.name.添加成员(文件操作.取文件名(paths[i]))
 			rean.xmlred.添加成员(rea)
 			rean.rean.add(创建 Reanimed)
-			如果 文本属于文本集({"Zombie","SelectorScreen","CrazyDave"},文件操作.取文件前缀名(文件操作.取文件名(paths[i]))) 则
+			//如果 文本属于文本集({"Zombie","SelectorScreen","CrazyDave"},文件操作.取文件前缀名(文件操作.取文件名(paths[i]))) 则
 				//文本属于文本集({"Zombie","SelectorScreen","CrazyDave"},文件操作.取文件前缀名(文件操作.取文件名(paths[i])))
 				rean.finize(i)
-			结束 如果
+			//结束 如果
 			//变量 nt=取当前时间戳()
 			/*
 			rea.readed=假
@@ -478,6 +482,7 @@ PvZLaus
 	结束 方法
 结束 类
 
+@输出名("Reanim")
 类 Reanim
 	变量 colorset : ColorSet
 	变量 name : 文本
@@ -486,10 +491,12 @@ PvZLaus
 
 结束 类
 
+@输出名("POSLIST")
 类 POSLIST : 集合模板类<POS>
 结束 类
 
 //对Reanimed的封装
+@输出名("Reanimedm")
 类 Reanimedm
 	变量 reani : Reanimed
 
@@ -501,10 +508,12 @@ PvZLaus
 	结束 方法
 结束 类
 
+@输出名("Reanimedsm")
 类 Reanimedsm : 集合模板类<Reanimedm>
 结束 类
 
 //对Reanimedsm类的封装
+@输出名("Reanimeds")
 类 Reanimeds
 	变量 reanedsm : Reanimedsm
 
@@ -527,6 +536,7 @@ PvZLaus
 	结束 方法
 结束 类
 
+@输出名("reflect")
 类 reflect : rubie
 	变量 titlerd : 双整数
 	变量 valuerd : 双整数
@@ -548,12 +558,15 @@ PvZLaus
 	结束 属性
 结束 类
 
+@输出名("XMLRED")
 类 XMLRED : 集合模板类<XMLR>
 结束 类
 
+@输出名("reflected")
 类 reflected : 集合模板类<reflect>
 结束 类
 
+@输出名("POS")
 类 POS
 	变量 x : 单精度小数=-1719f
 	变量 y : 单精度小数=-1719f
@@ -638,30 +651,109 @@ PvZLaus
 			返回 mandaf
 		结束 如果
 	结束 方法
+
+	@code
+	@Override
+	public String toString(){
+	    return #ToJSON();
+	}
+	@end
+
+	@输出名("ToJSON")
+	方法 ToJSON() : 文本
+		变量 json : JSON对象
+		变量 class=本对象.取类信息().取所有字段()
+		循环(i, 0, 取数组长度(class))
+			变量 field=class[i]
+			@输出名("classname")
+			变量 classname=field.类型.完整类名
+			如果 classname=="bk.pvz.Nirvana" 则
+			否则
+				code #field.setAccessible(true); 
+				变量 text=field.取对象值(本对象)
+				如果 text.到文本().开头为("{") 则
+					变量 json2 : JSON对象=text.到文本()
+					json.置入(field.名称,json2)
+				否则
+					json.置入(field.名称,text.到文本())
+				结束 如果
+			结束 如果
+
+		结束 循环
+		返回 json.到文本()
+	结束 方法
+
+	@静态
+	@输出名("FromJSON")
+	方法 FromJSON(jsont : 文本,gm : 窗口管理器) : POS
+		变量 json : JSON对象=jsont
+		变量 obj : POS
+		变量 class=obj.取类信息()
+		循环(i, 0, 取数组长度(json.键名))
+			变量 type=class.取字段((json.键名)[i]).类型.完整类名
+			变量 name=(json.键名)[i]
+			变量 field=class.取字段((json.键名)[i])
+			如果 type=="int" 则
+				field.置整数值(obj,json.取文本(name).到整数())
+			否则 type=="float" 
+				field.置单精度小数值(obj,json.取文本(name).到单精度小数())
+			否则 type=="boolean"
+				field.置逻辑值(obj,json.取文本(name).到逻辑值())
+			否则 type=="java.lang.String"
+				field.置对象值(obj,json.取文本(name))
+			结束 如果
+
+		结束 循环
+		返回 obj
+	结束 方法
+
 结束 类
 
 
 
+@输出名("String_Reanim")
 类 文本到Reanim哈希表 : 哈希表模板类<文本, ColorSet>
 结束 类
 
+@输出名("String_ColorSet")
 类 文本到ColorSet哈希表 : 哈希表模板类<文本, ColorSet>
 结束 类
 
-类 文本到未加載圖哈希表 : 哈希表模板类<文本, 未加载图>
+@输出名("String_Nlimagesm")
+类 初始文本到未加載圖哈希表 : 哈希表模板类<文本, 未加载图>
 结束 类
 
+@输出名("String_Nlimage")
+类 文本到未加載圖哈希表 : 初始文本到未加載圖哈希表
+	方法 getItem(text : 文本) : 未加载图
+		变量 rlt=取项目(text)
+		如果 rlt==空 则
+			日志("错误的图片id;"+text)
+			返回 取项目("IMAGE_REANIM_"+"Credits_nozombies".到大写())
+		结束 如果
+		返回 rlt
+	结束 方法
+结束 类
+
+@输出名("Reanimed")
 类 Reanimed : 集合模板类<Reanim>
 结束 类
 
+@输出名("Animed")
 类 Animed : 集合模板类<Anim>
 结束 类
 
+@输出名("ProxyAnim")
 类 代理动画
+	@输出名("paTrack")
 	变量 代理动画轨道 : 整数集
+	@输出名("paName")
 	变量 代理动画名称 : 文本集合
+	@输出名("panim")
 	变量 panim : Animed
+	@输出名("pos")
 	变量 pos : POSLIST
+	@输出名("isDbanim")
 	变量 双重动画 : 逻辑型集合
 
 	方法 添加动画(轨道 : 整数,名称 : 文本,anim : Anim,posw : POS,使用原动画 : 逻辑型=真)
@@ -730,8 +822,75 @@ PvZLaus
 		返回 空
 	结束 方法
 
+	@code
+	@Override
+	public String toString(){
+	    return #ToJSON();
+	}
+	@end
+
+	@输出名("ToJSON")
+	方法 ToJSON() : 文本
+		变量 json : JSON对象
+		变量 class=本对象.取类信息().取所有字段()
+		循环(i, 0, 取数组长度(class))
+			变量 field=class[i]
+			@输出名("classname")
+			变量 classname=field.类型.完整类名
+			如果 classname=="bk.pvz.Nirvana" 则
+			否则 classname=="java.util.ArrayList"
+				变量 text=field.取对象值(本对象)
+				json.置入(field.名称,ArrayList转json(text : 集合))
+			否则 classname=="bk.pvz.ints"
+				变量 text=field.取对象值(本对象)
+				变量 ints : 整数集=text : 整数集
+				变量 json2=整数集转json(ints.到数组())
+				json.置入(field.名称,json2)
+			否则 classname=="bk.pvz.Boolarray"
+				变量 text=field.取对象值(本对象)
+				变量 ints : 逻辑型集合=text : 逻辑型集合
+				变量 json2=布尔集转json(ints.到数组())
+				json.置入(field.名称,json2)
+			否则 field.名称=="anim"
+				开始俘获异常()
+				变量 anims : Anim[]=field.取对象值(本对象) : Anim[]
+				变量 json2 : JSON对象
+				循环(u, 0, 取数组长度(anims))
+					变量 json3 : JSON对象=anims[u].到文本()
+					json2.置入("i"+u.到文本(),json3)
+				结束 循环
+				json.置入(field.名称,json2)
+				俘获所有异常()
+				输出异常()
+				结束俘获异常()
+			否则
+				code #field.setAccessible(true); 
+				变量 text=field.取对象值(本对象)
+				如果 text.到文本().开头为("{") 则
+					变量 json2 : JSON对象=text.到文本()
+					json.置入(field.名称,json2)
+				否则
+					json.置入(field.名称,text.到文本())
+				结束 如果
+			结束 如果
+
+		结束 循环
+		返回 json.到文本()
+	结束 方法
+
+	@静态
+	@输出名("FromJSON")
+	方法 FromJSON(jsont : 文本,gm : 窗口管理器) : 代理动画
+		变量 json : JSON对象=jsont
+		变量 obj : 代理动画
+		变量 class=obj.取类信息()
+		formJSON(obj,json,gm)
+		返回 obj
+	结束 方法
+
 结束 类
 
+@输出名("Renderinfo")
 类 渲染信息
 	变量 color : 单精度小数[]={1f,1f,1f,1f}
 	变量 totaltime : 单精度小数=0f
@@ -832,34 +991,121 @@ PvZLaus
 		结束 循环
 		返回 pending
 	结束 方法
+
+	@code
+	@Override
+	public String toString(){
+	    return #ToJSON();
+	}
+	@end
+
+	@输出名("ToJSON")
+	方法 ToJSON() : 文本
+		变量 json : JSON对象
+		变量 class=本对象.取类信息().取所有字段()
+		循环(i, 0, 取数组长度(class))
+			变量 field=class[i]
+			变量 type=field.类型.完整类名
+			如果 假 则
+			否则
+				code #field.setAccessible(true); 
+				变量 text=field.取对象值(本对象)
+				如果 text.到文本().开头为("{") 则
+					变量 json2 : JSON对象=text.到文本()
+					json.置入(field.名称,json2)
+				否则 type=="[F"
+					变量 temp : 单精度小数[]=text : 单精度小数[]
+					json.置入(field.名称,单精度小数集转json(temp))
+				否则 
+					json.置入(field.名称,text.到文本())
+				结束 如果
+			结束 如果
+		结束 循环
+		返回 json.到文本()
+	结束 方法
+
+	@静态
+	方法 FromJSON(jsont : 文本) : 渲染信息
+		变量 json : JSON对象=jsont
+		变量 xrxx : 渲染信息
+		变量 class=xrxx.取类信息()
+		循环(i, 0, json.长度)
+			变量 type=class.取字段((json.键名)[i]).类型.完整类名
+			变量 text=json.取JSON对象((json.键名)[i])
+			变量 field=class.取字段((json.键名)[i])
+			如果 text==空 则
+				//日志("json is null;"+(json.键名)[i])
+			否则
+				如果 type=="int" 则
+					field.置整数值(xrxx,text.到文本().到整数())
+				否则 type=="float" 
+					field.置单精度小数值(xrxx,text.到文本().到单精度小数())
+				否则 type=="boolean"
+					field.置逻辑值(xrxx,text.到文本().到逻辑值())
+				否则 type=="java.lang.String"
+					field.置对象值(xrxx,text.到文本())
+				否则 type=="[F"
+					//field.置对象值(xrxx,Anim.FromJSON(text.到文本()))
+				结束 如果
+			结束 如果
+		结束 循环
+		返回 xrxx
+	结束 方法
 结束 类
 
+@输出名("RenderinfoList")
 类 渲染信息集合 : 集合模板类<渲染信息>
 结束 类
 
+//Animation
+@输出名("Anim")
 类 Anim
+	@输出名("name")
 	变量 名称 : 文本
+	@输出名("rean")
 	变量 rean : Reanimed
+	@输出名("startframe")
 	变量 startframe : 整数
+
+	@输出名("frame")
 	变量 frame : 单精度小数=0f
+	@输出名("maxframe")
 	变量 maxframe : 整数
+	@输出名("speed")
 	变量 speed : 单精度小数=1f
+	@输出名("mandaf")
 	变量 mandaf : 整数集
+	@输出名("ForcedEvolutionFrame")
 	变量 强制演化帧 : 整数=-1
+	@输出名("ForcedEvolutionTime")
 	变量 强制演化时间 : 单精度小数=-1f
+	@输出名("ForcedEvolutionProc")
 	变量 强制演化进度 : 单精度小数=0
+	@输出名("panims")
 	变量 panims : 代理动画
+	@输出名("update")
 	变量 update : 逻辑型
+	@输出名("animReturn")
 	变量 动画回归 : 文本
+	@输出名("animname")
 	变量 animname : 文本
+	@输出名("hasReplay")
 	变量 hasReplay=假
+	@输出名("RenderValue")
 	变量 渲染值 : 渲染信息集合
+	@输出名("pause")
 	变量 暂停 : 逻辑型
+	@输出名("pauseAfterBroadcasting")
 	变量 播完暂停 : 逻辑型
+	@输出名("prohibitEvolution")
 	变量 禁止演化 : 逻辑型
+	@输出名("prohibitReturnedEvolution")
 	变量 禁止回演化 : 逻辑型
+	@输出名("speedslows")
 	变量 speedslows : 单精度小数=1f
+	@输出名("speedcat")
 	变量 speedcat : 单精度小数=1f
+	@输出名("gm")
 	变量 管理器 : 窗口管理器=空
 
 	属性读 speedslow() : 单精度小数
@@ -921,7 +1167,7 @@ PvZLaus
 		结束 循环
 		返回 anim
 	结束 方法
-	
+
 	方法 重播() : Anim
 		暂停=假
 		frame=startframe
@@ -968,6 +1214,13 @@ PvZLaus
 		返回 本对象
 	结束 方法
 
+	方法 暂停(stop : 逻辑型)
+		暂停=stop
+		循环(i, 0, panims.panim.长度)
+			(panims.panim)[i].暂停(stop)
+		结束 循环
+	结束 方法
+
 	方法 代理图片(namew : 文本,pngname : 文本) : Anim
 		循环(i, 0, rean.长度)
 			如果 rean[i].name==namew 则
@@ -978,11 +1231,11 @@ PvZLaus
 		结束 循环
 		返回 本对象
 	结束 方法
-	
+
 	方法 obtainPOS(namer : 文本) : POS
 		返回 getPOS(frame,取reanim索引(namer)).pos2
 	结束 方法
-	
+
 	方法 取reanim索引(rid : 文本) : 整数
 		循环(i, 0, rean.长度)
 			如果 rean[i].name==rid 则
@@ -1060,7 +1313,7 @@ PvZLaus
 		frame=fr
 		强制演化时间=时间
 		强制演化进度=0
-		
+
 	结束 方法
 
 	方法 过滤(名称w : 文本[]) : 文本[]
@@ -1179,8 +1432,86 @@ PvZLaus
 		结束 循环
 		返回 空
 	结束 方法
+	@code
+	@Override
+	public String toString(){
+	    return #ToJSON();
+	}
+	@end
+
+	@输出名("ToJSON")
+	方法 ToJSON() : 文本
+		变量 json : JSON对象
+		变量 class=本对象.取类信息().取所有字段()
+		循环(i, 0, 取数组长度(class))
+			变量 field=class[i]
+			变量 type=field.类型.完整类名
+			如果 type=="bk.pvz.Reanim"||type=="bk.pvz.Nirvana"||field.名称=="rean" 则
+			否则
+				code #field.setAccessible(true); 
+				变量 text=field.取对象值(本对象)
+				如果 text.到文本().开头为("{") 则
+					变量 json2 : JSON对象=text.到文本()
+					json.置入(field.名称,json2)
+				否则 type=="java.util.ArrayList"
+					//json.置入(field.名称,ArrayList转json(text))
+				否则 type=="[F"
+					变量 temp : 单精度小数[]=text : 单精度小数[]
+					json.置入(field.名称,单精度小数集转json(temp))
+				否则 type=="bk.pvz.ints"
+					变量 ints : 整数集=text : 整数集
+					变量 json2=整数集转json(ints.到数组())
+					json.置入(field.名称,json2)
+				否则
+					json.置入(field.名称,text.到文本())
+				结束 如果
+			结束 如果
+		结束 循环
+		返回 json.到文本()
+	结束 方法
+
+	@静态
+	方法 FromJSON(jsont : 文本,gm : 窗口管理器) : Anim
+		变量 json : JSON对象=jsont
+		变量 anim : Anim
+		变量 class=anim.取类信息()
+		/*
+		循环(i, 0, json.长度)
+			变量 type=class.取字段((json.键名)[i]).类型.完整类名
+			//变量 text=json.取JSON对象((json.键名)[i])
+			变量 field=class.取字段((json.键名)[i])
+			变量 name=(json.键名)[i]
+			如果 type=="int" 则
+				field.置整数值(anim,json.取文本(name).到整数())
+			否则 type=="float" 
+				field.置单精度小数值(anim,json.取文本(name).到单精度小数())
+			否则 type=="boolean"
+				field.置逻辑值(anim,json.取文本(name).到逻辑值())
+			否则 type=="java.lang.String"
+				field.置对象值(anim,json.取文本(name))
+			否则 type=="bk.pvz.ints"
+				变量 text=json.取JSON对象((json.键名)[i])
+				变量 ints : 整数集=整数集.从整数集创建(json2ints(text))
+				field.置对象值(anim,ints)
+			否则 type=="bk.pvz.ProxyAnim"
+				变量 text=json.取JSON对象((json.键名)[i])
+				field.置对象值(anim,代理动画.FromJSON(text.到文本(),gm))
+				//日志(代理动画.FromJSON(text.到文本(),gm).到文本())
+			结束 如果
+		结束 循环
+		*/
+		formJSON(anim,json,gm)
+		anim.rean=gm.REANIM.get(anim.名称)
+		循环(i, 0, anim.rean.长度)
+			anim.mandaf.添加成员(-2)
+			anim.渲染值.添加成员(创建 渲染信息)
+		结束 循环
+		anim.管理器=gm
+		返回 anim
+	结束 方法
 结束 类
 
+@输出名("Matrix_")
 @指代类("android.graphics.Matrix")
 类 Matrix
 	@静态
@@ -1271,6 +1602,7 @@ PvZLaus
 
 结束 类
 
+@输出名("Nlimage")
 类 未加载图 : ColorSet
 	变量 是否加载 : 逻辑型=假
 	变量 路径 : 文本
@@ -1303,6 +1635,7 @@ PvZLaus
 		结束 如果
 		//bitmap=空
 		clear(b)
+
 		返回 本对象
 	结束 方法
 
@@ -1338,6 +1671,7 @@ PvZLaus
 	结束 方法
 结束 类
 
+@输出名("Images")
 类 Image
 	变量 可释放图 : 文本到未加載圖哈希表
 
@@ -1375,6 +1709,7 @@ PvZLaus
 
 结束 类
 
+@输出名("STSL")
 类 STSL
 	变量 w1 : 文本集合
 	变量 w2 : 文本集合
@@ -1398,6 +1733,7 @@ PvZLaus
 
 结束 类
 
+@输出名("Rectx")
 类 矩形x
 	变量 x : 单精度小数=-1f
 	变量 y : 单精度小数=-1f
@@ -1443,8 +1779,64 @@ PvZLaus
 		返回 假
 	结束 方法
 
+	@code
+	@Override
+	public String toString(){
+	    return #ToJSON();
+	}
+	@end
+
+	@输出名("ToJSON")
+	方法 ToJSON() : 文本
+		变量 json : JSON对象
+		变量 class=本对象.取类信息().取所有字段()
+		循环(i, 0, 取数组长度(class))
+			变量 field=class[i]
+			@输出名("classname")
+			变量 classname=field.类型.完整类名
+			如果 classname=="bk.pvz.Nirvana"||field.名称.开头为("zombie") 则
+			否则
+				code #field.setAccessible(true); 
+				变量 text=field.取对象值(本对象)
+				如果 text.到文本().开头为("{") 则
+					变量 json2 : JSON对象=text.到文本()
+					json.置入(field.名称,json2)
+				否则
+					json.置入(field.名称,text.到文本())
+				结束 如果
+			结束 如果
+
+		结束 循环
+		返回 json.到文本()
+	结束 方法
+
+	@静态
+	@输出名("FromJSON")
+	方法 FromJSON(jsont : 文本,gm : 窗口管理器) : 矩形x
+		变量 json : JSON对象=jsont
+		变量 obj : 矩形x
+		变量 class=obj.取类信息()
+		循环(i, 0, 取数组长度(json.键名))
+			变量 type=class.取字段((json.键名)[i]).类型.完整类名
+			变量 name=(json.键名)[i]
+			变量 field=class.取字段((json.键名)[i])
+			如果 type=="int" 则
+				field.置整数值(obj,json.取文本(name).到整数())
+			否则 type=="float" 
+				field.置单精度小数值(obj,json.取文本(name).到单精度小数())
+			否则 type=="boolean"
+				field.置逻辑值(obj,json.取文本(name).到逻辑值())
+			否则 type=="java.lang.String"
+				field.置对象值(obj,json.取文本(name))
+			结束 如果
+
+		结束 循环
+		返回 obj
+	结束 方法
+
 结束 类
 
+@输出名("String2RectList")
 类 文本到矩形数组
 	变量 name : 文本集合
 	变量 rects : 矩形集合
@@ -1488,12 +1880,15 @@ PvZLaus
 	结束 方法
 结束 类
 
+@输出名("RectList")
 类 矩形集合 : 集合模板类<矩形x>
 结束 类
 
+@输出名("DrawStyles")
 类 drawStyles : 集合模板类<drawStyle>
 结束 类
 
+@输出名("DrawStyle")
 类 drawStyle
 	变量 anim : Anim=空
 	变量 sx : 单精度小数=1f
@@ -1512,13 +1907,17 @@ PvZLaus
 		sx=sx*ds.sx
 		sy=sy*ds.sy
 		kx=kx+ds.kx
+		kbx=kbx+ds.kbx
+		kby=kby+ds.kby
 		ky=ky+ds.ky
 		color=color+ds.color
 		tx=tx+ds.tx
 		ty=ty+ds.ty
+		matrix=ds.matrix
 	结束 方法
 结束 类
 
+@输出名("POS_int")
 类 POS_int
 	变量 pos0 : POS
 	变量 pos1 : POS
@@ -1526,10 +1925,12 @@ PvZLaus
 	变量 int : 整数
 结束 类
 
+@输出名("Xfermode_")
 @指代类("android.graphics.Xfermode")
 类 Xfermode
 结束 类
 
+@输出名("PorterDuffXfermode_")
 @指代类("android.graphics.PorterDuffXfermode")
 @导入Java("android.graphics.PorterDuff.Mode")
 类 PorterDuffXfermode : Xfermode
@@ -1541,6 +1942,7 @@ PvZLaus
 
 结束 类
 
+@输出名("PorterDuff_Mode_")
 @导入Java("android.graphics.PorterDuff")
 @指代类("android.graphics.PorterDuff.Mode")
 类 PorterDuff_Mode
@@ -1606,6 +2008,7 @@ PvZLaus
 	@end
 结束 类
 
+@输出名("BlendMode_")
 @指代类("android.graphics.BlendMode")
 @导入Java("android.graphics.BlendMode")
 类 BlendMode
@@ -1688,6 +2091,7 @@ PvZLaus
 类 Particled : 集合模板类<Particle>
 结束 类
 */
+@输出名("ColorMatrix_")
 @指代类("android.graphics.ColorMatrix")
 类 ColorMatrix
 	@静态
@@ -1701,10 +2105,12 @@ PvZLaus
 	结束 方法
 结束 类
 
+@输出名("SHAPE")
 类 SHAPE
 	变量 pic : 未加载图
 结束 类
 
+@输出名("Dint")
 类 双整数
 	变量 start : 整数
 	变量 end : 整数
@@ -1732,6 +2138,7 @@ PvZLaus
 	结束 方法
 结束 类
 
+@输出名("PvZ")
 @全局类
 @静态
 类 pvz
@@ -1739,6 +2146,7 @@ PvZLaus
 结束 类
 
 @强制输出
+@输出名("GLSurfaceView_")
 @导入Java("android.opengl.GLSurfaceView")
 @导入Java("android.content.Context")
 @导入Java("android.util.AttributeSet")
@@ -1877,6 +2285,7 @@ PvZLaus
 @导入Java("android.graphics.Canvas")
 @导入Java("android.view.MotionEvent")
 @导入Java("android.widget.LinearLayout")
+@输出名("SurfaceView")
 @后缀代码(" extends android.view.SurfaceView implements SurfaceHolder.Callback, View.OnClickListener")
 类 SurfaceView
 	@静态
@@ -2319,13 +2728,14 @@ PvZLaus
 	结束 方法
 结束 类
 */
+@输出名("ApplicationAdapter_")
 @指代类("com.badlogic.gdx.ApplicationAdapter")
 类 ApplicationAdapter
 
 结束 类
 
 
-
+@输出名("Setup")
 @导入Java("android.os.*")
 @导入Java("android.content.*")
 @导入Java("android.view.KeyEvent")
@@ -2537,6 +2947,7 @@ PvZLaus
 
 结束 类
 
+@输出名("AA")
 @强制输出
 类 AA:ApplicationAdapter
 	@code
@@ -2601,20 +3012,24 @@ PvZLaus
 	结束 方法
 结束 类
 
+@输出名("AndroidApplicationConfiguration_")
 @指代类("com.badlogic.gdx.backends.android.AndroidApplicationConfiguration")
 类 游戏配置类
 结束 类
 
-
+@输出名("AndroidApplication_")
 @指代类("com.badlogic.gdx.backends.android.AndroidApplication")
 类 AndroidApplication:安卓窗口
 结束 类
 
+@输出名("AAC")
 @指代类("com.badlogic.gdx.backends.android.AndroidApplicationConfiguration")
 类 AAC
 结束 类
+
 @强制输出
 @导入Java("android.os.Bundle")
+@输出名("GameStartup")
 类 游戏启动类:AndroidApplication
 	@code
 	   @Override
@@ -2634,6 +3049,7 @@ PvZLaus
 
 结束 类
 
+@输出名("SB")
 类 SB:SpriteBatch
 	@code
 	public #<SB>() {
@@ -2685,6 +3101,7 @@ PvZLaus
 
 结束 类
 
+@输出名("Sprite_")
 @导入Java("com.badlogic.gdx.graphics.g2d.Sprite")
 @指代类("com.badlogic.gdx.graphics.g2d.Sprite")
 类 Sprite : TextureRegion
@@ -2799,6 +3216,7 @@ PvZLaus
 	结束 方法
 结束 类
 
+@输出名("TextureRegion_")
 @导入Java("com.badlogic.gdx.graphics.g2d.TextureRegion")
 @指代类("com.badlogic.gdx.graphics.g2d.TextureRegion")
 类 TextureRegion
@@ -2832,6 +3250,7 @@ PvZLaus
 
 结束 类
 
+@输出名("SpriteBatch")
 @指代类("com.badlogic.gdx.graphics.g2d.SpriteBatch")
 类 SpriteBatch : Batch
 	方法 开始绘制()
@@ -2943,9 +3362,9 @@ PvZLaus
 		thisw.draw_trwha2(tr,texture.getWidth(),texture.getHeight(),aff)
 		rgbShader.setUniformf1("u_opacity",cm[3])
 		rgbShader.setUniformf3("u_rgbFactors",cm[0],cm[1],cm[2])
-        如果 test 则
-        	日志("ˇ   "+cm[1])
-        结束 如果
+		如果 test 则
+			日志("ˇ   "+cm[1])
+		结束 如果
 		//code#this.setColor(1,1,1,1);
 		变量 azt=取当前纳秒时间戳()
 		如果 gm!=空 则
@@ -2978,6 +3397,7 @@ PvZLaus
 结束 类
 
 //2025.7.31 9:15:59pm
+@输出名("Affine2_")
 @导入Java("com.badlogic.gdx.math.Affine2")
 @指代类("com.badlogic.gdx.math.Affine2")
 类 Affine2
@@ -2989,6 +3409,7 @@ PvZLaus
 	结束 方法
 结束 类
 
+@输出名("Texture_")
 @导入Java("com.badlogic.gdx.graphics.Texture")
 @指代类("com.badlogic.gdx.graphics.Texture")
 类 Texture
@@ -3024,6 +3445,7 @@ texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
 
 结束 类
 
+@输出名("Color_")
 @导入Java("com.badlogic.gdx.graphics.Color")
 @指代类("com.badlogic.gdx.graphics.Color")
 类 Color
@@ -3057,6 +3479,7 @@ texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
 @强制输出
 @导入Java("com.badlogic.gdx.graphics.Pixmap")
 @导入Java("java.nio.*")
+@输出名("Pixmap_")
 @指代类("com.badlogic.gdx.graphics.Pixmap")
 类 Pixmap
 
@@ -3125,6 +3548,7 @@ texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
 	结束 方法
 结束 类
 
+@输出名("FrameBuffer_")
 @导入Java("com.badlogic.gdx.Gdx")
 @导入Java("com.badlogic.gdx.graphics.Pixmap")
 @导入Java("com.badlogic.gdx.graphics.glutils.FrameBuffer")
@@ -3149,6 +3573,7 @@ texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
 
 结束 类
 
+@输出名("ShaderProgram_")
 @导入Java("com.badlogic.gdx.graphics.glutils.ShaderProgram")
 @指代类("com.badlogic.gdx.graphics.glutils.ShaderProgram")
 类 ShaderProgram
@@ -3156,7 +3581,7 @@ texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
 	方法 新建(vertexShader : 文本,fragmentShader : 文本) : ShaderProgram
 		code return new ShaderProgram(#vertexShader,#fragmentShader);
 	结束 方法
-    
+
 	@静态
 	方法 setPedantic(bool : 逻辑型)
 		code ShaderProgram.pedantic=#bool;
@@ -3165,7 +3590,7 @@ texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
 	方法 setUniformf3(name : 文本,a : 单精度小数,b : 单精度小数,c : 单精度小数)
 		code #this.setUniformf(#name,#a,#b,#c);
 	结束 方法
-	
+
 	方法 setUniformf4(name : 文本,a : 单精度小数,b : 单精度小数,c : 单精度小数,d : 单精度小数)
 		code #this.setUniformf(#name,#a,#b,#c,#d);
 	结束 方法
@@ -3176,6 +3601,7 @@ texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
 结束 类
 
 //libgdx
+@输出名("Matrix3_")
 @导入Java("com.badlogic.gdx.math.Matrix3")
 @指代类("com.badlogic.gdx.math.Matrix3")
 类 Matrix_3
@@ -3187,6 +3613,7 @@ texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
 结束 类
 
 //libgdx
+@输出名("Matrix4_")
 @导入Java("com.badlogic.gdx.math.Matrix4")
 @指代类("com.badlogic.gdx.math.Matrix4")
 类 Matrix_4
@@ -3198,6 +3625,7 @@ texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
 	结束 方法
 结束 类
 
+@输出名("MIP")
 @后缀代码("implements com.badlogic.gdx.InputProcessor")
 类 MIP
 	@code
@@ -3277,6 +3705,7 @@ texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
 
 结束 类
 
+@输出名("ShapeRenderer_")
 @导入Java("com.badlogic.gdx.graphics.glutils.ShapeRenderer")
 @指代类("com.badlogic.gdx.graphics.glutils.ShapeRenderer")
 类 ShapeRenderer
@@ -3309,6 +3738,7 @@ texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
 结束 类
 
 @强制输出
+@输出名("ShapeType_")
 @导入Java("com.badlogic.gdx.graphics.glutils.ShapeRenderer")
 @指代类("com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType")
 类 ShapeType
@@ -3318,6 +3748,7 @@ texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
 结束 类
 
 @强制输出
+@输出名("BitmapFont_")
 @导入Java("com.badlogic.gdx.graphics.g2d.BitmapFont")
 @指代类("com.badlogic.gdx.graphics.g2d.BitmapFont")
 类 BitmapFont
@@ -3355,6 +3786,7 @@ texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
 结束 类
 
 @强制输出
+@输出名("FileHandle_")
 @导入Java("com.badlogic.gdx.files.FileHandle")
 @指代类("com.badlogic.gdx.files.FileHandle")
 类 FileHandle
@@ -3367,6 +3799,7 @@ texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
 结束 类
 
 @强制输出
+@输出名("BitmapFontData_")
 @导入Java("com.badlogic.gdx.graphics.g2d.BitmapFont.BitmapFontData")
 @指代类("com.badlogic.gdx.graphics.g2d.BitmapFont.BitmapFontData")
 类 BitmapFontData
@@ -3377,6 +3810,7 @@ texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
 结束 类
 
 @强制输出
+@输出名("Batch_")
 @导入Java("com.badlogic.gdx.graphics.g2d.Batch")
 @指代类("com.badlogic.gdx.graphics.g2d.Batch")
 类 Batch
@@ -3384,6 +3818,7 @@ texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
 结束 类
 
 @强制输出
+@输出名("Array_")
 @导入Java("com.badlogic.gdx.utils.Array")
 @指代类("com.badlogic.gdx.utils.Array")
 类 Array
@@ -3394,7 +3829,7 @@ texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
 类 Point
 	变量 x : 单精度小数
 	变量 y : 单精度小数
-	
+
 	@静态
 	方法 新建(x : 单精度小数,y : 单精度小数) : Point
 		变量 point : Point
@@ -3404,12 +3839,13 @@ texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
 	结束 方法
 结束 类
 
+@输出名("Detrect")
 类 判定矩形
 	变量 points : Pointed
 	变量 name : 文本
 	变量 按下时间 : 长整数
 	变量 按下坐标 : Point
-	
+
 	@静态
 	方法 新建_list(x1 : 单精度小数,y1 : 单精度小数,x2 : 单精度小数,y2 : 单精度小数,x3 : 单精度小数,y3 : 单精度小数,x4 : 单精度小数,y4 : 单精度小数) : 判定矩形
 		变量 p1=Point.新建(x1,y1)
@@ -3418,14 +3854,14 @@ texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
 		变量 p4=Point.新建(x4,y4)
 		返回 新建({p1,p2,p3,p4})
 	结束 方法
-	
+
 	@静态
 	方法 新建(points : Point[]) : 判定矩形
 		变量 判定矩形1 : 判定矩形
 		判定矩形1.points=points
 		返回 判定矩形1
 	结束 方法
-	
+
 	方法 是点击(point : Point) : 逻辑型
 		变量 time=取当前时间戳()-按下时间
 		如果 time<200 则
@@ -3437,7 +3873,7 @@ texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
 		结束 如果
 		返回 假
 	结束 方法
-	
+
 	方法 判定(point : Point) : 逻辑型
 		变量 quad=points.到数组()
 		@code
@@ -3464,22 +3900,25 @@ texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
         return Math.abs(area_sum - area_quad) < 1;
 @end
 	结束 方法
-	
+
 	定义事件 划过(point : Point,状态 : 文本)
 	定义事件 点击(point : Point)
 结束 类
 
+@输出名("Pointed")
 类 Pointed : 集合模板类<Point>
 结束 类
 
+@输出名("RectaList")
 类 矩形集_list : 集合模板类<判定矩形>
-	
-	
+
+
 结束 类
 
+@输出名("Recta")
 类 矩形集 : 矩形集_list
 	变量 当前矩形名称 : 文本
-	
+
 	方法 取矩形(name : 文本) : 判定矩形
 		循环(i, 0, 本对象.长度)
 			如果 name==本对象[i].name 则
@@ -3490,6 +3929,7 @@ texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
 	结束 方法
 结束 类
 
+@输出名("Quad")
 类 四边形
 	变量 x : 单精度小数
 	变量 y : 单精度小数
@@ -3497,7 +3937,7 @@ texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
 	变量 height : 单精度小数
 	变量 x乘数 : 单精度小数=1f
 	变量 y乘数 : 单精度小数=1f
-	
+
 	@静态
 	方法 新建(x : 单精度小数,y : 单精度小数,w : 单精度小数,h : 单精度小数,xc : 单精度小数=1f,yc : 单精度小数=1f) : 四边形
 		变量 sbx : 四边形

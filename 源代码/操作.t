@@ -19,6 +19,7 @@ PvZLaus
 @附加权限(安卓权限.文件权限_读取)
 @附加权限(安卓权限.文件权限_写入)
 @附加权限(安卓权限.管理外部文件权限)
+@输出名("FileInputstr")
 类 字节输入流
 	code FileInputStream fin=null;
 
@@ -78,6 +79,7 @@ PvZLaus
 @附加权限(安卓权限.文件权限_读取)
 @附加权限(安卓权限.文件权限_写入)
 @附加权限(安卓权限.管理外部文件权限)
+@输出名("FileOutputstr")
 类 字节输出流
 	code FileOutputStream fin=null;
 
@@ -126,6 +128,7 @@ PvZLaus
 	结束 方法
 结束 类
 
+@输出名("Boolist")
 类 逻辑型集
 	变量 bools : 逻辑型集合
 
@@ -140,6 +143,7 @@ PvZLaus
 	结束 方法
 结束 类
 
+@输出名("Boolarray")
 类 逻辑型集合 : 对象
 
 	变量 bool : 逻辑型[]
@@ -148,14 +152,12 @@ PvZLaus
 	方法 空集合() : 逻辑型集合
 		变量 b : 逻辑型[]
 		code #b=new boolean[0];
-		变量 r : 逻辑型集合=b
+		变量 r : 逻辑型集合
+		r.bool=b
 		返回 r
 	结束 方法
 
-	@运算符重载
-	方法 =(集合1 : 逻辑型[])
-		bool=集合1
-	结束 方法
+
 
 	@运算符重载
 	方法 [](索引 : 整数) : 逻辑型
@@ -308,6 +310,7 @@ PvZLaus
 
 @全局类
 @静态
+@输出名("op")
 类 基本类型操作
 
 	@code
@@ -802,7 +805,8 @@ PvZLaus
 	方法 整数转固定布尔(值 为 整数,长度 : 整数) 为 逻辑型[]
 		变量 b : 逻辑型集合=逻辑型集合.空集合()
 		长度=长度%32
-		变量 b2 : 逻辑型集合=字节集转布尔集(整数转字节(值))
+		变量 b2 : 逻辑型集合
+		b2.bool=字节集转布尔集(整数转字节(值))
 		如果 长度==32 则
 			返回 b2.到数组()
 		结束 如果
@@ -830,7 +834,8 @@ PvZLaus
 	方法 长整数转固定布尔(值 为 长整数,长度 : 整数) 为 逻辑型[]
 		变量 b : 逻辑型集合=逻辑型集合.空集合()
 		长度=长度%64
-		变量 b2 : 逻辑型集合=字节集转布尔集(长整数到字节集(值))
+		变量 b2 : 逻辑型集合
+		b2.bool=字节集转布尔集(长整数到字节集(值))
 		如果 长度==64 则
 			返回 b2.到数组()
 		结束 如果
@@ -889,6 +894,214 @@ PvZLaus
 			结束 循环
 			返回 res
 		结束 如果
+	结束 方法
+	/*
+	@静态
+	方法 cfjson(obj : 对象,field : Java字段,json : JSON对象,i : 整数)
+		变量 type=field.类型.完整类名
+		变量 text=json.取JSON对象((json.键名)[i])
+		如果 type=="int" 则
+			field.置整数值(obj,text.到文本().到整数())
+		否则 type=="float" 
+			class.取字段(obj.置整数值(zombie,text.到文本().到单精度小数())
+		否则 type=="boolean"
+			class.取字段((json.键名)[i]).置整数值(zombie,text.到文本().到单精度小数())
+		否则 type=="Anim"||type==""
+		结束 如果
+	结束 方法
+*/
+	@静态
+	方法 整数集转文本(sz : 整数[],分隔符 : 文本) : 文本
+		变量 str : 文本=取数组长度(sz)+"\n"
+		循环(i, 0, 取数组长度(sz))
+			str=str+sz[i].到文本()
+			如果 i<取数组长度(sz)-1 则
+				str=str+分隔符
+			结束 如果
+		结束 循环
+		返回 str
+	结束 方法
+
+	@静态
+	方法 整数集转json(sz : 整数[]) : JSON对象
+		变量 json : JSON对象
+		循环(i, 0, 取数组长度(sz))
+			json.置入("i"+i.到文本(),sz[i].到文本())
+		结束 循环
+		返回 json
+	结束 方法
+	
+	@静态
+	方法 formJSON(obj : 对象,json : JSON对象,gm : 窗口管理器)
+		变量 class=obj.取类信息()
+		循环(i, 0, 取数组长度(json.键名))
+			变量 type=class.取字段((json.键名)[i]).类型.完整类名
+			变量 name=(json.键名)[i]
+			变量 field=class.取字段((json.键名)[i])
+			如果 type=="int" 则
+				field.置整数值(obj,json.取文本(name).到整数())
+			否则 type=="float" 
+				field.置单精度小数值(obj,json.取文本(name).到单精度小数())
+			否则 type=="boolean"
+				field.置逻辑值(obj,json.取文本(name).到逻辑值())
+			否则 type=="java.lang.String"
+				field.置对象值(obj,json.取文本(name))
+				
+			否则 type=="bk.pvz.Anim"
+				变量 text=json.取JSON对象(name)
+				变量 anim=Anim.FromJSON(text.到文本(),gm)
+				field.置对象值(obj,anim)
+				
+			否则 type=="bk.pvz.ints"
+				变量 text=json.取JSON对象((json.键名)[i])
+				变量 ints : 整数集=整数集.从整数集创建(json2ints(text))
+				field.置对象值(obj,ints)
+				
+			否则 type=="bk.pvz.Boolarray"
+				变量 text=json.取JSON对象((json.键名)[i])
+				变量 ints : 逻辑型集合=逻辑型集合.空集合()
+				ints.bool=(json2bools(text))
+				field.置对象值(obj,ints)
+			否则 type=="bk.pvz.Rectx"
+				变量 text=json.取JSON对象(name)
+				变量 jxx=矩形x.FromJSON(text.到文本(),gm)
+				field.置对象值(obj,jxx)
+			否则 type=="bk.pvz.Anim"
+				变量 text=json.取JSON对象(name)
+				变量 anim=Anim.FromJSON(text.到文本(),gm)
+				field.置对象值(obj,anim)
+			否则 type=="[Lbk.pvz.Anim;"
+				变量 text=json.取JSON对象(name)
+				变量 obj2 : Anim[]=数组创建(Anim,取数组长度(text.键名)) : Anim[]
+				循环(u, 0, 取数组长度(text.键名))
+					变量 anim=Anim.FromJSON(text.取JSON对象((text.键名)[u]).到文本(),gm)
+					obj2[u]=(anim)
+					//rv.添加成员(创建 渲染信息)
+				结束 循环
+				field.置对象值(obj,obj2)
+			否则 (json.键名)[i]=="zombieList"
+				变量 text=json.取JSON对象(name)
+				变量 obj2 : ZombieList
+				循环(u, 0, 取数组长度(text.键名))
+					变量 zombie=Zombie.FromJSON(text.取JSON对象((text.键名)[u]).到文本(),gm)
+					obj2.添加成员(zombie)
+					//rv.添加成员(创建 渲染信息)
+				结束 循环
+				field.置对象值(obj,obj2)
+			否则 (json.键名)[i]=="panim"
+				变量 text=json.取JSON对象(name)
+				变量 obj2 : Animed
+				循环(u, 0, 取数组长度(text.键名))
+					变量 anim=Anim.FromJSON(text.取JSON对象((text.键名)[u]).到文本(),gm)
+					obj2.添加成员(anim)
+					//rv.添加成员(创建 渲染信息)
+				结束 循环
+				field.置对象值(obj,obj2)
+			否则 (json.键名)[i]=="plantList"
+				变量 text=json.取JSON对象(name)
+				变量 obj2 : PaintList
+				循环(u, 0, 取数组长度(text.键名))
+					变量 plant=Plant.FromJSON(text.取JSON对象((text.键名)[u]).到文本(),gm)
+					obj2.添加成员(plant)
+					//rv.添加成员(创建 渲染信息)
+				结束 循环
+				field.置对象值(obj,obj2)
+			否则 (json.键名)[i]=="mowerList"
+				变量 text=json.取JSON对象(name)
+				变量 ml=推车集.FromJSON(text.到文本(),gm)
+				field.置对象值(obj,ml)
+			否则 type=="bk.pvz.Mower"
+				变量 text=json.取JSON对象(name)
+				变量 mower=Mower.FromJSON(text.到文本(),gm)
+				field.置对象值(obj,mower)
+			否则 type=="bk.pvz.ProxyAnim"
+				变量 text=json.取JSON对象(name)
+				变量 anim=代理动画.FromJSON(text.到文本(),gm)
+				field.置对象值(obj,anim)
+			否则 type=="[I"
+				变量 text=json.取JSON对象(name)
+				field.置对象值(obj,json2ints(text))
+				
+			否则 type=="java.util.ArrayList"
+				变量 nt : 文本=field.带泛型类型.类型名称
+				变量 json2=json.取JSON对象(name)
+				如果 nt=="java.util.ArrayList<bk.pvz.Anim>" 则
+				否则 nt=="java.util.ArrayList<bk.pvz.POS>"
+					变量 poslist : POSLIST
+					
+					循环(u, 0, 取数组长度(json2.键名))
+						poslist.添加成员(POS.FromJSON(json2.取JSON对象((json2.键名)[u]).到文本(),gm))
+					结束 循环
+					field.置对象值(obj,poslist)
+				否则 nt=="java.util.ArrayList<java.lang.String>"
+					变量 ss : 文本集合
+					
+					循环(u, 0, 取数组长度(json2.键名))
+						ss.添加成员(json2.取文本((json2.键名)[u]))
+					结束 循环
+					field.置对象值(obj,ss)
+				否则 nt=="java.util.ArrayList<bk.pvz.Mower>"
+					变量 ss : MowerList
+					
+					循环(u, 0, 取数组长度(json2.键名))
+						变量 mower=Mower.FromJSON(json2.取JSON对象((json2.键名)[u]).到文本(),gm)
+						ss.添加成员(mower)
+					结束 循环
+					field.置对象值(obj,ss)
+				结束 如果
+			否则
+				日志(type)
+			结束 如果
+
+		结束 循环
+	结束 方法
+	
+	@静态
+	方法 布尔集转json(sz : 逻辑型[]) : JSON对象
+		变量 json : JSON对象
+		循环(i, 0, 取数组长度(sz))
+			json.置入("i"+i.到文本(),sz[i].到文本())
+		结束 循环
+		返回 json
+	结束 方法
+
+	@静态
+	方法 json2ints(sz : JSON对象) : 整数[]
+		变量 ints : 整数[]=数组创建(整数,取数组长度(sz.键名))
+		循环(i, 0, 取数组长度(ints))
+			ints[i]=sz.取文本((sz.键名)[i]).到整数()
+		结束 循环
+		返回 ints
+	结束 方法
+	
+		@静态
+	方法 json2bools(sz : JSON对象) : 逻辑型[]
+		变量 ints : 逻辑型[]=数组创建(逻辑型,取数组长度(sz.键名))
+		循环(i, 0, 取数组长度(ints))
+			ints[i]=sz.取文本((sz.键名)[i]).到逻辑值()
+		结束 循环
+		返回 ints
+	结束 方法
+
+	@静态
+	方法 单精度小数集转json(sz : 单精度小数[]) : JSON对象
+		变量 json : JSON对象
+		循环(i, 0, 取数组长度(sz))
+			json.置入("i"+i.到文本(),sz[i].到文本())
+		结束 循环
+		返回 json
+	结束 方法
+
+	@静态
+	方法 数组转文本(sz : 对象[],分隔符 : 文本) : 文本
+		变量 str : 文本=""
+		循环(i, 0, 取数组长度(sz))
+			str=str+sz[i].到文本()
+			如果 i<取数组长度(sz)-1 则
+				str=str+分隔符
+			结束 如果
+		结束 循环
+		返回 str
 	结束 方法
 
 	@静态
@@ -949,6 +1162,7 @@ PvZLaus
 	结束 方法
 结束 类
 
+@输出名("ints")
 类 整数集
 
 	变量 ints : 整数[]
@@ -957,13 +1171,15 @@ PvZLaus
 	方法 空集合() : 整数集
 		变量 b : 整数[]
 		code #b=new int[0];
-		变量 r : 整数集=b
+		变量 r : 整数集=整数集.从整数集创建(b)
 		返回 r
 	结束 方法
 
-	@运算符重载
-	方法 =(集合1 : 整数[])
-		ints=集合1
+@静态
+	方法 从整数集创建(inted : 整数[]) : 整数集
+        变量 ints : 整数集
+		ints.ints=inted
+		返回 ints
 	结束 方法
 
 	@运算符重载
@@ -1115,6 +1331,7 @@ PvZLaus
 结束 类
 
 @全局类
+@输出名("arrayedit")
 类 数组编辑
 	@静态
 	@嵌入式代码
@@ -1192,6 +1409,7 @@ PvZLaus
 
 
 @强制输出
+@输出名("MediaCodec_")
 @指代类("android.media.MediaCodec")
 类 MediaCodec
 	/*
@@ -1261,6 +1479,7 @@ PvZLaus
 
 @强制输出
 @指代类("android.media.MediaFormat")
+@输出名("MediaFormat_")
 类 MediaFormat
 
 
@@ -1578,6 +1797,7 @@ This value cannot be null.
 
 @强制输出
 @指代类("android.media.MediaMuxer")
+@输出名("MediaMuxer_")
 类 MediaMuxer
 	@静态
 	@后缀代码(" throws Exception")
@@ -1606,7 +1826,7 @@ This value cannot be null.
 	结束 方法
 
 结束 类
-
+@输出名("OutputFormat_")
 @指代类("android.media.MediaMuxer.OutputFormat")
 类 OutputFormat
 	@静态
@@ -1622,6 +1842,7 @@ This value cannot be null.
 
 结束 类
 
+@输出名("CodecCapabilities_")
 @指代类("android.media.MediaCodecInfo.CodecCapabilities")
 类 CodecCapabilities
 	@静态
@@ -1630,11 +1851,13 @@ This value cannot be null.
 	常量 COLOR_FormatYUV420Planar : 整数=2135033992
 结束 类
 
+@输出名("MediaCrypto_")
 @指代类("android.media.MediaCrypto")
 类 MediaCrypto
 
 结束 类
 
+@输出名("Surface_")
 @指代类("android.view.Surface")
 类 Surface
 
@@ -1647,6 +1870,7 @@ This value cannot be null.
 	结束 方法
 结束 类
 
+@输出名("Paint_Style_")
 @指代类("android.graphics.Paint.Style")
 类 Paint_Style
 	@静态
@@ -1667,7 +1891,7 @@ This value cannot be null.
 结束 类
 
 
-
+@输出名("Paint_")
 @指代类("android.graphics.Paint")
 类 Paint
 
@@ -1759,11 +1983,13 @@ This value cannot be null.
 	结束 方法
 结束 类
 
+@输出名("Align_")
 @指代类("android.graphics.Paint.Align")
 类 Align
 
 结束 类
 
+@输出名("TextAlignment")
 类 文本对齐方式
 	@嵌入式代码
 	@静态
@@ -1772,6 +1998,7 @@ This value cannot be null.
 	结束 方法
 结束 类
 
+@输出名("Canvas_")
 @指代类("android.graphics.Canvas")
 类 Canvas
 
@@ -1847,6 +2074,7 @@ This value cannot be null.
 
 结束 类
 
+@输出名("BufferInfo_")
 @指代类("android.media.MediaCodec.BufferInfo")
 类 BufferInfo
 	@静态
@@ -1888,6 +2116,7 @@ This value cannot be null.
 
 结束 类
 
+@输出名("ByteBuffer_")
 @指代类("java.nio.ByteBuffer")
 类 ByteBuffer
 	方法 get(byte : 字节[]) : ByteBuffer
@@ -1899,12 +2128,13 @@ This value cannot be null.
 		code return java.nio.ByteBuffer.wrap(#array);
 	结束 方法
 结束 类
-
+/*
 @指代类("")
 类 ByteArray
 
 结束 类
-
+*/
+@输出名("Typeface_")
 @指代类("android.graphics.Typeface")
 类 字体
 	@静态
@@ -1918,6 +2148,7 @@ This value cannot be null.
 	结束 方法
 结束 类
 
+@输出名("Const")
 @全局类
 类 全局常量
 	@静态
@@ -1940,6 +2171,7 @@ This value cannot be null.
 @导入Java("android.app.*")
 @导入Java("android.view.*")
 @导入Java("java.io.*")
+@输出名("ScreenShot")
 @强制输出
 类 屏幕截图
 	@静态
@@ -2065,6 +2297,7 @@ This value cannot be null.
 @导入Java("java.io.File")
 @导入Java("android.view.View")
 @导入Java("android.widget.LinearLayout")
+@输出名("v")
 @后缀代码(" extends android.view.View implements View.OnClickListener")
 类 控件
 
@@ -2181,6 +2414,7 @@ This value cannot be null.
 @导入Java("com.badlogic.gdx.graphics.Pixmap")
 @导入Java("android.view.WindowManager")
 @导入Java("android.graphics.*")
+@输出名("ope")
 @全局类
 类 操作类
 
@@ -2211,7 +2445,7 @@ This value cannot be null.
 		结束 如果
 
 	结束 方法
-	
+
 	@静态
 	方法 消耗时间(ensure : 逻辑型)
 		如果 ensure 则
@@ -2221,7 +2455,47 @@ This value cannot be null.
 		结束 如果
 	结束 方法
 
+	@嵌入式代码
 	@静态
+	方法 输出异常()
+		@code
+		#<操作类.日志>(android.util.Log.getStackTraceString(e));
+		@end
+	结束 方法
+
+
+	@静态
+	方法 ArrayList转json(al : 集合) : JSON对象
+		变量 json : JSON对象
+		循环(i, 0, al.长度)
+			变量 text=al[i].到文本()
+			如果 text.开头为("{") 则
+				变量 json2 : JSON对象=text
+				json.置入("i"+i.到文本(),json2)
+			否则
+				json.置入("i"+i.到文本(),al[i])
+			结束 如果
+		结束 循环
+		返回 json
+	结束 方法
+
+	@静态
+	方法 数组转json(al : 对象[]) : JSON对象
+		变量 json : JSON对象
+		循环(i, 0, 取数组长度(al))
+			变量 text=al[i].到文本()
+			如果 text.开头为("{") 则
+				变量 json2 : JSON对象=text
+				json.置入("i"+i.到文本(),json2)
+			否则
+				json.置入("i"+i.到文本(),al[i])
+			结束 如果
+		结束 循环
+		返回 json
+	结束 方法
+
+	@静态
+	@输出名("alienatedGas")
 	方法 异化之炁(ann : 安卓窗口)
 		开始俘获异常()
 		@code
@@ -2833,6 +3107,7 @@ matrix.postConcat(result);
 
 结束 类
 
+@输出名("ViewGroup_")
 @指代类("android.view.ViewGroup")
 类 布局控件
 	方法 添加组件(组件 : 可视化组件)
@@ -2846,6 +3121,7 @@ matrix.postConcat(result);
 //   @阿杰  Meng
 //
 //==============
+@输出名("OpenMethod")
 @附加权限(安卓权限.文件权限_读取)
 类 文件打开方式
 
@@ -4008,6 +4284,7 @@ matrix.postConcat(result);
 
 结束 类
 
+@输出名("Colorset")
 @强制输出
 类 ColorSet
 
@@ -4318,12 +4595,14 @@ matrix.postConcat(result);
 
 结束 类
 
+@输出名("Huffset")
 类 Huffset : 对象
 	变量 obj : 对象=空
 	变量 count : 整数=0
 	变量 dst : Bits
 结束 类
 
+@输出名("Bits")
 类 Bits
 	变量 bl : 逻辑型集合
 
@@ -4349,6 +4628,7 @@ matrix.postConcat(result);
 
 结束 类
 
+@输出名("Boolset")
 @强制输出
 类 BoolSet
 

@@ -60,10 +60,14 @@ PvZLaus
 //8.14实现选卡，实现大多数植物的动画
 //8.17小喷菇
 //8.18大嘴花
+//8.26设置输出名
+//8.30见下
+//8.31制作存档功能
 //@外部依赖库("../jar/classes-4.jar")
-//@附加资源("../assets")
 //@外部动态库("../../lib")
-@输出名("上帝")
+//@输出名("上帝")
+//@附加资源("../assets/")
+@输出名("L")
 @外部依赖库("../libgdx/jar")
 @外部动态库("../libgdx/libs")
 @全局主题("Blue")
@@ -74,7 +78,7 @@ PvZLaus
 	@布局配置([[根布局=真,宽度=-1,高度=-1]])
 	变量 线性布局1 : 线性布局
 	@布局配置([[父布局=线性布局1,宽度=-1,高度=-1]])
-	变量 Editor1 : 编辑框
+	变量 Editor1 : 编辑框h
 
 	变量 view : 控件=空
 
@@ -423,7 +427,8 @@ android:largeHeap="true"
 android:hardwareAccelerated = "false">]])
 */
 //@附加资源("../esass")
-@输出名("凤舞九天")
+//@输出名("凤舞九天")
+@输出名("m")
 @导入Java("android.content.Intent")
 @导入Java("android.os.*")
 类 非启动窗口 : Setup
@@ -459,7 +464,7 @@ android:hardwareAccelerated = "false">]])
 	变量 初始化次数 : 整数=0
 	变量 禁止初始化 : 逻辑型=假
 	变量 反色显示 : 逻辑型=假
-	变量 version="0.43.810.1 alpha dev(vb43.250810.481322)"
+	变量 version="0.45.831.1 alpha dev(vb45.250831.544201)"
 
 	变量 ldt : 长整数=0L
 
@@ -761,7 +766,7 @@ android:hardwareAccelerated = "false">]])
 		结束 如果
 
 	结束 事件
-
+	@输出名("rgb_vert")
 	变量 rgb_vert : 文本=[[attribute vec4 a_position;
 attribute vec4 a_color;
 attribute vec2 a_texCoord0;
@@ -778,7 +783,7 @@ void main() {
 }]]
 
 	//u_clipRegion  x,y,width,heoght
-
+	@输出名("rgb_frag")
 	变量 rgb_frag : 文本=[[#ifdef GL_ES
     precision mediump float;
 #endif
@@ -809,6 +814,7 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 	@输出名("霜雪千年")
 	//这个方法会在系统请求绘制时被调用
 	方法 繪製()
+		开始俘获异常()
 		//如果 取当前时间戳()-绘制完时间>=15 则
 		如果 初始化完成&&管理器.初始化完成 则
 			变量 h : 长整数=取当前时间戳()
@@ -992,6 +998,8 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 		//code #<操作类.日志>(#canvas.isHardwareAccelerated()+"");
 		//code #canvas.drawColor(0xff000000);
 */
+		俘获所有异常()
+		结束俘获异常()
 	结束 方法
 
 	方法 start()
@@ -1280,12 +1288,14 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 结束 类
 
 //万物皆作流云，唯我羽化登仙！
-@输出名("羽化登仙")
+//@输出名("羽化登仙")
+@输出名("Nirvana")
 @导入Java("android.graphics.*")
 @导入Java("android.graphics.Bitmap.Config")
 类 窗口管理器
 
 	//2025.8.12切换版本/制作改版使用
+	@输出名("edition")
 	变量 edition : 文本="Laus"
 
 	//0 标题界面
@@ -1295,191 +1305,274 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 	//4商店
 	//5宝开Logo
 	//7测试界面
+	@输出名("scrtype")
 	变量 窗口类型 : 整数=5
-
+	@输出名("resall")
 	变量 resall : 文本到未加載圖哈希表
+	@输出名("loadproc")
 	变量 加载进度 : Stringk=Stringk.文本("")
+	@输出名("REANIM")
 	变量 REANIM : reanim
+	@输出名("loadfinish")
 	变量 加载完毕 : 逻辑型=假
-
+	@输出名("image")
 	变量 image : Image
+	@输出名("imagename")
 	变量 imagename : STSL
+	@输出名("config")
 	变量 config : XMLR
+	@输出名("screen")
 	变量 screen : SpriteBatch=空
+	@输出名("fbo")
 	变量 fbo : FrameBuffer=空
+	@输出名("width")
 	变量 width : 整数
+	@输出名("height")
 	变量 height : 整数
-
+	@输出名("mainThread")
 	变量 主线程 : 安卓窗口=空
-
+	@输出名("gcv")
 	变量 渐变色值 : 单精度小数=0f
-
+	@输出名("x")
 	变量 x : 单精度小数=0f
+	@输出名("y")
 	变量 y : 整数=0
+	@输出名("scale")
 	变量 scale : 单精度小数=1f
-
+	@输出名("gametext")
 	变量 游戏文本 : 文本到文本哈希表
+	@输出名("textsize")
 	变量 文字大小 : 整数=15
+	@输出名("textfont")
 	变量 文字字体 : 字体=空
-
+	@输出名("dx")
 	变量 dx : 单精度小数=-1f
+	@输出名("dy")
 	变量 dy : 单精度小数=-1f
+	@输出名("tx")
 	变量 tx : 单精度小数=-1f
+	@输出名("ty")
 	变量 ty : 单精度小数=-1f
+	@输出名("tt")
 	变量 tt : 长整数
+	@输出名("touch")
 	变量 触摸 : 触摸事件=空
+	@输出名("speed")
 	变量 speed : 单精度小数=-1f
-
+	@输出名("animh")
 	变量 animh : Anim
-
+	@输出名("realx")
 	变量 realx : 单精度小数=-1f
-
+	@输出名("drawuprate")
 	变量 绘制更新速率 : 整数
-
+	@输出名("transp")
 	变量 透明度 : 单精度小数=1f
 
 
 	//变量 spcres : 文本到未加載圖哈希表
-
+	@输出名("trirect")
 	变量 触判矩形 : 文本到矩形数组
-
+	@输出名("zombieList")
 	变量 zombieList : ZombieList
+	@输出名("plantList")
 	变量 plantList : PaintList
+	@输出名("projList")
 	变量 projList : ProjList
+	@输出名("tracleList")
 	变量 tracleList : TracleList
+	@输出名("particleList")
 	变量 particleList : ParticleList
+	@输出名("cards")
 	变量 cards : 整数[]={0,1,2,3,4,5}
+	@输出名("card_cool")
 	变量 card_cool : 整数[]={0,0,0,0,0,0}
-
+	@输出名("animproc")
 	变量 动画进度 : 整数
 
 	//50x70 2 8
+	@输出名("mmx")
 	变量 mmx : 整数=50
+	@输出名("mmy")
 	变量 mmy : 整数=70
+	@输出名("mux")
 	变量 mux : 整数=2
+	@输出名("muy")
 	变量 muy : 整数=8
+	@输出名("plant_cards")
 	变量 plant_cards : 位图对象=空
-
+	@输出名("sunapp")
 	变量 sunapp : 整数=50
+	@输出名("sunappmax")
 	变量 sunappmax=1100
+	@输出名("coinlist")
 	变量 coinList : CoinList
-
+	@输出名("wave")
 	变量 wave : 整数
+	@输出名("wavemax")
 	变量 wavemax : 整数
-
+	@输出名("drawtime")
 	变量 绘制消耗帧 : 整数
+	@输出名("frametime")
 	变量 帧长 : 整数
 
 
-
+	@输出名("level")
 	变量 level : 整数=1
 	//0冒险
 	//1冒险2周
 	//2小游戏
+	@输出名("leveltype")
 	变量 leveltype : 整数=0
-
+	@输出名("process")
 	变量 进度 : 文本="unstart"
+	@输出名("scene")
 	变量 场景 : 整数=0
-
+	@输出名("predanim")
 	变量 predanim : Anim=空
+	@输出名("predx")
 	变量 predx : 整数
+	@输出名("predy")
 	变量 predy : 整数
+	@输出名("predxp")
 	变量 predxp : 单精度小数=0f
+	@输出名("predyp")
 	变量 predyp : 单精度小数=0f
+	@输出名("predtype")
 	变量 predtype : 整数
+	@输出名("pred")
 	变量 pred : 逻辑型
+	@输出名("predidx")
 	变量 predidx : 整数
+	@输出名("suncount")
 	变量 suncount : 整数
-
+	@输出名("proc")
 	变量 进程 : 整数=0
-
+	@输出名("levels")
 	变量 levels : XMLR
-
+	@输出名("zombiecount")
 	变量 zombiecount : 整数
-
+	@输出名("procf")
 	变量 前进进度 : 单精度小数=0f
-
+	@输出名("loadinfo")
 	变量 加载信息 : 文本
+	@输出名("frameinfo")
 	变量 帧信息 : 文本
-
+	@输出名("sinlist")
 	变量 sinlist : 单精度小数[]=空
+	@输出名("coslist")
 	变量 coslist : 单精度小数[]=空
 
-
+	@输出名("ds")
 	变量 ds : drawStyle
+	@输出名("dst")
 	变量 dst : drawStyle
-
+	@输出名("dtime")
 	变量 dtime : 单精度小数
-
+	@输出名("ultna")
 	变量 ultna : 长整数
+	@输出名("ultnb")
 	变量 ultnb : 长整数
+	@输出名("dscale")
 	变量 dscale : 整数=1
 
 	//变量 osct : OSCT
-
+	@输出名("rgbShader")
 	变量 rgbShader : ShaderProgram=空
-
+	@输出名("font1")
 	变量 字体1 : BitmapFont=空
 
 	//作弊 cheat
-	变量 无冷却 : 逻辑型=真
-	变量 不耗阳光 : 逻辑型=真
-
+	@输出名("nntw")
+	变量 无冷却 : 逻辑型=假
+	@输出名("free")
+	变量 不耗阳光 : 逻辑型=假
+	@输出名("animess")
 	变量 animess : Animed
-
+	@输出名("USER")
 	变量 USER : userdatas
-
+	@输出名("state")
 	变量 state : 文本="none"
+	@输出名("judarea")
 	变量 判定区域 : 矩形集
 
 	//2025.8.4  冒险模式闪光用的，标记变化时的时间
+	@输出名("bool")
 	变量 bool : 整数
 	//2025.8.5
+	@输出名("inited")
 	变量 初始化完成 : 逻辑型=假
+	@输出名("rectw")
 	变量 rectw : Texture=空
 	//2025.8.8
+	@输出名("sdoffy")
 	变量 卡槽偏移y=0f
+	@输出名("t1")
 	变量 t1 : Texture=空
+	@输出名("t2")
 	变量 t2 : Texture=空
+	@输出名("t3")
 	变量 t3 : Texture=空
+	@输出名("inapptime")
 	变量 初始出怪时间=0
+	@输出名("ccend")
 	变量 选卡结束 : 逻辑型=假
+	@输出名("csint")
 	变量 选卡界面y : 单精度小数=0f
-
+	@输出名("proline")
 	变量 禁出行 : 整数[]=数组创建(整数,6)
-
+	@输出名("mowerList")
 	变量 mowerList : 推车集
+	@输出名("mowerxoff")
 	变量 推车x偏移 : 单精度小数=0
 	//2025.8.9
+	@输出名("captions")
 	变量 字幕 : 文本
+	@输出名("captionscd")
 	变量 字幕倒计时 : 整数=0
+	@输出名("canshedsun")
 	变量 能落阳光 : 逻辑型=真
+	@输出名("foreds")
 	变量 foreds : drawStyles
 
 	//2025.8.13实现卡片选择
+	@输出名("sobj")
 	变量 选择对象 : 整数=-1
+	@输出名("cardev")
 	变量 卡片演化 : 整数=0
+	@输出名("cardevtime")
 	变量 卡片演化时间=25
+	@输出名("evdir")
 	变量 演化方向 : 逻辑型
+	@输出名("recallid")
 	变量 撤回id : 整数=-1
-	
+	@输出名("exspeed")
 	变量 极速 : 逻辑型=假
 	//2025.8.24
+	@输出名("uinfo")
 	变量 uinfo : 文本
+	@输出名("savecount")
+	变量 保存倒计时 : 整数
+
 
 
 	//变量 进了家 : 逻辑型=假
 
+	@输出名("sin_angle")
 	方法 sin_angle(angle : 单精度小数) : 单精度小数
 		返回 sinlist[angle.到整数()%360]
 	结束 方法
 
+	@输出名("cos_angle")
 	方法 cos_angle(angle : 单精度小数) : 单精度小数
 		返回 coslist[angle.到整数()%360]
 	结束 方法
 
-
-	方法 初始化(widthw : 整数,heightw : 整数)
+	@输出名("initi")
+	方法 初始化(widthw9 : 整数,heightw9 : 整数)
+		@输出名("widthw")
+		变量 widthw=widthw9
+		@输出名("heightw")
+		变量 heightw=heightw9
 		读取场景存档()
 		plant_cards=位图对象.从文件路径创建位图("/storage/emulated/0/.pvz/plant_cards.png")
 		文字字体=字体.从文件创建("/storage/emulated/0/.pvz/main/fzse_gbk.ttf")
@@ -1505,7 +1598,10 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 		//canvas=Canvas.从BitMap创建(screen)
 	结束 方法
 
+	@输出名("card_tx")
 	变量 card_tx : Texture[]=数组创建(Texture,256)
+
+	@输出名("getcardtx")
 	方法 getcardtx(type : 整数) : Texture
 		如果 card_tx[type]==空 则
 			变量 txr=Texture.从PixMap新建(Pixmap.从Bitmap创建(getcardcs(type)))
@@ -1516,7 +1612,10 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 		结束 如果
 	结束 方法
 
+	@输出名("card_cs")
 	变量 card_cs : 位图对象[]=数组创建(位图对象,256)
+
+	@输出名("getcardcs")
 	方法 getcardcs(type : 整数) : 位图对象
 		如果 card_cs[type]==空 则
 			变量 col : 整数=type%8
@@ -1530,11 +1629,12 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 			返回 card_cs[type]
 		结束 如果
 	结束 方法
-
+	@输出名("getres")
 	方法 getres(id :文本) : 未加载图
 		返回 (image.可释放图)[imagename[id]]
 	结束 方法
 
+	@输出名("setwh")
 	方法 设置宽高()
 		width=800
 		height=600
@@ -1546,9 +1646,12 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 	@输出名("法外狂徒")
 	方法 绘图(绘制消耗帧 : 整数,帧长 : 整数) : TextureRegion
 		如果 字体1==空 则
+			@输出名("fontName")
 			变量 fontName="/storage/emulated/0/.pvz/fonts/ziti"
+			@输出名("pagecount")
 			变量 pagecount=28
 			//变量 fh : FileHandle=FileHandle.新建(fontName+".fnt")
+			@输出名("trs")
 			变量 trs : TextureRegion[]=数组创建(TextureRegion,pagecount)
 			循环(i, 0, 取数组长度(trs))
 				变量 texture=Texture.从FileHandle创建(FileHandle.新建(fontName+(i+1).到文本()+".png"))
@@ -1743,7 +1846,7 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 
 
 					结束 如果
-
+					开始俘获异常()
 					//////////canvas.绘制文字(suncount.到文本(),((45-paint.测量文字(suncount.到文本())/4)*scale).到整数(),(80*scale).到整数(),paint,(20*scale).到整数())
 					//变量 nt=取当前时间戳()
 					循环(i, 0, foreds.长度)
@@ -1781,18 +1884,35 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 							结束 如果
 						结束 循环
 						循环(i, 0, particleList.长度)
+							如果 i>=particleList.长度 则
+								退出循环
+							结束 如果
 							变量 particle=particleList[i]
+
 							如果 particle.row==h 则
 								循环(u, 0, particle.parts.长度)
+									开始俘获异常()
+									如果 u>=particle.parts.长度 则
+										退出循环
+									结束 如果
 									变量 lz=(particle.parts)[u]
 									如果 lz.激活倒计时<=0 则
 										变量 bit : Texture=空
 										如果 particle.颜色渲染保护==假 则
-											bit=image.可释放图.取项目(lz.pic).加载().取Texture(lz.cutn,lz.row,lz.cutp)
+											如果 lz.pic.开头为("IMAGE_REANIM_") 则
+												bit=resall.getItem(lz.pic).加载().取Texture(lz.cutn,lz.row,lz.cutp)
+											否则
+												bit=image.可释放图.getItem(lz.pic).加载().取Texture(lz.cutn,lz.row,lz.cutp)
+											结束 如果
 										否则
-											bit=Texture.从PixMap新建(image.可释放图.取项目(lz.pic).加载().取Pixmap(lz.cutn,lz.row,lz.cutp))
+											如果 lz.pic.开头为("IMAGE_REANIM_") 则
+												bit=Texture.从PixMap新建(resall.getItem(lz.pic).加载().取Pixmap(lz.cutn,lz.row,lz.cutp))
+											否则
+												bit=Texture.从PixMap新建(image.可释放图.getItem(lz.pic).加载().取Pixmap(lz.cutn,lz.row,lz.cutp))
+											结束 如果
+
 										结束 如果
-										
+
 										变量 matrix_part=Matrix.从Matrix新建(matrix).postRotate_3(lz.rotate,bit.getHeight()/2,
 										bit.getHeight()/2).postScale_4(lz.取值(lz.scale),lz.取值(lz.scale),bit.getWidth()/2,
 										bit.getHeight()/2).postTranslate((随机单精度小数(0,lz.shake*2)-lz.shake+x+particle.x+(particle.parts)[u].x)*scale,
@@ -1801,6 +1921,15 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 										变量 color : 单精度小数[]={lz.取值(lz.red),lz.取值(lz.green),lz.取值(lz.blue),lz.取值(lz.alpha)}
 										screen.dt_tmc(bit,matrix_part,color,height,本对象)
 									结束 如果
+
+									俘获所有异常()
+									变量 name="#OutofIndex"
+									如果 particleList.长度>i&&particle.parts.长度>u 则
+										name=particleList[i].type+" ---"+(particle.parts)[u].pic
+									结束 如果
+									日志("particledraw error:index:"+i+",length:"+particleList.长度+",NamE:"+name)
+									结束俘获异常()
+
 								结束 循环
 							结束 如果
 						结束 循环
@@ -1866,7 +1995,8 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 						结束 如果
 					结束 循环
 
-
+					俘获所有异常()
+					结束俘获异常()
 
 					//变量 ds : drawStyle
 					ds.anim=animh
@@ -2456,7 +2586,8 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 		//日志(result.getRegionWidth()+"    and  "+result.getRegionHeight())
 		返回 result
 	结束 方法
-	
+
+	@输出名("speedmode")
 	方法 极速模式(content : 文本) : 逻辑型
 		如果 极速==假&&content=="particle" 则
 			返回 真
@@ -2464,6 +2595,7 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 		返回 假
 	结束 方法
 
+	@输出名("drawcardslot")
 	方法 绘制卡槽()
 		变量 matrixc : Matrix
 		matrixc.postScale(scale,scale)
@@ -2610,6 +2742,7 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 
 	结束 方法
 
+	@输出名("plantHasChoose")
 	方法 植物已选(ID : 整数) : 逻辑型
 		循环(i, 0, 取数组长度(cards))
 			如果 cards[i]==ID 则
@@ -2619,10 +2752,12 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 		返回 假
 	结束 方法
 
+	@输出名("zoomdraw_lbns")
 	方法 缩放绘制_左下免scale(scr : SpriteBatch,tex : Texture,x : 单精度小数,y : 单精度小数,w乘数 : 单精度小数=0,h乘数 : 单精度小数=0)
 		scr.draw_txywh(tex,(x+tex.getWidth()*w乘数)*scale,(y+tex.getHeight()*h乘数)*scale,tex.getWidth()*scale,tex.getHeight()*scale)
 	结束 方法
 
+	@输出名("drawLevel")
 	方法 绘制关卡(scr : SpriteBatch)
 		//画字(scr,取大关().到文本(),570,170,0xffffffff,20,-1)
 		//画字(scr,取小关().到文本(),576,171,0xffffffff,20,0)
@@ -2653,11 +2788,13 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 		//screen.draw_txy(Texture.从PixMap新建(小关),570*scale,ytl2bl(176,height,小关.height()))
 	结束 方法
 
+	@输出名("cbc")
 	方法 字斜变(xt : 整数) : 整数
 		//日志((11/80*xt+90+135).到文本())
 		返回 (11.25f/80*xt+50+animess[0].obtainPOS("SelectorScreen_BG_Right").y).到整数()
 	结束 方法
 
+	@输出名("shadow")
 	方法 shadow(xi : 单精度小数,yi : 单精度小数,type : 文本,matrixs : Matrix)
 		/////变量 azt=取当前纳秒时间戳()
 		变量 matrix_shadow=Matrix.从Matrix新建(matrixs).postTranslate((x+xi)*scale,(y+yi)*scale)
@@ -2667,6 +2804,7 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 		screen.dt_tma(bit,matrix_shadow,,height)
 	结束 方法
 
+	@输出名("createAccount")
 	方法 创建账户(回调注册 : 逻辑型)
 		USER.账户数量=USER.账户数量+1
 		变量 ud : userdata
@@ -2680,6 +2818,7 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 		结束 如果
 	结束 方法
 
+	@输出名("select")
 	方法 select(PID : 整数,演化方向w : 逻辑型=真)
 		如果 演化方向w==假 则
 			变量 typew="search"
@@ -2715,6 +2854,7 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 
 	结束 方法
 
+	@输出名("login")
 	方法 登记(播放 : 逻辑型=真)
 		//日志(播放.到文本())
 		如果 (USER.账户)[USER.当前账户].冒险关数>=0 则
@@ -2741,6 +2881,18 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 
 	结束 方法
 
+	@输出名("S")
+	方法 S()
+		变量 file : 文本
+
+	结束 方法
+
+	@输出名("S")
+	方法 L()
+
+	结束 方法
+
+	@输出名("isGetPurpleCard")
 	方法 是否获得紫卡() : 逻辑型
 		变量 bo=USER.当前账户().紫卡解锁
 		循环(i,0,取数组长度(bo))
@@ -2751,6 +2903,7 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 		返回 假
 	结束 方法
 
+	@输出名("getwonplant")
 	方法 取通关植物() : 整数
 
 		变量 小关=level%10
@@ -2764,6 +2917,7 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 		返回 大关*8+num
 	结束 方法
 
+	@输出名("selectedplant")
 	方法 选好植物() : 逻辑型
 		如果 取数组长度(cards)!=0&&cards[取数组长度(cards)-1]!=-1 则
 			返回 真
@@ -2771,10 +2925,12 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 		返回 假
 	结束 方法
 
+	@输出名("drawzb")
 	方法 drawzb()
 
 	结束 方法
 
+	@输出名("drawSTSL")
 	方法 drawSTSL(scr : SpriteBatch,xn : 整数,yn : 整数,stsl : STSL)
 		变量 字大小 : 整数=1
 		如果 yn+字大小*16*stsl.w1.长度>height 则
@@ -2799,10 +2955,12 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 		结束 循环
 	结束 方法
 
+	@输出名("killz")
 	方法 killz()
 		zombieList.清空()
 	结束 方法
 
+	@输出名("gettransp")
 	方法 取透明度(时间 : 整数,单次 : 整数,加数 : 整数=0) : 整数
 		变量 sx=时间%单次
 		如果 sx<单次/2 则
@@ -2812,6 +2970,7 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 		结束 如果
 	结束 方法
 
+	@输出名("drawcollv")
 	方法 画碰撞体积(cv : 矩形x,xt : 单精度小数,yt : 单精度小数,颜色 : 整数)
 		变量 coll : 矩形x
 		coll.x=(cv.x+x+xt)*scale
@@ -2823,14 +2982,17 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 	结束 方法
 
 
+	@输出名("getct")
 	方法 getct(type : 整数) : 整数
 		返回 config["card"][type.到文本()].refeindex("ct").到整数()
 	结束 方法
 
+	@输出名("getvalue")
 	方法 getvalue(type : 整数) : 整数
 		返回 config["card"][type.到文本()].refeindex("v").到整数()
 	结束 方法
 
+	@输出名("readSceneArchive")
 	方法 读取场景存档() : 逻辑型
 		开始俘获异常()
 		USER.账户.清空()
@@ -2877,13 +3039,14 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 		返回 假
 	结束 方法
 
+	@输出名("drawZombie")
 	方法 植物是否已获取(ID : 整数) : 逻辑型
 		如果 ID>=40 则
 			//紫卡植物是否已获得
 
 		否则
 			如果 USER.当前账户().冒险周目==0 则
-				如果 ID<USER.当前账户().冒险关数 则
+				如果 ID<取通关植物() 则
 					返回 真
 				否则
 					返回 假
@@ -2895,14 +3058,22 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 		返回 假
 	结束 方法
 
+	@输出名("popup")
 	方法 弹出窗口(内容 : 文本)
 		内容=内容
 	结束 方法
 
+
+	@输出名("drawPlant")
 	方法 绘制植物(plant : Plant,hex : 单精度小数,matrix : Matrix)
 		shadow(plant.x+plant.cv.x-50,plant.y+plant.cv.y+12,"plantshadow",matrix)
 		//ds.anim=zombie.anim
 		ds.anim=空
+		如果 plant.enableMatrix 则
+			ds.matrix=plant.matrix
+		否则
+			ds.matrix=空
+		结束 如果
 		ds.sx=plant.scale
 		ds.sy=plant.scale
 		ds.kx=plant.旋转度数
@@ -2912,7 +3083,6 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 		ds.color=0xffffffff
 		ds.tx=plant.x()
 		ds.ty=plant.y
-		ds.matrix=空
 		循环(o, 0, 取数组长度(plant.anim))
 			ds.anim=(plant.anim)[o]
 			rgbShader.setUniformf4("u_clipRegion",0,0,width,height)
@@ -2920,6 +3090,7 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 		结束 循环
 	结束 方法
 
+	@输出名("cardnum")
 	方法 卡槽数量() : 整数
 		如果 level<6 则
 			返回 level
@@ -2927,6 +3098,7 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 		返回 USER.当前账户().卡槽数量
 	结束 方法
 
+	@输出名("drawZombie")
 	方法 绘制僵尸(zombie : Zombie,hex : 单精度小数,matrix : Matrix)
 		//这里是绘制僵尸的地方
 		shadow(zombie.x()+zombie.cv.x-27,zombie.y+zombie.cv.y+zombie.cv.h-20,"plantshadow",matrix)
@@ -2939,6 +3111,10 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 		ds.color=0xffffffff
 		ds.tx=zombie.x()
 		ds.ty=zombie.y
+		如果 zombie.shake!=0 则
+			ds.tx=ds.tx+随机单精度小数(0,zombie.shake)-zombie.shake*0.5f
+			ds.ty=ds.ty+随机单精度小数(0,zombie.shake)-zombie.shake*0.5f
+		结束 如果
 		如果 zombie.enableMatrix 则
 			ds.matrix=zombie.matrix
 		否则
@@ -2959,6 +3135,7 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 	结束 方法
 
 	//2025.8.9
+	@输出名("drawMower")
 	方法 画Mower(mower : Mower,hex : 单精度小数)
 		ds.anim=mower.anim
 		ds.sx=mower.scale
@@ -2972,6 +3149,7 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 		绘制(screen,ds,hex)
 	结束 方法
 
+	@输出名("saveArchive")
 	方法 保存存档()
 		变量 hex : 字节[]=数组创建(字节,1024)
 		写入hex(hex,0,文本转字节("FF FF FF FF FF FF FF FF    FF FF FF FF FF FF FF FF    50 56 5A 31 00 00 00 01"))
@@ -2999,6 +3177,7 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 	结束 方法
 
 	@静态
+	@输出名("text2byte")
 	方法 文本转字节(内容 : 文本) : 字节[]
 		内容=内容.替换(" ","").替换("\n","")
 		变量 结果 : 字节[]=空
@@ -3013,6 +3192,7 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 		返回 结果
 	结束 方法
 
+	@输出名("writeHex")
 	方法 写入hex(hex : 字节[],位置 : 整数,codew : 字节[])
 		循环(i, 位置, 位置+取数组长度(codew))
 			hex[i]=codew[i-位置]
@@ -3028,6 +3208,7 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 		
 	结束 方法
 	*/
+	@输出名("hexStr2Str")
 	方法 hexStr2Str(hexStr : 文本) : 文本
 		@code
         String str = "0123456789abcdef";
@@ -3043,6 +3224,7 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 	@end
 	结束 方法
 
+	@输出名("fill_in")
 	方法 补齐(二进制 : 文本,长度 : 整数) 为 文本
 		如果 二进制.长度>长度 则
 			二进制=二进制.取文本右边(二进制.长度-长度)
@@ -3058,6 +3240,7 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 		返回 二进制
 	结束 方法
 
+	@输出名("read")
 	方法 读取(hex : 字节[],位置 : 整数,长度 : 整数,倒序 : 逻辑型=真) : 文本
 		变量 result : 文本=""
 		循环 (i,位置,位置+长度)
@@ -3071,6 +3254,7 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 		返回 result
 	结束 方法
 
+	@输出名("readHex")
 	方法 读取hex(hex : 字节[],位置 : 整数,长度 : 整数) : 字节[]
 		变量 res : 字节[]=空
 		code #res=new byte[#长度];
@@ -3080,10 +3264,12 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 		返回 res
 	结束 方法
 
+	@输出名("addButton")
 	方法 添加按钮(name : 文本)
 
 	结束 方法
 
+	@输出名("loadText")
 	方法 读取文本(hex : 字节[],位置 : 整数) : 文本
 		变量 结果=位置
 		变量 长度=0
@@ -3110,6 +3296,7 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 	结束 方法
 
 	//2024
+	@输出名("loadText2")
 	方法 读取文本2(hex : 字节[],位置 : 整数) : 字节[]
 		变量 结果=位置
 		变量 长度=0
@@ -3135,6 +3322,7 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 		code return bytes; 
 	结束 方法
 
+	@输出名("choose")
 	方法 选择(类型 : 整数)
 		变量 plant : Plant=Plant.create(本对象,-1,-1,类型)
 		pred=真
@@ -3142,74 +3330,86 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 		predtype=类型
 	结束 方法
 
+	@输出名("deselect")
 	方法 消选()
 		pred=假
 		predanim=空
 	结束 方法
 
+	@输出名("initLevel")
 	方法 initLevel(关卡 : 整数,类型 : 整数)
 		level=关卡
 		leveltype=类型
-		场景=initLevel_场景(关卡,类型)
-		选卡结束=假
-		动画进度=0
-		cards=数组创建(整数,0)
-		state="none"
-		//开始俘获异常()
-		变量 zombietype=getzombie(getwaveinfo().refeindex("allowedZombies"))
-		wave=0
-		wavemax=getwaveinfo().attr.长度
-		sunapp=0
+		变量 text=文件操作.读入文本文件("/sdcard/.pvz/"+关卡名()+".json")
+		如果 text!="" 则
+			FromJSON(text)
+		否则
+			场景=initLevel_场景(关卡,类型)
+			选卡结束=假
+			动画进度=0
+			cards=数组创建(整数,0)
+			state="none"
+			//开始俘获异常()
+			变量 zombietype=getzombie(getwaveinfo().refeindex("allowedZombies"))
+			wave=0
+			wavemax=getwaveinfo().attr.长度
+			sunapp=0
 
-		//初始阳光总数
-		suncount=50//100
-		如果 level==1 则
-			suncount=150
-		结束 如果
-		如果 level!=50 则
+			//初始阳光总数
+			suncount=50//100
 			如果 level==1 则
-				循环(i, 0, 5)
-					zombieList.添加成员(zombieidle(0))
-				结束 循环
-			否则 level==2
-				循环(i, 0, 10)
-					zombieList.添加成员(zombieidle(0))
-				结束 循环
-			否则
-				循环(i, 0, 取数组长度(zombietype))
-					zombieList.添加成员(zombieidle(zombietype[i]))
-				结束 循环
-				变量 hst=取随机数(2,5)
-				如果 取数组长度(zombietype)<5则
-					hst=取数组长度(zombietype)
-				结束 如果
-				循环(i, 0, hst)
-					zombieList.添加成员(zombieidle(zombietype[取随机数(0,取数组长度(zombietype)-1)]))
-				结束 循环
+				suncount=150
 			结束 如果
+			如果 level!=50 则
+				如果 level==1 则
+					循环(i, 0, 5)
+						zombieList.添加成员(zombieidle(0))
+					结束 循环
+				否则 level==2
+					循环(i, 0, 10)
+						zombieList.添加成员(zombieidle(0))
+					结束 循环
+				否则
+					循环(i, 0, 取数组长度(zombietype))
+						zombieList.添加成员(zombieidle(zombietype[i]))
+					结束 循环
+					变量 hst=取随机数(2,5)
+					如果 取数组长度(zombietype)<5则
+						hst=取数组长度(zombietype)
+					结束 如果
+					循环(i, 0, hst)
+						zombieList.添加成员(zombieidle(zombietype[取随机数(0,取数组长度(zombietype)-1)]))
+					结束 循环
+				结束 如果
+			结束 如果
+			循环(i, 0, 5)
+				//coinList.添加成员(Coin.create(本对象,lawnmower,200,100+i*100))
+			结束 循环
+			///
+			//俘获所有异常()
+			//日志(取俘获异常().取异常信息())
+			//结束俘获异常()
 		结束 如果
-		循环(i, 0, 5)
-			//coinList.添加成员(Coin.create(本对象,lawnmower,200,100+i*100))
-		结束 循环
-		///
-		//俘获所有异常()
-		//日志(取俘获异常().取异常信息())
-		//结束俘获异常()
+
 	结束 方法
 
+	@输出名("getwaveinfo")
 	方法 getwaveinfo() : XMLR
 		返回 levels["PVZ"].getbyrefe("id",getlevelname(level,leveltype))
 	结束 方法
 
+	@输出名("zombieidle")
 	方法 zombieidle(类型 : 整数) : Zombie
 		变量 zombie=Zombie.create(本对象,类型,-1)
 		zombie.anim.播放动画("anim_idle")
 		zombie.x=取随机数(1050,1200)
 		zombie.y=取随机数(0,500)
+		zombie.idle=真
 		zombie.anim.speed=0.5f*Zombie.tool_getrandom()
 		返回 zombie
 	结束 方法
 
+	@输出名("getzombie")
 	方法 getzombie(zt : 文本) : 整数[]
 		变量 hst=zt.分割文本(" ")
 		变量 mrs : 整数[]=数组创建(整数,取数组长度(hst))
@@ -3237,6 +3437,7 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 		返回 rlt
 	结束 方法
 
+	@输出名("getlevelname")
 	方法 getlevelname(level : 整数,mode : 整数) : 文本
 		变量 modea : 文本
 		如果 mode==0 则
@@ -3251,6 +3452,7 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 		返回 modea+level.到文本()
 	结束 方法
 
+	@输出名("initLevel_scene")
 	方法 initLevel_场景(关卡 : 整数,类型 : 整数) : 整数
 		如果 类型==0||类型==1 则
 			如果 关卡<=10 则
@@ -3270,6 +3472,7 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 		返回 0
 	结束 方法
 
+	@输出名("pixel2grid")
 	方法 pixel2grid(x : 单精度小数,y : 单精度小数) : 整数[]
 		变量 x1=x-260
 		x1=(x1-x1%80)/80
@@ -3279,6 +3482,7 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 		返回 rlt
 	结束 方法
 
+	@输出名("drawRect2")
 	方法 绘制矩形2(scr : SpriteBatch,xw : 单精度小数,yw : 单精度小数,ww : 单精度小数,hw : 单精度小数,fill : 逻辑型)
 		如果 fill 则
 		否则
@@ -3287,7 +3491,7 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 			//rgbShader.setUniformf1("u_opacity",0.4f)
 		结束 如果
 	结束 方法
-
+	@输出名("drawRect3")
 	方法 绘制矩形3(scr : SpriteBatch,xw : 单精度小数,yw : 单精度小数,ww : 单精度小数,hw : 单精度小数,fill : 逻辑型,color : 整数)
 		如果 fill 则
 			变量 rectn : Pixmap=Pixmap.新建(1,1)
@@ -3320,6 +3524,7 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 		结束 如果
 	结束 方法
 
+	@输出名("drawRect")
 	方法 绘制矩形(screenw : SpriteBatch,矩形w : 矩形x,颜色 : 整数)
 		//变量 paint : Paint=Paint.创建Paint().设置颜色(颜色).设置样式(Paint_Style.STROKE).setStrokeWidth(2)
 		screenw=screenw
@@ -3329,7 +3534,7 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 	结束 方法
 
 
-
+	@输出名("handleTouch")
 	方法 handleTouch(event : 触摸事件,反复 : 逻辑型=假)
 		开始俘获异常()
 		触摸=event
@@ -3482,16 +3687,18 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 		//结束 如果
 	结束 方法
 
+	@输出名("addDialog")
 	方法 添加对话框()
 
 	结束 方法
 
+	@输出名("getOzeki")
 	方法 取大关(关 : 整数) : 整数
 		变量 小关=取小关(关)
 		变量 大关=(关-小关)/10+1
 		返回 大关
 	结束 方法
-
+	@输出名("getsLevel")
 	方法 取小关(关 : 整数) : 整数
 		变量 小关=关%10
 		如果 小关==0 则
@@ -3500,12 +3707,14 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 		返回 小关
 	结束 方法
 
+	@输出名("levelname")
 	方法 关卡名() : 文本
 		变量 小关=取小关(level)
 		变量 大关=取大关(level)
 		返回 游戏文本.取项目("LEVEL")+大关+"-"+小关
 	结束 方法
 
+	@输出名("write")
 	方法 画字(scr : SpriteBatch,text : 文本,x : 整数,y : 整数,color : 整数,size : 单精度小数,长度乘数 : 单精度小数,宽度乘数 : 单精度小数=0f)
 		变量 paint : Paint=Paint.创建Paint().设置字体(文字字体).设置文字大小((size*scale).到整数()).设置颜色(0xff000000)
 		字体1.getData().setScale(size*scale/32)
@@ -3517,12 +3726,14 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 		//日志("做"+(x*scale+paint.测量文字(text)*长度乘数).到整数().到文本()+"  "+(height-(y*scale)).到整数().到文本())
 	结束 方法
 
+	@输出名("write3stroke")
 	方法 描边画字(scr : SpriteBatch,text : 文本,x : 整数,y : 整数,color1 : 整数=0xffc9baa5,color2 : 整数=0xff000000,size : 单精度小数,长度乘数 : 单精度小数,宽度乘数 : 单精度小数=0f,xp : 整数=2,yp : 整数=2)
 		画字(scr,text,x+xp,y+yp,color2,size,长度乘数,宽度乘数)
 		画字(scr,text,x,y,color1,size,长度乘数,宽度乘数)
 
 	结束 方法
 
+	@输出名("getLoadingProc")
 	方法 取加载进度() : 单精度小数
 		变量 rlt : 单精度小数=0f
 		如果 加载进度.info=="reanim" 则
@@ -3538,10 +3749,12 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 		返回 rlt
 	结束 方法
 
+	@输出名("center")
 	方法 居中(宽度 : 单精度小数) : 单精度小数
 		返回 (width-宽度)/2
 	结束 方法
 
+	@输出名("couldPlant")
 	方法 可种植(qx : 整数,qy : 整数) : 逻辑型
 		如果 level==1&&qy!=2 则
 			返回 假
@@ -3553,6 +3766,7 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 		返回 真
 	结束 方法
 
+	@输出名("draw")
 	方法 绘制(screenw : SpriteBatch,ds : drawStyle,绘制时间 : 单精度小数)
 		变量 anim=ds.anim
 		//日志(anim.名称)
@@ -3588,6 +3802,7 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 					dsw.kbx=posf.bkx
 					dsw.kby=posf.bky
 					clear(posf)
+					dsw.matrix=ds.matrix
 				结束 如果
 
 
@@ -3636,10 +3851,13 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 		clear(ds)
 	结束 方法
 
-
+	@输出名("buildtime")
 	变量 buildtime : 整数=0
+	@输出名("nullait")
 	变量 nullait : 长整数=0L
+	@输出名("nullnbt")
 	变量 nullnbt : 长整数=0L
+	@输出名("drawanim")
 	方法 绘制动画(screenw : SpriteBatch,anim : Anim,indexw : 单精度小数,reans : Reanim,
 		xf : 单精度小数,yf : 单精度小数,xk : 单精度小数,yk : 单精度小数,
 		color : 整数,xs : 单精度小数,ys : 单精度小数,
@@ -3682,7 +3900,7 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 		结束 如果
 		//如果 reans.colorset.wid<=0 则
 		//日志("invaild:"+anim.名称+"  "+pos.image)
-		reans.colorset=resall.取项目(pos.image).加载()
+		reans.colorset=resall.getItem(pos.image).加载()
 		//返回 空
 		//结束 如果
 		变量 bit=reans.colorset.取Texture()
@@ -3701,7 +3919,7 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 		结束 如果
 		如果 渲染信息x.代理图像!="" 则
 			//日志("proxy:"+渲染信息x.代理图像)
-			bit=resall.取项目(渲染信息x.代理图像).加载().取Texture()
+			bit=resall.getItem(渲染信息x.代理图像).加载().取Texture()
 		结束 如果
 		//posw=pos
 		变量 cm=渲染信息x.取渲染值()
@@ -3722,11 +3940,14 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 		返回 空
 	结束 方法
 
+	@输出名("gridWidth")
 	方法 格子宽() : 整数
 		返回 80
 	结束 方法
 
+	@输出名("matrix")
 	变量 matrix : Matrix=Matrix.新建()
+	@输出名("paint_")
 	变量 paint : Paint=空
 	@输出名("浮光掠影")
 	方法 绘制图形(canvasw : SpriteBatch,bitmap : Texture,x : 单精度小数,y : 单精度小数,sx : 单精度小数,sy : 单精度小数,
@@ -3825,6 +4046,7 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 		返回 空
 	结束 方法
 
+	@输出名("initLawnString")
 	方法 initLawnString()
 		变量 paths=文件操作.读入文本文件("/storage/emulated/0/.pvz/main/properties/LawnStrings.txt","GB2312")
 		变量 t : 文本
@@ -3873,6 +4095,7 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 
 
 
+	@输出名("initilize")
 	方法 init()
 		//提交到新线程运行()
 		变量 pngpath : 文本[]=文本集集到文本集({文件操作.取子文件列表("/storage/emulated/0/.pvz/pvz/reanim/"),文件操作.取子文件列表("/storage/emulated/0/.pvz/main/reanim/")})
@@ -3882,6 +4105,7 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 			如果 pngpath[i].结尾为(".jpg")||pngpath[i].结尾为(".png") 则
 				//日志("load:"+pngpath[i])
 				resall.添加项目("IMAGE_REANIM_"+文件操作.取文件前缀名(文件操作.取文件名(pngpath[i].到大写())),读取图片("",pngpath[i]))
+				//日志("resall item;"+"IMAGE_REANIM_"+文件操作.取文件前缀名(文件操作.取文件名(pngpath[i].到大写()))+" added")
 				加载进度=("索引资源:"+(i+1).到文本()+"/"+取数组长度(pngpath)).到文本()+"  "+文件操作.取文件前缀名(文件操作.取文件名(pngpath[i]))
 				加载进度.int1=(i+1)
 				加载进度.int2=取数组长度(pngpath)
@@ -3897,6 +4121,7 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 	结束 方法
 
 	@静态
+	@输出名("loadPic")
 	方法 读取图片(相对路径 : 文本,完整路径 : 文本="/storage/emulated/0/.pvz/pvz/") : 未加载图
 		变量 path : 文本=完整路径+相对路径
 		如果 文件是否存在(path+".jpg") 则
@@ -3918,6 +4143,7 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 	结束 方法
 
 	//切换场景 转换场景 修改场景
+	@输出名("updateScene")
 	方法 更新场景(序号 : 整数)
 		clear(animess)
 		animess=创建 Animed
@@ -4047,6 +4273,7 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 		结束 如果
 	结束 方法
 
+	@输出名("addwave")
 	方法 addwave() 
 		//日志("索"+wave+"  "+wavemax+"   "+zombieList.长度+"  "+zombiecount)
 		zombiecount=0
@@ -4094,15 +4321,17 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 		wave=wave+1
 	结束 方法
 
-
+	@输出名("getzv")
 	方法 getzv(type : 整数,name : 文本) : 文本
 		返回 ((config)["Zombie"])[type.到文本()].refeindex(name)
 	结束 方法
 
+	@输出名("getweight")
 	方法 getweight(type : 整数) : 整数
 
 	结束 方法
 
+	@输出名("Update")
 	方法 Update()
 		变量 info=""
 		如果 字幕倒计时>0 则
@@ -4172,7 +4401,7 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 					如果 选卡结束 则
 						如果 动画进度>=100 则
 							state="skipc"
-						    进程=8
+							进程=8
 						结束 如果
 					否则
 						选卡界面y=选卡界面y+17.5f
@@ -4290,10 +4519,10 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 				//预备推车
 				如果 动画进度>=150 则
 					zombieList.清空()
-					//这里可以在测试使创建几个僵尸看一看(2025.8.2)
+					//这里可以在测试时创建几个僵尸看一看(2025.8.2)
 					循环(i, 0, 5)
 						//日志("addzombie:"+i.到文本())
-						zombieList.添加成员(Zombie.create(本对象,取随机数(7,7),取出怪行()))
+						//zombieList.添加成员(Zombie.create(本对象,取随机数(12,12),取出怪行()))
 					结束 循环
 					循环(i, 0, 5)
 						//变量 z=Zombie.create(本对象,取随机数(3,3),取出怪行())
@@ -4335,7 +4564,7 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 				card_cool[i]=card_cool[i]-1
 			结束 如果
 		结束 循环
-        变量 rt=取当前时间戳()
+		变量 rt=取当前时间戳()
 		变量 rts=0L
 		循环(i, 0, zombieList.长度)
 			变量 hu : 整数=zombieList.长度-i-1
@@ -4401,7 +4630,7 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 			//结束俘获异常()
 		结束 循环
 		rts=取当前时间戳()
-		info=info+"uCoin:"+(rts-rt).到文本()+"\n"
+		info=info+"uCoin:"+(rts-rt).到文本()
 		rt=取当前时间戳()
 		循环(i, 0, tracleList.长度)
 			//开始俘获异常()
@@ -4437,8 +4666,19 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 			结束 如果
 		结束 如果
 		uinfo=info
+		如果 4<=进程&&进程<=6 则
+			如果 保存倒计时<=0 则
+				保存倒计时=100
+				提交到新线程运行()
+				文件操作.写出文本文件("/sdcard/.pvz/"+关卡名()+".json",ToJSON())
+				结束提交到新线程()
+			否则
+				保存倒计时=保存倒计时-1
+			结束 如果
+		结束 如果
 	结束 方法
 
+	@输出名("collectSun")
 	方法 收集阳光(coin : Coin)
 		coin=coin
 		如果 state=="ep" 则
@@ -4450,6 +4690,7 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 		结束 如果
 	结束 方法
 
+	@输出名("chooseCard")
 	方法 选卡()
 		如果 level<=6 则
 			cards=数组创建(整数,level)
@@ -4465,11 +4706,13 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 		结束 如果
 	结束 方法
 
+	@输出名("PreMower")
 	方法 准备推车()
 		变量 info=取行信息()
 		mowerList.初始化(取数组长度(info),info,130,本对象)
 	结束 方法
 
+	@输出名("getRowinfo")
 	方法 取行信息() : 整数[]
 		如果 场景==0||场景==1 则
 			如果 level==1 则
@@ -4487,11 +4730,13 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 		返回 {0,0,0,0,0}
 	结束 方法
 
+	@输出名("captions")
 	方法 字幕(ID : 文本,时长 : 整数=400)
 		字幕=游戏文本.取项目(ID)
 		字幕倒计时=时长
 	结束 方法
 
+	@输出名("gety")
 	方法 gety(row : 整数,x : 单精度小数) : 单精度小数
 		变量 hl=取行高()
 		如果 场景==2||场景==3 则
@@ -4507,6 +4752,7 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 		结束 如果
 	结束 方法
 
+	@输出名("canDropSun")
 	方法 能落阳光() : 逻辑型
 		如果 能落阳光&&(场景==0||场景==2||场景==4)&&(4<=进程&&进程<=7) 则
 			返回 真
@@ -4516,6 +4762,7 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 
 
 
+	@输出名("getRowNumber")
 	方法 取行数() : 整数
 		如果 场景==2||场景==3 则
 			返回 6
@@ -4523,6 +4770,7 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 		返回 5
 	结束 方法
 
+	@输出名("getRowHeight")
 	方法 取行高() : 整数
 		如果 2<=场景&&场景<=5 则
 			返回 85
@@ -4531,20 +4779,24 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 		结束 如果
 	结束 方法
 
+	@输出名("getRowWidth")
 	方法 取行宽() : 整数
 		返回 80
 	结束 方法
 
+	@输出名("plantwin")
 	方法 plantwin()
 		(USER.账户)[USER.当前账户].冒险关数=level+1
 		保存存档()
 		coinList.添加成员(Coin.create(本对象,plantcard,900,340))
 	结束 方法
 
+	@输出名("clearance")
 	方法 过关(coin : Coin)
 		coin=coin
 	结束 方法
 
+	@输出名("getAvailableRow")
 	方法 取有效路() : 整数[]
 		如果 level==1 则
 			返回 {2}
@@ -4560,6 +4812,7 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 		结束 如果
 	结束 方法
 
+	@输出名("availableRow")
 	方法 有效出怪路() : 整数[]
 		变量 begin=取有效路()
 		变量 rlt : 整数集
@@ -4572,11 +4825,16 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 	结束 方法
 
 	//2025.8.8
+	@输出名("getRightWay")
 	方法 取出怪行() : 整数
 		变量 begin=有效出怪路()
+		如果 取数组长度(begin)==0 则
+			begin=取有效路()
+		结束 如果
 		返回 begin[取随机数(0,取数组长度(begin)-1)]
 	结束 方法
 
+	@输出名("checkrow")
 	方法 检验行(row : 整数) : 逻辑型
 		如果 禁出行[row]!=0 则
 			返回 假
@@ -4584,13 +4842,95 @@ if (gl_FragCoord.x < u_clipRegion.x ||
 		返回 真
 	结束 方法
 
+	@输出名("gamestart")
 	方法 游戏开始() : 逻辑型
 		如果 进程==4||进程==5||进程==6||进程==7 则
 			返回 真
 		结束 如果
 		返回 假
 	结束 方法
+
+	@code
+	@Override
+	public String toString(){
+	    return #ToJSON();
+	}
+	@end
+
+	@输出名("ToJSON")
+	方法 ToJSON() : 文本
+		变量 json : JSON对象
+		变量 class=本对象.取类信息().取所有字段()
+		循环(i, 0, 取数组长度(class))
+			变量 field=class[i]
+			code #field.setAccessible(true); 
+			变量 text=field.取对象值(本对象)
+			@输出名("classname")
+			变量 classname=field.类型.完整类名
+			如果 classname=="int"||classname=="boolean"||classname=="float"||classname=="java.lang.String" 则
+				json.置入(field.名称,text.到文本())
+			否则 classname=="[I"
+				变量 temp : 整数[]=text : 整数[]
+				json.置入(field.名称,整数集转json(temp))
+			否则 classname=="java.util.ArrayList"
+				变量 temp : 集合=text : 集合
+				json.置入(field.名称,ArrayList转json(temp))
+			否则 classname=="bk.pvz.CartSet"
+				变量 json2 : JSON对象=text.到文本()
+				json.置入(field.名称,json2)
+				//json.置入(field.名称,classname)
+			结束 如果
+
+		结束 循环
+		返回 json.到文本()
+	结束 方法
+
+
+	方法 FromJSON(jsont : 文本)
+		变量 json : JSON对象=jsont
+		变量 class=本对象.取类信息()
+		/*
+		循环(i, 0, json.长度)
+			变量 name=(json.键名)[i]
+			变量 type=class.取字段(name).类型.完整类名
+			//变量 text=json.取JSON对象(name)
+			变量 field=class.取字段(name)
+			//日志(text.到文本()+"  "+type)
+			如果 type=="int" 则
+				field.置整数值(本对象,json.取文本(name).到整数())
+			否则 type=="float" 
+				field.置单精度小数值(本对象,json.取文本(name).到单精度小数())
+			否则 type=="boolean"
+				field.置逻辑值(本对象,json.取文本(name).到逻辑值())
+			否则 type=="java.lang.String"
+				field.置对象值(本对象,json.取文本(name))
+			否则 (json.键名)[i]=="zombieList"
+				变量 text=json.取JSON对象(name)
+				变量 obj : ZombieList
+				循环(u, 0, 取数组长度(text.键名))
+					obj.添加成员(Zombie.FromJSON(text.取JSON对象((text.键名)[u]).到文本(),本对象))
+					//rv.添加成员(创建 渲染信息)
+				结束 循环
+				field.置对象值(本对象,obj)
+			否则 (json.键名)[i]=="plantList"
+				变量 text=json.取JSON对象(name)
+				变量 obj : PaintList
+				循环(u, 0, 取数组长度(text.键名))
+					obj.添加成员(Plant.FromJSON(text.取JSON对象((text.键名)[u]).到文本(),本对象))
+					//rv.添加成员(创建 渲染信息)
+				结束 循环
+				field.置对象值(本对象,obj)
+			否则 type=="[I"
+				变量 text=json.取JSON对象(name)
+				field.置对象值(本对象,json2ints(text))
+			结束 如果
+		结束 循环
+		*/
+		formJSON(本对象,json,本对象)
+	结束 方法
+
 结束 类
 
-类 编辑框h : 编辑框
+@输出名("tempE")
+类 编辑框h : Editor
 结束 类
